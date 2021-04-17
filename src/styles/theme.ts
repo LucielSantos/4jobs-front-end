@@ -9,6 +9,8 @@ export default {
     seven: '#D13135',
 
     background: '#F3F3F3',
+
+    loginBackground: 'linear-gradient(180deg, #0A005C 0%, #250042 100%)',
   },
   typography: {
     family: "'Ubuntu', sans-serif",
@@ -23,6 +25,10 @@ export default {
       regular: '400',
       medium: '500',
       bold: '700',
+    },
+    colors: {
+      one: '#000000',
+      two: '#FFFFFF',
     },
   },
   buttons: {

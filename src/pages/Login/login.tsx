@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { LoginViewProps } from '.';
+import { Typography } from '../../components';
+
+import { Container, FormContainer } from './styles';
 
 export const LoginView: React.FC<LoginViewProps> = ({
   handleLogin,
@@ -10,9 +13,12 @@ export const LoginView: React.FC<LoginViewProps> = ({
   }, []);
 
   return (
-    <div>
-      LoginView
-      <button onClick={() => history.goBack()}>Voltar</button>
-    </div>
+    <Container>
+      <FormContainer>
+        <Typography color="two" size="lg" weight="regular">
+          Faça login
+        </Typography>
+      </FormContainer>
+    </Container>
   );
 };
