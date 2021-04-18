@@ -27,7 +27,7 @@ export default {
       bold: '700',
     },
     colors: {
-      one: '#000000',
+      one: '#171923',
       two: '#FFFFFF',
     },
   },

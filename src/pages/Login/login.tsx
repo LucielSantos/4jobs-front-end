@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { Input } from '@chakra-ui/react';
 import { LoginViewProps } from '.';
-import { Typography } from '../../components';
+import { Typography, Input } from '../../components';
 
 import { Container, FormContainer } from './styles';
 
@@ -18,8 +17,9 @@ export const LoginView: React.FC<LoginViewProps> = ({
       <FormContainer>
         <Typography color="two" size="lg" weight="regular">
           Faça login
-          <Input placeholder="large size" size="lg" />
         </Typography>
+
+        <Input />
       </FormContainer>
     </Container>
   );

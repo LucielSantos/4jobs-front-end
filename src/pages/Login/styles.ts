@@ -15,7 +15,8 @@ export const FormContainer = styled.div`
   height: 40rem;
   width: 35rem;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 1rem;
   background: linear-gradient(
     180deg,
