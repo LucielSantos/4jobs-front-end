@@ -7,7 +7,7 @@ interface Props {}
 const InputComponent: React.FC<Props> = () => {
   return (
     <Container>
-      <StyledInput placeholder="large size" size="lg" variant="filled" />
+      <StyledInput label="nome" variant="outlined" />
     </Container>
   );
 };
