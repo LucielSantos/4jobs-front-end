@@ -29,7 +29,15 @@ export default {
     colors: {
       one: '#171923',
       two: '#FFFFFF',
+      three: '#8DABC4',
     },
+  },
+  spacings: {
+    xs: '1rem',
+    sm: '2rem',
+    md: '3rem',
+    lg: '4rem',
+    xl: '5rem',
   },
   buttons: {
     borderRadius: '0.4rem',

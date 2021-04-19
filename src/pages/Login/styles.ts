@@ -10,17 +10,15 @@ export const Container = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: red;
   height: 40rem;
-  width: 35rem;
+  width: 40rem;
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 1rem;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.024) 100%
-  );
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
 `;

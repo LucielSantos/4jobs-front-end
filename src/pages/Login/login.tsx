@@ -15,11 +15,18 @@ export const LoginView: React.FC<LoginViewProps> = ({
   return (
     <Container>
       <FormContainer>
-        <Typography color="two" size="lg" weight="regular">
+        <Typography color="two" size="lg" weight="regular" marginBottom="xl">
           Faça login
         </Typography>
 
-        <Input />
+        <Input
+          label="Nome"
+          separatedLabel
+          labelColor="two"
+          placeholder="Nome de usuário ou email"
+        />
+
+        <Input label="Senha" separatedLabel labelColor="two" />
       </FormContainer>
     </Container>
   );

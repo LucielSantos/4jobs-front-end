@@ -2,12 +2,13 @@ import { TextField } from '@material-ui/core';
 import styled from 'styled-components';
 
 export const StyledInput = styled(TextField)`
-  .MuiOutlinedInput-input {
-    padding: 1rem 0.9rem;
+  .MuiOutlinedInput-root {
+    background-color: white !important;
   }
 `;
 
 export const Container = styled.div`
   display: flex;
   width: 100%;
+  flex-direction: column;
 `;
