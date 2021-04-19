@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { LoginViewProps } from '.';
-import { Typography, Input } from '../../components';
+import { Typography, Input, Form } from '../../components';
+import { loginValidationSchema } from '../../validationSchemas/login';
 
 import { Container, FormContainer } from './styles';
 
@@ -12,6 +13,10 @@ export const LoginView: React.FC<LoginViewProps> = ({
     handleLogin({ login: 'username', password: 'q1w2e3r4' });
   }, []);
 
+  const handleSubmit = useCallback(values => {
+    console.log(values);
+  }, []);
+
   return (
     <Container>
       <FormContainer>
@@ -19,14 +24,25 @@ export const LoginView: React.FC<LoginViewProps> = ({
           Faça login
         </Typography>
 
-        <Input
-          label="Nome"
-          separatedLabel
-          labelColor="two"
-          placeholder="Nome de usuário ou email"
-        />
+        <Form onSubmit={handleSubmit} validationSchema={loginValidationSchema}>
+          <Input
+            label="Nome"
+            separatedLabel
+            labelColor="two"
+            placeholder="Nome de usuário ou email"
+            name="name"
+          />
 
-        <Input label="Senha" separatedLabel labelColor="two" />
+          <Input
+            label="Senha"
+            separatedLabel
+            labelColor="two"
+            placeholder="Nome de usuário ou email"
+            name="password"
+          />
+
+          <button type="submit">Submit</button>
+        </Form>
       </FormContainer>
     </Container>
   );

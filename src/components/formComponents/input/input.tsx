@@ -1,4 +1,5 @@
-import React from 'react';
+import { useField } from '@unform/core';
+import React, { useEffect, useRef } from 'react';
 import { Label } from '../../label';
 import { ITypography } from '../../typography';
 
@@ -9,6 +10,7 @@ interface Props {
   label?: string | React.Component;
   labelColor?: ITypography['color'];
   placeholder?: string;
+  name: string;
 }
 
 const InputComponent: React.FC<Props> = ({
@@ -16,7 +18,28 @@ const InputComponent: React.FC<Props> = ({
   placeholder,
   labelColor = 'three',
   separatedLabel = false,
+  name,
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const { fieldName, defaultValue, registerField, error } = useField(name);
+
+  useEffect(() => {
+    registerField({
+      name: fieldName,
+      ref: inputRef,
+      getValue: ref => {
+        return ref.current.value;
+      },
+      setValue: (ref, value) => {
+        ref.current.value = value;
+      },
+      clearValue: ref => {
+        ref.current.value = '';
+      },
+    });
+  }, [fieldName, registerField]);
+
   return (
     <Container>
       {separatedLabel && label && <Label color={labelColor}>{label}</Label>}
@@ -27,6 +50,8 @@ const InputComponent: React.FC<Props> = ({
         size="small"
         fullWidth
         placeholder={placeholder}
+        defaultValue={defaultValue}
+        inputRef={inputRef}
       />
     </Container>
   );
