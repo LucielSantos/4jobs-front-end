@@ -43,7 +43,7 @@ export default {
     borderRadius: '0.4rem',
 
     primary: {
-      background: '#6942B6',
+      background: '#3C21B7',
       color: '#FFFFFF',
 
       disabled: {

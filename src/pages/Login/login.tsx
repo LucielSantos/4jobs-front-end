@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { LoginViewProps } from '.';
-import { Typography, Input, Form } from '../../components';
-import { loginValidationSchema } from '../../validationSchemas/login';
+import { Typography, Input, Form, Button } from '../../components';
+import { loginValidationSchema } from '../../validationSchemas';
 
 import { Container, FormContainer } from './styles';
 
@@ -41,7 +41,13 @@ export const LoginView: React.FC<LoginViewProps> = ({
             name="password"
           />
 
-          <button type="submit">Submit</button>
+          <Button type="submit" fullWidth marginBottom="xs" marginTop="xs">
+            Login
+          </Button>
+
+          <Button fullWidth variant="secondary">
+            Cadastrar-se
+          </Button>
         </Form>
       </FormContainer>
     </Container>

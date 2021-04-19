@@ -12,7 +12,6 @@ export const Container = styled.div`
 export const FormContainer = styled.div`
   border-radius: 8px;
   background-color: red;
-  height: 40rem;
   width: 40rem;
   display: flex;
   align-items: center;

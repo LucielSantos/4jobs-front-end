@@ -2,6 +2,7 @@ import { useField } from '@unform/core';
 import React, { useEffect, useRef } from 'react';
 import { Label } from '../../label';
 import { ITypography } from '../../typography';
+import { ErrorMessage } from '../';
 
 import { StyledInput, Container } from './styles';
 
@@ -11,6 +12,7 @@ interface Props {
   labelColor?: ITypography['color'];
   placeholder?: string;
   name: string;
+  notErrorMargin?: boolean;
 }
 
 const InputComponent: React.FC<Props> = ({
@@ -18,11 +20,18 @@ const InputComponent: React.FC<Props> = ({
   placeholder,
   labelColor = 'three',
   separatedLabel = false,
+  notErrorMargin = false,
   name,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { fieldName, defaultValue, registerField, error } = useField(name);
+  const {
+    fieldName,
+    defaultValue,
+    registerField,
+    error,
+    clearError,
+  } = useField(name);
 
   useEffect(() => {
     registerField({
@@ -52,7 +61,17 @@ const InputComponent: React.FC<Props> = ({
         placeholder={placeholder}
         defaultValue={defaultValue}
         inputRef={inputRef}
+        error={Boolean(error)}
+        onChange={e => {
+          error && clearError();
+        }}
       />
+
+      {notErrorMargin ? (
+        error && <ErrorMessage>{error && error}</ErrorMessage>
+      ) : (
+        <ErrorMessage>{error || ' '}</ErrorMessage>
+      )}
     </Container>
   );
 };
