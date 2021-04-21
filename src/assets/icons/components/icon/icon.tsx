@@ -14,18 +14,13 @@ const IconComponent: React.FC<IIconProps> = ({
   name = 'close',
   color = 'one',
   size = 'md',
-  clickable,
   onClick,
+  ...props
 }) => {
   const Component = useMemo(() => icons[name], [name]);
 
   return (
-    <Component
-      color={color}
-      sizeParam={size}
-      clickable={clickable}
-      onClick={onClick}
-    />
+    <Component color={color} sizeParam={size} onClick={onClick} {...props} />
   );
 };
 

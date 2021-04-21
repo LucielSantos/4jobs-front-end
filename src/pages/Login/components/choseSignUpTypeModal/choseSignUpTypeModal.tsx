@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, IModalProps } from '../../../../components';
+import { Modal, IModalProps, Button } from '../../../../components';
 
 interface IProps extends IModalProps {}
 
@@ -9,7 +9,13 @@ const ChoseSignUpTypeModalComponent: React.FC<IProps> = ({
 }) => {
   return (
     <Modal open={open} handleClose={handleClose} width="xs">
-      Corpo do meu modal
+      <Button fullWidth marginBottom="sm">
+        Cadastrar-se como Candidato
+      </Button>
+
+      <Button fullWidth variant="secondary">
+        Cadastrar-se como Empresa
+      </Button>
     </Modal>
   );
 };

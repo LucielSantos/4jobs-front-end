@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { Dialog, DialogProps } from '@material-ui/core';
 
-import { Container, Header, CloseIconContainer } from './styles';
+import { Container, Header, CloseIconContainer, Body } from './styles';
 import { Typography } from '../';
 import { Icon } from '../../assets/icons';
 
@@ -39,11 +39,17 @@ const ModalComponent: React.FC<IModalCompleteProps> = ({
         {title && <Typography size="lg">{title}</Typography>}
 
         <CloseIconContainer>
-          <Icon name="close" size="md" clickable onClick={onClickClose} />
+          <Icon
+            name="close"
+            size="md"
+            color="two"
+            clickable
+            onClick={onClickClose}
+          />
         </CloseIconContainer>
       </Header>
 
-      {children}
+      <Body>{children}</Body>
     </Dialog>
   );
 };
