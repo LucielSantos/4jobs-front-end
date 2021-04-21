@@ -7,14 +7,29 @@ const INITIAL_STATE: ILoginState = {
     password: '',
   },
   loading: false,
+  dialogs: {
+    chooseSignUpType: false,
+  },
 };
 
-const reducer: Reducer<ILoginState> = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
+const reducer: Reducer<ILoginState> = (
+  state = INITIAL_STATE,
+  { type, payload }
+) => {
+  switch (type) {
     case LoginActionTypes.SET_LOADING:
       return {
         ...state,
-        loading: action.payload.value,
+        loading: payload.value,
+      };
+
+    case LoginActionTypes.SET_DIALOG:
+      return {
+        ...state,
+        dialogs: {
+          ...state.dialogs,
+          [payload.field]: payload.value,
+        },
       };
 
     default:

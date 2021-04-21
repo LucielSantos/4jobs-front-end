@@ -12,14 +12,23 @@ export default {
 
     loginBackground: 'linear-gradient(180deg, #0A005C 0%, #250042 100%)',
   },
+  icon: {
+    sizes: {
+      xs: '2rem',
+      sm: '3rem',
+      md: '4rem',
+      lg: '5rem',
+      xl: '6rem',
+    },
+  },
   typography: {
     family: "'Ubuntu', sans-serif",
     sizes: {
       xs: '1.2rem',
       sm: '1.4rem',
       md: '1.6rem',
-      lg: '2.4rem',
-      xl: '3.2rem',
+      lg: '2.2rem',
+      xl: '2.6rem',
     },
     weight: {
       regular: '400',

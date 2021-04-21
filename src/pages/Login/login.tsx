@@ -4,10 +4,13 @@ import { Typography, Input, Form, Button } from '../../components';
 import { loginValidationSchema } from '../../validationSchemas';
 
 import { Container, FormContainer } from './styles';
+import { ChoseSignUpTypeModal } from './components';
 
 export const LoginView: React.FC<LoginViewProps> = ({
   handleLogin,
+  handleSetDialog,
   history,
+  login: { dialogs },
 }) => {
   useEffect(() => {
     handleLogin({ login: 'username', password: 'q1w2e3r4' });
@@ -17,10 +20,14 @@ export const LoginView: React.FC<LoginViewProps> = ({
     console.log(values);
   }, []);
 
+  const handleChoseSignUpTypeModal = useCallback((value: boolean) => {
+    handleSetDialog('chooseSignUpType', value);
+  }, []);
+
   return (
     <Container>
       <FormContainer>
-        <Typography color="two" size="lg" weight="regular" marginBottom="xl">
+        <Typography color="two" size="xl" weight="regular" marginBottom="xl">
           Faça login
         </Typography>
 
@@ -45,11 +52,20 @@ export const LoginView: React.FC<LoginViewProps> = ({
             Login
           </Button>
 
-          <Button fullWidth variant="secondary">
+          <Button
+            fullWidth
+            variant="secondary"
+            onClick={() => handleChoseSignUpTypeModal(true)}
+          >
             Cadastrar-se
           </Button>
         </Form>
       </FormContainer>
+
+      <ChoseSignUpTypeModal
+        open={dialogs.chooseSignUpType}
+        handleClose={handleChoseSignUpTypeModal}
+      />
     </Container>
   );
 };

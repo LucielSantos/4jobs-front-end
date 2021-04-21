@@ -5,7 +5,11 @@ import { IApplicationState } from '../../store';
 import { LoginView } from './login';
 
 import * as LoginActions from '../../store/ducks/login/actions';
-import { ILogin, ILoginState } from '../../store/ducks/login/types';
+import {
+  ILogin,
+  ILoginSetDialog,
+  ILoginState,
+} from '../../store/ducks/login/types';
 import { RouteComponentProps } from 'react-router';
 
 interface IStateProps {
@@ -15,6 +19,10 @@ interface IStateProps {
 interface IDispatchProps {
   setLoading(value: boolean): void;
   handleLogin(loginData: ILogin): void;
+  handleSetDialog(
+    field: ILoginSetDialog['field'],
+    value: ILoginSetDialog['value']
+  ): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}
