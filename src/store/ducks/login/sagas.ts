@@ -1,5 +1,5 @@
 import { ForkEffect, put, takeEvery } from 'redux-saga/effects';
-import { ISagaParam } from '../sagaTypes';
+import { ISagaParam } from '../types';
 import { setLoading } from './actions';
 import { LoginActionTypes, ILogin } from './types';
 

@@ -45,7 +45,7 @@ export const Button = styled.button.attrs<IButton>(({ type }) => ({
     `}
   background-color: ${({ theme, variant = 'primary', disabled = false }) =>
     disabled
-      ? theme.buttons[variant].disabled.color
+      ? theme.buttons[variant].disabled.background
       : theme.buttons[variant].background};
   color: ${({ theme, variant = 'primary', disabled = false }) =>
     disabled

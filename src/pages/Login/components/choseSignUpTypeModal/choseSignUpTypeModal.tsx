@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { History } from 'history';
 import { Modal, IModalProps, Button } from '../../../../components';
+import { routePaths } from '../../../../routes';
 
-interface IProps extends IModalProps {}
+interface IProps extends IModalProps {
+  history: History;
+}
 
 const ChoseSignUpTypeModalComponent: React.FC<IProps> = ({
   open,
   handleClose,
+  history,
 }) => {
+  const onClickCompany = useCallback(() => {
+    history.push(routePaths.CREATE_COMPANY);
+    handleClose();
+  }, []);
+
   return (
     <Modal open={open} handleClose={handleClose} width="xs">
-      <Button fullWidth marginBottom="sm">
+      <Button fullWidth marginBottom="sm" disabled>
         Cadastrar-se como Candidato
       </Button>
 
-      <Button fullWidth variant="secondary">
+      <Button fullWidth variant="secondary" onClick={onClickCompany}>
         Cadastrar-se como Empresa
       </Button>
     </Modal>

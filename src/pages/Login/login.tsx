@@ -20,7 +20,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
     console.log(values);
   }, []);
 
-  const handleChoseSignUpTypeModal = useCallback((value: boolean) => {
+  const handleChoseSignUpTypeModal = useCallback((value: boolean = false) => {
     handleSetDialog('chooseSignUpType', value);
   }, []);
 
@@ -65,6 +65,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
       <ChoseSignUpTypeModal
         open={dialogs.chooseSignUpType}
         handleClose={handleChoseSignUpTypeModal}
+        history={history}
       />
     </Container>
   );

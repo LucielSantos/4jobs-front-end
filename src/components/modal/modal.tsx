@@ -8,13 +8,14 @@ import { Icon } from '../../assets/icons';
 
 export interface IModalProps {
   open: boolean;
-  handleClose(value: false): void;
+  handleClose(value?: false): void;
 }
 
 export interface IModalCompleteProps extends IModalProps {
   children: React.ReactNode;
   width?: DialogProps['maxWidth'];
   title?: string;
+  handleClose(value: false): void;
 }
 
 const ModalComponent: React.FC<IModalCompleteProps> = ({
@@ -26,6 +27,7 @@ const ModalComponent: React.FC<IModalCompleteProps> = ({
 }) => {
   const onClickClose = useCallback(() => {
     console.log('click close');
+    handleClose(false);
   }, []);
 
   return (
