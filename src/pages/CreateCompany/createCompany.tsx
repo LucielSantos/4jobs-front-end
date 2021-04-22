@@ -1,5 +1,19 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { TCreateCompanyViewProps } from '.';
+import { Button } from '../../components';
 
-export const CreateCompanyView: React.FC = () => {
-  return <div>CreatCompanyView</div>;
+import { Container } from './styles';
+
+export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
+  handleCreateCompany,
+}) => {
+  const onCreateCompany = useCallback(() => {
+    handleCreateCompany({ name: 'nome da empresa' });
+  }, []);
+
+  return (
+    <Container>
+      <Button onClick={onCreateCompany}>Criar</Button>
+    </Container>
+  );
 };

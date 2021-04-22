@@ -7,7 +7,7 @@ function* handleCreateCompany(data: ISagaParam<ICreateCompanyData>) {
   try {
     put(onSetCompanyLoading('create', true));
 
-    console.log(data);
+    console.log(data.payload);
 
     put(onSetCompanyLoading('create', false));
   } catch (error) {
@@ -15,7 +15,5 @@ function* handleCreateCompany(data: ISagaParam<ICreateCompanyData>) {
   }
 }
 export function createCompanyRootSaga(): ForkEffect<never>[] {
-  return [
-    takeEvery(CreateCompanyActionTypes.HANDLE_CREATE, handleCreateCompany),
-  ];
+  return [takeEvery(CreateCompanyActionTypes.HANDLE_CREATE, handleCreateCompany)];
 }
