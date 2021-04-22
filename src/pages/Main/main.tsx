@@ -1,6 +1,6 @@
 import React, { useCallback, useLayoutEffect } from 'react';
 import { MainViewProps } from '.';
-import { navbarStateByRoute } from '../../routes';
+import { navbarStateByRoute, routePaths } from '../../routes';
 
 import { Router } from '../../routes/components';
 import { Navbar } from './components';
@@ -20,7 +20,13 @@ export const MainView: React.FC<MainViewProps> = ({
     }
   }, []);
 
+  const redirectPage = useCallback(() => {
+    history.push(routePaths.LOGIN);
+  }, []);
+
   useLayoutEffect(() => {
+    redirectPage();
+
     switchNavbarState(history.location.pathname);
 
     history.listen(location => {
@@ -30,7 +36,7 @@ export const MainView: React.FC<MainViewProps> = ({
 
   return (
     <Container>
-      <Navbar navbarState={navbar} />
+      <Navbar navbarState={navbar} history={history} />
 
       <Router />
     </Container>
