@@ -1,12 +1,16 @@
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { IApplicationState } from '../../store';
-import { IMainState } from '../../store/ducks/main/types';
+import { IMainState, TSetNavbarState } from '../../store/ducks/main/types';
+import * as MainActions from '../../store/ducks/main/actions';
 import { MainView } from './main';
+import { bindActionCreators, Dispatch } from 'redux';
 
 interface IStateProps extends IMainState {}
 
-interface IDispatchProps {}
+interface IDispatchProps {
+  onSetNavbarState(state: TSetNavbarState): void;
+}
 
 interface IOwnProps extends RouteComponentProps {}
 
@@ -16,4 +20,7 @@ const mapStateToProps = ({ main }: IApplicationState) => ({
   ...main,
 });
 
-export default connect(mapStateToProps)(MainView);
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(MainActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainView);

@@ -25,10 +25,7 @@ const ModalComponent: React.FC<IModalCompleteProps> = ({
   width = 'sm',
   title,
 }) => {
-  const onClickClose = useCallback(() => {
-    console.log('click close');
-    handleClose(false);
-  }, []);
+  const onClickClose = useCallback(() => handleClose(false), []);
 
   return (
     <Dialog

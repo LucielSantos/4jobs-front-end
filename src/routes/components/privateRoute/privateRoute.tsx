@@ -10,10 +10,11 @@ export interface IPrivateRoute {
 
 export const PrivateRoute: React.FC<IPrivateRoute> = ({
   component,
+  exact = true,
   ...props
 }) =>
   isAuthenticated() ? (
-    <Route {...props} />
+    <Route exact={exact} {...props} />
   ) : (
     <Redirect to={{ pathname: '/login' }} />
   );
