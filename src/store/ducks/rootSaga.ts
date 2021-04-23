@@ -7,11 +7,7 @@ import { createCompanyRootSaga } from './createCompany/sagas';
 const all = Eff.all; // <-- new
 
 export function* combineRootSagas(): Generator<ForkEffect<never>[]> {
-  const sagas = [
-    ...mainRootSaga(),
-    ...loginRootSaga(),
-    ...createCompanyRootSaga(),
-  ];
+  const sagas = [...mainRootSaga(), ...loginRootSaga(), ...createCompanyRootSaga()];
   return sagas;
 }
 

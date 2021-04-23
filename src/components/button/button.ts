@@ -29,8 +29,7 @@ export const Button = styled.button.attrs<IButton>(({ type }) => ({
   font-weight: 400;
   cursor: ${({ disabled = false }) => (disabled ? 'not-allowed' : 'pointer')};
 
-  margin-top: ${({ theme, marginTop }) =>
-    marginTop ? theme.spacings[marginTop] : 0};
+  margin-top: ${({ theme, marginTop }) => (marginTop ? theme.spacings[marginTop] : 0)};
   margin-right: ${({ theme, marginRight }) =>
     marginRight ? theme.spacings[marginRight] : 0};
   margin-bottom: ${({ theme, marginBottom }) =>
@@ -48,9 +47,7 @@ export const Button = styled.button.attrs<IButton>(({ type }) => ({
       ? theme.buttons[variant].disabled.background
       : theme.buttons[variant].background};
   color: ${({ theme, variant = 'primary', disabled = false }) =>
-    disabled
-      ? theme.buttons[variant].disabled.color
-      : theme.buttons[variant].color};
+    disabled ? theme.buttons[variant].disabled.color : theme.buttons[variant].color};
 
   &:hover {
     filter: ${({ disabled = false }) => !disabled && 'brightness(90%)'};

@@ -38,13 +38,7 @@ const ModalComponent: React.FC<IModalCompleteProps> = ({
         {title && <Typography size="lg">{title}</Typography>}
 
         <CloseIconContainer>
-          <Icon
-            name="close"
-            size="md"
-            color="two"
-            clickable
-            onClick={onClickClose}
-          />
+          <Icon name="close" size="md" color="two" clickable onClick={onClickClose} />
         </CloseIconContainer>
       </Header>
 
