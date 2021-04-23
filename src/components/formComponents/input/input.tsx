@@ -13,6 +13,8 @@ interface Props {
   placeholder?: string;
   name: string;
   notErrorMargin?: boolean;
+  marginLeft?: boolean;
+  marginRight?: boolean;
 }
 
 const InputComponent: React.FC<Props> = ({
@@ -21,17 +23,13 @@ const InputComponent: React.FC<Props> = ({
   labelColor = 'three',
   separatedLabel = false,
   notErrorMargin = false,
+  marginLeft = false,
+  marginRight = false,
   name,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const {
-    fieldName,
-    defaultValue,
-    registerField,
-    error,
-    clearError,
-  } = useField(name);
+  const { fieldName, defaultValue, registerField, error, clearError } = useField(name);
 
   useEffect(() => {
     registerField({
@@ -50,7 +48,7 @@ const InputComponent: React.FC<Props> = ({
   }, [fieldName, registerField]);
 
   return (
-    <Container>
+    <Container marginLeft={marginLeft} marginRight={marginRight}>
       {separatedLabel && label && <Label color={labelColor}>{label}</Label>}
 
       <StyledInput

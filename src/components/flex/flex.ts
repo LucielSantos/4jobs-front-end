@@ -30,4 +30,5 @@ export const Flex = styled.div<IFlex>`
   flex-direction: ${({ flexDirection = 'row' }) => flexDirection};
   align-items: ${({ alignItems = 'normal' }) => alignItems};
   justify-content: ${({ justifyItems = 'normal' }) => justifyItems};
+  width: 100%;
 `;

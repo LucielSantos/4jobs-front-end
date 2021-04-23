@@ -1,3 +1,4 @@
+import { Grid } from '@material-ui/core';
 import { SubmitHandler } from '@unform/core';
 import React, { useCallback } from 'react';
 import { TCreateCompanyViewProps } from '.';
@@ -7,6 +8,7 @@ import {
   Button,
   Flex,
   Form,
+  ImageInput,
   Input,
   PageContainer,
   Typography,
@@ -31,7 +33,19 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
 
       <BodyContainer>
         <Form onSubmit={onSubmitForm}>
-          <Input name="name" label="Nome da empresa" />
+          <Grid container>
+            <Grid item xs={7}>
+              <Flex alignItems="flex-end">
+                <ImageInput name="image" />
+
+                <Input name="name" label="Nome da empresa" marginLeft />
+              </Flex>
+            </Grid>
+
+            <Grid container alignItems="flex-end" item xs={5}>
+              <Input name="name" label="Nome do responsável" marginLeft />
+            </Grid>
+          </Grid>
 
           <Button type="submit">Castrar-se</Button>
         </Form>

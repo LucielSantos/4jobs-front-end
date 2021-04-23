@@ -7,8 +7,16 @@ export const StyledInput = styled(TextField)`
   }
 `;
 
-export const Container = styled.div`
+interface IInputContainer {
+  marginLeft?: boolean;
+  marginRight?: boolean;
+}
+
+export const Container = styled.div<IInputContainer>`
   display: flex;
   width: 100%;
   flex-direction: column;
+
+  margin-left: ${({ marginLeft = false }) => marginLeft && '2rem'};
+  margin-right: ${({ marginRight = false }) => marginRight && '2rem'};
 `;
