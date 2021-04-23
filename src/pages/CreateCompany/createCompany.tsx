@@ -47,8 +47,12 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
               <Input name="responsibleName" label="Nome do responsável" marginLeft />
             </Grid>
 
-            <Grid item xs={6}>
-              <MaskedInput name="cnpj" label="CNPJ" />
+            <Grid item xs={4}>
+              <MaskedInput name="cnpj" label="CNPJ" mask="cnpj" />
+            </Grid>
+
+            <Grid item xs={3}>
+              <Input name="phone" label="Telefone para contato" marginLeft />
             </Grid>
           </Grid>
 
