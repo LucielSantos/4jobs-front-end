@@ -7,7 +7,7 @@ export const Container = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.three};
   color: ${({ theme }) => theme.typography.colors.two};
-  padding: 1rem 3rem;
+  padding: 1rem 4rem;
   box-sizing: border-box;
 `;
 

@@ -21,7 +21,7 @@ export const MainView: React.FC<MainViewProps> = ({
   }, []);
 
   const redirectPage = useCallback(() => {
-    history.push(routePaths.LOGIN);
+    if (history.location.pathname === '/') history.push(routePaths.LOGIN);
   }, []);
 
   useLayoutEffect(() => {

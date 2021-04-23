@@ -19,9 +19,7 @@ const IconComponent: React.FC<IIconProps> = ({
 }) => {
   const Component = useMemo(() => icons[name], [name]);
 
-  return (
-    <Component color={color} sizeParam={size} onClick={onClick} {...props} />
-  );
+  return <Component color={color} sizeParam={size} onClick={onClick} {...props} />;
 };
 
 export const Icon = React.memo(IconComponent);
