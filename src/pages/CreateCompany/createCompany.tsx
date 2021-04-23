@@ -10,6 +10,7 @@ import {
   Form,
   ImageInput,
   Input,
+  MaskedInput,
   PageContainer,
   Typography,
 } from '../../components';
@@ -43,7 +44,11 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
             </Grid>
 
             <Grid container alignItems="flex-end" item xs={5}>
-              <Input name="name" label="Nome do responsável" marginLeft />
+              <Input name="responsibleName" label="Nome do responsável" marginLeft />
+            </Grid>
+
+            <Grid item xs={6}>
+              <MaskedInput name="cnpj" label="CNPJ" />
             </Grid>
           </Grid>
 

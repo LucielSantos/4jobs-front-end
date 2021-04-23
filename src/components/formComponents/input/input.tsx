@@ -3,10 +3,11 @@ import React, { useEffect, useRef } from 'react';
 import { Label } from '../../label';
 import { ITypography } from '../../typography';
 import { ErrorMessage } from '../';
+import { TMaskProp } from '../maskedInput';
 
 import { StyledInput, Container } from './styles';
 
-interface Props {
+export interface IInputProps {
   separatedLabel?: boolean;
   label?: string | React.Component;
   labelColor?: ITypography['color'];
@@ -15,9 +16,11 @@ interface Props {
   notErrorMargin?: boolean;
   marginLeft?: boolean;
   marginRight?: boolean;
+  maskComponent?: any;
+  mask?: TMaskProp;
 }
 
-const InputComponent: React.FC<Props> = ({
+const InputComponent: React.FC<IInputProps> = ({
   label,
   placeholder,
   labelColor = 'three',
@@ -25,7 +28,9 @@ const InputComponent: React.FC<Props> = ({
   notErrorMargin = false,
   marginLeft = false,
   marginRight = false,
+  maskComponent,
   name,
+  mask = 'number',
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -60,6 +65,14 @@ const InputComponent: React.FC<Props> = ({
         defaultValue={defaultValue}
         inputRef={inputRef}
         error={Boolean(error)}
+        InputProps={
+          maskComponent && {
+            inputComponent: maskComponent,
+            inputProps: {
+              mask,
+            },
+          }
+        }
         onChange={e => {
           error && clearError();
         }}
