@@ -14,7 +14,7 @@ interface IInputContainer {
 
 export const Container = styled.div<IInputContainer>`
   display: flex;
-  width: 100%;
+  width: inherit;
   flex-direction: column;
 
   margin-left: ${({ marginLeft = false }) => marginLeft && '2rem'};

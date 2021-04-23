@@ -12,6 +12,7 @@ import {
   Input,
   MaskedInput,
   PageContainer,
+  Select,
   Typography,
 } from '../../components';
 
@@ -53,6 +54,32 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
 
             <Grid item xs={3}>
               <Input name="phone" label="Telefone para contato" marginLeft />
+            </Grid>
+
+            <Grid item xs={2}>
+              <Select
+                name="state"
+                label="UF"
+                marginLeft
+                options={[
+                  { value: 'idUm', label: 'um' },
+                  { value: 'idDois', label: 'dois' },
+                  { value: 'idTres', label: 'tres' },
+                ]}
+              />
+            </Grid>
+
+            <Grid item xs={3}>
+              <Select
+                name="city"
+                label="Cidade"
+                marginLeft
+                options={[
+                  { value: 'idUm', label: 'um' },
+                  { value: 'idDois', label: 'dois' },
+                  { value: 'idTres', label: 'tres' },
+                ]}
+              />
             </Grid>
           </Grid>
 
