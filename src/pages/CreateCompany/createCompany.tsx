@@ -37,32 +37,32 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
 
       <BodyContainer>
         <Form onSubmit={onSubmitForm} validationSchema={createCompanyValidationSchema}>
-          <Grid container>
-            <Grid item xs={7}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={7}>
               <Flex alignItems="flex-end">
-                <ImageInput name="image" />
+                <ImageInput name="image" notErrorMargin />
 
-                <Input name="name" label="Nome da empresa" marginLeft />
+                <Input name="name" label="Nome da empresa" marginLeft notErrorMargin />
               </Flex>
             </Grid>
 
-            <Grid container alignItems="flex-end" item xs={5}>
-              <Input name="responsibleName" label="Nome do responsável" marginLeft />
+            <Grid container alignItems="flex-end" item xs={12} sm={5}>
+              <Input name="responsibleName" label="Nome do responsável" notErrorMargin />
             </Grid>
 
-            <Grid item xs={4}>
-              <MaskedInput name="cnpj" label="CNPJ" mask="cnpj" />
+            <Grid item xs={12} sm={4}>
+              <MaskedInput name="cnpj" label="CNPJ" mask="cnpj" notErrorMargin />
             </Grid>
 
-            <Grid item xs={3}>
-              <Input name="phone" label="Telefone para contato" marginLeft />
+            <Grid item xs={12} sm={3}>
+              <Input name="phone" label="Telefone para contato" notErrorMargin />
             </Grid>
 
-            <Grid item xs={2}>
+            <Grid item xs={12} sm={2}>
               <Select
                 name="state"
                 label="UF"
-                marginLeft
+                notErrorMargin
                 options={[
                   { value: 'idUm', label: 'um' },
                   { value: 'idDois', label: 'dois' },
@@ -71,11 +71,11 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
               />
             </Grid>
 
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={3}>
               <Select
                 name="city"
                 label="Cidade"
-                marginLeft
+                notErrorMargin
                 options={[
                   { value: 'idUm', label: 'um' },
                   { value: 'idDois', label: 'dois' },
@@ -84,16 +84,20 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
               />
             </Grid>
 
-            <Grid item xs={4}>
-              <InputPassword name="password" label="Senha" />
+            <Grid item xs={12} sm={4}>
+              <InputPassword name="password" label="Senha" notErrorMargin />
             </Grid>
 
-            <Grid item xs={4}>
-              <InputPassword name="confirmPassword" label="Confirmar senha" marginLeft />
+            <Grid item xs={12} sm={4}>
+              <InputPassword
+                name="confirmPassword"
+                label="Confirmar senha"
+                notErrorMargin
+              />
             </Grid>
 
-            <Grid item xs={12}>
-              <Typography marginBottom="md" size="sm">
+            <Grid item xs={12} sm={12}>
+              <Typography marginBottom="sm" size="sm">
                 A senha deve conter: <br /> &nbsp; • Mínimo 8 (oito) caractéres; <br />{' '}
                 &nbsp; • Mínimo uma letra minuscula; <br /> &nbsp; • Mínimo uma letra
                 maiúscula; <br /> &nbsp; • Mínimo um número.
@@ -102,12 +106,22 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
 
             <Grid container />
 
-            <Grid item xs={12}>
-              <Input name="description" label="Descrição" multiline rows={4} />
+            <Grid item xs={12} sm={12}>
+              <Input
+                name="description"
+                label="Descrição"
+                multiline
+                rows={4}
+                notErrorMargin
+              />
             </Grid>
           </Grid>
 
-          <Button type="submit">Castrar-se</Button>
+          <Grid item xs={12}>
+            <Button type="submit" marginTop="lg" marginLeft="auto" fullWidthOnMobile>
+              Castrar-se
+            </Button>
+          </Grid>
         </Form>
       </BodyContainer>
     </PageContainer>

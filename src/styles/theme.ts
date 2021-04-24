@@ -47,6 +47,7 @@ export default {
     md: '3rem',
     lg: '4rem',
     xl: '5rem',
+    auto: 'auto',
   },
   buttons: {
     borderRadius: '0.4rem',

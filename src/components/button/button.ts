@@ -1,4 +1,5 @@
 import styled, { css, DefaultTheme } from 'styled-components';
+import { maxWidthMobile } from '../../constants';
 
 type TVariant = 'primary' | 'secondary' | 'tertiary' | 'danger';
 type TMargin = keyof DefaultTheme['spacings'];
@@ -8,6 +9,7 @@ interface IButton {
   variant?: TVariant;
   disabled?: boolean;
   fullWidth?: boolean;
+  fullWidthOnMobile?: boolean;
   marginTop?: TMargin;
   marginRight?: TMargin;
   marginBottom?: TMargin;
@@ -28,6 +30,9 @@ export const Button = styled.button.attrs<IButton>(({ type }) => ({
   transition: filter 0.3s;
   font-weight: 400;
   cursor: ${({ disabled = false }) => (disabled ? 'not-allowed' : 'pointer')};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   margin-top: ${({ theme, marginTop }) => (marginTop ? theme.spacings[marginTop] : 0)};
   margin-right: ${({ theme, marginRight }) =>
@@ -61,4 +66,12 @@ export const Button = styled.button.attrs<IButton>(({ type }) => ({
     css`
       pointer-events: none;
     `}
+
+  @media(max-width: ${maxWidthMobile}) {
+    ${({ fullWidthOnMobile = false }) =>
+      fullWidthOnMobile &&
+      css`
+        width: 100%;
+      `}
+  }
 `;
