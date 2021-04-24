@@ -55,10 +55,12 @@ export const Button = styled.button.attrs<IButton>(({ type }) => ({
     disabled ? theme.buttons[variant].disabled.color : theme.buttons[variant].color};
 
   &:hover {
-    filter: ${({ disabled = false }) => !disabled && 'brightness(90%)'};
+    filter: ${({ disabled = false, variant }) =>
+      !disabled && variant === 'tertiary' ? 'brightness(95%)' : 'brightness(90%)'};
   }
   &:active {
-    filter: ${({ disabled = false }) => !disabled && 'brightness(80%)'};
+    filter: ${({ disabled = false, variant }) =>
+      !disabled && variant === 'tertiary' ? 'brightness(90%)' : 'brightness(80%)'};
   }
 
   ${({ disabled = false }) =>

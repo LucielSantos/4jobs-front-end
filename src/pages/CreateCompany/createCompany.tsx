@@ -20,15 +20,18 @@ import { createCompanyValidationSchema } from '../../validationSchemas';
 
 export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
   handleCreateCompany,
+  history,
 }) => {
   const onSubmitForm = useCallback<SubmitHandler>(data => {
     console.log(data);
   }, []);
 
+  const handleBack = useCallback(() => history.goBack(), []);
+
   return (
     <PageContainer>
       <Flex alignItems="center">
-        <Icon name="arrowBack" clickable size="sm" isButton />
+        <Icon name="arrowBack" clickable size="sm" isButton onClick={handleBack} />
 
         <Typography size="lg" marginLeft="sm">
           Empresa - Cadastrar-se
@@ -118,9 +121,22 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
           </Grid>
 
           <Grid item xs={12}>
-            <Button type="submit" marginTop="lg" marginLeft="auto" fullWidthOnMobile>
-              Castrar-se
-            </Button>
+            <Flex>
+              <Button
+                variant="tertiary"
+                marginTop="lg"
+                marginRight="md"
+                marginLeft="auto"
+                fullWidthOnMobile
+                onClick={handleBack}
+              >
+                Cancelar
+              </Button>
+
+              <Button type="submit" marginTop="lg" fullWidthOnMobile>
+                Castrar-se
+              </Button>
+            </Flex>
           </Grid>
         </Form>
       </BodyContainer>
