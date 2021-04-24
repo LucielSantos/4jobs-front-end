@@ -1,15 +1,22 @@
 import * as Yup from 'yup';
-import { requiredMessage, mountMinChar } from './messages';
+import { passwordMatches } from './constants';
+import { requiredMessage, invalidPassword, matchPasswordError } from './messages';
 
 export const createCompanyValidationSchema = Yup.object().shape({
   image: Yup.string().required(requiredMessage),
   name: Yup.string().required(requiredMessage),
   responsibleName: Yup.string().required(requiredMessage),
-  cnpj: Yup.string().min(18, mountMinChar(18)).required(requiredMessage),
+  cnpj: Yup.string().required(requiredMessage),
   phone: Yup.string().required(requiredMessage),
   state: Yup.string().required(requiredMessage),
   city: Yup.string().required(requiredMessage),
-  password: Yup.string().required(requiredMessage),
-  confirmPassword: Yup.string().required(requiredMessage),
+  password: Yup.string()
+    .required(requiredMessage)
+    .matches(passwordMatches, invalidPassword)
+    .equals([Yup.ref('confirmPassword')], matchPasswordError),
+  confirmPassword: Yup.string()
+    .required(requiredMessage)
+    .matches(passwordMatches, invalidPassword)
+    .equals([Yup.ref('password')], matchPasswordError),
   description: Yup.string().required(requiredMessage),
 });

@@ -35,19 +35,22 @@ const ImageInputComponent: React.FC<IProps> = ({ name, notErrorMargin = false })
     inputRef.current?.click();
   }, []);
 
-  const onChangeImage = useCallback(async e => {
-    try {
-      error && clearError();
+  const onChangeImage = useCallback(
+    async e => {
+      try {
+        error && clearError();
 
-      const file = e.target.files[0];
+        const file = e.target.files[0];
 
-      const base64 = await toBase64(file);
+        const base64 = await toBase64(file);
 
-      setValue(base64);
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+        setValue(base64);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    [error]
+  );
 
   return (
     <Container>

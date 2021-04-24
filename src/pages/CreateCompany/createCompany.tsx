@@ -92,6 +92,14 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
               <InputPassword name="confirmPassword" label="Confirmar senha" marginLeft />
             </Grid>
 
+            <Grid item xs={12}>
+              <Typography marginBottom="md" size="sm">
+                A senha deve conter: <br /> &nbsp; • Mínimo 8 (oito) caractéres; <br />{' '}
+                &nbsp; • Mínimo uma letra minuscula; <br /> &nbsp; • Mínimo uma letra
+                maiúscula; <br /> &nbsp; • Mínimo um número.
+              </Typography>
+            </Grid>
+
             <Grid container />
 
             <Grid item xs={12}>
