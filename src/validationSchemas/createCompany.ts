@@ -3,9 +3,9 @@ import { passwordMatches } from './constants';
 import { requiredMessage, invalidPassword, matchPasswordError } from './messages';
 
 export const createCompanyValidationSchema = Yup.object().shape({
-  image: Yup.string().required(requiredMessage),
+  profileImage: Yup.string().required(requiredMessage),
   name: Yup.string().required(requiredMessage),
-  responsibleName: Yup.string().required(requiredMessage),
+  responsible: Yup.string().required(requiredMessage),
   cnpj: Yup.string().required(requiredMessage),
   phone: Yup.string().required(requiredMessage),
   state: Yup.string().required(requiredMessage),

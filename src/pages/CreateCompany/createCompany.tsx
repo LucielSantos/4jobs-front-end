@@ -40,14 +40,14 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
           <Grid container spacing={3}>
             <Grid item xs={12} sm={7}>
               <Flex alignItems="flex-end">
-                <ImageInput name="image" notErrorMargin />
+                <ImageInput name="profileImage" notErrorMargin />
 
                 <Input name="name" label="Nome da empresa" marginLeft notErrorMargin />
               </Flex>
             </Grid>
 
             <Grid container alignItems="flex-end" item xs={12} sm={5}>
-              <Input name="responsibleName" label="Nome do responsável" notErrorMargin />
+              <Input name="responsible" label="Nome do responsável" notErrorMargin />
             </Grid>
 
             <Grid item xs={12} sm={4}>
