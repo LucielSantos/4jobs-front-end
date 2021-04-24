@@ -10,6 +10,7 @@ import {
   Form,
   ImageInput,
   Input,
+  InputPassword,
   MaskedInput,
   PageContainer,
   Select,
@@ -80,6 +81,14 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
                   { value: 'idTres', label: 'tres' },
                 ]}
               />
+            </Grid>
+
+            <Grid item xs={4}>
+              <InputPassword name="password" label="Senha" />
+            </Grid>
+
+            <Grid item xs={4}>
+              <InputPassword name="confirmPassword" label="Confirmar senha" marginLeft />
             </Grid>
           </Grid>
 

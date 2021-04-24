@@ -6,6 +6,9 @@ import { ErrorMessage } from '../';
 import { TMaskProp } from '../maskedInput';
 
 import { StyledInput, Container } from './styles';
+import { renderInputProps } from './_utils';
+
+export type TAdornmentProp = any;
 
 export interface IInputProps {
   separatedLabel?: boolean;
@@ -18,6 +21,9 @@ export interface IInputProps {
   marginRight?: boolean;
   maskComponent?: any;
   mask?: TMaskProp;
+  type?: HTMLInputElement['type'];
+  startAdornment?: TAdornmentProp;
+  endAdornment?: TAdornmentProp;
 }
 
 const InputComponent: React.FC<IInputProps> = ({
@@ -31,6 +37,9 @@ const InputComponent: React.FC<IInputProps> = ({
   maskComponent,
   name,
   mask = 'number',
+  type = 'text',
+  startAdornment,
+  endAdornment,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -65,14 +74,8 @@ const InputComponent: React.FC<IInputProps> = ({
         defaultValue={defaultValue}
         inputRef={inputRef}
         error={Boolean(error)}
-        InputProps={
-          maskComponent && {
-            inputComponent: maskComponent,
-            inputProps: {
-              mask,
-            },
-          }
-        }
+        type={type}
+        InputProps={renderInputProps(startAdornment, endAdornment, maskComponent, mask)}
         onChange={e => {
           error && clearError();
         }}

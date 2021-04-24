@@ -1,6 +1,10 @@
 import styled, { css, DefaultTheme } from 'styled-components';
 
-import { IoIosClose as Close } from 'react-icons/io';
+import {
+  IoIosClose as Close,
+  IoMdEye as Eye,
+  IoMdEyeOff as EyeOff,
+} from 'react-icons/io';
 import { MdArrowBack as ArrowBack, MdCameraAlt as Camera } from 'react-icons/md';
 import { IconType } from 'react-icons/lib';
 
@@ -67,4 +71,6 @@ export const icons = {
   close: addIconStyle(Close),
   arrowBack: addIconStyle(ArrowBack),
   camera: addIconStyle(Camera),
+  eye: addIconStyle(Eye),
+  eyeOff: addIconStyle(EyeOff),
 };
