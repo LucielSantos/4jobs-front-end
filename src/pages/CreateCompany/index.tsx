@@ -20,7 +20,7 @@ interface iOwnProps extends RouteComponentProps {}
 export type TCreateCompanyViewProps = IStateProps & IDispatchProps & iOwnProps;
 
 const mapStateToProps = ({ createCompany }: IApplicationState) => ({
-  createCompany,
+  ...createCompany,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

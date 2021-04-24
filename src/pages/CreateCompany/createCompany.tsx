@@ -16,14 +16,16 @@ import {
   Select,
   Typography,
 } from '../../components';
+import { ICreateCompanyData } from '../../store/ducks/createCompany/types';
 import { createCompanyValidationSchema } from '../../validationSchemas';
 
 export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
   handleCreateCompany,
   history,
+  loadings,
 }) => {
-  const onSubmitForm = useCallback<SubmitHandler>(data => {
-    console.log(data);
+  const onSubmitForm = useCallback<SubmitHandler>((data: ICreateCompanyData) => {
+    handleCreateCompany(data);
   }, []);
 
   const handleBack = useCallback(() => history.goBack(), []);
@@ -88,6 +90,10 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
             </Grid>
 
             <Grid item xs={12} sm={4}>
+              <Input name="email" label="Email" notErrorMargin />
+            </Grid>
+
+            <Grid item xs={12} sm={4}>
               <InputPassword name="password" label="Senha" notErrorMargin />
             </Grid>
 
@@ -108,6 +114,10 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
             </Grid>
 
             <Grid container />
+
+            <Grid item xs={12} sm={6}>
+              <Input name="marketSegment" label="Segmento do mercado" notErrorMargin />
+            </Grid>
 
             <Grid item xs={12} sm={12}>
               <Input
@@ -133,7 +143,12 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
                 Cancelar
               </Button>
 
-              <Button type="submit" marginTop="lg" fullWidthOnMobile>
+              <Button
+                type="submit"
+                marginTop="lg"
+                fullWidthOnMobile
+                isLoading={loadings.create}
+              >
                 Castrar-se
               </Button>
             </Flex>

@@ -1,3 +1,7 @@
+import React from 'react';
+
+import { CircularProgress } from '@material-ui/core';
+
 import styled, { css, DefaultTheme } from 'styled-components';
 import { maxWidthMobile } from '../../constants';
 
@@ -14,10 +18,12 @@ interface IButton {
   marginRight?: TMargin;
   marginBottom?: TMargin;
   marginLeft?: TMargin;
+  isLoading?: boolean;
 }
 
-export const Button = styled.button.attrs<IButton>(({ type }) => ({
+export const Button = styled.button.attrs<IButton>(({ type, isLoading, children }) => ({
   type: type || 'button',
+  children: isLoading ? <CircularProgress color="inherit" size={25} /> : children,
 }))<IButton>`
   font-size: ${({ theme }) => theme.typography.sizes.md};
   min-width: 20rem;
@@ -29,10 +35,12 @@ export const Button = styled.button.attrs<IButton>(({ type }) => ({
   border: none;
   transition: filter 0.3s;
   font-weight: 400;
-  cursor: ${({ disabled = false }) => (disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${({ disabled = false, isLoading }) =>
+    disabled || isLoading ? 'not-allowed' : 'pointer'};
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 4rem;
 
   margin-top: ${({ theme, marginTop }) => (marginTop ? theme.spacings[marginTop] : 0)};
   margin-right: ${({ theme, marginRight }) =>
@@ -63,8 +71,8 @@ export const Button = styled.button.attrs<IButton>(({ type }) => ({
       !disabled && variant === 'tertiary' ? 'brightness(90%)' : 'brightness(80%)'};
   }
 
-  ${({ disabled = false }) =>
-    disabled &&
+  ${({ disabled = false, isLoading }) =>
+    (disabled || isLoading) &&
     css`
       pointer-events: none;
     `}

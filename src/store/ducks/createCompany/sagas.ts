@@ -1,17 +1,24 @@
-import { ForkEffect, put, takeEvery } from '@redux-saga/core/effects';
+import { ForkEffect, put, takeEvery, call } from '@redux-saga/core/effects';
+import { AxiosResponse } from 'axios';
+import { createCompanyApi } from '../../../services/company';
 import { ISagaParam } from '../types';
 import { onSetCompanyLoading } from './actions';
 import { CreateCompanyActionTypes, ICreateCompanyData } from './types';
 
 function* handleCreateCompany(data: ISagaParam<ICreateCompanyData>) {
   try {
-    put(onSetCompanyLoading('create', true));
+    yield put(onSetCompanyLoading('create', true));
 
-    console.log(data.payload);
+    const response: Promise<AxiosResponse<ICreateCompanyData>> = yield call(
+      createCompanyApi,
+      data.payload
+    );
 
-    put(onSetCompanyLoading('create', false));
+    console.log(response);
+
+    yield put(onSetCompanyLoading('create', false));
   } catch (error) {
-    put(onSetCompanyLoading('create', false));
+    yield put(onSetCompanyLoading('create', false));
   }
 }
 export function createCompanyRootSaga(): ForkEffect<never>[] {

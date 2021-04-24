@@ -5,13 +5,13 @@ import { LoginActionTypes, ILogin } from './types';
 
 export function* login(param: ISagaParam<ILogin>) {
   try {
-    put(setLoading(true));
+    yield put(setLoading(true));
 
     console.log(param.payload);
 
-    put(setLoading(false));
+    yield put(setLoading(false));
   } catch (error) {
-    put(setLoading(false));
+    yield put(setLoading(false));
   }
 }
 

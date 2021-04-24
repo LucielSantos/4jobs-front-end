@@ -7,6 +7,16 @@ export const CreateCompanyActionTypes = {
 // Data types
 export interface ICreateCompanyData {
   name: string;
+  responsible: string;
+  description: string;
+  marketSegment: string;
+  cnpj: string;
+  state: string;
+  city: string;
+  email: string;
+  phone: string;
+  password: string;
+  profileImage: string;
 }
 export interface ICreateCompanySetLoading {
   field: keyof ICreateCompanyLoadings;

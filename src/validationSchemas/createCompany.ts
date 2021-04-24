@@ -6,6 +6,8 @@ export const createCompanyValidationSchema = Yup.object().shape({
   profileImage: Yup.string().required(requiredMessage),
   name: Yup.string().required(requiredMessage),
   responsible: Yup.string().required(requiredMessage),
+  // TODO: validate email
+  email: Yup.string().required(requiredMessage),
   cnpj: Yup.string().required(requiredMessage),
   phone: Yup.string().required(requiredMessage),
   state: Yup.string().required(requiredMessage),
@@ -19,4 +21,5 @@ export const createCompanyValidationSchema = Yup.object().shape({
     .matches(passwordMatches, invalidPassword)
     .equals([Yup.ref('password')], matchPasswordError),
   description: Yup.string().required(requiredMessage),
+  marketSegment: Yup.string().required(requiredMessage),
 });
