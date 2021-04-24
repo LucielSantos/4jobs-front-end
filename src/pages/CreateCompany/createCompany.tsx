@@ -16,6 +16,7 @@ import {
   Select,
   Typography,
 } from '../../components';
+import { createCompanyValidationSchema } from '../../validationSchemas';
 
 export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
   handleCreateCompany,
@@ -35,7 +36,7 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
       </Flex>
 
       <BodyContainer>
-        <Form onSubmit={onSubmitForm}>
+        <Form onSubmit={onSubmitForm} validationSchema={createCompanyValidationSchema}>
           <Grid container>
             <Grid item xs={7}>
               <Flex alignItems="flex-end">

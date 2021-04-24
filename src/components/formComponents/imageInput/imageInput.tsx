@@ -43,8 +43,6 @@ const ImageInputComponent: React.FC<IProps> = ({ name, notErrorMargin = false })
 
       const base64 = await toBase64(file);
 
-      console.log(typeof base64);
-
       setValue(base64);
     } catch (error) {
       console.error(error);
