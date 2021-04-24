@@ -90,6 +90,12 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
             <Grid item xs={4}>
               <InputPassword name="confirmPassword" label="Confirmar senha" marginLeft />
             </Grid>
+
+            <Grid container />
+
+            <Grid item xs={12}>
+              <Input name="description" label="Descrição" multiline rows={4} />
+            </Grid>
           </Grid>
 
           <Button type="submit">Castrar-se</Button>

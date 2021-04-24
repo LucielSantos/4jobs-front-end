@@ -7,6 +7,7 @@ import { TMaskProp } from '../maskedInput';
 
 import { StyledInput, Container } from './styles';
 import { renderInputProps } from './_utils';
+import { TextFieldProps } from '@material-ui/core';
 
 export type TAdornmentProp = any;
 
@@ -24,6 +25,9 @@ export interface IInputProps {
   type?: HTMLInputElement['type'];
   startAdornment?: TAdornmentProp;
   endAdornment?: TAdornmentProp;
+  multiline?: TextFieldProps['multiline'];
+  rowsMax?: TextFieldProps['rowsMax'];
+  rows?: TextFieldProps['rows'];
 }
 
 const InputComponent: React.FC<IInputProps> = ({
@@ -40,6 +44,7 @@ const InputComponent: React.FC<IInputProps> = ({
   type = 'text',
   startAdornment,
   endAdornment,
+  ...props
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -66,6 +71,7 @@ const InputComponent: React.FC<IInputProps> = ({
       {separatedLabel && label && <Label color={labelColor}>{label}</Label>}
 
       <StyledInput
+        {...props}
         label={separatedLabel ? false : label}
         variant="outlined"
         size="small"
