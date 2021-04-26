@@ -17,7 +17,6 @@ import {
   Typography,
 } from '../../components';
 import { ICreateCompanyData } from '../../store/ducks/createCompany/types';
-import { openNotification } from '../../utils';
 
 export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
   handleCreateCompany,
@@ -29,8 +28,6 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
   const onSubmitForm = useCallback<SubmitHandler>(
     (data: ICreateCompanyData) => {
       handleCreateCompany(data);
-
-      openNotification('Abrindo notificação');
     },
     [handleCreateCompany]
   );

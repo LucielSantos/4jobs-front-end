@@ -23,8 +23,6 @@ const reducer: Reducer<IMainState> = (state = INITIAL_STATE, { type, payload }) 
       };
 
     case MainActionTypes.OPEN_NOTIFICATION:
-      console.log(payload);
-
       return {
         ...state,
         notifications: [

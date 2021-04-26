@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { ICreateCompanyData } from '../store/ducks/createCompany/types';
 import { api } from './api';
+import { getErrorResponse } from './config/getError';
 
 export const createCompanyApi = async (
   data: ICreateCompanyData
@@ -10,8 +11,6 @@ export const createCompanyApi = async (
 
     return response;
   } catch (error) {
-    console.log(error);
-
-    return error;
+    throw getErrorResponse(error);
   }
 };

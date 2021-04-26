@@ -18,6 +18,9 @@ function* handleCreateCompany(data: ISagaParam<ICreateCompanyData>) {
 
     yield put(onSetCompanyLoading('create', false));
   } catch (error) {
+    console.log('Error aki');
+    console.log(error);
+
     yield put(onSetCompanyLoading('create', false));
   }
 }
