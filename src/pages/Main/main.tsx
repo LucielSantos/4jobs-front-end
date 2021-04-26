@@ -12,17 +12,20 @@ export const MainView: React.FC<MainViewProps> = ({
   onSetNavbarState,
   navbar,
 }) => {
-  const switchNavbarState = useCallback((path: string) => {
-    if (navbarStateByRoute[path]) {
-      onSetNavbarState(navbarStateByRoute[path]);
-    } else {
-      onSetNavbarState(navbarStateByRoute.default);
-    }
-  }, []);
+  const switchNavbarState = useCallback(
+    (path: string) => {
+      if (navbarStateByRoute[path]) {
+        onSetNavbarState(navbarStateByRoute[path]);
+      } else {
+        onSetNavbarState(navbarStateByRoute.default);
+      }
+    },
+    [onSetNavbarState]
+  );
 
   const redirectPage = useCallback(() => {
     if (history.location.pathname === '/') history.push(routePaths.LOGIN);
-  }, []);
+  }, [history]);
 
   useLayoutEffect(() => {
     redirectPage();
@@ -32,6 +35,7 @@ export const MainView: React.FC<MainViewProps> = ({
     history.listen(location => {
       switchNavbarState(location.pathname);
     });
+    // eslint-disable-next-line
   }, []);
 
   return (

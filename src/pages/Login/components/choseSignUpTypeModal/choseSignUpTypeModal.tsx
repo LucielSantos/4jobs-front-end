@@ -15,7 +15,7 @@ const ChoseSignUpTypeModalComponent: React.FC<IProps> = ({
   const onClickCompany = useCallback(() => {
     history.push(routePaths.CREATE_COMPANY);
     handleClose();
-  }, []);
+  }, [history, handleClose]);
 
   return (
     <Modal open={open} handleClose={handleClose} width="xs">

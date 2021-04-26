@@ -14,15 +14,18 @@ export const LoginView: React.FC<LoginViewProps> = ({
 }) => {
   useEffect(() => {
     handleLogin({ login: 'username', password: 'q1w2e3r4' });
-  }, []);
+  }, [handleLogin]);
 
   const handleSubmit = useCallback(values => {
     console.log(values);
   }, []);
 
-  const handleChoseSignUpTypeModal = useCallback((value: boolean = false) => {
-    handleSetDialog('chooseSignUpType', value);
-  }, []);
+  const handleChoseSignUpTypeModal = useCallback(
+    (value: boolean = false) => {
+      handleSetDialog('chooseSignUpType', value);
+    },
+    [handleSetDialog]
+  );
 
   return (
     <Container>

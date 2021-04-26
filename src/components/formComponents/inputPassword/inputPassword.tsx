@@ -12,7 +12,7 @@ const InputPasswordComponent: React.FC<IInputPasswordProps> = ({ ...props }) => 
 
   const onClickIcon = useCallback(() => {
     setType(type === 'password' ? 'text' : 'password');
-  }, []);
+  }, [type]);
 
   return (
     <Input

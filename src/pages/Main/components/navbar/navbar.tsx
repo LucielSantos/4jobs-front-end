@@ -14,13 +14,13 @@ interface IProps {
 }
 
 const NavbarComponent: React.FC<IProps> = ({ navbarState, history }) => {
+  const onClickLogo = useCallback(() => {
+    history.push(routePaths.LOGIN);
+  }, [history]);
+
   if (navbarState.state === navbarStates.hidden) {
     return null;
   }
-
-  const onClickLogo = useCallback(() => {
-    history.push(routePaths.LOGIN);
-  }, []);
 
   return (
     <Container>

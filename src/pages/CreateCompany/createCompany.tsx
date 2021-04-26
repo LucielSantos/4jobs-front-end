@@ -17,7 +17,6 @@ import {
   Typography,
 } from '../../components';
 import { ICreateCompanyData } from '../../store/ducks/createCompany/types';
-import { createCompanyValidationSchema } from '../../validationSchemas';
 
 export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
   handleCreateCompany,
@@ -33,7 +32,7 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
     [handleCreateCompany]
   );
 
-  const handleBack = useCallback(() => history.goBack(), []);
+  const handleBack = useCallback(() => history.goBack(), [history]);
 
   return (
     <PageContainer>

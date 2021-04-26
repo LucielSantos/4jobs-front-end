@@ -49,7 +49,7 @@ const ImageInputComponent: React.FC<IProps> = ({ name, notErrorMargin = false })
         console.error(error);
       }
     },
-    [error]
+    [error, clearError]
   );
 
   return (
