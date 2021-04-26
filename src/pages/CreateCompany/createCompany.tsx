@@ -1,6 +1,6 @@
 import { Grid } from '@material-ui/core';
-import { SubmitHandler } from '@unform/core';
-import React, { useCallback } from 'react';
+import { FormHandles, SubmitHandler } from '@unform/core';
+import React, { useCallback, useRef } from 'react';
 import { TCreateCompanyViewProps } from '.';
 import { Icon } from '../../assets/icons';
 import {
@@ -24,9 +24,14 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
   history,
   loadings,
 }) => {
-  const onSubmitForm = useCallback<SubmitHandler>((data: ICreateCompanyData) => {
-    handleCreateCompany(data);
-  }, []);
+  const formRef = useRef<FormHandles>(null);
+
+  const onSubmitForm = useCallback<SubmitHandler>(
+    (data: ICreateCompanyData) => {
+      handleCreateCompany(data);
+    },
+    [handleCreateCompany]
+  );
 
   const handleBack = useCallback(() => history.goBack(), []);
 
@@ -41,7 +46,12 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
       </Flex>
 
       <BodyContainer>
-        <Form onSubmit={onSubmitForm} validationSchema={createCompanyValidationSchema}>
+        <Form
+          ref={formRef}
+          onSubmit={onSubmitForm}
+          // TODO: add validation schema
+          // validationSchema={createCompanyValidationSchema}
+        >
           <Grid container spacing={3}>
             <Grid item xs={12} sm={7}>
               <Flex alignItems="flex-end">

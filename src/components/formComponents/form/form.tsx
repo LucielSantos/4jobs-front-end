@@ -1,5 +1,5 @@
 import { FormHandles, SubmitHandler } from '@unform/core';
-import React, { useRef } from 'react';
+import React, { RefForwardingComponent, useImperativeHandle, useRef } from 'react';
 import { Form as FormUnform } from '@unform/web';
 import * as Yup from 'yup';
 
@@ -14,12 +14,10 @@ interface IErrorMessages {
   [key: string]: any;
 }
 
-const FormComponent: React.FC<IProps> = ({
-  children,
-  validationSchema,
-  onSubmit,
-  schemaParams,
-}) => {
+const FormComponent: RefForwardingComponent<FormHandles | null, IProps> = (
+  { children, validationSchema, onSubmit, schemaParams },
+  ref
+) => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit: SubmitHandler = async (data, { reset }) => {
@@ -52,6 +50,8 @@ const FormComponent: React.FC<IProps> = ({
     }
   };
 
+  useImperativeHandle(ref, () => formRef.current as FormHandles);
+
   return (
     <FormUnform ref={formRef} onSubmit={handleSubmit} style={{ width: '100%' }}>
       {children}
@@ -59,4 +59,6 @@ const FormComponent: React.FC<IProps> = ({
   );
 };
 
-export const Form = React.memo(FormComponent);
+FormComponent.displayName = 'Form';
+
+export const Form = React.forwardRef(FormComponent);

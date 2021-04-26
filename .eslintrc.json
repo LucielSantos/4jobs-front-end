@@ -19,7 +19,8 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "prettier"
+        "prettier",
+        "react-hooks"
     ],
     "rules": {
         "prettier/prettier": "error",
@@ -29,6 +30,8 @@
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "no-unused-vars": "warn",
-        "prefer-regex-literals": "off"
+        "prefer-regex-literals": "off",
+        "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+        "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
     }
 }
