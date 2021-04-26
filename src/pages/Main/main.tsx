@@ -3,7 +3,7 @@ import { MainViewProps } from '.';
 import { navbarStateByRoute, routePaths } from '../../routes';
 
 import { Router } from '../../routes/components';
-import { Navbar } from './components';
+import { Navbar, Notifier } from './components';
 
 import { Container } from './styles';
 
@@ -43,6 +43,8 @@ export const MainView: React.FC<MainViewProps> = ({
       <Navbar navbarState={navbar} history={history} />
 
       <Router />
+
+      <Notifier />
     </Container>
   );
 };

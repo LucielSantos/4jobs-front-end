@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { ThemeProvider as MUIThemeProvider } from '@material-ui/core';
+import { SnackbarProvider } from 'notistack';
 
 import store from './store';
 import { routePaths } from './routes';
@@ -17,13 +18,15 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <MUIThemeProvider theme={muiTheme}>
         <Provider store={store}>
-          <Router>
-            <Switch>
-              <Route path={routePaths.MAIN} component={Main} />
-            </Switch>
+          <SnackbarProvider maxSnack={5}>
+            <Router>
+              <Switch>
+                <Route path={routePaths.MAIN} component={Main} />
+              </Switch>
+            </Router>
+          </SnackbarProvider>
 
-            <GlobalStyle />
-          </Router>
+          <GlobalStyle />
         </Provider>
       </MUIThemeProvider>
     </ThemeProvider>
