@@ -6,3 +6,5 @@ export interface ISagaParam<IPayload> {
 }
 
 export type TExportRootSaga = ForkEffect<never>[];
+
+export type TErrorControlState = 'await' | 'success' | 'error';

@@ -4,6 +4,7 @@ import {
   CreateCompanyActionTypes,
   ICreateCompanyData,
   ICreateCompanySetLoading,
+  ISuccessCreateCompanyData,
 } from './types';
 
 export const handleCreateCompany = (data: ICreateCompanyData) =>
@@ -16,3 +17,8 @@ export const onSetCompanyLoading = (
 
 export const onSetErrorResponse = (data: IReturnGetErrorResponse) =>
   action(CreateCompanyActionTypes.HANDLE_SET_ERROR_RESPONSE, data);
+
+export const onSetSuccessResponse = (data: ISuccessCreateCompanyData) =>
+  action(CreateCompanyActionTypes.HANDLE_SET_SUCCESS_RESPONSE, data);
+
+export const onResetState = () => action(CreateCompanyActionTypes.HANDLE_RESET_STATE);

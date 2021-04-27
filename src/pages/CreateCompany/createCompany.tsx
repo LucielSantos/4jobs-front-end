@@ -17,7 +17,7 @@ import {
   Typography,
 } from '../../components';
 import { ICreateCompanyData } from '../../store/ducks/createCompany/types';
-import { setFormErrors } from '../../utils';
+import { openNotification, setFormErrors } from '../../utils';
 import { createCompanyValidationSchema } from '../../validationSchemas';
 
 export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
@@ -25,12 +25,19 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
   history,
   loadings,
   errorResponse,
+  error,
 }) => {
   const formRef = useRef<FormHandles>(null);
 
   useEffect(() => {
-    setFormErrors(formRef, errorResponse);
-  }, [errorResponse]);
+    if (error === 'error') setFormErrors(formRef, errorResponse);
+
+    if (error === 'success') {
+      openNotification('Empresa criada com sucesso');
+      history.goBack();
+    }
+    // eslint-disable-next-line
+  }, [error]);
 
   const onSubmitForm = useCallback<SubmitHandler>(
     (data: ICreateCompanyData) => handleCreateCompany(data),
@@ -53,7 +60,8 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
         <Form
           ref={formRef}
           onSubmit={onSubmitForm}
-          validationSchema={createCompanyValidationSchema}
+          // TODO: uncomment
+          // validationSchema={createCompanyValidationSchema}
         >
           <Grid container spacing={3}>
             <Grid item xs={12} sm={7}>
