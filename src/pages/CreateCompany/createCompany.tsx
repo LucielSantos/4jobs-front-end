@@ -18,6 +18,7 @@ import {
 } from '../../components';
 import { ICreateCompanyData } from '../../store/ducks/createCompany/types';
 import { setFormErrors } from '../../utils';
+import { createCompanyValidationSchema } from '../../validationSchemas';
 
 export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
   handleCreateCompany,
@@ -52,8 +53,7 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
         <Form
           ref={formRef}
           onSubmit={onSubmitForm}
-          // TODO: add validation schema
-          // validationSchema={createCompanyValidationSchema}
+          validationSchema={createCompanyValidationSchema}
         >
           <Grid container spacing={3}>
             <Grid item xs={12} sm={7}>
