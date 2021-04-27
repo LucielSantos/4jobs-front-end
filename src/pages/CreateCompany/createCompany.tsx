@@ -60,8 +60,7 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
         <Form
           ref={formRef}
           onSubmit={onSubmitForm}
-          // TODO: uncomment
-          // validationSchema={createCompanyValidationSchema}
+          validationSchema={createCompanyValidationSchema}
         >
           <Grid container spacing={3}>
             <Grid item xs={12} sm={7}>
