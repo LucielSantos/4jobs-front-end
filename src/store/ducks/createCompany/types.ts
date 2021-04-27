@@ -1,7 +1,10 @@
+import { IReturnGetErrorResponse } from '../../../services/config/getError';
+
 // Action types
 export const CreateCompanyActionTypes = {
   HANDLE_CREATE: '@createCompany/HANDLE_CREATE',
   HANDLE_SET_LOADING: '@createCompany/HANDLE_SET_LOADING',
+  HANDLE_SET_ERROR_RESPONSE: '@createCompany/HANDLE_SET_ERROR_RESPONSE',
 };
 
 // Data types
@@ -30,4 +33,5 @@ export interface ICreateCompanyLoadings {
 // State type
 export interface ICreateCompanyState {
   loadings: ICreateCompanyLoadings;
+  errorResponse: IReturnGetErrorResponse;
 }

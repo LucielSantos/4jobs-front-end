@@ -1,6 +1,6 @@
 import { Grid } from '@material-ui/core';
 import { FormHandles, SubmitHandler } from '@unform/core';
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { TCreateCompanyViewProps } from '.';
 import { Icon } from '../../assets/icons';
 import {
@@ -17,18 +17,22 @@ import {
   Typography,
 } from '../../components';
 import { ICreateCompanyData } from '../../store/ducks/createCompany/types';
+import { setFormErrors } from '../../utils';
 
 export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
   handleCreateCompany,
   history,
   loadings,
+  errorResponse,
 }) => {
   const formRef = useRef<FormHandles>(null);
 
+  useEffect(() => {
+    setFormErrors(formRef, errorResponse);
+  }, [errorResponse]);
+
   const onSubmitForm = useCallback<SubmitHandler>(
-    (data: ICreateCompanyData) => {
-      handleCreateCompany(data);
-    },
+    (data: ICreateCompanyData) => handleCreateCompany(data),
     [handleCreateCompany]
   );
 

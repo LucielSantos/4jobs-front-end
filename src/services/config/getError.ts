@@ -8,7 +8,8 @@ export interface IApiErrorInterface {
 }
 
 export interface IReturnGetErrorResponse extends IApiErrorInterface {
-  isAxiosError: boolean;
+  isAxiosError?: boolean;
+  error: boolean;
 }
 
 export const getErrorResponse = (
@@ -19,6 +20,7 @@ export const getErrorResponse = (
   const errorObj: IReturnGetErrorResponse = {
     ...error.response?.data,
     isAxiosError: error.isAxiosError,
+    error: true,
   };
 
   if (error.isAxiosError) {

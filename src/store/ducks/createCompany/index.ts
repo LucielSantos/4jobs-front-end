@@ -5,6 +5,9 @@ const INITIAL_STATE: ICreateCompanyState = {
   loadings: {
     create: false,
   },
+  errorResponse: {
+    error: false,
+  },
 };
 
 const reducer: Reducer<ICreateCompanyState> = (
@@ -19,6 +22,11 @@ const reducer: Reducer<ICreateCompanyState> = (
           ...state.loadings,
           [payload.field]: payload.value,
         },
+      };
+    case CreateCompanyActionTypes.HANDLE_SET_ERROR_RESPONSE:
+      return {
+        ...state,
+        errorResponse: payload,
       };
 
     default:
