@@ -6,6 +6,9 @@ const INITIAL_STATE: ICreateCandidateState = {
   loadings: {
     create: false,
   },
+  errorResponse: {
+    error: false,
+  },
 };
 
 const reducer: Reducer<ICreateCandidateState> = (
@@ -13,6 +16,9 @@ const reducer: Reducer<ICreateCandidateState> = (
   { type, payload }
 ) => {
   switch (type) {
+    case CreateCandidateActionTypes.HANDLE_CREATE_CANDIDATE:
+      return { ...state, error: 'await' };
+
     case CreateCandidateActionTypes.HANDLE_SET_LOADING:
       return {
         ...state,
@@ -21,6 +27,9 @@ const reducer: Reducer<ICreateCandidateState> = (
           [payload.field]: payload.value,
         },
       };
+
+    case CreateCandidateActionTypes.HANDLE_SET_ERROR_RESPONSE:
+      return { ...state, errorResponse: payload, error: 'error' };
 
     default:
       return state;

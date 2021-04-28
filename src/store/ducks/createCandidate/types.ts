@@ -1,9 +1,11 @@
+import { IReturnGetErrorResponse } from '../../../services/config/getError';
 import { TErrorControlState } from '../types';
 
 // Action types
 export const CreateCandidateActionTypes = {
   HANDLE_CREATE_CANDIDATE: '@crateCandidate/HANDLE_CREATE_CANDIDATE',
   HANDLE_SET_LOADING: '@crateCandidate/HANDLE_SET_LOADING',
+  HANDLE_SET_ERROR_RESPONSE: '@crateCandidate/HANDLE_SET_ERROR_RESPONSE',
 };
 
 // Data types
@@ -23,5 +25,6 @@ interface ICreateCandidateLoadings {
 // State types
 export interface ICreateCandidateState {
   loadings: ICreateCandidateLoadings;
+  errorResponse: IReturnGetErrorResponse;
   error: TErrorControlState;
 }
