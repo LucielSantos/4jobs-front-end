@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { LoginViewProps } from '.';
 import { Typography, Input, Form, Button } from '../../components';
 import { loginValidationSchema } from '../../validationSchemas';
