@@ -1,20 +1,24 @@
 import React, { useCallback } from 'react';
 import { LoginViewProps } from '.';
-import { Typography, Input, Form, Button } from '../../components';
+import { Typography, Input, Form, Button, InputPassword } from '../../components';
 import { loginValidationSchema } from '../../validationSchemas';
 
 import { Container, FormContainer } from './styles';
 import { ChoseSignUpTypeModal } from './components';
+import { ILogin } from '../../store/ducks/login/types';
 
 export const LoginView: React.FC<LoginViewProps> = ({
   handleLogin,
   handleSetDialog,
   history,
-  login: { dialogs },
+  login: { dialogs, loading },
 }) => {
-  const handleSubmit = useCallback(values => {
-    console.log(values);
-  }, []);
+  const handleSubmit = useCallback(
+    (values: ILogin) => {
+      handleLogin(values);
+    },
+    [handleLogin]
+  );
 
   const handleChoseSignUpTypeModal = useCallback(
     (value: boolean = false) => {
@@ -32,14 +36,14 @@ export const LoginView: React.FC<LoginViewProps> = ({
 
         <Form onSubmit={handleSubmit} validationSchema={loginValidationSchema}>
           <Input
-            label="Nome"
+            label="Login"
             separatedLabel
             labelColor="two"
             placeholder="Nome de usuário ou email"
-            name="name"
+            name="login"
           />
 
-          <Input
+          <InputPassword
             label="Senha"
             separatedLabel
             labelColor="two"
@@ -47,7 +51,13 @@ export const LoginView: React.FC<LoginViewProps> = ({
             name="password"
           />
 
-          <Button type="submit" fullWidth marginBottom="xs" marginTop="xs">
+          <Button
+            type="submit"
+            fullWidth
+            marginBottom="xs"
+            marginTop="xs"
+            isLoading={loading}
+          >
             Login
           </Button>
 

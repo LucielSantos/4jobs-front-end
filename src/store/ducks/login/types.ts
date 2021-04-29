@@ -1,3 +1,7 @@
+import { TUserTypeNum } from '../../../constants';
+import { ISuccessCreateCandidateData } from '../createCandidate/types';
+import { ISuccessCreateCompanyData } from '../createCompany/types';
+
 // Action types
 export const LoginActionTypes = {
   SET_LOADING: '@login/SET_LOADING',
@@ -18,6 +22,12 @@ export interface ILoginSetDialog {
 
 export interface ILoginStateDialogs {
   chooseSignUpType: boolean;
+}
+
+export interface ILoginSuccessData {
+  token: string;
+  user: ISuccessCreateCandidateData | ISuccessCreateCompanyData;
+  userType: TUserTypeNum;
 }
 
 // State type

@@ -1,6 +1,6 @@
 import { ForkEffect, put, takeEvery, call } from '@redux-saga/core/effects';
 import { AxiosResponse } from 'axios';
-import { createCompanyApi } from '../../../services/company';
+import { createCompanyApi } from '../../../services';
 import { ISagaParam } from '../types';
 import {
   onResetState,

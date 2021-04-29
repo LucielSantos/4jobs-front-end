@@ -11,7 +11,7 @@ import {
   onSetLoading,
   onSetSuccessResponse,
 } from './actions';
-import { createCandidateApi } from '../../../services/candidate';
+import { createCandidateApi } from '../../../services';
 import { AxiosResponse } from 'axios';
 
 function* handleCreateCandidate(data: ISagaParam<ICreateCandidateData>) {
