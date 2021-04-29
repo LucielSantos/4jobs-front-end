@@ -31,6 +31,12 @@ const reducer: Reducer<ICreateCandidateState> = (
     case CreateCandidateActionTypes.HANDLE_SET_ERROR_RESPONSE:
       return { ...state, errorResponse: payload, error: 'error' };
 
+    case CreateCandidateActionTypes.HANDLE_SET_SUCCESS_RESPONSE:
+      return { ...state, successResponse: payload, error: 'success' };
+
+    case CreateCandidateActionTypes.HANDLE_RESET_STATE:
+      return INITIAL_STATE;
+
     default:
       return state;
   }

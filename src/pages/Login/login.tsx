@@ -12,10 +12,6 @@ export const LoginView: React.FC<LoginViewProps> = ({
   history,
   login: { dialogs },
 }) => {
-  useEffect(() => {
-    handleLogin({ login: 'username', password: 'q1w2e3r4' });
-  }, [handleLogin]);
-
   const handleSubmit = useCallback(values => {
     console.log(values);
   }, []);

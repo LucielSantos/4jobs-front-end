@@ -8,7 +8,7 @@ import {
 } from './messages';
 
 export const createCandidateValidationSchema = Yup.object().shape({
-  userName: Yup.string().required(requiredMessage),
+  name: Yup.string().required(requiredMessage),
   email: Yup.string().email(invalidEmail).required(requiredMessage),
   password: Yup.string()
     .required(requiredMessage)

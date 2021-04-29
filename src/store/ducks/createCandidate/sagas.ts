@@ -1,8 +1,18 @@
-import { ForkEffect, put, takeEvery } from '@redux-saga/core/effects';
+import { ForkEffect, put, takeEvery, call } from '@redux-saga/core/effects';
 import { ISagaParam } from '../types';
-import { CreateCandidateActionTypes, ICreateCandidateData } from './types';
-import { onSetErrorResponse, onSetLoading } from './actions';
-import { IReturnGetErrorResponse } from '../../../services/config/getError';
+import {
+  CreateCandidateActionTypes,
+  ICreateCandidateData,
+  ISuccessCreateCandidateData,
+} from './types';
+import {
+  onResetState,
+  onSetErrorResponse,
+  onSetLoading,
+  onSetSuccessResponse,
+} from './actions';
+import { createCandidateApi } from '../../../services/candidate';
+import { AxiosResponse } from 'axios';
 
 function* handleCreateCandidate(data: ISagaParam<ICreateCandidateData>) {
   try {
@@ -10,21 +20,17 @@ function* handleCreateCandidate(data: ISagaParam<ICreateCandidateData>) {
 
     console.log(data.payload);
 
-    const obj: IReturnGetErrorResponse = {
-      error: true,
-      formErrors: {
-        userName: 'ta errado!',
-      },
-      isFormError: true,
-      toastMessage: 'alguma coisa deu errado man',
-    };
+    const response: AxiosResponse<ISuccessCreateCandidateData> = yield call(
+      createCandidateApi,
+      data.payload
+    );
+
+    yield put(onSetSuccessResponse(response.data));
 
     yield put(onSetLoading('create', false));
 
-    throw obj;
+    yield put(onResetState());
   } catch (error) {
-    console.log({ ...error });
-
     yield put(onSetErrorResponse(error));
 
     yield put(onSetLoading('create', false));

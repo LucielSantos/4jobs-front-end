@@ -4,6 +4,7 @@ import {
   CreateCandidateActionTypes,
   ICreateCandidateData,
   ICreateCandidateSetLoading,
+  ISuccessCreateCandidateData,
 } from './types';
 
 export const onSetLoading = (
@@ -16,3 +17,8 @@ export const handleCreateCandidate = (data: ICreateCandidateData) =>
 
 export const onSetErrorResponse = (data: IReturnGetErrorResponse) =>
   action(CreateCandidateActionTypes.HANDLE_SET_ERROR_RESPONSE, data);
+
+export const onSetSuccessResponse = (data: ISuccessCreateCandidateData) =>
+  action(CreateCandidateActionTypes.HANDLE_SET_SUCCESS_RESPONSE, data);
+
+export const onResetState = () => action(CreateCandidateActionTypes.HANDLE_RESET_STATE);

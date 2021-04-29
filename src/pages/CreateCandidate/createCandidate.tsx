@@ -45,7 +45,7 @@ export const CreateCandidateView: React.FC<TCreateCandidateProps> = ({
       >
         <Input name="email" label="Email" />
 
-        <Input name="userName" label="Nome de usuário" />
+        <Input name="name" label="Nome de usuário" />
 
         <InputPassword name="password" label="Senha" />
 
