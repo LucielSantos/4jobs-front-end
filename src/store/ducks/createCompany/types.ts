@@ -28,6 +28,10 @@ export interface ICreateCompanyData {
 export interface ISuccessCreateCompanyData extends ICreateCompanyData {
   id: string;
 }
+
+export interface ICompanyData extends ICreateCompanyData {
+  id: string;
+}
 export interface ICreateCompanySetLoading {
   field: keyof ICreateCompanyLoadings;
   value: boolean;

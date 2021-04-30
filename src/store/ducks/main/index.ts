@@ -9,6 +9,8 @@ const INITIAL_STATE: IMainState = {
     state: navbarStates.hidden,
   },
   notifications: [],
+  loggedUser: false,
+  loggedUserType: false,
 };
 
 const reducer: Reducer<IMainState> = (state = INITIAL_STATE, { type, payload }) => {
@@ -34,6 +36,13 @@ const reducer: Reducer<IMainState> = (state = INITIAL_STATE, { type, payload }) 
             duration: payload.duration || defaultNotificationDuration,
           },
         ],
+      };
+
+    case MainActionTypes.SET_LOGGED_USER:
+      return {
+        ...state,
+        loggedUserType: payload.userType,
+        loggedUser: payload.user,
       };
 
     default:

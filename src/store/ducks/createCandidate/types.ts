@@ -24,6 +24,9 @@ export interface ICreateCandidateData {
 export interface ISuccessCreateCandidateData extends ICreateCandidateData {
   id: string;
 }
+export interface ICandidateData extends ICreateCandidateData {
+  id: string;
+}
 
 interface ICreateCandidateLoadings {
   create: boolean;

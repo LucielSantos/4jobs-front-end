@@ -1,12 +1,14 @@
 import Login from '../pages/Login';
 import CreateCompany from '../pages/CreateCompany';
+import { CompanyJobs } from '../pages/CompanyJobs';
 import { IPrivateRoute, IPublicRoute } from './components';
-import { TNavbarStatesKeys } from '../constants';
+import { TNavbarStatesKeys, userType } from '../constants';
 
 export const routePaths = {
   MAIN: '/',
   LOGIN: '/login',
   CREATE_COMPANY: '/createCompany',
+  COMPANY_JOBS: '/company/jobs',
 };
 
 export type ITNavbarStateByRoute = {
@@ -18,6 +20,7 @@ export const navbarStateByRoute: ITNavbarStateByRoute = {
   default: 'hidden',
   [routePaths.LOGIN]: 'hidden',
   [routePaths.CREATE_COMPANY]: 'simple',
+  [routePaths.COMPANY_JOBS]: 'simple',
 };
 
 export const publicRoutes: IPublicRoute[] = [
@@ -31,4 +34,10 @@ export const publicRoutes: IPublicRoute[] = [
   },
 ];
 
-export const privateRoutes: IPrivateRoute[] = [];
+export const privateRoutes: IPrivateRoute[] = [
+  {
+    component: CompanyJobs,
+    path: routePaths.COMPANY_JOBS,
+    userType: userType.company,
+  },
+];
