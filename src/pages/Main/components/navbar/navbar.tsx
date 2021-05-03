@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import { History } from 'history';
 
-import { navbarStates, userTypes } from '../../../../constants';
+import { navbarStates } from '../../../../constants';
 import { INavbar } from '../../../../store/ducks/main/types';
 import { routePaths } from '../../../../routes';
 import { Icon } from '../../../../assets/icons';
@@ -44,6 +44,10 @@ const NavbarComponent: React.FC<IProps> = ({ navbarState, history }) => {
         navbarState={navbarState.state}
         showIn={['candidate', 'company']}
       >
+        <Typography marginLeft="auto" color="two">
+          {loggedUser?.name || null}
+        </Typography>
+
         <>
           {loggedUser && 'profileImage' in loggedUser ? (
             <ProfileImageContainer>
@@ -51,13 +55,6 @@ const NavbarComponent: React.FC<IProps> = ({ navbarState, history }) => {
             </ProfileImageContainer>
           ) : null}
         </>
-
-        <Typography
-          marginLeft={loggedUserType === userTypes.company ? 'sm' : 'auto'}
-          color="two"
-        >
-          {loggedUser?.name || null}
-        </Typography>
 
         <Divider />
 

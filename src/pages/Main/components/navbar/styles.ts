@@ -37,7 +37,7 @@ export const ProfileImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
+  margin-left: 1.5rem;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid ${({ theme }) => theme.colors.one};
