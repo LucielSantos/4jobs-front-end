@@ -31,6 +31,11 @@ export const getStorageItem = <T>(storage: TStorageTypes, key: string): T | null
   return null;
 };
 
+export const clearStorage = (): void => {
+  localStorage.clear();
+  sessionStorage.clear();
+};
+
 export const getLoggedUser = (): ICandidateData | ICompanyData | null =>
   getStorageItem<ICandidateData | ICompanyData>('local', 'user') ||
   getStorageItem<ICandidateData | ICompanyData>('session', 'user');

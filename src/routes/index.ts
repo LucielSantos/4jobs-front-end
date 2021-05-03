@@ -22,8 +22,8 @@ export const navbarStateByRoute: ITNavbarStateByRoute = {
   default: 'hidden',
   [routePaths.LOGIN]: 'hidden',
   [routePaths.CREATE_COMPANY]: 'simple',
-  [routePaths.COMPANY_JOBS]: 'simple',
-  [routePaths.CANDIDATE_JOBS]: 'simple',
+  [routePaths.COMPANY_JOBS]: 'company',
+  [routePaths.CANDIDATE_JOBS]: 'candidate',
 };
 
 export const publicRoutes: IPublicRoute[] = [

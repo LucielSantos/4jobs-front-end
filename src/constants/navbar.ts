@@ -1,4 +1,4 @@
-export type TNavbarStatesKeys = 'hidden' | 'simple';
+export type TNavbarStatesKeys = 'hidden' | 'simple' | 'candidate' | 'company';
 
 export type TNavbarStates = {
   // eslint-disable-next-line
@@ -8,4 +8,6 @@ export type TNavbarStates = {
 export const navbarStates: TNavbarStates = {
   hidden: 0,
   simple: 1,
+  candidate: 2,
+  company: 3,
 };

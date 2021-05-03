@@ -7,6 +7,7 @@ import {
 } from 'react-icons/io';
 import { MdArrowBack as ArrowBack, MdCameraAlt as Camera } from 'react-icons/md';
 import { IconType } from 'react-icons/lib';
+import { ImExit as Exit } from 'react-icons/im';
 
 type TColor = keyof DefaultTheme['colors'];
 type TSizes = keyof DefaultTheme['icon']['sizes'];
@@ -38,7 +39,7 @@ const addIconStyle = (icon: IconType) => styled(icon)<IIcon>`
     clickable &&
     css`
       cursor: pointer;
-      transition: filter, background-color 0.2s;
+      transition: filter 0.2s, background-color 0.2s;
       ${
         isButton &&
         css`
@@ -73,4 +74,5 @@ export const icons = {
   camera: addIconStyle(Camera),
   eye: addIconStyle(Eye),
   eyeOff: addIconStyle(EyeOff),
+  exit: addIconStyle(Exit),
 };
