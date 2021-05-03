@@ -30,6 +30,8 @@ export const MainView: React.FC<MainViewProps> = ({
 
     if (isAuthenticated(userType.company)) history.push(routePaths.COMPANY_JOBS);
 
+    if (isAuthenticated(userType.candidate)) history.push(routePaths.CANDIDATE_JOBS);
+
     if (history.location.pathname === '/') history.push(routePaths.LOGIN);
   }, [history]);
 
