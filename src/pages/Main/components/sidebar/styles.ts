@@ -1,9 +1,12 @@
 import styled from 'styled-components';
+import { heightNavbar } from '../../../../constants';
 
 export const Container = styled.div`
   width: 6rem;
   background-color: ${({ theme }) => theme.colors.one};
-  height: 100vh;
+  height: calc(100vh - ${heightNavbar});
+  position: sticky;
+  top: ${heightNavbar};
 `;
 
 interface IIconContainer {

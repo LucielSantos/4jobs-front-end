@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 import LogoSrc from '../../../../assets/images/logo.png';
+import { heightNavbar } from '../../../../constants';
 
 export const Container = styled.div`
-  height: 6rem;
+  height: ${heightNavbar};
   width: 100%;
   background-color: ${({ theme }) => theme.colors.three};
   color: ${({ theme }) => theme.typography.colors.two};
@@ -11,6 +12,8 @@ export const Container = styled.div`
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
 `;
 
 export const Logo = styled.img.attrs({

@@ -16,6 +16,6 @@ interface IBody {
 
 export const Body = styled.div<IBody>`
   width: 100%;
-  padding: ${({ isLoggedUser }) => isLoggedUser && '3rem 2rem'};
+  padding: ${({ isLoggedUser }) => isLoggedUser && '2em 6rem'};
   box-sizing: border-box;
 `;
