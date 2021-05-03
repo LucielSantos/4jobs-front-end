@@ -30,11 +30,19 @@ export const MainView: React.FC<MainViewProps> = ({
   );
 
   const redirectPage = useCallback(() => {
-    if (isAuthenticated(userTypes.company)) history.push(routePaths.COMPANY_JOBS);
+    if (history.location.pathname === '/' || location.pathname === routePaths.LOGIN) {
+      if (isAuthenticated(userTypes.company)) {
+        history.push(routePaths.COMPANY_JOBS);
+        return;
+      }
 
-    if (isAuthenticated(userTypes.candidate)) history.push(routePaths.CANDIDATE_JOBS);
+      if (isAuthenticated(userTypes.candidate)) {
+        history.push(routePaths.CANDIDATE_JOBS);
+        return;
+      }
 
-    if (history.location.pathname === '/') history.push(routePaths.LOGIN);
+      history.push(routePaths.LOGIN);
+    }
   }, [history]);
 
   const actualizeLoggedUser = useCallback(() => {
