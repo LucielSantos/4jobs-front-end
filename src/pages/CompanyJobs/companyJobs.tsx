@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Typography } from '../../components';
+import { Button, Flex, Typography } from '../../components';
 
 import { TCompanyJobsProps } from './';
 
@@ -10,7 +10,20 @@ export const CompanyJobsView: React.FC<TCompanyJobsProps> = ({ onLoadPage }) => 
 
   return (
     <div>
-      <Typography size="xl">Company - Jobs</Typography>{' '}
+      <Flex>
+        <Typography size="xl">Company - Jobs</Typography>
+
+        <Button
+          marginLeft="auto"
+          leftIcon={{
+            name: 'add',
+            size: 'xs',
+            color: 'four',
+          }}
+        >
+          Nova vaga
+        </Button>
+      </Flex>
     </div>
   );
 };

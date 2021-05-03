@@ -5,7 +5,12 @@ import {
   IoMdEye as Eye,
   IoMdEyeOff as EyeOff,
 } from 'react-icons/io';
-import { MdArrowBack as ArrowBack, MdCameraAlt as Camera } from 'react-icons/md';
+import {
+  MdArrowBack as ArrowBack,
+  MdCameraAlt as Camera,
+  MdAdd as Add,
+  MdAddCircle as AddCircle,
+} from 'react-icons/md';
 import { IconType } from 'react-icons/lib';
 import { ImExit as Exit } from 'react-icons/im';
 import { HiLightBulb as Light } from 'react-icons/hi';
@@ -77,4 +82,6 @@ export const icons = {
   eyeOff: addIconStyle(EyeOff),
   exit: addIconStyle(Exit),
   light: addIconStyle(Light),
+  add: addIconStyle(Add),
+  addCircle: addIconStyle(AddCircle),
 };
