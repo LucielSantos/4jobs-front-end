@@ -1,19 +1,23 @@
-import React, { useCallback, useLayoutEffect } from 'react';
+import React, { useCallback, useLayoutEffect, useState } from 'react';
 import { MainViewProps } from '.';
-import { userType } from '../../constants';
+import { userTypes } from '../../constants';
 import { navbarStateByRoute, routePaths } from '../../routes';
 
 import { Router } from '../../routes/components';
-import { isAuthenticated } from '../../utils';
-import { Navbar, Notifier } from './components';
+import { getLoggedUser, getUserType, isAuthenticated } from '../../utils';
+import { Navbar, Notifier, Sidebar } from './components';
 
-import { Container } from './styles';
+import { Container, Content, Body } from './styles';
 
 export const MainView: React.FC<MainViewProps> = ({
   history,
   onSetNavbarState,
   navbar,
 }) => {
+  // eslint-disable-next-line
+  const [loggedUser, setLoggedUser] = useState(getLoggedUser());
+  const [loggedUserType, setLoggedUserType] = useState(getUserType());
+
   const switchNavbarState = useCallback(
     (path: string) => {
       if (navbarStateByRoute[path]) {
@@ -26,14 +30,17 @@ export const MainView: React.FC<MainViewProps> = ({
   );
 
   const redirectPage = useCallback(() => {
-    // TODO: implements redirect candidate
+    if (isAuthenticated(userTypes.company)) history.push(routePaths.COMPANY_JOBS);
 
-    if (isAuthenticated(userType.company)) history.push(routePaths.COMPANY_JOBS);
-
-    if (isAuthenticated(userType.candidate)) history.push(routePaths.CANDIDATE_JOBS);
+    if (isAuthenticated(userTypes.candidate)) history.push(routePaths.CANDIDATE_JOBS);
 
     if (history.location.pathname === '/') history.push(routePaths.LOGIN);
   }, [history]);
+
+  const actualizeLoggedUser = useCallback(() => {
+    setLoggedUser(getLoggedUser());
+    setLoggedUserType(getUserType());
+  }, []);
 
   useLayoutEffect(() => {
     redirectPage();
@@ -42,12 +49,14 @@ export const MainView: React.FC<MainViewProps> = ({
 
     history.listen(location => {
       switchNavbarState(location.pathname);
+      actualizeLoggedUser();
     });
 
     history.listen(location => {
       if (location.pathname === '/' || location.pathname === routePaths.LOGIN)
         redirectPage();
     });
+
     // eslint-disable-next-line
   }, []);
 
@@ -55,7 +64,13 @@ export const MainView: React.FC<MainViewProps> = ({
     <Container>
       <Navbar navbarState={navbar} history={history} />
 
-      <Router />
+      <Content>
+        {loggedUserType ? <Sidebar userType={loggedUserType} history={history} /> : null}
+
+        <Body isLoggedUser={!!loggedUser}>
+          <Router />
+        </Body>
+      </Content>
 
       <Notifier />
     </Container>

@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import { History } from 'history';
 
-import { navbarStates, userType } from '../../../../constants';
+import { navbarStates, userTypes } from '../../../../constants';
 import { INavbar } from '../../../../store/ducks/main/types';
 import { routePaths } from '../../../../routes';
 import { Icon } from '../../../../assets/icons';
@@ -53,7 +53,7 @@ const NavbarComponent: React.FC<IProps> = ({ navbarState, history }) => {
         </>
 
         <Typography
-          marginLeft={loggedUserType === userType.company ? 'sm' : 'auto'}
+          marginLeft={loggedUserType === userTypes.company ? 'sm' : 'auto'}
           color="two"
         >
           {loggedUser?.name || null}

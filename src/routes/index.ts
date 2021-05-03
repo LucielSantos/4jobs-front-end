@@ -3,7 +3,8 @@ import CreateCompany from '../pages/CreateCompany';
 import { CompanyJobs } from '../pages/CompanyJobs';
 import { CandidateJobs } from '../pages/CandidateJobs';
 import { IPrivateRoute, IPublicRoute } from './components';
-import { TNavbarStatesKeys, userType } from '../constants';
+import { TNavbarStatesKeys, TUserTypeNum, userTypes } from '../constants';
+import { IIconProps } from '../assets/icons';
 
 export const routePaths = {
   MAIN: '/',
@@ -18,12 +19,37 @@ export type ITNavbarStateByRoute = {
   [key: string]: TNavbarStatesKeys;
 };
 
+export type ISidebarRoutesData = {
+  icon: IIconProps['name'];
+  route: string;
+};
+
+export type ISidebarRoutes = {
+  // eslint-disable-next-line
+  [key in TUserTypeNum]: ISidebarRoutesData[];
+};
+
 export const navbarStateByRoute: ITNavbarStateByRoute = {
   default: 'hidden',
   [routePaths.LOGIN]: 'hidden',
   [routePaths.CREATE_COMPANY]: 'simple',
   [routePaths.COMPANY_JOBS]: 'company',
   [routePaths.CANDIDATE_JOBS]: 'candidate',
+};
+
+export const sidebarRoutes: ISidebarRoutes = {
+  '1': [
+    {
+      icon: 'light',
+      route: routePaths.COMPANY_JOBS,
+    },
+  ],
+  '2': [
+    {
+      icon: 'light',
+      route: routePaths.CANDIDATE_JOBS,
+    },
+  ],
 };
 
 export const publicRoutes: IPublicRoute[] = [
@@ -41,11 +67,11 @@ export const privateRoutes: IPrivateRoute[] = [
   {
     component: CompanyJobs,
     path: routePaths.COMPANY_JOBS,
-    userType: userType.company,
+    userType: userTypes.company,
   },
   {
     component: CandidateJobs,
     path: routePaths.CANDIDATE_JOBS,
-    userType: userType.candidate,
+    userType: userTypes.candidate,
   },
 ];

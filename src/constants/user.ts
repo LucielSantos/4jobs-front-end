@@ -1,3 +1,4 @@
+/** 1: company; 2: candidate  */
 export type TUserTypeNum = 1 | 2;
 
 export interface IUserType {
@@ -5,7 +6,7 @@ export interface IUserType {
   candidate: TUserTypeNum;
 }
 
-export const userType: IUserType = {
+export const userTypes: IUserType = {
   company: 1,
   candidate: 2,
 };

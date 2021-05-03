@@ -8,6 +8,7 @@ import {
 import { MdArrowBack as ArrowBack, MdCameraAlt as Camera } from 'react-icons/md';
 import { IconType } from 'react-icons/lib';
 import { ImExit as Exit } from 'react-icons/im';
+import { HiLightBulb as Light } from 'react-icons/hi';
 
 type TColor = keyof DefaultTheme['colors'];
 type TSizes = keyof DefaultTheme['icon']['sizes'];
@@ -75,4 +76,5 @@ export const icons = {
   eye: addIconStyle(Eye),
   eyeOff: addIconStyle(EyeOff),
   exit: addIconStyle(Exit),
+  light: addIconStyle(Light),
 };
