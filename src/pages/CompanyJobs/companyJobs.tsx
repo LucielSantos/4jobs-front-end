@@ -1,12 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Button, Flex, Typography } from '../../components';
+import { routePaths } from '../../routes';
 
 import { TCompanyJobsProps } from './';
 
-export const CompanyJobsView: React.FC<TCompanyJobsProps> = ({ onLoadPage }) => {
+export const CompanyJobsView: React.FC<TCompanyJobsProps> = ({ onLoadPage, history }) => {
   useEffect(() => {
     onLoadPage();
   }, [onLoadPage]);
+
+  const onClickNewJob = useCallback(() => {
+    history.push(routePaths.CREATE_JOB);
+  }, [history]);
 
   return (
     <div>
@@ -14,6 +19,7 @@ export const CompanyJobsView: React.FC<TCompanyJobsProps> = ({ onLoadPage }) => 
         <Typography size="xl">Company - Jobs</Typography>
 
         <Button
+          onClick={onClickNewJob}
           marginLeft="auto"
           leftIcon={{
             name: 'add',
