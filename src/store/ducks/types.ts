@@ -1,6 +1,6 @@
 import { ForkEffect } from '@redux-saga/core/effects';
 
-export interface ISagaParam<IPayload> {
+export interface ISagaParam<IPayload = {}> {
   type: string;
   payload: IPayload;
 }
