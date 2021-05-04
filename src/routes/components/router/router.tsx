@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { PublicRoute, PrivateRoute } from '../';
 import { privateRoutes, publicRoutes } from '../..';
 
@@ -17,6 +17,8 @@ export const Router: React.FC = () => {
         {privateRoutes.map((props, index) => (
           <PrivateRoute {...props} key={index} />
         ))}
+
+        <Route render={(...params) => <Redirect to="/login" />} />
       </Switch>
     </Suspense>
   );
