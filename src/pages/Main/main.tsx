@@ -38,10 +38,7 @@ export const MainView: React.FC<MainViewProps> = ({
 
       if (isAuthenticated(userTypes.candidate)) {
         history.push(routePaths.CANDIDATE_JOBS);
-        return;
       }
-
-      history.push(routePaths.LOGIN);
     }
   }, [history]);
 
