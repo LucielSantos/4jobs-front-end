@@ -2,13 +2,16 @@ import styled from 'styled-components';
 import { maxWidthMobile } from '../../constants';
 
 export interface IContainer {
-  noMargin?: boolean;
+  margin?: string;
 }
 
 export const Container = styled.div<IContainer>`
-  margin: ${({ noMargin }) => (noMargin ? 0 : '4rem 10rem')};
+  padding: 2rem;
+  border-radius: 8px;
+  margin: ${({ margin }) => margin || 0};
+  background-color: ${({ theme }) => theme.colors.four};
 
   @media (max-width: ${maxWidthMobile}) {
-    margin: ${({ noMargin }) => (noMargin ? 0 : ' 2rem 2rem')};
+    margin: ${({ margin }) => margin || 0};
   }
 `;

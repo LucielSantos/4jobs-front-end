@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { Icon } from '../../assets/icons';
-import { Flex, Typography } from '../../components';
-
+import { ContentContainer, Flex, Typography } from '../../components';
 import { TCreateJobProps } from './';
 
 export const CreateJobView: React.FC<TCreateJobProps> = ({ onLoadPage, history }) => {
@@ -19,9 +18,11 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({ onLoadPage, history }
         <Icon name="arrowBack" clickable size="sm" isButton onClick={handleBack} />
 
         <Typography size="xl" marginLeft="sm">
-          Create Job
+          Criar vaga
         </Typography>
       </Flex>
+
+      <ContentContainer margin="3rem 0">Container</ContentContainer>
     </div>
   );
 };

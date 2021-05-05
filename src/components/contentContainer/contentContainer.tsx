@@ -6,8 +6,8 @@ interface IProps extends IContainer {
   children: React.ReactNode;
 }
 
-const PageContainerComponent: React.FC<IProps> = ({ children, ...props }) => {
+const ContentContainerComponent: React.FC<IProps> = ({ children, ...props }) => {
   return <Container {...props}>{children}</Container>;
 };
 
-export const PageContainer = React.memo(PageContainerComponent);
+export const ContentContainer = React.memo(ContentContainerComponent);
