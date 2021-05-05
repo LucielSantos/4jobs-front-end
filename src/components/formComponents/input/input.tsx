@@ -21,6 +21,7 @@ export interface IInputProps {
   marginLeft?: boolean;
   marginRight?: boolean;
   maskComponent?: any;
+  floatingError?: boolean;
   mask?: TMaskProp;
   type?: HTMLInputElement['type'];
   startAdornment?: TAdornmentProp;
@@ -44,6 +45,7 @@ const InputComponent: React.FC<IInputProps> = ({
   type = 'text',
   startAdornment,
   endAdornment,
+  floatingError = false,
   ...props
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -88,9 +90,11 @@ const InputComponent: React.FC<IInputProps> = ({
       />
 
       {notErrorMargin ? (
-        error && <ErrorMessage>{error && error}</ErrorMessage>
+        error && (
+          <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
+        )
       ) : (
-        <ErrorMessage>{error || ' '}</ErrorMessage>
+        <ErrorMessage floatingError={floatingError}>{error || ' '}</ErrorMessage>
       )}
     </Container>
   );

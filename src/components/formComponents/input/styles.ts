@@ -16,6 +16,7 @@ export const Container = styled.div<IInputContainer>`
   display: flex;
   width: inherit;
   flex-direction: column;
+  position: relative;
 
   margin-left: ${({ marginLeft = false }) => marginLeft && '2rem'};
   margin-right: ${({ marginRight = false }) => marginRight && '2rem'};
