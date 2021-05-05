@@ -14,7 +14,6 @@ interface IInputContainer {
 
 export const Container = styled.div<IInputContainer>`
   display: flex;
-  width: inherit;
   flex-direction: column;
   position: relative;
 

@@ -1,12 +1,15 @@
 import { Grid } from '@material-ui/core';
+import { SubmitHandler } from '@unform/core';
 import React, { useCallback, useEffect } from 'react';
 import { Icon } from '../../assets/icons';
 import {
+  Button,
   ContentContainer,
   Flex,
   Form,
   Input,
   MaskedInput,
+  TagInput,
   Typography,
 } from '../../components';
 import { goBack } from '../../utils';
@@ -17,9 +20,9 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({ onLoadPage, history }
     onLoadPage();
   }, [onLoadPage]);
 
-  const handleSubmit = useCallback(() => {
-    history.goBack();
-  }, [history]);
+  const handleSubmit = useCallback<SubmitHandler>(data => {
+    console.log(data);
+  }, []);
 
   return (
     <div>
@@ -74,6 +77,14 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({ onLoadPage, history }
                 rows={4}
                 floatingError
               />
+            </Grid>
+
+            <Grid item xs={12}>
+              <TagInput name="tags" label="Relacionar tags" floatingError isRequired />
+            </Grid>
+
+            <Grid item xs={12}>
+              <Button type="submit">Criar vaga</Button>
             </Grid>
           </Grid>
         </Form>
