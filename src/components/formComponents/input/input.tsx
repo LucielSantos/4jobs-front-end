@@ -24,6 +24,8 @@ export interface IInputProps {
   floatingError?: boolean;
   mask?: TMaskProp;
   type?: HTMLInputElement['type'];
+  onChange?: TextFieldProps['onChange'];
+  value?: HTMLInputElement['value'];
   startAdornment?: TAdornmentProp;
   endAdornment?: TAdornmentProp;
   multiline?: TextFieldProps['multiline'];
@@ -46,6 +48,8 @@ const InputComponent: React.FC<IInputProps> = ({
   startAdornment,
   endAdornment,
   floatingError = false,
+  onChange,
+  value = false,
   ...props
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -74,6 +78,7 @@ const InputComponent: React.FC<IInputProps> = ({
 
       <StyledInput
         {...props}
+        value={value || null}
         label={separatedLabel ? false : label}
         variant="outlined"
         size="small"
@@ -86,6 +91,7 @@ const InputComponent: React.FC<IInputProps> = ({
         InputProps={renderInputProps(startAdornment, endAdornment, maskComponent, mask)}
         onChange={e => {
           error && clearError();
+          onChange && onChange(e);
         }}
       />
 

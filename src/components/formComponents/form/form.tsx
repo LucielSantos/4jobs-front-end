@@ -4,10 +4,11 @@ import { Form as FormUnform } from '@unform/web';
 import * as Yup from 'yup';
 
 interface IProps {
-  children: React.ReactElement | React.ReactElement[];
+  children: React.ReactElement | React.ReactElement[] | React.ReactNode;
   validationSchema?: any;
   onSubmit: SubmitHandler;
   schemaParams?: any;
+  initialData?: Record<string, any>;
 }
 
 interface IErrorMessages {
@@ -15,7 +16,7 @@ interface IErrorMessages {
 }
 
 const FormComponent: RefForwardingComponent<FormHandles | null, IProps> = (
-  { children, validationSchema, onSubmit, schemaParams },
+  { children, validationSchema, onSubmit, schemaParams, initialData },
   ref
 ) => {
   const formRef = useRef<FormHandles>(null);
@@ -53,7 +54,12 @@ const FormComponent: RefForwardingComponent<FormHandles | null, IProps> = (
   useImperativeHandle(ref, () => formRef.current as FormHandles);
 
   return (
-    <FormUnform ref={formRef} onSubmit={handleSubmit} style={{ width: '100%' }}>
+    <FormUnform
+      ref={formRef}
+      initialData={initialData}
+      onSubmit={handleSubmit}
+      style={{ width: '100%' }}
+    >
       {children}
     </FormUnform>
   );

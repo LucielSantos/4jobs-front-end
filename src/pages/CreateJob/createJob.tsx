@@ -14,8 +14,14 @@ import {
 } from '../../components';
 import { goBack } from '../../utils';
 import { TCreateJobProps } from './';
+import { CreateFormModal } from './components';
 
-export const CreateJobView: React.FC<TCreateJobProps> = ({ onLoadPage, history }) => {
+export const CreateJobView: React.FC<TCreateJobProps> = ({
+  dialogs,
+  history,
+  onLoadPage,
+  onSetDialog,
+}) => {
   useEffect(() => {
     onLoadPage();
   }, [onLoadPage]);
@@ -23,6 +29,14 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({ onLoadPage, history }
   const handleSubmit = useCallback<SubmitHandler>(data => {
     console.log(data);
   }, []);
+
+  const onClickFormButton = useCallback(() => {
+    onSetDialog('crateForm', true);
+  }, [onSetDialog]);
+
+  const handleCloseFormModal = useCallback(() => {
+    onSetDialog('crateForm', false);
+  }, [onSetDialog]);
 
   return (
     <div>
@@ -84,9 +98,25 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({ onLoadPage, history }
             </Grid>
 
             <Grid item xs={12}>
-              <Button type="submit">Criar vaga</Button>
+              <Flex>
+                <Button
+                  marginRight="auto"
+                  variant="secondary"
+                  onClick={onClickFormButton}
+                >
+                  Criar formulário de desafio
+                </Button>
+
+                <Button type="submit">Criar vaga</Button>
+              </Flex>
             </Grid>
           </Grid>
+
+          <CreateFormModal
+            name="fields"
+            open={dialogs.crateForm}
+            handleClose={handleCloseFormModal}
+          />
         </Form>
       </ContentContainer>
     </div>

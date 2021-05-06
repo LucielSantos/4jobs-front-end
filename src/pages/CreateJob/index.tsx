@@ -5,12 +5,13 @@ import { RouteComponentProps } from 'react-router';
 import { IApplicationState } from '../../store';
 import { CreateJobView } from './createJob';
 import * as CreateJobActions from '../../store/ducks/createJob/actions';
-import { ICreateJobState } from '../../store/ducks/createJob/types';
+import { ICreateJobState, ISetDialogParam } from '../../store/ducks/createJob/types';
 
 interface IStateProps extends ICreateJobState {}
 
 interface IDispatchProps {
   onLoadPage(): void;
+  onSetDialog(field: ISetDialogParam['field'], value: ISetDialogParam['value']): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}

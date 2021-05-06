@@ -1,4 +1,4 @@
-import { MenuItem } from '@material-ui/core';
+import { MenuItem, TextFieldProps } from '@material-ui/core';
 import { useField } from '@unform/core';
 import React, { useEffect, useRef } from 'react';
 import { Label, ITypography, ErrorMessage } from '../../';
@@ -20,6 +20,9 @@ interface ISelectProps {
   notErrorMargin?: boolean;
   marginLeft?: boolean;
   marginRight?: boolean;
+  floatingError?: boolean;
+  onChange?: TextFieldProps['onChange'];
+  value?: HTMLInputElement['value'];
 }
 
 const SelectComponent: React.FC<ISelectProps> = ({
@@ -34,6 +37,9 @@ const SelectComponent: React.FC<ISelectProps> = ({
   notErrorMargin = false,
   marginLeft = false,
   marginRight = false,
+  floatingError = false,
+  onChange,
+  value = false,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -73,6 +79,7 @@ const SelectComponent: React.FC<ISelectProps> = ({
             getContentAnchorEl: null,
           },
         }}
+        value={value || null}
         label={separatedLabel ? false : label}
         variant="outlined"
         size="small"
@@ -83,6 +90,7 @@ const SelectComponent: React.FC<ISelectProps> = ({
         error={Boolean(error)}
         onChange={e => {
           error && clearError();
+          onChange && onChange(e);
         }}
       >
         {options.map(option => (
@@ -93,9 +101,11 @@ const SelectComponent: React.FC<ISelectProps> = ({
       </StyledInput>
 
       {notErrorMargin ? (
-        error && <ErrorMessage>{error && error}</ErrorMessage>
+        error && (
+          <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
+        )
       ) : (
-        <ErrorMessage>{error || ' '}</ErrorMessage>
+        <ErrorMessage floatingError={floatingError}>{error || ' '}</ErrorMessage>
       )}
     </Container>
   );

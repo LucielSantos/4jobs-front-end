@@ -5,3 +5,4 @@ export * from './notification';
 export * from './user';
 export * from './storage';
 export * from './styles';
+export * from './dynamicForm';
