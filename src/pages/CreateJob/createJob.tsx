@@ -12,26 +12,37 @@ import {
   TagInput,
   Typography,
 } from '../../components';
+import { useHandleRequestResponse } from '../../hooks';
+import { ICreateJob } from '../../store/ducks/createJob/types';
 import { goBack } from '../../utils';
 import { createJobValidationSchema } from '../../validationSchemas';
 import { TCreateJobProps } from './';
 import { CreateFormModal } from './components';
 
 export const CreateJobView: React.FC<TCreateJobProps> = ({
-  dialogs,
   history,
+  dialogs,
+  loadings,
+  error,
+  errorResponse,
   onLoadPage,
   onSetDialog,
+  handleCreateJob,
 }) => {
   const formRef = useRef<FormHandles>(null);
+
+  useHandleRequestResponse(error, errorResponse, formRef, 'Vaga criada com sucesso');
 
   useEffect(() => {
     onLoadPage();
   }, [onLoadPage]);
 
-  const handleSubmit = useCallback<SubmitHandler>(data => {
-    console.log(data);
-  }, []);
+  const handleSubmit = useCallback<SubmitHandler<ICreateJob>>(
+    data => {
+      handleCreateJob(data);
+    },
+    [handleCreateJob]
+  );
 
   const onClickFormButton = useCallback(() => onSetDialog('crateForm', true), [
     onSetDialog,
@@ -115,7 +126,9 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
                   Criar formulário de desafio
                 </Button>
 
-                <Button type="submit">Criar vaga</Button>
+                <Button type="submit" isLoading={loadings.save}>
+                  Criar vaga
+                </Button>
               </Flex>
             </Grid>
           </Grid>

@@ -23,8 +23,6 @@ function* handleCreateCompany(data: ISagaParam<ICreateCompanyData>) {
       data.payload
     );
 
-    console.log(response);
-
     yield put(onSetSuccessResponse(response.data));
 
     yield put(onSetCompanyLoading('create', false));

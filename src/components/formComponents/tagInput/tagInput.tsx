@@ -71,9 +71,6 @@ const TagInputComponent: React.FC<IProps> = ({
 
   const onClickAdd = useCallback(() => formRef.current?.submitForm(), []);
 
-  console.log(name);
-  console.log(error);
-
   return (
     <Container>
       <FormContainer>
