@@ -1,5 +1,5 @@
 import { Grid } from '@material-ui/core';
-import { Scope, SubmitHandler, useField } from '@unform/core';
+import { FormHandles, Scope, SubmitHandler, useField } from '@unform/core';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Icon } from '../../../../assets/icons';
 import {
@@ -33,6 +33,7 @@ const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open })
   const { fieldName, registerField } = useField(name);
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<FormHandles>(null);
 
   const [fields, setFields] = useState<IDynamicFormField[]>([
     { title: '', type: 'text', required: false },
@@ -77,6 +78,8 @@ const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open })
     });
   }, []);
 
+  const onClickSubmit = useCallback(() => formRef.current?.submitForm(), []);
+
   return (
     <Modal
       title="Criar formulário de desafio"
@@ -85,6 +88,7 @@ const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open })
       handleClose={handleClose}
     >
       <Form
+        ref={formRef}
         onSubmit={handleSubmit}
         initialData={{ fields }}
         validationSchema={createFormModalValidationSchema}
@@ -157,7 +161,7 @@ const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open })
             Adicionar campo
           </Button>
 
-          <Button marginTop="md" type="submit">
+          <Button marginTop="md" onClick={onClickSubmit}>
             Salvar formulário
           </Button>
         </Flex>

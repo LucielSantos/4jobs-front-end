@@ -41,8 +41,6 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
     onSetDialog,
   ]);
 
-  const onClickSubmit = useCallback(() => formRef.current?.submitForm(), []);
-
   return (
     <div>
       <Flex>
@@ -116,7 +114,7 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
                   Criar formulário de desafio
                 </Button>
 
-                <Button onClick={onClickSubmit}>Criar vaga</Button>
+                <Button type="submit">Criar vaga</Button>
               </Flex>
             </Grid>
           </Grid>
