@@ -78,7 +78,7 @@ const InputComponent: React.FC<IInputProps> = ({
 
       <StyledInput
         {...props}
-        value={value || null}
+        value={value || undefined}
         label={separatedLabel ? false : label}
         variant="outlined"
         size="small"
