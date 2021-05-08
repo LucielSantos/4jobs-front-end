@@ -63,6 +63,7 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
             </Grid>
 
             <Grid item xs={12} sm={4}>
+              {/* TODO: parse to int */}
               <MaskedInput
                 name="deadlineResolve"
                 label="Prazo para resolução do desafio (dias)"
