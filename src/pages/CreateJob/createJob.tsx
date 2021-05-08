@@ -13,6 +13,7 @@ import {
   Typography,
 } from '../../components';
 import { goBack } from '../../utils';
+import { createJobValidationSchema } from '../../validationSchemas';
 import { TCreateJobProps } from './';
 import { CreateFormModal } from './components';
 
@@ -49,10 +50,10 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
       </Flex>
 
       <ContentContainer margin="3rem 0">
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} validationSchema={createJobValidationSchema}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={4}>
-              <Input name="name" label="Título da vaga" floatingError />
+              <Input name="title" label="Título da vaga" floatingError />
             </Grid>
 
             <Grid item xs={12} sm={4}>
