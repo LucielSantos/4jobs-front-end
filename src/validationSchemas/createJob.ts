@@ -7,6 +7,6 @@ export const createJobValidationSchema = Yup.object().shape({
   description: Yup.string().required(requiredMessage),
   expectedResolution: Yup.string().required(requiredMessage),
   observations: Yup.string().required(requiredMessage),
-  tags: Yup.array().required(requiredMessage),
+  tags: Yup.array().min(1, requiredMessage),
   fields: Yup.array().required(requiredMessage),
 });

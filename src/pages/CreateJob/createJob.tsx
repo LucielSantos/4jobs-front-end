@@ -1,6 +1,6 @@
 import { Grid } from '@material-ui/core';
-import { SubmitHandler } from '@unform/core';
-import React, { useCallback, useEffect } from 'react';
+import { FormHandles, SubmitHandler } from '@unform/core';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Icon } from '../../assets/icons';
 import {
   Button,
@@ -23,6 +23,8 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
   onLoadPage,
   onSetDialog,
 }) => {
+  const formRef = useRef<FormHandles>(null);
+
   useEffect(() => {
     onLoadPage();
   }, [onLoadPage]);
@@ -31,13 +33,15 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
     console.log(data);
   }, []);
 
-  const onClickFormButton = useCallback(() => {
-    onSetDialog('crateForm', true);
-  }, [onSetDialog]);
+  const onClickFormButton = useCallback(() => onSetDialog('crateForm', true), [
+    onSetDialog,
+  ]);
 
-  const handleCloseFormModal = useCallback(() => {
-    onSetDialog('crateForm', false);
-  }, [onSetDialog]);
+  const handleCloseFormModal = useCallback(() => onSetDialog('crateForm', false), [
+    onSetDialog,
+  ]);
+
+  const onClickSubmit = useCallback(() => formRef.current?.submitForm(), []);
 
   return (
     <div>
@@ -50,7 +54,11 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
       </Flex>
 
       <ContentContainer margin="3rem 0">
-        <Form onSubmit={handleSubmit} validationSchema={createJobValidationSchema}>
+        <Form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          validationSchema={createJobValidationSchema}
+        >
           <Grid container spacing={3}>
             <Grid item xs={12} sm={4}>
               <Input name="title" label="Título da vaga" floatingError />
@@ -108,7 +116,7 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
                   Criar formulário de desafio
                 </Button>
 
-                <Button type="submit">Criar vaga</Button>
+                <Button onClick={onClickSubmit}>Criar vaga</Button>
               </Flex>
             </Grid>
           </Grid>
