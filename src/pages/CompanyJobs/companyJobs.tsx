@@ -1,22 +1,31 @@
 import React, { useCallback, useEffect } from 'react';
-import { Button, Flex, Typography } from '../../components';
+
+import { Button, Flex, LoadingMessage, Typography } from '../../components';
 import { routePaths } from '../../routes';
-
 import { TCompanyJobsProps } from './';
+import { Container } from './styles';
+import { JobList } from './components';
 
-export const CompanyJobsView: React.FC<TCompanyJobsProps> = ({ onLoadPage, history }) => {
+export const CompanyJobsView: React.FC<TCompanyJobsProps> = ({
+  history,
+  loadings,
+  jobs,
+  onLoadJobs,
+}) => {
   useEffect(() => {
-    onLoadPage();
-  }, [onLoadPage]);
+    onLoadJobs();
+  }, [onLoadJobs]);
 
   const onClickNewJob = useCallback(() => {
     history.push(routePaths.CREATE_JOB);
   }, [history]);
 
+  console.log(jobs);
+
   return (
-    <div>
+    <Container>
       <Flex>
-        <Typography size="xl">Company - Jobs</Typography>
+        <Typography size="xl">Vagas</Typography>
 
         <Button
           onClick={onClickNewJob}
@@ -30,6 +39,14 @@ export const CompanyJobsView: React.FC<TCompanyJobsProps> = ({ onLoadPage, histo
           Nova vaga
         </Button>
       </Flex>
-    </div>
+
+      {loadings.loadJobs ? (
+        <Flex marginTop="xl">
+          <LoadingMessage text="Carregando vagas" />
+        </Flex>
+      ) : (
+        <JobList jobs={jobs} />
+      )}
+    </Container>
   );
 };

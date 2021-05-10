@@ -5,6 +5,11 @@ export interface ISagaParam<IPayload = {}> {
   payload: IPayload;
 }
 
+export interface ISetLoadingState<ILoadingState = {}> {
+  field: keyof ILoadingState;
+  value: boolean;
+}
+
 export type TExportRootSaga = ForkEffect<never>[];
 
 export type TErrorControlState = 'await' | 'success' | 'error';

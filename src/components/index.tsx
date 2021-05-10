@@ -8,3 +8,4 @@ export * from './flex';
 export * from './bodyContainer';
 export * from './image';
 export * from './contentContainer';
+export * from './loadingMessage';

@@ -9,7 +9,7 @@ import { RouteComponentProps } from 'react-router';
 interface IStateProps extends ICompanyJobsState {}
 
 interface IDispatchProps {
-  onLoadPage(): void;
+  onLoadJobs(): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}

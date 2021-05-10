@@ -3,8 +3,9 @@ import { CompanyJobsActionTypes, ICompanyJobsState } from './types';
 
 const INITIAL_STATE: ICompanyJobsState = {
   loadings: {
-    page: true,
+    loadJobs: true,
   },
+  jobs: [],
 };
 
 const reducer: Reducer<ICompanyJobsState> = (
@@ -19,6 +20,12 @@ const reducer: Reducer<ICompanyJobsState> = (
           ...state.loadings,
           [payload.field]: payload.value,
         },
+      };
+
+    case CompanyJobsActionTypes.ON_SET_JOBS:
+      return {
+        ...state,
+        jobs: payload,
       };
 
     default:
