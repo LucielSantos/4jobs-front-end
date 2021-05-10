@@ -7,7 +7,7 @@ export const createJobApi = async (
   data: ICreateJob
 ): Promise<AxiosResponse<ICreateJob>> => {
   try {
-    const response = await api.post('/job', data);
+    const response = await api.post('/jobs', data);
 
     return response;
   } catch (error) {
