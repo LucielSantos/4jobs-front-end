@@ -9,3 +9,5 @@ export * from './bodyContainer';
 export * from './image';
 export * from './contentContainer';
 export * from './loadingMessage';
+export * from './tooltip';
+export * from './divider';

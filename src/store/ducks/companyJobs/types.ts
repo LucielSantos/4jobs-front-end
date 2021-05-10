@@ -16,6 +16,7 @@ export interface IJobInList {
   id: string;
   title: string;
   description: string;
+  observations: string;
   deadlineResolve: number;
   tags: IJob['tags'];
   // eslint-disable-next-line

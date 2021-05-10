@@ -10,6 +10,7 @@ import {
   MdCameraAlt as Camera,
   MdAdd as Add,
   MdAddCircle as AddCircle,
+  MdInfo as Info,
 } from 'react-icons/md';
 import { IconType } from 'react-icons/lib';
 import { ImExit as Exit } from 'react-icons/im';
@@ -84,4 +85,5 @@ export const icons = {
   light: addIconStyle(Light),
   add: addIconStyle(Add),
   addCircle: addIconStyle(AddCircle),
+  info: addIconStyle(Info),
 };
