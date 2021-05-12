@@ -3,6 +3,7 @@ import { Icon } from '../../../../assets/icons';
 import { Divider, Flex, Popover, Tooltip, Typography } from '../../../../components';
 
 import { IJobInList } from '../../../../store/ducks/companyJobs/types';
+import { copyToClipboard, openNotification } from '../../../../utils';
 import { Container, Header, Footer, FooterLeftColumn, FooterRightColumn } from './styles';
 
 const renderInfoTooltip = (job: IJobInList) => {
@@ -21,7 +22,9 @@ interface IProps {
 
 const JobListCardComponent: React.FC<IProps> = ({ job }) => {
   const handleClickCopy = useCallback(() => {
-    console.log('copy', job.id);
+    copyToClipboard(job.id, () =>
+      openNotification('Identificador copiado para área de transferências')
+    );
   }, [job]);
 
   return (
@@ -37,10 +40,7 @@ const JobListCardComponent: React.FC<IProps> = ({ job }) => {
           </Tooltip>
 
           <Popover
-            options={[
-              { children: 'Copiar identificador', onClick: handleClickCopy },
-              { children: 'Copiar identificador', onClick: handleClickCopy },
-            ]}
+            options={[{ children: 'Copiar identificador', onClick: handleClickCopy }]}
           />
         </Flex>
 

@@ -5,3 +5,4 @@ export * from './notification';
 export * from './form';
 export * from './storage';
 export * from './history';
+export * from './clipboard';
