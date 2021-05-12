@@ -15,6 +15,7 @@ import {
 import { IconType } from 'react-icons/lib';
 import { ImExit as Exit } from 'react-icons/im';
 import { HiLightBulb as Light } from 'react-icons/hi';
+import { FiMoreVertical as MoreVert } from 'react-icons/fi';
 
 type TColor = keyof DefaultTheme['colors'];
 type TSizes = keyof DefaultTheme['icon']['sizes'];
@@ -86,4 +87,5 @@ export const icons = {
   add: addIconStyle(Add),
   addCircle: addIconStyle(AddCircle),
   info: addIconStyle(Info),
+  moreVert: addIconStyle(MoreVert),
 };

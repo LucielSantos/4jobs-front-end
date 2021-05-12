@@ -20,8 +20,6 @@ export const CompanyJobsView: React.FC<TCompanyJobsProps> = ({
     history.push(routePaths.CREATE_JOB);
   }, [history]);
 
-  console.log(jobs);
-
   return (
     <Container>
       <Flex>

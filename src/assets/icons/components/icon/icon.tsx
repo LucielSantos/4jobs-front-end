@@ -7,7 +7,7 @@ type TIconName = keyof typeof icons;
 export interface IIconProps extends IIcon {
   name: TIconName;
   size?: IIcon['sizeParam'];
-  onClick?(): void;
+  onClick?(event: any): void;
 }
 
 const IconComponent: React.FC<IIconProps> = ({

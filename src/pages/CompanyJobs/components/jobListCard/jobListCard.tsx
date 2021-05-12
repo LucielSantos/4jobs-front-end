@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Icon } from '../../../../assets/icons';
-import { Divider, Flex, Tooltip, Typography } from '../../../../components';
+import { Divider, Flex, Popover, Tooltip, Typography } from '../../../../components';
 
 import { IJobInList } from '../../../../store/ducks/companyJobs/types';
 import { Container, Header, Footer, FooterLeftColumn, FooterRightColumn } from './styles';
@@ -20,6 +20,10 @@ interface IProps {
 }
 
 const JobListCardComponent: React.FC<IProps> = ({ job }) => {
+  const handleClickCopy = useCallback(() => {
+    console.log('copy', job.id);
+  }, [job]);
+
   return (
     <Container>
       <Header>
@@ -31,6 +35,13 @@ const JobListCardComponent: React.FC<IProps> = ({ job }) => {
           <Tooltip text={renderInfoTooltip(job)} placement="top">
             <Icon name="info" size="xs" color="six" />
           </Tooltip>
+
+          <Popover
+            options={[
+              { children: 'Copiar identificador', onClick: handleClickCopy },
+              { children: 'Copiar identificador', onClick: handleClickCopy },
+            ]}
+          />
         </Flex>
 
         <Flex>
