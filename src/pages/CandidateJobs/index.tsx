@@ -1,12 +1,34 @@
-import React from 'react';
-import { Typography } from '../../components';
+import { bindActionCreators, Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
 
-interface IProps {}
+import { IApplicationState } from '../../store';
+import { CandidateJobsView } from './candidateJobs';
+import * as CandidateJobsActions from '../../store/ducks/candidateJobs/actions';
+import {
+  ICandidateJobsSetDialogs,
+  ICandidateJobsState,
+} from '../../store/ducks/candidateJobs/types';
 
-export const CandidateJobs: React.FC<IProps> = () => {
-  return (
-    <div>
-      <Typography size="xl">Candidate - Jobs</Typography>{' '}
-    </div>
-  );
-};
+interface IStateProps extends ICandidateJobsState {}
+
+interface IDispatchProps {
+  handleLoadJobs(): void;
+  onSetCandidateJobDialog(
+    field: ICandidateJobsSetDialogs['field'],
+    value: ICandidateJobsSetDialogs['value']
+  ): void;
+}
+
+interface IOwnProps extends RouteComponentProps {}
+
+export type TCandidateJobsProps = IStateProps & IDispatchProps & IOwnProps;
+
+const mapStateToProps = ({ candidateJobs }: IApplicationState) => ({
+  ...candidateJobs,
+});
+
+const mapActionToProps = (dispatch: Dispatch) =>
+  bindActionCreators(CandidateJobsActions, dispatch);
+
+export default connect(mapStateToProps, mapActionToProps)(CandidateJobsView);

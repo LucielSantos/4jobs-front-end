@@ -2,7 +2,7 @@ import Login from '../pages/Login';
 import CreateCompany from '../pages/CreateCompany';
 import CompanyJobs from '../pages/CompanyJobs';
 import CreateJob from '../pages/CreateJob';
-import { CandidateJobs } from '../pages/CandidateJobs';
+import CandidateJobs from '../pages/CandidateJobs';
 import { IPrivateRoute, IPublicRoute } from './components';
 import { TNavbarStatesKeys, TUserTypeNum, userTypes } from '../constants';
 import { IIconProps } from '../assets/icons';

@@ -55,7 +55,7 @@ const JobListCardComponent: React.FC<IProps> = ({ job }) => {
 
       <Footer>
         <FooterLeftColumn>
-          {/* TODO: integrate candidatos count */}
+          {/* TODO: integrate candidates count */}
           <Typography size="sm" marginBottom="xs">
             Candidatos: xx
           </Typography>
