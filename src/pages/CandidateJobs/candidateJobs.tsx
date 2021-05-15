@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { Button, Flex, Typography } from '../../components';
 
 import { TCandidateJobsProps } from './';
+import { ApplyJobModal } from './components';
 
 export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
   handleLoadJobs,
@@ -16,6 +17,11 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
     onSetCandidateJobDialog,
   ]);
 
+  const handleCloseApplyModal = useCallback(
+    () => onSetCandidateJobDialog('applyJob', false),
+    [onSetCandidateJobDialog]
+  );
+
   return (
     <Flex>
       <Typography size="xl">Candidate - Jobs</Typography>
@@ -27,6 +33,8 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
       >
         Adicionar vaga
       </Button>
+
+      <ApplyJobModal open={dialogs.applyJob} handleClose={handleCloseApplyModal} />
     </Flex>
   );
 };
