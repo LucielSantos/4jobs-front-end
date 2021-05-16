@@ -4,6 +4,7 @@ import {
   CandidateJobsActionTypes,
   ICandidateJobsSetDialogs,
   ICandidateJobsSetLoadings,
+  ICandidateJobsState,
 } from './types';
 
 export const onSetCandidateJobDialog = (
@@ -23,3 +24,13 @@ export const handleGetJobPreview = (jobId: string) =>
 
 export const handleSetJobPreview = (jobPreview: IJobPreview) =>
   action(CandidateJobsActionTypes.HANDLE_SET_JOB_PREVIEW, jobPreview);
+
+export const handleSetApplyModalState = (
+  newState: ICandidateJobsState['applyModalState']
+) => action(CandidateJobsActionTypes.HANDLE_SET_APPLY_MODAL_STATE, newState);
+
+export const handleCleanApplyModal = () =>
+  action(CandidateJobsActionTypes.HANDLE_CLEAN_APPLY_MODAL);
+
+export const handleApplyJob = (jobId: string) =>
+  action(CandidateJobsActionTypes.HANDLE_APPLY_JOB, { jobId });

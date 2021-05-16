@@ -7,12 +7,16 @@ export const CandidateJobsActionTypes = {
   HANDLE_SET_LOADING: '@candidateJobs/HANDLE_SET_LOADING',
   HANDLE_SET_DIALOG: '@candidateJobs/ON_LOAD_PAGE',
   HANDLE_SET_JOB_PREVIEW: '@candidateJobs/HANDLE_SET_JOB_PREVIEW',
+  HANDLE_SET_APPLY_MODAL_STATE: '@candidateJobs/HANDLE_SET_APPLY_MODAL_STATE',
+  HANDLE_CLEAN_APPLY_MODAL: '@candidateJobs/HANDLE_CLEAN_APPLY_MODAL',
+  HANDLE_APPLY_JOB: '@candidateJobs/HANDLE_APPLY_JOB',
 };
 
 // Data types
 export interface ICandidateJobsLoadings {
   loadJobs: boolean;
   getPreview: boolean;
+  applyJob: boolean;
 }
 
 export interface ICandidateJobsDialogs {
@@ -34,4 +38,5 @@ export interface ICandidateJobsState {
   loadings: ICandidateJobsLoadings;
   dialogs: ICandidateJobsDialogs;
   jobPreview: IJobPreview | false;
+  applyModalState: 1 | 2;
 }

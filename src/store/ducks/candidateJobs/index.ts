@@ -5,11 +5,13 @@ const INITIAL_STATE: ICandidateJobsState = {
   loadings: {
     loadJobs: true,
     getPreview: false,
+    applyJob: false,
   },
   dialogs: {
     applyJob: false,
   },
   jobPreview: false,
+  applyModalState: 1,
 };
 
 const reducer: Reducer<ICandidateJobsState> = (
@@ -39,6 +41,19 @@ const reducer: Reducer<ICandidateJobsState> = (
       return {
         ...state,
         jobPreview: payload,
+      };
+
+    case CandidateJobsActionTypes.HANDLE_SET_APPLY_MODAL_STATE:
+      return {
+        ...state,
+        applyModalState: payload,
+      };
+
+    case CandidateJobsActionTypes.HANDLE_CLEAN_APPLY_MODAL:
+      return {
+        ...state,
+        applyModalState: 1,
+        jobPreview: false,
       };
 
     default:

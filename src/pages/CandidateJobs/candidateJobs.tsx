@@ -7,8 +7,12 @@ import { ApplyJobModal } from './components';
 export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
   dialogs,
   loadings,
+  applyModalState,
+  jobPreview,
   handleLoadJobs,
   handleGetJobPreview,
+  handleCleanApplyModal,
+  handleApplyJob,
   onSetCandidateJobDialog,
 }) => {
   useEffect(() => {
@@ -38,9 +42,14 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
 
       <ApplyJobModal
         open={dialogs.applyJob}
+        applyModalState={applyModalState}
+        jobPreview={jobPreview}
         handleClose={handleCloseApplyModal}
         handleGetJobPreview={handleGetJobPreview}
         loadingsGetJobPreview={loadings.getPreview}
+        loadingApplyJob={loadings.applyJob}
+        handleCleanApplyModal={handleCleanApplyModal}
+        handleApplyJob={handleApplyJob}
       />
     </Flex>
   );
