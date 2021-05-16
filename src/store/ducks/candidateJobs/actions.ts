@@ -1,4 +1,5 @@
 import { action } from 'typesafe-actions';
+import { IJobPreview } from '../../../types';
 import {
   CandidateJobsActionTypes,
   ICandidateJobsSetDialogs,
@@ -16,3 +17,9 @@ export const onSetCandidateJobLoading = (
 ) => action(CandidateJobsActionTypes.HANDLE_SET_LOADING, { field, value });
 
 export const handleLoadJobs = () => action(CandidateJobsActionTypes.ON_LOAD_JOBS);
+
+export const handleGetJobPreview = (jobId: string) =>
+  action(CandidateJobsActionTypes.ON_GET_JOB_PREVIEW, { jobId });
+
+export const handleSetJobPreview = (jobPreview: IJobPreview) =>
+  action(CandidateJobsActionTypes.HANDLE_SET_JOB_PREVIEW, jobPreview);

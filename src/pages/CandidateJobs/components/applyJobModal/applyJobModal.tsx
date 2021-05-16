@@ -4,13 +4,23 @@ import { applyJobModalValidationSchema } from '../../../../validationSchemas';
 
 interface IProps {
   open: boolean;
+  loadingsGetJobPreview: boolean;
   handleClose(): void;
+  handleGetJobPreview(jobId: string): void;
 }
 
-const ApplyJobModalComponent: React.FC<IProps> = ({ open, handleClose }) => {
-  const handleSubmit = useCallback(data => {
-    console.log(data);
-  }, []);
+const ApplyJobModalComponent: React.FC<IProps> = ({
+  open,
+  loadingsGetJobPreview,
+  handleClose,
+  handleGetJobPreview,
+}) => {
+  const handleSubmit = useCallback(
+    (data: { jobId: string }) => {
+      handleGetJobPreview(data.jobId);
+    },
+    [handleGetJobPreview]
+  );
 
   return (
     <Modal open={open} handleClose={handleClose} title="Adicionar vaga">
@@ -22,7 +32,7 @@ const ApplyJobModalComponent: React.FC<IProps> = ({ open, handleClose }) => {
             Cancelar
           </Button>
 
-          <Button type="submit" marginLeft="sm">
+          <Button type="submit" marginLeft="sm" isLoading={loadingsGetJobPreview}>
             Adicionar
           </Button>
         </Flex>

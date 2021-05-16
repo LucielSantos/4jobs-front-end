@@ -14,6 +14,7 @@ interface IStateProps extends ICandidateJobsState {}
 
 interface IDispatchProps {
   handleLoadJobs(): void;
+  handleGetJobPreview(jobId: string): void;
   onSetCandidateJobDialog(
     field: ICandidateJobsSetDialogs['field'],
     value: ICandidateJobsSetDialogs['value']

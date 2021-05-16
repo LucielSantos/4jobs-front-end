@@ -4,10 +4,12 @@ import { CandidateJobsActionTypes, ICandidateJobsState } from './types';
 const INITIAL_STATE: ICandidateJobsState = {
   loadings: {
     loadJobs: true,
+    getPreview: false,
   },
   dialogs: {
     applyJob: false,
   },
+  jobPreview: false,
 };
 
 const reducer: Reducer<ICandidateJobsState> = (
@@ -31,6 +33,12 @@ const reducer: Reducer<ICandidateJobsState> = (
           ...state.dialogs,
           [payload.field]: payload.value,
         },
+      };
+
+    case CandidateJobsActionTypes.HANDLE_SET_JOB_PREVIEW:
+      return {
+        ...state,
+        jobPreview: payload,
       };
 
     default:

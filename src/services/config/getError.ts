@@ -36,7 +36,11 @@ export const getErrorResponse = (
       return errorObj;
     }
 
-    if (response?.status === 400 || response?.status === 401) {
+    if (
+      response?.status === 400 ||
+      response?.status === 401 ||
+      response?.status === 404
+    ) {
       return errorObj;
     }
   }
