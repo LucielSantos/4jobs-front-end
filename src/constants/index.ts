@@ -6,3 +6,4 @@ export * from './user';
 export * from './storage';
 export * from './styles';
 export * from './dynamicForm';
+export * from './job';

@@ -12,6 +12,7 @@ const INITIAL_STATE: ICandidateJobsState = {
   },
   jobPreview: false,
   applyModalState: 1,
+  jobs: [],
 };
 
 const reducer: Reducer<ICandidateJobsState> = (
@@ -54,6 +55,12 @@ const reducer: Reducer<ICandidateJobsState> = (
         ...state,
         applyModalState: 1,
         jobPreview: false,
+      };
+
+    case CandidateJobsActionTypes.ON_SET_JOBS:
+      return {
+        ...state,
+        jobs: payload,
       };
 
     default:

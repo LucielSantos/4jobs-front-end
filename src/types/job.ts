@@ -1,3 +1,5 @@
+import { TJobResponseValues } from '../constants';
+
 export interface IJobPreview {
   id: string;
   title: string;
@@ -16,4 +18,16 @@ export interface IJobPreview {
 export interface ILinkJob {
   jobId: string;
   companyId: string;
+}
+
+export interface IJobCandidateList {
+  id: string;
+  challengeResolved: boolean;
+  status: TJobResponseValues;
+  job: {
+    id: string;
+    title: string;
+    deadlineResolve: number;
+    observations: string;
+  };
 }
