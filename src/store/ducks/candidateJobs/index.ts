@@ -55,12 +55,22 @@ const reducer: Reducer<ICandidateJobsState> = (
         ...state,
         applyModalState: 1,
         jobPreview: false,
+        dialogs: {
+          ...state.dialogs,
+          applyJob: payload.closeModal ? false : state.dialogs.applyJob,
+        },
       };
 
     case CandidateJobsActionTypes.ON_SET_JOBS:
       return {
         ...state,
         jobs: payload,
+      };
+
+    case CandidateJobsActionTypes.HANDLE_SUCCESS_APPLY_JOB:
+      return {
+        ...state,
+        jobs: [...state.jobs, payload],
       };
 
     default:

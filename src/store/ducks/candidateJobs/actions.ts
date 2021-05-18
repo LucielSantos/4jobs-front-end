@@ -29,11 +29,14 @@ export const handleSetApplyModalState = (
   newState: ICandidateJobsState['applyModalState']
 ) => action(CandidateJobsActionTypes.HANDLE_SET_APPLY_MODAL_STATE, newState);
 
-export const handleCleanApplyModal = () =>
-  action(CandidateJobsActionTypes.HANDLE_CLEAN_APPLY_MODAL);
+export const handleCleanApplyModal = (closeModal: boolean = false) =>
+  action(CandidateJobsActionTypes.HANDLE_CLEAN_APPLY_MODAL, { closeModal });
 
 export const handleApplyJob = (data: ILinkJob) =>
   action(CandidateJobsActionTypes.HANDLE_APPLY_JOB, data);
 
 export const onSetJobs = (data: IJobCandidateList[]) =>
   action(CandidateJobsActionTypes.ON_SET_JOBS, data);
+
+export const handleSuccessApplyJob = (data: IJobCandidateList) =>
+  action(CandidateJobsActionTypes.HANDLE_SUCCESS_APPLY_JOB, data);

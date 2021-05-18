@@ -11,6 +11,7 @@ export const CandidateJobsActionTypes = {
   HANDLE_SET_APPLY_MODAL_STATE: '@candidateJobs/HANDLE_SET_APPLY_MODAL_STATE',
   HANDLE_CLEAN_APPLY_MODAL: '@candidateJobs/HANDLE_CLEAN_APPLY_MODAL',
   HANDLE_APPLY_JOB: '@candidateJobs/HANDLE_APPLY_JOB',
+  HANDLE_SUCCESS_APPLY_JOB: '@candidateJobs/HANDLE_SUCCESS_APPLY_JOB',
 };
 
 // Data types

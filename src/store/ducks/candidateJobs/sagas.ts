@@ -1,14 +1,17 @@
 import { call, ForkEffect, put, takeEvery } from '@redux-saga/core/effects';
 import { AxiosResponse } from 'axios';
-import { getCandidateJobs } from '../../../services';
+import { getCandidateJobs, postApplyCandidateJob } from '../../../services';
 import { getJobPreview } from '../../../services/job';
 import { IJobCandidateList, IJobPreview, ILinkJob } from '../../../types';
+import { openNotification } from '../../../utils';
 import { ISagaParam } from '../types';
 import {
   handleSetJobPreview,
   onSetCandidateJobLoading,
   handleSetApplyModalState,
   onSetJobs,
+  handleSuccessApplyJob,
+  handleCleanApplyModal,
 } from './actions';
 import { CandidateJobsActionTypes } from './types';
 
@@ -46,7 +49,16 @@ function* handleApplyJob({ payload }: ISagaParam<ILinkJob>) {
   try {
     yield put(onSetCandidateJobLoading('applyJob', true));
 
-    console.log(payload);
+    const response: AxiosResponse<IJobCandidateList> = yield call(
+      postApplyCandidateJob,
+      payload
+    );
+
+    openNotification('Candidatura executada com sucesso');
+
+    yield put(handleSuccessApplyJob(response.data));
+
+    yield put(handleCleanApplyModal(true));
 
     yield put(onSetCandidateJobLoading('applyJob', false));
   } catch (error) {
