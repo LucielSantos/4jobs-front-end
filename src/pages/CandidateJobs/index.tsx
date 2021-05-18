@@ -9,13 +9,14 @@ import {
   ICandidateJobsSetDialogs,
   ICandidateJobsState,
 } from '../../store/ducks/candidateJobs/types';
+import { ILinkJob } from '../../types';
 
 interface IStateProps extends ICandidateJobsState {}
 
 interface IDispatchProps {
   handleLoadJobs(): void;
   handleCleanApplyModal(): void;
-  handleApplyJob(jobId: string): void;
+  handleApplyJob(data: ILinkJob): void;
   handleGetJobPreview(jobId: string): void;
   onSetCandidateJobDialog(
     field: ICandidateJobsSetDialogs['field'],

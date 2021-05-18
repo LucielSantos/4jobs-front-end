@@ -1,7 +1,7 @@
 import { call, ForkEffect, put, takeEvery } from '@redux-saga/core/effects';
 import { AxiosResponse } from 'axios';
 import { getJobPreview } from '../../../services/job';
-import { IJobPreview } from '../../../types';
+import { IJobPreview, ILinkJob } from '../../../types';
 import { ISagaParam } from '../types';
 import {
   handleSetJobPreview,
@@ -30,11 +30,11 @@ function* onGetJobPreview({ payload: { jobId } }: ISagaParam<{ jobId: string }>)
   }
 }
 
-function* handleApplyJob({ payload: { jobId } }: ISagaParam<{ jobId: string }>) {
+function* handleApplyJob({ payload }: ISagaParam<ILinkJob>) {
   try {
     yield put(onSetCandidateJobLoading('applyJob', true));
 
-    console.log(jobId);
+    console.log(payload);
 
     yield put(onSetCandidateJobLoading('applyJob', false));
   } catch (error) {

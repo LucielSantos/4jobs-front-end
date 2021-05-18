@@ -12,3 +12,8 @@ export interface IJobPreview {
     marketSegment: string;
   };
 }
+
+export interface ILinkJob {
+  jobId: string;
+  companyId: string;
+}

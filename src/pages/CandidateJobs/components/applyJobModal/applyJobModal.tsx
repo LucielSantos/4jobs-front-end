@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { Button, Flex, Form, Input, JobPreview, Modal } from '../../../../components';
 import { ICandidateJobsState } from '../../../../store/ducks/candidateJobs/types';
-import { IJobPreview } from '../../../../types';
+import { IJobPreview, ILinkJob } from '../../../../types';
 import { applyJobModalValidationSchema } from '../../../../validationSchemas';
 
 interface IProps {
@@ -13,7 +13,7 @@ interface IProps {
   handleClose(): void;
   handleCleanApplyModal(): void;
   handleGetJobPreview(jobId: string): void;
-  handleApplyJob(jobId: string): void;
+  handleApplyJob(data: ILinkJob): void;
 }
 
 const ApplyJobModalComponent: React.FC<IProps> = ({
@@ -35,7 +35,8 @@ const ApplyJobModalComponent: React.FC<IProps> = ({
   );
 
   const onClickApplyJob = useCallback(() => {
-    jobPreview && handleApplyJob(jobPreview.id);
+    jobPreview &&
+      handleApplyJob({ jobId: jobPreview.id, companyId: jobPreview.company.id });
   }, [jobPreview, handleApplyJob]);
 
   return (

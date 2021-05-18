@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions';
-import { IJobPreview } from '../../../types';
+import { IJobPreview, ILinkJob } from '../../../types';
 import {
   CandidateJobsActionTypes,
   ICandidateJobsSetDialogs,
@@ -32,5 +32,5 @@ export const handleSetApplyModalState = (
 export const handleCleanApplyModal = () =>
   action(CandidateJobsActionTypes.HANDLE_CLEAN_APPLY_MODAL);
 
-export const handleApplyJob = (jobId: string) =>
-  action(CandidateJobsActionTypes.HANDLE_APPLY_JOB, { jobId });
+export const handleApplyJob = (data: ILinkJob) =>
+  action(CandidateJobsActionTypes.HANDLE_APPLY_JOB, data);
