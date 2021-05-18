@@ -6,3 +6,5 @@ export * from './form';
 export * from './storage';
 export * from './history';
 export * from './clipboard';
+export * from './query';
+export * from './object';

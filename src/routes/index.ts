@@ -3,6 +3,8 @@ import CreateCompany from '../pages/CreateCompany';
 import CompanyJobs from '../pages/CompanyJobs';
 import CreateJob from '../pages/CreateJob';
 import CandidateJobs from '../pages/CandidateJobs';
+import PreJOb from '../pages/PreJob';
+
 import { IPrivateRoute, IPublicRoute } from './components';
 import { TNavbarStatesKeys, TUserTypeNum, userTypes } from '../constants';
 import { IIconProps } from '../assets/icons';
@@ -14,6 +16,7 @@ export const routePaths = {
   COMPANY_JOBS: '/company/jobs',
   CANDIDATE_JOBS: '/candidate/jobs',
   CREATE_JOB: '/company/createJob',
+  PRE_JOB: '/preJob',
 };
 
 export type ITNavbarStateByRoute = {
@@ -38,6 +41,7 @@ export const navbarStateByRoute: ITNavbarStateByRoute = {
   [routePaths.COMPANY_JOBS]: 'company',
   [routePaths.CANDIDATE_JOBS]: 'candidate',
   [routePaths.CREATE_JOB]: 'company',
+  [routePaths.PRE_JOB]: 'simple',
 };
 
 export const sidebarRoutes: ISidebarRoutes = {
@@ -63,6 +67,10 @@ export const publicRoutes: IPublicRoute[] = [
   {
     component: CreateCompany,
     path: routePaths.CREATE_COMPANY,
+  },
+  {
+    component: PreJOb,
+    path: routePaths.PRE_JOB,
   },
 ];
 

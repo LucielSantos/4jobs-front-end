@@ -7,6 +7,7 @@ import { createCandidateRootSaga } from './createCandidate/sagas';
 import { companyJobsRootSaga } from './companyJobs/sagas';
 import { createJobRootSaga } from './createJob/sagas';
 import { candidateJobsRootSaga } from './candidateJobs/sagas';
+import { preJobRootSaga } from './preJob/sagas';
 
 const all = Eff.all; // <-- new
 
@@ -19,6 +20,7 @@ export function* combineRootSagas(): Generator<ForkEffect<never>[]> {
     ...companyJobsRootSaga(),
     ...createJobRootSaga(),
     ...candidateJobsRootSaga(),
+    ...preJobRootSaga(),
   ];
   return sagas;
 }
