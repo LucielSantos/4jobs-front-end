@@ -24,10 +24,12 @@ export interface IJobCandidateList {
   id: string;
   challengeResolved: boolean;
   status: TJobResponseValues;
+  created_at: Date;
   job: {
     id: string;
     title: string;
     deadlineResolve: number;
     observations: string;
+    description: string;
   };
 }

@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect } from 'react';
-import { Button, Flex, Typography } from '../../components';
+import { Button, Flex, LoadingMessage, Typography } from '../../components';
 
 import { TCandidateJobsProps } from './';
-import { ApplyJobModal } from './components';
+import { ApplyJobModal, JobList } from './components';
 
 export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
   dialogs,
   loadings,
   applyModalState,
   jobPreview,
+  jobs,
   handleLoadJobs,
   handleGetJobPreview,
   handleCleanApplyModal,
@@ -29,16 +30,26 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
   );
 
   return (
-    <Flex>
-      <Typography size="xl">Candidate - Jobs</Typography>
+    <Flex flexDirection="column">
+      <Flex>
+        <Typography size="xl">Candidate - Jobs</Typography>
 
-      <Button
-        leftIcon={{ name: 'add', size: 'xs', color: 'four' }}
-        marginLeft="auto"
-        onClick={onClickApplyJob}
-      >
-        Adicionar vaga
-      </Button>
+        <Button
+          leftIcon={{ name: 'add', size: 'xs', color: 'four' }}
+          marginLeft="auto"
+          onClick={onClickApplyJob}
+        >
+          Adicionar vaga
+        </Button>
+      </Flex>
+
+      {loadings.loadJobs ? (
+        <Flex marginTop="xl">
+          <LoadingMessage text="Carregando vagas" />
+        </Flex>
+      ) : (
+        <JobList jobs={jobs} />
+      )}
 
       <ApplyJobModal
         open={dialogs.applyJob}
