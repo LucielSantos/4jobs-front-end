@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react';
 import { Icon } from '../../../../assets/icons';
 import { Divider, Flex, Popover, Tooltip, Typography } from '../../../../components';
+import { routePaths } from '../../../../routes';
 
 import { IJobInList } from '../../../../store/ducks/companyJobs/types';
-import { copyToClipboard, openNotification } from '../../../../utils';
+import { copyToClipboard, openNotification, queryStringify } from '../../../../utils';
 import { Container, Header, Footer, FooterLeftColumn, FooterRightColumn } from './styles';
 
 const renderInfoTooltip = (job: IJobInList) => {
@@ -21,9 +22,21 @@ interface IProps {
 }
 
 const JobListCardComponent: React.FC<IProps> = ({ job }) => {
-  const handleClickCopy = useCallback(() => {
+  const handleClickCopyId = useCallback(() => {
     copyToClipboard(job.id, () =>
       openNotification('Identificador copiado para área de transferências')
+    );
+  }, [job]);
+
+  const handleClickCopyPublicUrl = useCallback(() => {
+    const copyUrl = `${location.origin}/${routePaths.PRE_JOB}${queryStringify({
+      jobId: job.id,
+    })}`;
+
+    console.log(copyUrl);
+
+    copyToClipboard(copyUrl, () =>
+      openNotification('URL pública copiada para área de transferências')
     );
   }, [job]);
 
@@ -40,7 +53,10 @@ const JobListCardComponent: React.FC<IProps> = ({ job }) => {
           </Tooltip>
 
           <Popover
-            options={[{ children: 'Copiar identificador', onClick: handleClickCopy }]}
+            options={[
+              { children: 'Copiar identificador', onClick: handleClickCopyId },
+              { children: 'Copiar URL pública', onClick: handleClickCopyPublicUrl },
+            ]}
           />
         </Flex>
 
