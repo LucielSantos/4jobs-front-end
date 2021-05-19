@@ -1,5 +1,13 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
-import { Flex, Typography } from '../../components';
+import { Icon } from '../../assets/icons';
+import {
+  Button,
+  Divider,
+  Flex,
+  JobPreview,
+  LoadingMessage,
+  Typography,
+} from '../../components';
 import { routePaths } from '../../routes';
 import { querySearchParse } from '../../utils';
 
@@ -7,7 +15,12 @@ import { TPreJobProps } from './';
 
 import { Container } from './styles';
 
-export const PreJobView: React.FC<TPreJobProps> = ({ onLoadPage, history }) => {
+export const PreJobView: React.FC<TPreJobProps> = ({
+  history,
+  jobPreview,
+  loadings,
+  handleLoadJobPreview,
+}) => {
   const searchParams = useMemo<{ jobId?: string }>(() => querySearchParse(), []);
 
   const onEnterScreen = useCallback(() => {
@@ -15,17 +28,48 @@ export const PreJobView: React.FC<TPreJobProps> = ({ onLoadPage, history }) => {
       return history.push(routePaths.LOGIN);
     }
 
-    onLoadPage();
-  }, [onLoadPage, history, searchParams]);
+    handleLoadJobPreview(searchParams.jobId);
+  }, [handleLoadJobPreview, history, searchParams]);
 
   useEffect(() => {
     onEnterScreen();
   }, [onEnterScreen]);
 
+  const handleBack = useCallback(() => history.push(routePaths.LOGIN), [history]);
+
   return (
     <Flex justifyItems="center">
       <Container>
-        <Typography size="xl">Pre Job - Jobs</Typography>
+        <Flex alignItems="center">
+          <Icon name="arrowBack" size="sm" isButton clickable onClick={handleBack} />
+
+          <Typography size="lg" marginLeft="sm">
+            Pré visualizar vaga{' '}
+          </Typography>
+        </Flex>
+
+        <Divider margin="2rem" />
+
+        {loadings.page ? (
+          <LoadingMessage text="Carregando vaga" />
+        ) : (
+          <Flex
+            flexDirection="column"
+            backgroundColor="four"
+            borderRadius="8px"
+            padding="0 3rem 2rem 3rem"
+          >
+            <JobPreview job={jobPreview} />
+
+            <Flex marginTop="md">
+              <Button variant="tertiary" onClick={handleBack} marginLeft="auto">
+                Cancelar
+              </Button>
+
+              <Button marginLeft="sm">Realizar login e confirmar candidatura</Button>
+            </Flex>
+          </Flex>
+        )}
       </Container>
     </Flex>
   );

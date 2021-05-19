@@ -5,6 +5,7 @@ const INITIAL_STATE: IPreJobState = {
   loadings: {
     page: true,
   },
+  jobPreview: false,
 };
 
 const reducer: Reducer<IPreJobState> = (state = INITIAL_STATE, { type, payload }) => {
@@ -16,6 +17,12 @@ const reducer: Reducer<IPreJobState> = (state = INITIAL_STATE, { type, payload }
           ...state.loadings,
           [payload.field]: payload.value,
         },
+      };
+
+    case PreJobActionTypes.HANDLE_SET_JOB_PREVIEW:
+      return {
+        ...state,
+        jobPreview: payload,
       };
 
     default:

@@ -23,6 +23,8 @@ type TFlexFlexWrap = 'wrap' | 'nowrap';
 
 type TMargin = keyof DefaultTheme['spacings'];
 
+type TBackgroundColor = keyof DefaultTheme['colors'];
+
 interface IFlex {
   alignItems?: TFlexAlignItems;
   justifyItems?: TFlexJustifyContent;
@@ -34,6 +36,10 @@ interface IFlex {
   flexWrap?: TFlexFlexWrap;
   /** Default value is "auto" */
   notFullWidth?: boolean;
+  /** Default value is "transparent" */
+  backgroundColor?: TBackgroundColor;
+  borderRadius?: string;
+  padding?: string;
 }
 
 export const Flex = styled.div<IFlex>`
@@ -45,6 +51,14 @@ export const Flex = styled.div<IFlex>`
   align-items: ${({ alignItems = 'normal' }) => alignItems};
   justify-content: ${({ justifyItems = 'normal' }) => justifyItems};
   flex-wrap: ${({ flexWrap = 'nowrap' }) => flexWrap};
+
+  background-color: ${({ theme, backgroundColor }) =>
+    backgroundColor ? theme.colors[backgroundColor] : 'transparent'};
+  flex-wrap: ${({ flexWrap = 'nowrap' }) => flexWrap};
+
+  border-radius: ${({ borderRadius }) => borderRadius || 0};
+
+  padding: ${({ padding }) => padding || 0};
 
   margin-top: ${({ theme, marginTop }) => (marginTop ? theme.spacings[marginTop] : 0)};
   margin-right: ${({ theme, marginRight }) =>

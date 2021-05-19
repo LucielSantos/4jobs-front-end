@@ -12,7 +12,7 @@ const LoadingMessageComponent: React.FC<IProps> = ({ text }) => {
     <Flex flexDirection="column" alignItems="center" justifyItems="center">
       <CircularProgress size={50} />
 
-      {text && <Typography>{text}</Typography>}
+      {text && <Typography marginTop="xs">{text}</Typography>}
     </Flex>
   );
 };

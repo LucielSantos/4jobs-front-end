@@ -10,7 +10,7 @@ import { IPreJobState } from '../../store/ducks/preJob/types';
 interface IStateProps extends IPreJobState {}
 
 interface IDispatchProps {
-  onLoadPage(): void;
+  handleLoadJobPreview(jobId: string): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}
