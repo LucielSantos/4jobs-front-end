@@ -45,11 +45,6 @@ const JobPreviewComponent: React.FC<IProps> = ({ job }) => {
       <Typography marginTop="xs">{job.expectedResolution}</Typography>
 
       <Typography marginTop="md" color="three">
-        Solução esperada:
-      </Typography>
-      <Typography marginTop="xs">{job.observations}</Typography>
-
-      <Typography marginTop="md" color="three">
         Observações:
       </Typography>
       <Typography marginTop="xs">{job.observations}</Typography>

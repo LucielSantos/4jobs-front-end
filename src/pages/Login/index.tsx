@@ -14,7 +14,7 @@ interface IStateProps {
 
 interface IDispatchProps {
   setLoading(value: boolean): void;
-  handleLogin(loginData: ILogin): void;
+  handleLogin(loginData: ILogin, jobId: string | false): void;
   handleSetDialog(field: ILoginSetDialog['field'], value: ILoginSetDialog['value']): void;
 }
 

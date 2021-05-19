@@ -6,15 +6,23 @@ import { authenticateApi } from '../../../services';
 import { AxiosResponse } from 'axios';
 import { history, setStorageItem } from '../../../utils';
 import { onSetLoggedUser } from '../main/actions';
+import {
+  handleSetApplyModalState,
+  handleSetJobPreview,
+  onSetCandidateJobDialog,
+} from '../candidateJobs/actions';
 import { routePaths } from '../../../routes';
+import { userTypes } from '../../../constants';
+import { IJobPreview } from '../../../types';
+import { getJobPreview } from '../../../services/job';
 
-export function* login(param: ISagaParam<ILogin>) {
+export function* login(param: ISagaParam<{ data: ILogin; jobId: string | false }>) {
   try {
     yield put(setLoading(true));
 
     const response: AxiosResponse<ILoginSuccessData> = yield call(
       authenticateApi,
-      param.payload
+      param.payload.data
     );
 
     setStorageItem('local', 'token', response.data.token);
@@ -23,7 +31,24 @@ export function* login(param: ISagaParam<ILogin>) {
 
     yield put(onSetLoggedUser(response.data.user, response.data.userType));
 
-    history.push(routePaths.COMPANY_JOBS);
+    if (response.data.userType === userTypes.company) {
+      history.push(routePaths.COMPANY_JOBS);
+    }
+
+    if (response.data.userType === userTypes.candidate) {
+      if (param.payload.jobId) {
+        const responseJobPreview: AxiosResponse<IJobPreview> = yield call(
+          getJobPreview,
+          param.payload.jobId
+        );
+
+        yield put(handleSetJobPreview(responseJobPreview.data));
+        yield put(handleSetApplyModalState(2));
+        yield put(onSetCandidateJobDialog('applyJob', true));
+      }
+
+      history.push(routePaths.CANDIDATE_JOBS);
+    }
 
     yield put(setLoading(false));
   } catch (error) {
