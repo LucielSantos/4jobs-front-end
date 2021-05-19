@@ -6,13 +6,29 @@ import { handleSetLoading, handleSetJobPreview } from './actions';
 import { IJobPreview } from '../../../types';
 import { getJobPreview } from '../../../services/job';
 import { routePaths } from '../../../routes';
-import { history } from '../../../utils';
+import { getUserType, history } from '../../../utils';
+import { userTypes } from '../../../constants';
+import {
+  handleSetApplyModalState,
+  handleSetJobPreview as handleSetCandidateJobPreview,
+  onSetCandidateJobDialog,
+} from '../candidateJobs/actions';
 
 function* handleLoadJobPreview({ payload: { jobId } }: ISagaParam<{ jobId: string }>) {
   try {
     yield put(handleSetLoading('page', true));
 
     const response: AxiosResponse<IJobPreview> = yield call(getJobPreview, jobId);
+
+    const userType = getUserType();
+
+    if (userType && userType === userTypes.candidate) {
+      yield put(handleSetCandidateJobPreview(response.data));
+      yield put(handleSetApplyModalState(2));
+      yield put(onSetCandidateJobDialog('applyJob', true));
+
+      history.push(routePaths.CANDIDATE_JOBS);
+    }
 
     yield put(handleSetJobPreview(response.data));
 

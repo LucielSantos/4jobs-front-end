@@ -29,7 +29,7 @@ const JobListCardComponent: React.FC<IProps> = ({ job }) => {
   }, [job]);
 
   const handleClickCopyPublicUrl = useCallback(() => {
-    const copyUrl = `${location.origin}/${routePaths.PRE_JOB}${queryStringify({
+    const copyUrl = `${location.origin}${routePaths.PRE_JOB}${queryStringify({
       jobId: job.id,
     })}`;
 

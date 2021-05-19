@@ -70,7 +70,9 @@ export const MainView: React.FC<MainViewProps> = ({
       <Navbar navbarState={navbar} history={history} />
 
       <Content>
-        {loggedUserType ? <Sidebar userType={loggedUserType} history={history} /> : null}
+        {loggedUserType && history.location.pathname !== routePaths.PRE_JOB ? (
+          <Sidebar userType={loggedUserType} history={history} />
+        ) : null}
 
         <Body isLoggedUser={!!loggedUser}>
           <Router />
