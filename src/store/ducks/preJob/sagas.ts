@@ -5,6 +5,8 @@ import { PreJobActionTypes } from './types';
 import { handleSetLoading, handleSetJobPreview } from './actions';
 import { IJobPreview } from '../../../types';
 import { getJobPreview } from '../../../services/job';
+import { routePaths } from '../../../routes';
+import { history } from '../../../utils';
 
 function* handleLoadJobPreview({ payload: { jobId } }: ISagaParam<{ jobId: string }>) {
   try {
@@ -16,6 +18,8 @@ function* handleLoadJobPreview({ payload: { jobId } }: ISagaParam<{ jobId: strin
 
     yield put(handleSetLoading('page', false));
   } catch (error) {
+    history.push(routePaths.LOGIN);
+
     yield put(handleSetLoading('page', false));
   }
 }

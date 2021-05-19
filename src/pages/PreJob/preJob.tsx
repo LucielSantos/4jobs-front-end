@@ -9,7 +9,7 @@ import {
   Typography,
 } from '../../components';
 import { routePaths } from '../../routes';
-import { querySearchParse } from '../../utils';
+import { querySearchParse, queryStringify } from '../../utils';
 
 import { TPreJobProps } from './';
 
@@ -36,6 +36,14 @@ export const PreJobView: React.FC<TPreJobProps> = ({
   }, [onEnterScreen]);
 
   const handleBack = useCallback(() => history.push(routePaths.LOGIN), [history]);
+
+  const handleClickConfirm = useCallback(() => {
+    console.log('handleClickConfirm');
+
+    if (searchParams?.jobId) {
+      history.push(`${routePaths.LOGIN}${queryStringify({ jobId: searchParams.jobId })}`);
+    }
+  }, [searchParams, history]);
 
   return (
     <Flex justifyItems="center">
@@ -66,7 +74,9 @@ export const PreJobView: React.FC<TPreJobProps> = ({
                 Cancelar
               </Button>
 
-              <Button marginLeft="sm">Realizar login e confirmar candidatura</Button>
+              <Button marginLeft="sm" onClick={handleClickConfirm}>
+                Realizar login e confirmar candidatura
+              </Button>
             </Flex>
           </Flex>
         )}

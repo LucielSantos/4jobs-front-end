@@ -59,6 +59,7 @@ export const Flex = styled.div<IFlex>`
   border-radius: ${({ borderRadius }) => borderRadius || 0};
 
   padding: ${({ padding }) => padding || 0};
+  box-sizing: border-box;
 
   margin-top: ${({ theme, marginTop }) => (marginTop ? theme.spacings[marginTop] : 0)};
   margin-right: ${({ theme, marginRight }) =>
