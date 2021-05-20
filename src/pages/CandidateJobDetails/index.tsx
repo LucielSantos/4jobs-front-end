@@ -5,12 +5,16 @@ import { RouteComponentProps } from 'react-router';
 import { IApplicationState } from '../../store';
 import { CandidateJobDetailsView } from './candidateJobDetails';
 import * as CandidateJobDetailsActions from '../../store/ducks/candidateJobDetails/actions';
-import { ICandidateJobDetailsState } from '../../store/ducks/candidateJobDetails/types';
+import {
+  ICandidateJobDetailsDialogs,
+  ICandidateJobDetailsState,
+} from '../../store/ducks/candidateJobDetails/types';
 
 interface IStateProps extends ICandidateJobDetailsState {}
 
 interface IDispatchProps {
   handleLoadJobDetails(jobId: string): void;
+  handleSetDialog(field: keyof ICandidateJobDetailsDialogs, value: boolean): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}

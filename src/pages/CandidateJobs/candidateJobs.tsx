@@ -36,7 +36,7 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
   const onClickCard = useCallback(
     (job: IJobCandidateList) => {
       history.push(
-        `${routePaths.CANDIDATE_JOBS_DETAILS}${queryStringify({ jobId: job.job.id })}`
+        `${routePaths.CANDIDATE_JOBS_DETAILS}${queryStringify({ jobId: job.id })}`
       );
     },
     [history]

@@ -3,8 +3,12 @@ import { CandidateJobDetailsActionTypes, ICandidateJobDetailsState } from './typ
 
 const INITIAL_STATE: ICandidateJobDetailsState = {
   loadings: {
-    page: true,
+    getDetails: true,
   },
+  dialogs: {
+    reply: false,
+  },
+  jobDetails: false,
 };
 
 const reducer: Reducer<ICandidateJobDetailsState> = (
@@ -17,6 +21,21 @@ const reducer: Reducer<ICandidateJobDetailsState> = (
         ...state,
         loadings: {
           ...state.loadings,
+          [payload.field]: payload.value,
+        },
+      };
+
+    case CandidateJobDetailsActionTypes.HANDLE_SET_JOB_DETAILS:
+      return {
+        ...state,
+        jobDetails: payload,
+      };
+
+    case CandidateJobDetailsActionTypes.HANDLE_SET_DIALOG:
+      return {
+        ...state,
+        dialogs: {
+          ...state.dialogs,
           [payload.field]: payload.value,
         },
       };

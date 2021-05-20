@@ -1,13 +1,19 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
-import { Typography } from '../../components';
+import React, { useCallback, useLayoutEffect, useMemo } from 'react';
+import { Icon } from '../../assets/icons';
+import { Flex, LoadingMessage, Typography } from '../../components';
 import { routePaths } from '../../routes';
-import { querySearchParse } from '../../utils';
+import { goBack, querySearchParse } from '../../utils';
 
 import { TCandidateJobDetailsProps } from './';
+import { JobDetails, ReplyModal } from './components';
 
 export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
   history,
+  jobDetails,
+  loadings,
+  dialogs,
   handleLoadJobDetails,
+  handleSetDialog,
 }) => {
   const searchParams = useMemo<{ jobId?: string }>(() => querySearchParse(), []);
 
@@ -21,13 +27,37 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
     handleLoadJobDetails(searchParams.jobId);
   }, [handleLoadJobDetails, history, searchParams?.jobId]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     onEnterScreen();
   }, [onEnterScreen]);
 
+  const handleClickReply = useCallback(() => handleSetDialog('reply', true), [
+    handleSetDialog,
+  ]);
+
+  const handleCloseReply = useCallback(() => handleSetDialog('reply', false), [
+    handleSetDialog,
+  ]);
+
   return (
     <div>
-      <Typography size="xl">CandidateJobDetailsView</Typography>
+      <Flex>
+        <Icon name="arrowBack" clickable size="sm" isButton onClick={goBack} />
+
+        <Typography size="xl" marginLeft="sm">
+          Detalhes da vaga
+        </Typography>
+      </Flex>
+
+      {loadings.getDetails ? (
+        <Flex justifyItems="center" marginTop="xl">
+          <LoadingMessage text="Carregando detalhes" />
+        </Flex>
+      ) : jobDetails ? (
+        <JobDetails jobDetails={jobDetails} onClickReply={handleClickReply} />
+      ) : null}
+
+      <ReplyModal open={dialogs.reply} handleClose={handleCloseReply} />
     </div>
   );
 };
