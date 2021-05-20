@@ -10,7 +10,7 @@ import { ICandidateJobDetailsState } from '../../store/ducks/candidateJobDetails
 interface IStateProps extends ICandidateJobDetailsState {}
 
 interface IDispatchProps {
-  onLoadPage(): void;
+  handleLoadJobDetails(jobId: string): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}

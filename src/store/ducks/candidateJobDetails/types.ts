@@ -1,7 +1,7 @@
 // Action types
 export const CandidateJobDetailsActionTypes = {
   HANDLE_SET_LOADING: '@candidateJobDetails/HANDLE_SET_LOADING',
-  ON_LOAD_PAGE: '@candidateJobDetails/ON_LOAD_PAGE',
+  HANDLE_LOAD_JOB_DETAILS: '@candidateJobDetails/HANDLE_LOAD_JOB_DETAILS',
 };
 
 // Data types

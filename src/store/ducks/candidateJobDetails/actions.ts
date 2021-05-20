@@ -1,4 +1,5 @@
 import { action } from 'typesafe-actions';
 import { CandidateJobDetailsActionTypes } from './types';
 
-export const onLoadPage = () => action(CandidateJobDetailsActionTypes.ON_LOAD_PAGE);
+export const handleLoadJobDetails = (jobId: string) =>
+  action(CandidateJobDetailsActionTypes.HANDLE_LOAD_JOB_DETAILS, { jobId });
