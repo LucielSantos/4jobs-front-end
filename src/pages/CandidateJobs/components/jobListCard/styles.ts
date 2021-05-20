@@ -10,6 +10,18 @@ export const Container = styled.div`
   margin-bottom: 3rem;
   background-color: ${({ theme }) => theme.colors.four};
   flex-direction: column;
+
+  cursor: pointer;
+
+  transition: filter 0.2s;
+
+  :hover {
+    filter: brightness(90%);
+  }
+
+  :active {
+    filter: brightness(85%);
+  }
 `;
 
 export const Header = styled.div`

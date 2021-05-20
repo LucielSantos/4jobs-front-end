@@ -3,7 +3,8 @@ import CreateCompany from '../pages/CreateCompany';
 import CompanyJobs from '../pages/CompanyJobs';
 import CreateJob from '../pages/CreateJob';
 import CandidateJobs from '../pages/CandidateJobs';
-import PreJOb from '../pages/PreJob';
+import PreJob from '../pages/PreJob';
+import CandidateJobDetails from '../pages/CandidateJobDetails';
 
 import { IPrivateRoute, IPublicRoute } from './components';
 import { TNavbarStatesKeys, TUserTypeNum, userTypes } from '../constants';
@@ -15,6 +16,7 @@ export const routePaths = {
   CREATE_COMPANY: '/createCompany',
   COMPANY_JOBS: '/company/jobs',
   CANDIDATE_JOBS: '/candidate/jobs',
+  CANDIDATE_JOBS_DETAILS: '/candidate/jobs/details',
   CREATE_JOB: '/company/createJob',
   PRE_JOB: '/preJob',
 };
@@ -40,6 +42,7 @@ export const navbarStateByRoute: ITNavbarStateByRoute = {
   [routePaths.CREATE_COMPANY]: 'simple',
   [routePaths.COMPANY_JOBS]: 'company',
   [routePaths.CANDIDATE_JOBS]: 'candidate',
+  [routePaths.CANDIDATE_JOBS_DETAILS]: 'candidate',
   [routePaths.CREATE_JOB]: 'company',
   [routePaths.PRE_JOB]: 'simple',
 };
@@ -69,25 +72,33 @@ export const publicRoutes: IPublicRoute[] = [
     path: routePaths.CREATE_COMPANY,
   },
   {
-    component: PreJOb,
+    component: PreJob,
     path: routePaths.PRE_JOB,
   },
 ];
 
 export const privateRoutes: IPrivateRoute[] = [
+  // Company routes
   {
     component: CompanyJobs,
     path: routePaths.COMPANY_JOBS,
     userType: userTypes.company,
   },
   {
-    component: CandidateJobs,
-    path: routePaths.CANDIDATE_JOBS,
-    userType: userTypes.candidate,
-  },
-  {
     component: CreateJob,
     path: routePaths.CREATE_JOB,
     userType: userTypes.company,
+  },
+  // Candidate routes
+  {
+    component: CandidateJobs,
+    path: routePaths.CANDIDATE_JOBS,
+    userType: userTypes.candidate,
+    exact: true,
+  },
+  {
+    component: CandidateJobDetails,
+    path: routePaths.CANDIDATE_JOBS_DETAILS,
+    userType: userTypes.candidate,
   },
 ];

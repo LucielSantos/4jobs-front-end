@@ -6,11 +6,12 @@ import { Container, Header, Footer, FooterLeftColumn, FooterRightColumn } from '
 
 interface IProps {
   job: IJobCandidateList;
+  onClickCard(job: IJobCandidateList): void;
 }
 
-const JobListCardComponent: React.FC<IProps> = ({ job }) => {
+const JobListCardComponent: React.FC<IProps> = ({ job, onClickCard }) => {
   return (
-    <Container>
+    <Container onClick={() => onClickCard(job)}>
       <Header>
         <Flex alignItems="center">
           <Typography size="lg" marginRight="auto">
