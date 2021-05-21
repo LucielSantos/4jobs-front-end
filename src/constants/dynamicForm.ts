@@ -20,5 +20,4 @@ export const dynamicFormFields: IDynamicFormField[] = [
   { value: 'decimal', label: 'Decimal' },
   { value: 'date', label: 'Data' },
   { value: 'textArea', label: 'Área de texto' },
-  { value: 'url', label: 'URL' },
 ];

@@ -8,6 +8,8 @@ export const matchPasswordError: string = 'Senhas não são iguais';
 
 export const invalidFormat: string = 'Formato inválido';
 
+export const invalidURL: string = 'URL inválida';
+
 export const mountMaxChar = (maxChars: number): string =>
   `Deve conter no máximo ${maxChars} caractéres`;
 

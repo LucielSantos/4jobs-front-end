@@ -6,7 +6,7 @@ const INITIAL_STATE: ICandidateJobDetailsState = {
     getDetails: true,
   },
   dialogs: {
-    reply: false,
+    reply: true,
   },
   jobDetails: false,
 };

@@ -7,3 +7,5 @@ export * from './select';
 export * from './inputPassword';
 export * from './tagInput';
 export * from './checkbox';
+export * from './dynamicForm';
+export * from './dateInput';

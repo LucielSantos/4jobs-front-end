@@ -5,6 +5,13 @@ export const masksInput = {
     prefix: '',
     thousandsSeparatorSymbol: '.',
   }),
+  decimal: createNumberMask({
+    prefix: '',
+    thousandsSeparatorSymbol: '.',
+    allowDecimal: true,
+    decimalSymbol: ',',
+    decimalLimit: 2,
+  }),
   cnpj: [
     /\d/,
     /\d/,

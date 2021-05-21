@@ -57,7 +57,13 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
         <JobDetails jobDetails={jobDetails} onClickReply={handleClickReply} />
       ) : null}
 
-      <ReplyModal open={dialogs.reply} handleClose={handleCloseReply} />
+      {jobDetails ? (
+        <ReplyModal
+          open={dialogs.reply}
+          handleClose={handleCloseReply}
+          fields={jobDetails.job.fields}
+        />
+      ) : null}
     </div>
   );
 };
