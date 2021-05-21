@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { IDynamicFormField } from '../store/ducks/createJob/types';
-import { requiredMessage, invalidURL } from './messages';
+import { requiredMessage } from './messages';
 
 function validate(value: string | undefined, context: any) {
   const fields = context.options.schemaParams.fields as IDynamicFormField[];
