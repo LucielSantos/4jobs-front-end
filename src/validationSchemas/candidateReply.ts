@@ -16,7 +16,7 @@ function validate(value: string | undefined, context: any) {
 export const candidateReplyDynamicFormValidationSchema = Yup.object().shape({
   fields: Yup.array().of(
     Yup.object().shape({
-      response: Yup.string().test('test-field', requiredMessage, validate),
+      value: Yup.string().test('test-field', requiredMessage, validate),
     })
   ),
 });

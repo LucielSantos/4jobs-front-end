@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions';
-import { IJobCandidateDetails } from '../../../types';
+import { IJobCandidateDetails, IResponseFormJob } from '../../../types';
 import { ISetLoadingState } from '../types';
 import {
   CandidateJobDetailsActionTypes,
@@ -22,3 +22,6 @@ export const onSetLoading = (
   field: ISetLoadingState<ICandidateJobDetailsLoadings>['field'],
   value: ISetLoadingState<ICandidateJobDetailsLoadings>['value']
 ) => action(CandidateJobDetailsActionTypes.HANDLE_SET_LOADING, { field, value });
+
+export const handleReplyForm = (data: { jobId: string; fields: IResponseFormJob[] }) =>
+  action(CandidateJobDetailsActionTypes.HANDLE_REPLY_FORM, data);

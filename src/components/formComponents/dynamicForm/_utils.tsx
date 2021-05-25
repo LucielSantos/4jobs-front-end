@@ -6,25 +6,28 @@ import { Input } from '../';
 import { MaskedInput } from '../maskedInput';
 import { DateInput } from '../dateInput';
 
-export const renderField = (field: IDynamicFormField) => {
+const renderLabel = (field: IDynamicFormField) =>
+  `${field.title}${field.required ? ' *' : ''}`;
+
+export const renderField = (field: IDynamicFormField, name: string) => {
   switch (field.type) {
     case dynamicFormFieldValues.text:
-      return <Input name="response" label={field.title} />;
+      return <Input name={name} label={renderLabel(field)} />;
 
     case dynamicFormFieldValues.url:
-      return <Input name="response" label={field.title} />;
+      return <Input name={name} label={renderLabel(field)} />;
 
     case dynamicFormFieldValues.textArea:
-      return <Input name="response" label={field.title} multiline rows={4} />;
+      return <Input name={name} label={renderLabel(field)} multiline rows={4} />;
 
     case dynamicFormFieldValues.date:
-      return <DateInput name="response" label={field.title} />;
+      return <DateInput name={name} label={renderLabel(field)} />;
 
     case dynamicFormFieldValues.integer:
-      return <MaskedInput mask="number" name="response" label={field.title} />;
+      return <MaskedInput mask="number" name={name} label={renderLabel(field)} />;
 
     case dynamicFormFieldValues.decimal:
-      return <MaskedInput mask="decimal" name="response" label={field.title} />;
+      return <MaskedInput mask="decimal" name={name} label={renderLabel(field)} />;
 
     default:
       return null;

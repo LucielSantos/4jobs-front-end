@@ -1,18 +1,32 @@
 import React, { useCallback } from 'react';
 import { Button, DynamicForm, Flex, Form, Modal } from '../../../../components';
 import { IDynamicFormField } from '../../../../store/ducks/createJob/types';
+import { IResponseFormJob } from '../../../../types';
 import { candidateReplyDynamicFormValidationSchema } from '../../../../validationSchemas';
 
 interface IProps {
   open: boolean;
-  handleClose(): void;
+  isLoading: boolean;
   fields: IDynamicFormField[];
+  jobId: string;
+  handleClose(): void;
+  handleReplyForm(data: { jobId: string; fields: IResponseFormJob[] }): void;
 }
 
-const ReplyModalComponent: React.FC<IProps> = ({ open, handleClose, fields }) => {
-  const handleSubmit = useCallback(data => {
-    console.log(data);
-  }, []);
+const ReplyModalComponent: React.FC<IProps> = ({
+  open,
+  jobId,
+  fields,
+  isLoading,
+  handleClose,
+  handleReplyForm,
+}) => {
+  const handleSubmit = useCallback(
+    (data: { fields: IResponseFormJob[] }) => {
+      handleReplyForm({ jobId, fields: data.fields });
+    },
+    [handleReplyForm, jobId]
+  );
 
   return (
     <Modal
@@ -26,14 +40,14 @@ const ReplyModalComponent: React.FC<IProps> = ({ open, handleClose, fields }) =>
         validationSchema={candidateReplyDynamicFormValidationSchema}
         schemaParams={{ fields }}
       >
-        <DynamicForm fields={fields} path="fields" />
+        <DynamicForm fields={fields} path="fields" fieldsName="value" />
 
         <Flex marginTop="md">
           <Button marginLeft="auto" variant="tertiary" onClick={handleClose}>
-            Responder
+            Cancelar
           </Button>
 
-          <Button type="submit" marginLeft="sm">
+          <Button type="submit" marginLeft="sm" isLoading={isLoading}>
             Responder
           </Button>
         </Flex>

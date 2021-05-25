@@ -14,6 +14,7 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
   dialogs,
   handleLoadJobDetails,
   handleSetDialog,
+  handleReplyForm,
 }) => {
   const searchParams = useMemo<{ jobId?: string }>(() => querySearchParse(), []);
 
@@ -60,8 +61,11 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
       {jobDetails ? (
         <ReplyModal
           open={dialogs.reply}
-          handleClose={handleCloseReply}
+          jobId={jobDetails.id}
           fields={jobDetails.job.fields}
+          isLoading={loadings.saveForm}
+          handleClose={handleCloseReply}
+          handleReplyForm={handleReplyForm}
         />
       ) : null}
     </div>

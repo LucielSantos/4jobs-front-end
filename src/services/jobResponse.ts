@@ -1,6 +1,11 @@
 import { AxiosResponse } from 'axios';
 import {} from '../store/ducks/login/types';
-import { IJobCandidateDetails, IJobCandidateList, ILinkJob } from '../types';
+import {
+  IJobCandidateDetails,
+  IJobCandidateList,
+  ILinkJob,
+  IResponseFormJob,
+} from '../types';
 import { api } from './api';
 import { getErrorResponse } from './config/getError';
 
@@ -31,6 +36,21 @@ export const postApplyCandidateJob = async (
 ): Promise<AxiosResponse<IJobCandidateList>> => {
   try {
     const response = await api.post(`/jobsResponse/linkCandidateJob`, data);
+
+    return response;
+  } catch (error) {
+    throw getErrorResponse(error);
+  }
+};
+
+export const putReplyForm = async (
+  jobResponseId: string,
+  data: {
+    fields: IResponseFormJob[];
+  }
+): Promise<AxiosResponse<IJobCandidateDetails>> => {
+  try {
+    const response = await api.put(`/jobsResponse/replyForm/${jobResponseId}`, data);
 
     return response;
   } catch (error) {

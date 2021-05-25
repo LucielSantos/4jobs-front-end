@@ -9,3 +9,4 @@ export * from './tagInput';
 export * from './checkbox';
 export * from './dynamicForm';
 export * from './dateInput';
+export * from './hiddenInput';

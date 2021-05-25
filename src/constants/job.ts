@@ -4,7 +4,9 @@ export interface IJobResponseTypes {
   [key: string]: TJobResponseValues;
 }
 
-export const jobResponseTypes: IJobResponseTypes = {
+export const jobResponseTypes = {
   registered: 1,
   answering: 2,
+  answered: 3,
+  returned: 4,
 };

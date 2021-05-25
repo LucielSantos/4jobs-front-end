@@ -10,7 +10,14 @@ interface IProps {
 
 const TooltipComponent: React.FC<IProps> = ({ text, children, placement = 'bottom' }) => {
   return (
-    <TooltipMUI arrow placement={placement} title={text}>
+    <TooltipMUI
+      arrow
+      placement={placement}
+      title={text}
+      disableHoverListener={!text}
+      disableFocusListener={!text}
+      disableTouchListener={!text}
+    >
       <span>{children}</span>
     </TooltipMUI>
   );

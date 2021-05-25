@@ -4,9 +4,10 @@ import { CandidateJobDetailsActionTypes, ICandidateJobDetailsState } from './typ
 const INITIAL_STATE: ICandidateJobDetailsState = {
   loadings: {
     getDetails: true,
+    saveForm: false,
   },
   dialogs: {
-    reply: true,
+    reply: false,
   },
   jobDetails: false,
 };

@@ -53,3 +53,8 @@ export interface IJobCandidateDetails {
     fields: IDynamicFormField[];
   };
 }
+
+export interface IResponseFormJob {
+  value: string;
+  title: string;
+}

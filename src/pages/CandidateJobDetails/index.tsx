@@ -9,12 +9,14 @@ import {
   ICandidateJobDetailsDialogs,
   ICandidateJobDetailsState,
 } from '../../store/ducks/candidateJobDetails/types';
+import { IResponseFormJob } from '../../types';
 
 interface IStateProps extends ICandidateJobDetailsState {}
 
 interface IDispatchProps {
   handleLoadJobDetails(jobId: string): void;
   handleSetDialog(field: keyof ICandidateJobDetailsDialogs, value: boolean): void;
+  handleReplyForm(data: { jobId: string; fields: IResponseFormJob[] }): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}

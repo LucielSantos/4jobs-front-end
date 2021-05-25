@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { Button, Flex, Tags, Typography } from '../../../../components';
+import { Button, Flex, Tags, Tooltip, Typography } from '../../../../components';
+import { jobResponseTypes } from '../../../../constants';
 import { IJobCandidateDetails } from '../../../../types';
 
 import { Container } from './styles';
@@ -8,6 +9,26 @@ interface IProps {
   jobDetails: IJobCandidateDetails;
   onClickReply(): void;
 }
+
+const renderReplyTooltip = (jobStatus: IJobCandidateDetails['status']) => {
+  if (jobStatus === jobResponseTypes.registered) {
+    return 'Aguarde a empresa liberar o fomulário';
+  }
+
+  if (jobStatus === jobResponseTypes.answered) {
+    return 'Aguarde a empresa avaliar a sua resposta';
+  }
+
+  if (jobStatus === jobResponseTypes.answering) {
+    return false;
+  }
+
+  if (jobStatus === jobResponseTypes.returned) {
+    return 'Responda novamente ao formulário';
+  }
+
+  return false;
+};
 
 const JobDetailsComponent: React.FC<IProps> = ({ jobDetails, onClickReply }) => {
   const { job } = useMemo(() => jobDetails, [jobDetails]);
@@ -42,10 +63,19 @@ const JobDetailsComponent: React.FC<IProps> = ({ jobDetails, onClickReply }) => 
       </Typography>
       <Tags items={job.tags} />
 
-      <Flex>
-        <Button variant="secondary" marginLeft="auto" onClick={onClickReply}>
-          Responder formulário
-        </Button>
+      <Flex marginLeft="auto" notFullWidth>
+        <Tooltip text={renderReplyTooltip(jobDetails.status)}>
+          <Button
+            variant="secondary"
+            onClick={onClickReply}
+            disabled={
+              jobDetails.status !== jobResponseTypes.answering &&
+              jobDetails.status !== jobResponseTypes.returned
+            }
+          >
+            Responder formulário
+          </Button>
+        </Tooltip>
       </Flex>
     </Container>
   );

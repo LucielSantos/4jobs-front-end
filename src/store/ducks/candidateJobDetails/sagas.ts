@@ -1,10 +1,11 @@
 import { call, ForkEffect, put, takeEvery } from '@redux-saga/core/effects';
 import { ISagaParam } from '../types';
 import { CandidateJobDetailsActionTypes } from './types';
-import { onSetLoading, handleSetJobDetails } from './actions';
+import { onSetLoading, handleSetJobDetails, handleSetDialog } from './actions';
 import { AxiosResponse } from 'axios';
-import { IJobCandidateDetails } from '../../../types';
-import { getCandidateJobDetails } from '../../../services';
+import { IJobCandidateDetails, IResponseFormJob } from '../../../types';
+import { getCandidateJobDetails, putReplyForm } from '../../../services';
+import { openNotification } from '../../../utils';
 
 function* handleLoadJobDetails(data: ISagaParam<{ jobId: string }>) {
   try {
@@ -23,11 +24,36 @@ function* handleLoadJobDetails(data: ISagaParam<{ jobId: string }>) {
   }
 }
 
+function* handleReplyForm({
+  payload,
+}: ISagaParam<{ jobId: string; fields: IResponseFormJob[] }>) {
+  try {
+    yield put(onSetLoading('saveForm', true));
+
+    const response: AxiosResponse<IJobCandidateDetails> = yield call(
+      putReplyForm,
+      payload.jobId,
+      { fields: payload.fields }
+    );
+
+    yield put(handleSetJobDetails(response.data));
+
+    openNotification('Sua resposta foi enviada para avaliação');
+
+    yield put(handleSetDialog('reply', false));
+
+    yield put(onSetLoading('saveForm', false));
+  } catch (error) {
+    yield put(onSetLoading('saveForm', false));
+  }
+}
+
 export function candidateJobDetailsRootSaga(): ForkEffect<never>[] {
   return [
     takeEvery(
       CandidateJobDetailsActionTypes.HANDLE_LOAD_JOB_DETAILS,
       handleLoadJobDetails
     ),
+    takeEvery(CandidateJobDetailsActionTypes.HANDLE_REPLY_FORM, handleReplyForm),
   ];
 }
