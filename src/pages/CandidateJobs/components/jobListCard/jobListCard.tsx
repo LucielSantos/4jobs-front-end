@@ -1,6 +1,9 @@
+import { add } from 'date-fns';
 import React from 'react';
 import { Divider, Flex, Typography } from '../../../../components';
+import { jobResponseTypes, jobResponseTypesLabels } from '../../../../constants';
 import { IJobCandidateList } from '../../../../types';
+import { formatDate } from '../../../../utils';
 
 import { Container, Header, Footer, FooterLeftColumn, FooterRightColumn } from './styles';
 
@@ -30,18 +33,16 @@ const JobListCardComponent: React.FC<IProps> = ({ job, onClickCard }) => {
 
       <Footer>
         <FooterLeftColumn>
-          {/* TODO: integrate deadline resolve */}
           <Typography size="sm" marginBottom="xs">
-            Prazo da entrega: {new Date(job.created_at).toISOString()}
+            Prazo da entrega:{' '}
+            {formatDate(add(new Date(job.created_at), { days: job.job.deadlineResolve }))}
           </Typography>
-          {/* TODO: integrate status */}
-          <Typography size="sm">Status: xx</Typography>
+          <Typography size="sm">Status: {jobResponseTypesLabels[job.status]}</Typography>
         </FooterLeftColumn>
 
         <FooterRightColumn>
-          {/* TODO: integrate resolved boolean */}
           <Typography size="sm" marginTop="auto">
-            Desafio resolvido: xx
+            Desafio resolvido: {job.status === jobResponseTypes.answered ? 'SIM' : 'NÃO'}
           </Typography>
         </FooterRightColumn>
       </Footer>

@@ -8,3 +8,4 @@ export * from './history';
 export * from './clipboard';
 export * from './query';
 export * from './object';
+export * from './date';

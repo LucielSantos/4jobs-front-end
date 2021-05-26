@@ -10,3 +10,10 @@ export const jobResponseTypes = {
   answered: 3,
   returned: 4,
 };
+
+export const jobResponseTypesLabels = {
+  [jobResponseTypes.registered]: 'Triagem',
+  [jobResponseTypes.answering]: 'Pendente resposta',
+  [jobResponseTypes.answered]: 'Em avaliação',
+  [jobResponseTypes.returned]: 'Desafio devolvido',
+};
