@@ -1,7 +1,9 @@
+import { add } from 'date-fns';
 import React, { useMemo } from 'react';
 import { Button, Flex, Tags, Tooltip, Typography } from '../../../../components';
-import { jobResponseTypes } from '../../../../constants';
+import { jobResponseTypes, jobResponseTypesLabels } from '../../../../constants';
 import { IJobCandidateDetails } from '../../../../types';
+import { formatDate } from '../../../../utils';
 
 import { Container } from './styles';
 
@@ -40,8 +42,14 @@ const JobDetailsComponent: React.FC<IProps> = ({ jobDetails, onClickReply }) => 
       <Typography marginTop="lg" color="three">
         Prazo pra resolver o desafio:
       </Typography>
-      {/* TODO: calculate deadline resolve */}
-      <Typography marginTop="xs">{job.deadlineResolve}</Typography>
+      <Typography marginTop="xs">
+        {formatDate(add(new Date(jobDetails.created_at), { days: job.deadlineResolve }))}
+      </Typography>
+
+      <Typography marginTop="md" color="three">
+        Status:
+      </Typography>
+      <Typography marginTop="xs">{jobResponseTypesLabels[jobDetails.status]}</Typography>
 
       <Typography marginTop="md" color="three">
         Descrição:

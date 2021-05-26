@@ -71,21 +71,17 @@ const JobListCardComponent: React.FC<IProps> = ({ job }) => {
 
       <Footer>
         <FooterLeftColumn>
-          {/* TODO: integrate candidates count */}
           <Typography size="sm" marginBottom="xs">
-            Candidatos: xx
+            Candidatos: {job.candidates}
           </Typography>
-          {/* TODO: integrate answered count */}
-          <Typography size="sm">Respondidos: xx</Typography>
+          <Typography size="sm">Respondidos: {job.resolved}</Typography>
         </FooterLeftColumn>
 
         <FooterRightColumn>
-          {/* TODO: integrate awaiting resolution count */}
           <Typography size="sm" marginBottom="xs">
-            Aguardando resolução: xx
+            Aguardando resolução: {job.answering}
           </Typography>
-          {/* TODO: integrate in evaluation count */}
-          <Typography size="sm">Em avaliação: xx</Typography>
+          <Typography size="sm">Em avaliação: {job.inEvaluation}</Typography>
         </FooterRightColumn>
       </Footer>
     </Container>

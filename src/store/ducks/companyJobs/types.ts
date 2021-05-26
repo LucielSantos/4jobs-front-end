@@ -19,6 +19,10 @@ export interface IJobInList {
   observations: string;
   deadlineResolve: number;
   tags: IJob['tags'];
+  candidates: number;
+  resolved: number;
+  answering: number;
+  inEvaluation: number;
   // eslint-disable-next-line
   created_at: string;
 }
