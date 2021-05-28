@@ -5,6 +5,7 @@ import CreateJob from '../pages/CreateJob';
 import CandidateJobs from '../pages/CandidateJobs';
 import PreJob from '../pages/PreJob';
 import CandidateJobDetails from '../pages/CandidateJobDetails';
+import ManageJob from '../pages/ManageJob';
 
 import { IPrivateRoute, IPublicRoute } from './components';
 import { TNavbarStatesKeys, TUserTypeNum, userTypes } from '../constants';
@@ -18,6 +19,7 @@ export const routePaths = {
   CANDIDATE_JOBS: '/candidate/jobs',
   CANDIDATE_JOBS_DETAILS: '/candidate/jobs/details',
   CREATE_JOB: '/company/createJob',
+  MANAGE_JOB: '/company/manageJob',
   PRE_JOB: '/preJob',
 };
 
@@ -44,6 +46,7 @@ export const navbarStateByRoute: ITNavbarStateByRoute = {
   [routePaths.CANDIDATE_JOBS]: 'candidate',
   [routePaths.CANDIDATE_JOBS_DETAILS]: 'candidate',
   [routePaths.CREATE_JOB]: 'company',
+  [routePaths.MANAGE_JOB]: 'company',
   [routePaths.PRE_JOB]: 'simple',
 };
 
@@ -87,6 +90,11 @@ export const privateRoutes: IPrivateRoute[] = [
   {
     component: CreateJob,
     path: routePaths.CREATE_JOB,
+    userType: userTypes.company,
+  },
+  {
+    component: ManageJob,
+    path: routePaths.MANAGE_JOB,
     userType: userTypes.company,
   },
   // Candidate routes

@@ -4,7 +4,12 @@ import { Divider, Flex, Popover, Tooltip, Typography } from '../../../../compone
 import { routePaths } from '../../../../routes';
 
 import { IJobInList } from '../../../../store/ducks/companyJobs/types';
-import { copyToClipboard, openNotification, queryStringify } from '../../../../utils';
+import {
+  copyToClipboard,
+  history,
+  openNotification,
+  queryStringify,
+} from '../../../../utils';
 import { Container, Header, Footer, FooterLeftColumn, FooterRightColumn } from './styles';
 
 const renderInfoTooltip = (job: IJobInList) => {
@@ -33,15 +38,17 @@ const JobListCardComponent: React.FC<IProps> = ({ job }) => {
       jobId: job.id,
     })}`;
 
-    console.log(copyUrl);
-
     copyToClipboard(copyUrl, () =>
       openNotification('URL pública copiada para área de transferências')
     );
   }, [job]);
 
+  const handleClickCard = useCallback(() => {
+    history.push(`${routePaths.MANAGE_JOB}${queryStringify({ jobId: job.id })}`);
+  }, [job]);
+
   return (
-    <Container>
+    <Container onClick={handleClickCard}>
       <Header>
         <Flex alignItems="center">
           <Typography size="lg" marginRight="auto">
