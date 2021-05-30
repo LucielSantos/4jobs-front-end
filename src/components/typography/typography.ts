@@ -1,4 +1,4 @@
-import styled, { DefaultTheme } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 
 type TColor = keyof DefaultTheme['typography']['colors'];
 type TSize = keyof DefaultTheme['typography']['sizes'];
@@ -13,6 +13,7 @@ export interface ITypography {
   marginRight?: TMargin;
   marginBottom?: TMargin;
   marginLeft?: TMargin;
+  clickable?: boolean;
 }
 
 export const Typography = styled.p<ITypography>`
@@ -26,4 +27,19 @@ export const Typography = styled.p<ITypography>`
     marginBottom ? theme.spacings[marginBottom] : 0};
   margin-left: ${({ theme, marginLeft }) =>
     marginLeft ? theme.spacings[marginLeft] : 0};
+
+  ${({ clickable = false }) =>
+    clickable &&
+    css`
+      cursor: pointer;
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(80%);
+      }
+
+      &:active {
+        filter: brightness(90%);
+      }
+    `}
 `;
