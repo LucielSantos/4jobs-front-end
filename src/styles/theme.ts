@@ -7,7 +7,7 @@ export default {
     five: '#000000',
     six: '#8DABC4',
     seven: '#F44336',
-    eighth: '#D9C6FF',
+    eighth: '#e6e6e6',
 
     background: '#F3F3F3',
 
