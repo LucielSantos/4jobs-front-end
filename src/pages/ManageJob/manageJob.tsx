@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 import { TManageJobProps } from './';
 import { Container } from './styles';
@@ -17,6 +18,18 @@ export const ManageJobView: React.FC<TManageJobProps> = ({ handleLoadCandidates 
     console.log('handleCloseJob');
   }, []);
 
+  const handleDragStart = useCallback(() => {
+    console.log('handleDragStart');
+  }, []);
+
+  const handleDragUpdate = useCallback(() => {
+    console.log('handleDragUpdate');
+  }, []);
+
+  const handleDragEnd = useCallback(() => {
+    console.log('handleDragEnd');
+  }, []);
+
   return (
     <Container>
       <Header
@@ -24,7 +37,13 @@ export const ManageJobView: React.FC<TManageJobProps> = ({ handleLoadCandidates 
         onCloseJob={handleCloseJob}
       />
 
-      <Body />
+      <DragDropContext
+        onDragStart={handleDragStart}
+        onDragUpdate={handleDragUpdate}
+        onDragEnd={handleDragEnd}
+      >
+        <Body />
+      </DragDropContext>
     </Container>
   );
 };

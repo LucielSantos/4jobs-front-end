@@ -1,44 +1,20 @@
 import React from 'react';
-import { Typography } from '../../../../components';
 
-import { Container, Column, ColumnBody } from './styles';
+import { Container } from './styles';
+import { Column } from '../';
 
 interface IProps {}
 
 const BodyComponent: React.FC<IProps> = () => {
   return (
     <Container>
-      <Column>
-        <Typography size="lg">Pré avaliação</Typography>
+      <Column title="Uma" columnId="one" />
 
-        <ColumnBody>
-          <Typography>Column body</Typography>
-        </ColumnBody>
-      </Column>
+      <Column title="Duas" columnId="two" />
 
-      <Column>
-        <Typography size="lg">Em resolução</Typography>
+      <Column title="Três" columnId="three" />
 
-        <ColumnBody>
-          <Typography>Column body</Typography>
-        </ColumnBody>
-      </Column>
-
-      <Column>
-        <Typography size="lg">Em avaliação</Typography>
-
-        <ColumnBody>
-          <Typography>Column body</Typography>
-        </ColumnBody>
-      </Column>
-
-      <Column>
-        <Typography size="lg">Encerrados</Typography>
-
-        <ColumnBody>
-          <Typography>Column body</Typography>
-        </ColumnBody>
-      </Column>
+      <Column title="Quatro" columnId="four" />
     </Container>
   );
 };

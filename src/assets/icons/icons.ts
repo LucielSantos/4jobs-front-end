@@ -11,6 +11,7 @@ import {
   MdAdd as Add,
   MdAddCircle as AddCircle,
   MdInfo as Info,
+  MdMessage as Message,
 } from 'react-icons/md';
 import { IconType } from 'react-icons/lib';
 import { ImExit as Exit } from 'react-icons/im';
@@ -88,4 +89,5 @@ export const icons = {
   addCircle: addIconStyle(AddCircle),
   info: addIconStyle(Info),
   moreVert: addIconStyle(MoreVert),
+  message: addIconStyle(Message),
 };
