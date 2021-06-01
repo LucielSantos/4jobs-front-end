@@ -10,7 +10,7 @@ import { IManageJobState } from '../../store/ducks/manageJob/types';
 interface IStateProps extends IManageJobState {}
 
 interface IDispatchProps {
-  handleLoadCandidates(): void;
+  handleLoadCandidates(jobId: string): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}

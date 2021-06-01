@@ -58,3 +58,17 @@ export interface IResponseFormJob {
   value: string;
   title: string;
 }
+
+export interface ICandidateByJob {
+  id: string;
+  email: string;
+  name: string;
+  status: TJobResponseValues;
+}
+
+export interface IListCandidateByJob {
+  registered: ICandidateByJob[];
+  finished: ICandidateByJob[];
+  answering: ICandidateByJob[];
+  inEvaluation: ICandidateByJob[];
+}

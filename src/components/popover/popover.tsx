@@ -23,9 +23,17 @@ const PopoverComponent: React.FC<IProps> = ({ options }) => {
 
   const id = useMemo(() => (open ? 'simple-popover' : undefined), [open]);
 
-  const handleClick = useCallback((event: any) => setAnchorEl(event.currentTarget), []);
+  const handleClick = useCallback((event: any) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setAnchorEl(event.currentTarget);
+  }, []);
 
-  const handleClose = useCallback(() => setAnchorEl(null), []);
+  const handleClose = useCallback((event?: any) => {
+    event && event.preventDefault();
+    event && event.stopPropagation();
+    setAnchorEl(null);
+  }, []);
 
   const handleClickLine = useCallback(
     fc => () => {

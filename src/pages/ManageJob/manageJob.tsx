@@ -1,33 +1,41 @@
-import React, { useCallback, useEffect } from 'react';
-import { DragDropContext } from 'react-beautiful-dnd';
+import React, { useCallback, useEffect, useMemo } from 'react';
+import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 
 import { TManageJobProps } from './';
 import { Container } from './styles';
 import { Header, Body } from './components';
+import { goBack, querySearchParse } from '../../utils';
 
-export const ManageJobView: React.FC<TManageJobProps> = ({ handleLoadCandidates }) => {
+export const ManageJobView: React.FC<TManageJobProps> = ({
+  handleLoadCandidates,
+  candidates,
+}) => {
+  const { jobId } = useMemo<{ jobId: string }>(() => querySearchParse(), []);
+
   useEffect(() => {
-    handleLoadCandidates();
-  }, [handleLoadCandidates]);
+    if (!jobId) {
+      goBack();
+    }
+
+    handleLoadCandidates(jobId);
+  }, [handleLoadCandidates, jobId]);
 
   const handleCancelRegistrations = useCallback(() => {
     console.log('handleCancelRegistrations');
   }, []);
 
-  const handleCloseJob = useCallback(() => {
+  const handleCloseJob = useCallback((...params) => {
     console.log('handleCloseJob');
+    console.log(params);
   }, []);
 
-  const handleDragStart = useCallback(() => {
-    console.log('handleDragStart');
-  }, []);
+  const handleDragEnd = useCallback((result: DropResult) => {
+    const data = {
+      newStatus: result.destination ? parseInt(result.destination?.droppableId) : 1,
+      candidateId: result.draggableId,
+    };
 
-  const handleDragUpdate = useCallback(() => {
-    console.log('handleDragUpdate');
-  }, []);
-
-  const handleDragEnd = useCallback(() => {
-    console.log('handleDragEnd');
+    console.log(data);
   }, []);
 
   return (
@@ -37,12 +45,8 @@ export const ManageJobView: React.FC<TManageJobProps> = ({ handleLoadCandidates 
         onCloseJob={handleCloseJob}
       />
 
-      <DragDropContext
-        onDragStart={handleDragStart}
-        onDragUpdate={handleDragUpdate}
-        onDragEnd={handleDragEnd}
-      >
-        <Body />
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <Body candidates={candidates} />
       </DragDropContext>
     </Container>
   );

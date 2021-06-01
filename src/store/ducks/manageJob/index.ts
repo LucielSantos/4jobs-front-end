@@ -5,6 +5,12 @@ const INITIAL_STATE: IManageJobState = {
   loadings: {
     loadCandidates: true,
   },
+  candidates: {
+    answering: [],
+    inEvaluation: [],
+    registered: [],
+    finished: [],
+  },
 };
 
 const reducer: Reducer<IManageJobState> = (state = INITIAL_STATE, { type, payload }) => {
@@ -16,6 +22,12 @@ const reducer: Reducer<IManageJobState> = (state = INITIAL_STATE, { type, payloa
           ...state.loadings,
           [payload.field]: payload.value,
         },
+      };
+
+    case ManageJobActionTypes.HANDLE_SET_CANDIDATES:
+      return {
+        ...state,
+        candidates: payload,
       };
 
     default:

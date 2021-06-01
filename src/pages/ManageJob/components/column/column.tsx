@@ -4,29 +4,36 @@ import { Droppable } from 'react-beautiful-dnd';
 import { Typography } from '../../../../components';
 import { UserCard } from '../';
 import { Container, Body } from './styles';
+import { ICandidateByJob } from '../../../../types';
+import { TJobResponseValues } from '../../../../constants/job';
 
 interface IProps {
   title: string;
-  columnId: string;
+  columnId: TJobResponseValues;
+  candidates: ICandidateByJob[];
 }
 
-const ColumnComponent: React.FC<IProps> = ({ title, columnId }) => {
+const ColumnComponent: React.FC<IProps> = ({ title, columnId, candidates }) => {
   return (
-    <Droppable droppableId={columnId}>
-      {provided => (
-        <Container ref={provided.innerRef} {...provided.droppableProps}>
-          <Typography size="lg">{title}</Typography>
+    <Container>
+      <Typography size="lg">{title}</Typography>
+      <Droppable droppableId={`${columnId}`}>
+        {provided => (
+          <Body ref={provided.innerRef} {...provided.droppableProps}>
+            {candidates.map((candidate, index) => (
+              <UserCard
+                index={index}
+                cardId={candidate.id}
+                candidate={candidate}
+                key={`${candidate.id}-${index}`}
+              />
+            ))}
 
-          <Body>
-            <UserCard index={1} cardId={`${columnId}-one`} />
-
-            <UserCard index={2} cardId={`${columnId}-two`} />
+            {provided.placeholder}
           </Body>
-
-          {provided.placeholder}
-        </Container>
-      )}
-    </Droppable>
+        )}
+      </Droppable>
+    </Container>
   );
 };
 
