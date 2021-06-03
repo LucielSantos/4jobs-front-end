@@ -1,38 +1,65 @@
-import React from 'react';
-import { Droppable } from 'react-beautiful-dnd';
+import React, { useMemo } from 'react';
 
 import { Typography } from '../../../../components';
 import { UserCard } from '../';
 import { Container, Body } from './styles';
 import { ICandidateByJob } from '../../../../types';
-import { TJobResponseValues } from '../../../../constants/job';
-
+import { jobResponseTypes, TJobResponseValues } from '../../../../constants/job';
+import { useDrop } from 'react-dnd';
+import { IDropData } from '../../manageJob';
 interface IProps {
   title: string;
   columnId: TJobResponseValues;
   candidates: ICandidateByJob[];
+  handleDropCard(dropData: IDropData): void;
 }
 
-const ColumnComponent: React.FC<IProps> = ({ title, columnId, candidates }) => {
+const ColumnComponent: React.FC<IProps> = ({
+  title,
+  columnId,
+  candidates,
+  handleDropCard,
+}) => {
+  const accept = useMemo(
+    () => [
+      jobResponseTypes.answered,
+      jobResponseTypes.answering,
+      jobResponseTypes.finished,
+      jobResponseTypes.inEvaluation,
+      jobResponseTypes.registered,
+      jobResponseTypes.returned,
+    ],
+    []
+  );
+
+  const [, dropRef] = useDrop(
+    () => ({
+      accept: accept.filter(value => value !== columnId).map(value => `${value}`),
+      drop: ({ candidateId }: { candidateId: string }) => {
+        handleDropCard({ candidateId, newStatus: columnId });
+      },
+      collect: monitor => ({
+        isOver: !!monitor.isOver(),
+      }),
+    }),
+    []
+  );
+
   return (
     <Container>
       <Typography size="lg">{title}</Typography>
-      <Droppable droppableId={`${columnId}`}>
-        {provided => (
-          <Body ref={provided.innerRef} {...provided.droppableProps}>
-            {candidates.map((candidate, index) => (
-              <UserCard
-                index={index}
-                cardId={candidate.id}
-                candidate={candidate}
-                key={`${candidate.id}-${index}`}
-              />
-            ))}
 
-            {provided.placeholder}
-          </Body>
-        )}
-      </Droppable>
+      <Body ref={dropRef}>
+        {candidates.map((candidate, index) => (
+          <UserCard
+            index={index}
+            cardId={candidate.id}
+            candidate={candidate}
+            key={`${candidate.id}-${index}`}
+            columnId={columnId}
+          />
+        ))}
+      </Body>
     </Container>
   );
 };

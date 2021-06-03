@@ -1,10 +1,15 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
-import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 
 import { TManageJobProps } from './';
 import { Container } from './styles';
 import { Header, Body } from './components';
 import { goBack, querySearchParse } from '../../utils';
+import { TJobResponseValues } from '../../constants';
+
+export interface IDropData {
+  candidateId: string;
+  newStatus: TJobResponseValues;
+}
 
 export const ManageJobView: React.FC<TManageJobProps> = ({
   handleLoadCandidates,
@@ -29,13 +34,15 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
     console.log(params);
   }, []);
 
-  const handleDragEnd = useCallback((result: DropResult) => {
-    const data = {
-      newStatus: result.destination ? parseInt(result.destination?.droppableId) : 1,
-      candidateId: result.draggableId,
-    };
+  const handleDropCard = useCallback((dropData: IDropData) => {
+    // const data = {
+    //   newStatus: result.destination ? parseInt(result.destination?.droppableId) : 1,
+    //   candidateId: result.draggableId,
+    // };
 
-    console.log(data);
+    // console.log(data);
+
+    console.log(dropData);
   }, []);
 
   return (
@@ -45,9 +52,7 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
         onCloseJob={handleCloseJob}
       />
 
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <Body candidates={candidates} />
-      </DragDropContext>
+      <Body candidates={candidates} handleDropCard={handleDropCard} />
     </Container>
   );
 };

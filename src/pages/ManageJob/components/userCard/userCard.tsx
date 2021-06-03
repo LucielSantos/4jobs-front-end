@@ -1,7 +1,10 @@
 import React from 'react';
-import { Draggable } from 'react-beautiful-dnd';
+
+import { useDrag } from 'react-dnd';
+
 import { Icon } from '../../../../assets/icons';
 import { Typography } from '../../../../components';
+import { TJobResponseValues } from '../../../../constants';
 import { ICandidateByJob } from '../../../../types';
 
 import { Container } from './styles';
@@ -10,23 +13,27 @@ interface IProps {
   cardId: string;
   index: number;
   candidate: ICandidateByJob;
+  columnId: TJobResponseValues;
 }
 
-const UserCardComponent: React.FC<IProps> = ({ cardId, index, candidate }) => {
-  return (
-    <Draggable draggableId={cardId} index={index}>
-      {provided => (
-        <Container
-          {...provided.dragHandleProps}
-          {...provided.draggableProps}
-          ref={provided.innerRef}
-        >
-          <Typography>{candidate.name}</Typography>
+const UserCardComponent: React.FC<IProps> = ({ cardId, columnId, candidate }) => {
+  const [, dragRef] = useDrag(
+    () => ({
+      type: `${columnId}`,
+      item: { candidateId: candidate.id },
+      collect: monitor => ({
+        opacity: monitor.isDragging() ? 0.5 : 1,
+      }),
+    }),
+    []
+  );
 
-          <Icon name="message" size="sm" clickable />
-        </Container>
-      )}
-    </Draggable>
+  return (
+    <Container ref={dragRef}>
+      <Typography>{candidate.name}</Typography>
+
+      <Icon name="message" size="sm" clickable />
+    </Container>
   );
 };
 
