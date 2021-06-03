@@ -32,11 +32,11 @@ const ColumnComponent: React.FC<IProps> = ({
     []
   );
 
-  const [, dropRef] = useDrop(
+  const [{ isOver }, dropRef] = useDrop(
     () => ({
       accept: accept.filter(value => value !== columnId).map(value => `${value}`),
-      drop: ({ candidateId }: { candidateId: string }) => {
-        handleDropCard({ candidateId, newStatus: columnId });
+      drop: (candidate: ICandidateByJob) => {
+        handleDropCard({ candidate, newStatus: columnId });
       },
       collect: monitor => ({
         isOver: !!monitor.isOver(),
@@ -49,7 +49,7 @@ const ColumnComponent: React.FC<IProps> = ({
     <Container>
       <Typography size="lg">{title}</Typography>
 
-      <Body ref={dropRef}>
+      <Body ref={dropRef} isOver={isOver}>
         {candidates.map((candidate, index) => (
           <UserCard
             index={index}

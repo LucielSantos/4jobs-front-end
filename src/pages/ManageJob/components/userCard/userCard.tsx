@@ -16,11 +16,11 @@ interface IProps {
   columnId: TJobResponseValues;
 }
 
-const UserCardComponent: React.FC<IProps> = ({ cardId, columnId, candidate }) => {
+const UserCardComponent: React.FC<IProps> = ({ columnId, candidate }) => {
   const [, dragRef] = useDrag(
     () => ({
       type: `${columnId}`,
-      item: { candidateId: candidate.id },
+      item: { ...candidate },
       collect: monitor => ({
         opacity: monitor.isDragging() ? 0.5 : 1,
       }),

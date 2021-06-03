@@ -5,9 +5,10 @@ import { Container } from './styles';
 import { Header, Body } from './components';
 import { goBack, querySearchParse } from '../../utils';
 import { TJobResponseValues } from '../../constants';
+import { ICandidateByJob } from '../../types';
 
 export interface IDropData {
-  candidateId: string;
+  candidate: ICandidateByJob;
   newStatus: TJobResponseValues;
 }
 
