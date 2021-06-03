@@ -4,17 +4,12 @@ import { TManageJobProps } from './';
 import { Container } from './styles';
 import { Header, Body } from './components';
 import { goBack, querySearchParse } from '../../utils';
-import { TJobResponseValues } from '../../constants';
-import { ICandidateByJob } from '../../types';
-
-export interface IDropData {
-  candidate: ICandidateByJob;
-  newStatus: TJobResponseValues;
-}
+import { IDropData } from '../../types';
 
 export const ManageJobView: React.FC<TManageJobProps> = ({
-  handleLoadCandidates,
   candidates,
+  handleLoadCandidates,
+  handleChangeCandidateStatus,
 }) => {
   const { jobId } = useMemo<{ jobId: string }>(() => querySearchParse(), []);
 
@@ -35,16 +30,12 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
     console.log(params);
   }, []);
 
-  const handleDropCard = useCallback((dropData: IDropData) => {
-    // const data = {
-    //   newStatus: result.destination ? parseInt(result.destination?.droppableId) : 1,
-    //   candidateId: result.draggableId,
-    // };
-
-    // console.log(data);
-
-    console.log(dropData);
-  }, []);
+  const handleDropCard = useCallback(
+    (dropData: IDropData) => {
+      handleChangeCandidateStatus(dropData);
+    },
+    [handleChangeCandidateStatus]
+  );
 
   return (
     <Container>

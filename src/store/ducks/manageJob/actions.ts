@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions';
-import { IListCandidateByJob } from '../../../types';
+import { IDropData, IListCandidateByJob } from '../../../types';
 import { ISetLoadingState } from '../types';
 import { ManageJobActionTypes, IManageJobLoadings } from './types';
 
@@ -13,3 +13,6 @@ export const handleSetLoading = (
 
 export const handleSetCandidates = (data: IListCandidateByJob) =>
   action(ManageJobActionTypes.HANDLE_SET_CANDIDATES, data);
+
+export const handleChangeCandidateStatus = (data: IDropData) =>
+  action(ManageJobActionTypes.HANDLE_CHANGE_CANDIDATE_STATUS, data);

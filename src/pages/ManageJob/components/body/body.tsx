@@ -5,10 +5,9 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import { Container } from './styles';
 import { Column } from '../';
-import { IListCandidateByJob } from '../../../../types';
+import { IDropData, IListCandidateByJob } from '../../../../types';
 import { jobResponseTypes } from '../../../../constants';
 import { TJobResponseValues } from '../../../../constants/job';
-import { IDropData } from '../../manageJob';
 
 interface IProps {
   candidates: IListCandidateByJob;
@@ -21,6 +20,7 @@ const BodyComponent: React.FC<IProps> = ({ candidates, handleDropCard }) => {
       <Container>
         <Column
           title="Pré avaliação"
+          columnName="registered"
           columnId={jobResponseTypes.registered as TJobResponseValues}
           candidates={candidates.registered}
           handleDropCard={handleDropCard}
@@ -28,6 +28,7 @@ const BodyComponent: React.FC<IProps> = ({ candidates, handleDropCard }) => {
 
         <Column
           title="Em resolução"
+          columnName="answering"
           columnId={jobResponseTypes.answering as TJobResponseValues}
           candidates={candidates.answering}
           handleDropCard={handleDropCard}
@@ -35,6 +36,7 @@ const BodyComponent: React.FC<IProps> = ({ candidates, handleDropCard }) => {
 
         <Column
           title="Em avaliação"
+          columnName="inEvaluation"
           columnId={jobResponseTypes.inEvaluation as TJobResponseValues}
           candidates={candidates.inEvaluation}
           handleDropCard={handleDropCard}
@@ -42,6 +44,7 @@ const BodyComponent: React.FC<IProps> = ({ candidates, handleDropCard }) => {
 
         <Column
           title="Encerrados"
+          columnName="finished"
           columnId={jobResponseTypes.finished as TJobResponseValues}
           candidates={candidates.finished}
           handleDropCard={handleDropCard}

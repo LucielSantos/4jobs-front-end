@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+import { ICandidateByJob } from '../../../types';
 import { ManageJobActionTypes, IManageJobState } from './types';
 
 const INITIAL_STATE: IManageJobState = {
@@ -28,6 +29,21 @@ const reducer: Reducer<IManageJobState> = (state = INITIAL_STATE, { type, payloa
       return {
         ...state,
         candidates: payload,
+      };
+
+    case ManageJobActionTypes.HANDLE_CHANGE_CANDIDATE_STATUS:
+      return {
+        ...state,
+        candidates: {
+          ...state.candidates,
+          [payload.newColumnName]: [
+            ...state.candidates[payload.newColumnName],
+            payload.candidate,
+          ],
+          [payload.oldColumnName]: state.candidates[payload.oldColumnName].filter(
+            (candidate: ICandidateByJob) => candidate.id !== payload.candidate.id
+          ),
+        },
       };
 
     default:

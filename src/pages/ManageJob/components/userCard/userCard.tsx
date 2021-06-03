@@ -11,16 +11,17 @@ import { Container } from './styles';
 
 interface IProps {
   cardId: string;
+  columnName: string;
   index: number;
   candidate: ICandidateByJob;
   columnId: TJobResponseValues;
 }
 
-const UserCardComponent: React.FC<IProps> = ({ columnId, candidate }) => {
+const UserCardComponent: React.FC<IProps> = ({ columnId, candidate, columnName }) => {
   const [, dragRef] = useDrag(
     () => ({
       type: `${columnId}`,
-      item: { ...candidate },
+      item: { candidate, column: columnId, columnName },
       collect: monitor => ({
         opacity: monitor.isDragging() ? 0.5 : 1,
       }),

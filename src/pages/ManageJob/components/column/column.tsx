@@ -3,14 +3,15 @@ import React, { useMemo } from 'react';
 import { Typography } from '../../../../components';
 import { UserCard } from '../';
 import { Container, Body } from './styles';
-import { ICandidateByJob } from '../../../../types';
+import { ICandidateByJob, IDropData } from '../../../../types';
 import { jobResponseTypes, TJobResponseValues } from '../../../../constants/job';
 import { useDrop } from 'react-dnd';
-import { IDropData } from '../../manageJob';
+
 interface IProps {
   title: string;
   columnId: TJobResponseValues;
   candidates: ICandidateByJob[];
+  columnName: string;
   handleDropCard(dropData: IDropData): void;
 }
 
@@ -18,6 +19,7 @@ const ColumnComponent: React.FC<IProps> = ({
   title,
   columnId,
   candidates,
+  columnName,
   handleDropCard,
 }) => {
   const accept = useMemo(
@@ -35,8 +37,22 @@ const ColumnComponent: React.FC<IProps> = ({
   const [{ isOver }, dropRef] = useDrop(
     () => ({
       accept: accept.filter(value => value !== columnId).map(value => `${value}`),
-      drop: (candidate: ICandidateByJob) => {
-        handleDropCard({ candidate, newStatus: columnId });
+      drop: ({
+        candidate,
+        column,
+        columnName: candidateColumnName,
+      }: {
+        candidate: ICandidateByJob;
+        column: TJobResponseValues;
+        columnName: string;
+      }) => {
+        handleDropCard({
+          candidate,
+          newStatus: columnId,
+          oldStatus: column,
+          newColumnName: columnName,
+          oldColumnName: candidateColumnName,
+        });
       },
       collect: monitor => ({
         isOver: !!monitor.isOver(),
@@ -57,6 +73,7 @@ const ColumnComponent: React.FC<IProps> = ({
             candidate={candidate}
             key={`${candidate.id}-${index}`}
             columnId={columnId}
+            columnName={columnName}
           />
         ))}
       </Body>
