@@ -32,6 +32,10 @@ const NavbarComponent: React.FC<IProps> = ({ navbarState, history }) => {
     history.push(routePaths.LOGIN);
   }, [history]);
 
+  const handleNavigateProfile = useCallback(() => {
+    history.push(routePaths.CANDIDATE_PROFILE);
+  }, [history]);
+
   if (navbarState.state === navbarStates.hidden) {
     return null;
   }
@@ -57,6 +61,15 @@ const NavbarComponent: React.FC<IProps> = ({ navbarState, history }) => {
         </>
 
         <Divider />
+
+        <Icon
+          name="profile"
+          marginRight="sm"
+          color="four"
+          size="xs"
+          clickable
+          onClick={handleNavigateProfile}
+        />
 
         <Icon name="exit" color="four" size="xs" clickable onClick={handleLogout} />
       </ConditionalNavRender>

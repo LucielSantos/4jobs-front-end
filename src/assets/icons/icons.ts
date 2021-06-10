@@ -14,7 +14,7 @@ import {
   MdMessage as Message,
 } from 'react-icons/md';
 import { IconType } from 'react-icons/lib';
-import { ImExit as Exit } from 'react-icons/im';
+import { ImExit as Exit, ImProfile as Profile } from 'react-icons/im';
 import { HiLightBulb as Light } from 'react-icons/hi';
 import { FiMoreVertical as MoreVert } from 'react-icons/fi';
 
@@ -90,4 +90,5 @@ export const icons = {
   info: addIconStyle(Info),
   moreVert: addIconStyle(MoreVert),
   message: addIconStyle(Message),
+  profile: addIconStyle(Profile),
 };

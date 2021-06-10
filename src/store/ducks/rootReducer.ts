@@ -10,6 +10,7 @@ import candidateJobs from './candidateJobs';
 import preJob from './preJob';
 import candidateJobDetails from './candidateJobDetails';
 import manageJob from './manageJob';
+import candidateProfile from './candidateProfile';
 
 export default combineReducers({
   main,
@@ -22,4 +23,5 @@ export default combineReducers({
   preJob,
   candidateJobDetails,
   manageJob,
+  candidateProfile,
 });
