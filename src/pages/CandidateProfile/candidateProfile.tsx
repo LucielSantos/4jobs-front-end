@@ -107,7 +107,7 @@ export const CandidateProfileView: React.FC<TCandidateProfileProps> = ({
                     Cancelar
                   </Button>
 
-                  <Button type="submit" marginLeft="sm">
+                  <Button type="submit" marginLeft="sm" isLoading={loadings.save}>
                     Editar
                   </Button>
                 </Flex>

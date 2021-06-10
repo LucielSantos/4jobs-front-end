@@ -4,9 +4,9 @@ import { AxiosResponse } from 'axios';
 import { ISagaParam } from '../types';
 import { CandidateProfileActionTypes } from './types';
 import { handleSetLoading, handleSetDetails } from './actions';
-import { getLoggedUser } from '../../../utils';
+import { getLoggedUser, openNotification } from '../../../utils';
 import { ICandidateDetails, ICandidateDetailsEdit } from '../../../types';
-import { getCandidateById } from '../../../services';
+import { editCandidateById, getCandidateById } from '../../../services';
 
 function* handleLoadDetails(data: ISagaParam<{}>) {
   try {
@@ -33,9 +33,30 @@ function* handleEdit(data: ISagaParam<ICandidateDetailsEdit>) {
   try {
     yield put(handleSetLoading('save', true));
 
-    console.log(data.payload);
+    const loggedUser = getLoggedUser();
+
+    if (loggedUser) {
+      const response: AxiosResponse = yield call(
+        editCandidateById,
+        loggedUser?.id,
+        data.payload
+      );
+      if (response.status === 200) {
+        openNotification('Dados editados com sucesso');
+      }
+
+      yield put(handleSetLoading('save', false));
+
+      return true;
+    }
+
+    yield put(handleSetLoading('save', false));
+
+    return false;
   } catch (error) {
     yield put(handleSetLoading('save', false));
+
+    return false;
   }
 }
 
