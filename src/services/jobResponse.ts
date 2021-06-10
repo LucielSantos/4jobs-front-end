@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { TJobResponseValues } from '../constants';
 import {} from '../store/ducks/login/types';
 import {
   IJobCandidateDetails,
@@ -51,6 +52,21 @@ export const putReplyForm = async (
 ): Promise<AxiosResponse<IJobCandidateDetails>> => {
   try {
     const response = await api.put(`/jobsResponse/replyForm/${jobResponseId}`, data);
+
+    return response;
+  } catch (error) {
+    throw getErrorResponse(error);
+  }
+};
+
+export const patchChangeJobResponseStatus = async (
+  jobResponseId: string,
+  data: {
+    newStatus: TJobResponseValues;
+  }
+): Promise<AxiosResponse> => {
+  try {
+    const response = await api.patch(`/jobsResponse/${jobResponseId}/changeStatus`, data);
 
     return response;
   } catch (error) {

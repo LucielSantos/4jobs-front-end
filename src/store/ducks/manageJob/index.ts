@@ -5,6 +5,7 @@ import { ManageJobActionTypes, IManageJobState } from './types';
 const INITIAL_STATE: IManageJobState = {
   loadings: {
     loadCandidates: true,
+    changeCandidateStatus: false,
   },
   candidates: {
     answering: [],

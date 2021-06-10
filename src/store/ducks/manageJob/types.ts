@@ -11,6 +11,7 @@ export const ManageJobActionTypes = {
 // Data types
 export interface IManageJobLoadings {
   loadCandidates: boolean;
+  changeCandidateStatus: boolean;
 }
 
 // State types

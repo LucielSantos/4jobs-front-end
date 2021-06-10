@@ -1,10 +1,11 @@
 import { call, ForkEffect, put, takeEvery } from '@redux-saga/core/effects';
 import { AxiosResponse } from 'axios';
-import { getCandidatesByJob } from '../../../services';
-import { IListCandidateByJob } from '../../../types';
+import { getCandidatesByJob, patchChangeJobResponseStatus } from '../../../services';
+import { IDropData, IListCandidateByJob } from '../../../types';
 import { ISagaParam } from '../types';
 import { ManageJobActionTypes } from './types';
 import { handleSetLoading, handleSetCandidates } from './actions';
+import { openNotification } from '../../../utils';
 
 function* handleLoadCandidates({ payload }: ISagaParam<{ jobId: string }>) {
   try {
@@ -23,6 +24,29 @@ function* handleLoadCandidates({ payload }: ISagaParam<{ jobId: string }>) {
   }
 }
 
+function* handleChangeStatus({ payload }: ISagaParam<IDropData>) {
+  try {
+    yield put(handleSetLoading('changeCandidateStatus', true));
+
+    const response: AxiosResponse = yield call(
+      patchChangeJobResponseStatus,
+      payload.candidate.jobResponseId,
+      { newStatus: payload.newStatus }
+    );
+
+    if (response.status === 200) {
+      openNotification('Candidato movido com sucesso');
+    }
+
+    yield put(handleSetLoading('changeCandidateStatus', false));
+  } catch (error) {
+    yield put(handleSetLoading('changeCandidateStatus', false));
+  }
+}
+
 export function manageJobRootSaga(): ForkEffect<never>[] {
-  return [takeEvery(ManageJobActionTypes.HANDLE_LOAD_CANDIDATES, handleLoadCandidates)];
+  return [
+    takeEvery(ManageJobActionTypes.HANDLE_LOAD_CANDIDATES, handleLoadCandidates),
+    takeEvery(ManageJobActionTypes.HANDLE_CHANGE_CANDIDATE_STATUS, handleChangeStatus),
+  ];
 }

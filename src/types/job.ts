@@ -63,6 +63,7 @@ export interface ICandidateByJob {
   id: string;
   email: string;
   name: string;
+  jobResponseId: string;
   status: TJobResponseValues;
 }
 
