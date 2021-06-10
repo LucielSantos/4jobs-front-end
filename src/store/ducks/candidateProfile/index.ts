@@ -4,7 +4,9 @@ import { CandidateProfileActionTypes, ICandidateProfileState } from './types';
 const INITIAL_STATE: ICandidateProfileState = {
   loadings: {
     page: true,
+    save: false,
   },
+  details: false,
 };
 
 const reducer: Reducer<ICandidateProfileState> = (
@@ -19,6 +21,12 @@ const reducer: Reducer<ICandidateProfileState> = (
           ...state.loadings,
           [payload.field]: payload.value,
         },
+      };
+
+    case CandidateProfileActionTypes.HANDEL_SET_DETAILS:
+      return {
+        ...state,
+        details: payload,
       };
 
     default:

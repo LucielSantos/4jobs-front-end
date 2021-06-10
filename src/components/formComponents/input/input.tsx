@@ -20,6 +20,7 @@ export interface IInputProps {
   notErrorMargin?: boolean;
   marginLeft?: boolean;
   marginRight?: boolean;
+  disabled?: boolean;
   maskComponent?: any;
   floatingError?: boolean;
   mask?: TMaskProp;

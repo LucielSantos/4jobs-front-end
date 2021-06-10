@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import { History } from 'history';
 
-import { navbarStates } from '../../../../constants';
+import { navbarStates, userTypes } from '../../../../constants';
 import { INavbar } from '../../../../store/ducks/main/types';
 import { routePaths } from '../../../../routes';
 import { Icon } from '../../../../assets/icons';
@@ -62,14 +62,18 @@ const NavbarComponent: React.FC<IProps> = ({ navbarState, history }) => {
 
         <Divider />
 
-        <Icon
-          name="profile"
-          marginRight="sm"
-          color="four"
-          size="xs"
-          clickable
-          onClick={handleNavigateProfile}
-        />
+        <>
+          {loggedUserType === userTypes.candidate ? (
+            <Icon
+              name="profile"
+              marginRight="sm"
+              color="four"
+              size="xs"
+              clickable
+              onClick={handleNavigateProfile}
+            />
+          ) : null}
+        </>
 
         <Icon name="exit" color="four" size="xs" clickable onClick={handleLogout} />
       </ConditionalNavRender>

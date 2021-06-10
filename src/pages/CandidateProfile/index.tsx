@@ -6,11 +6,13 @@ import { IApplicationState } from '../../store';
 import { CandidateProfileView } from './candidateProfile';
 import * as CandidateProfileActions from '../../store/ducks/candidateProfile/actions';
 import { ICandidateProfileState } from '../../store/ducks/candidateProfile/types';
+import { ICandidateDetailsEdit } from '../../types';
 
 interface IStateProps extends ICandidateProfileState {}
 
 interface IDispatchProps {
   handleLoadDetails(): void;
+  handleEdit(data: ICandidateDetailsEdit): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}
