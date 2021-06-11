@@ -13,7 +13,6 @@ import {
   InputPassword,
   MaskedInput,
   PageContainer,
-  Select,
   Typography,
 } from '../../components';
 import { ICreateCompanyData } from '../../store/ducks/createCompany/types';
@@ -67,12 +66,16 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
               <Flex alignItems="flex-end">
                 <ImageInput name="profileImage" notErrorMargin />
 
-                <Input name="name" label="Nome da empresa" marginLeft notErrorMargin />
+                <div style={{ width: '100%' }}>
+                  <Input name="name" label="Nome da empresa" marginLeft notErrorMargin />
+                </div>
               </Flex>
             </Grid>
 
             <Grid container alignItems="flex-end" item xs={12} sm={5}>
-              <Input name="responsible" label="Nome do responsável" notErrorMargin />
+              <div style={{ width: '100%' }}>
+                <Input name="responsible" label="Nome do responsável" notErrorMargin />
+              </div>
             </Grid>
 
             <Grid item xs={12} sm={4}>
@@ -84,29 +87,11 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
             </Grid>
 
             <Grid item xs={12} sm={2}>
-              <Select
-                name="state"
-                label="UF"
-                notErrorMargin
-                options={[
-                  { value: 'idUm', label: 'um' },
-                  { value: 'idDois', label: 'dois' },
-                  { value: 'idTres', label: 'tres' },
-                ]}
-              />
+              <Input name="state" label="UF" notErrorMargin />
             </Grid>
 
             <Grid item xs={12} sm={3}>
-              <Select
-                name="city"
-                label="Cidade"
-                notErrorMargin
-                options={[
-                  { value: 'idUm', label: 'um' },
-                  { value: 'idDois', label: 'dois' },
-                  { value: 'idTres', label: 'tres' },
-                ]}
-              />
+              <Input name="city" label="Cidade" notErrorMargin />
             </Grid>
 
             <Grid item xs={12} sm={4}>
