@@ -1,10 +1,12 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { TManageJobProps } from './';
 import { Container } from './styles';
 import { Header, Body } from './components';
 import { goBack, querySearchParse } from '../../utils';
 import { IDropData } from '../../types';
+import { jobResponseTypes, TJobResponseValues } from '../../constants';
+import { UserDetailsModal } from '../../components';
 
 export const ManageJobView: React.FC<TManageJobProps> = ({
   candidates,
@@ -12,6 +14,9 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
   handleChangeCandidateStatus,
 }) => {
   const { jobId } = useMemo<{ jobId: string }>(() => querySearchParse(), []);
+
+  const [dialogs, setDialogs] = useState({ userDetails: false });
+  const [selectedCandidateId, setSelectedCandidateId] = useState<false | string>(false);
 
   useEffect(() => {
     if (!jobId) {
@@ -37,6 +42,26 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
     [handleChangeCandidateStatus]
   );
 
+  const handleSetDialog = useCallback((field: string, value: boolean) => {
+    setDialogs(oldState => ({ ...oldState, [field]: value }));
+  }, []);
+
+  const onClickCandidate = useCallback(
+    (candidateId: string, columnId: TJobResponseValues) => {
+      console.log(candidateId);
+      console.log(columnId);
+
+      if (
+        columnId === jobResponseTypes.registered ||
+        columnId === jobResponseTypes.answering
+      ) {
+        setSelectedCandidateId(candidateId);
+        handleSetDialog('userDetails', true);
+      }
+    },
+    [handleSetDialog]
+  );
+
   return (
     <Container>
       <Header
@@ -44,7 +69,22 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
         onCloseJob={handleCloseJob}
       />
 
-      <Body candidates={candidates} handleDropCard={handleDropCard} />
+      <Body
+        candidates={candidates}
+        handleDropCard={handleDropCard}
+        onClickCandidate={onClickCandidate}
+      />
+
+      {selectedCandidateId && (
+        <UserDetailsModal
+          open={dialogs.userDetails}
+          candidateId={selectedCandidateId}
+          handleClose={() => {
+            handleSetDialog('userDetails', false);
+            setSelectedCandidateId(false);
+          }}
+        />
+      )}
     </Container>
   );
 };

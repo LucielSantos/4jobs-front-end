@@ -14,3 +14,4 @@ export * from './divider';
 export * from './popover';
 export * from './jobPreview';
 export * from './tags';
+export * from './userDetailsModal';

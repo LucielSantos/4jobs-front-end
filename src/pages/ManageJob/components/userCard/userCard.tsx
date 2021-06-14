@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { useDrag } from 'react-dnd';
 
@@ -15,9 +15,15 @@ interface IProps {
   index: number;
   candidate: ICandidateByJob;
   columnId: TJobResponseValues;
+  onClickCandidate(candidateId: string, columnId: TJobResponseValues): void;
 }
 
-const UserCardComponent: React.FC<IProps> = ({ columnId, candidate, columnName }) => {
+const UserCardComponent: React.FC<IProps> = ({
+  columnId,
+  candidate,
+  columnName,
+  onClickCandidate,
+}) => {
   const [, dragRef] = useDrag(
     () => ({
       type: `${columnId}`,
@@ -29,8 +35,12 @@ const UserCardComponent: React.FC<IProps> = ({ columnId, candidate, columnName }
     []
   );
 
+  const onClickCard = useCallback(() => {
+    onClickCandidate(candidate.id, columnId);
+  }, [onClickCandidate, candidate, columnId]);
+
   return (
-    <Container ref={dragRef}>
+    <Container ref={dragRef} onClick={onClickCard}>
       <Typography>{candidate.name}</Typography>
 
       <Icon name="message" size="sm" clickable />
