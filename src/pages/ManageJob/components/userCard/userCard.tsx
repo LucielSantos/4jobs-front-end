@@ -3,11 +3,11 @@ import React, { useCallback } from 'react';
 import { useDrag } from 'react-dnd';
 
 import { Icon } from '../../../../assets/icons';
-import { Typography } from '../../../../components';
-import { TJobResponseValues } from '../../../../constants';
+import { Tooltip, Typography } from '../../../../components';
+import { jobResponseTypesLabels, TJobResponseValues } from '../../../../constants';
 import { ICandidateByJob } from '../../../../types';
 
-import { Container } from './styles';
+import { Container, StatusDot, StatusContainer } from './styles';
 
 interface IProps {
   cardId: string;
@@ -44,6 +44,12 @@ const UserCardComponent: React.FC<IProps> = ({
       <Typography>{candidate.name}</Typography>
 
       <Icon name="message" size="sm" clickable />
+
+      <StatusContainer>
+        <Tooltip text={jobResponseTypesLabels[candidate.status]} placement="top">
+          <StatusDot status={candidate.status} />
+        </Tooltip>
+      </StatusContainer>
     </Container>
   );
 };
