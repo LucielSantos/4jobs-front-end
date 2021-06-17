@@ -66,6 +66,15 @@ const JobDetailsComponent: React.FC<IProps> = ({ jobDetails, onClickReply }) => 
       </Typography>
       <Typography marginTop="xs">{job.observations}</Typography>
 
+      {jobDetails.status !== jobResponseTypes.registered && (
+        <>
+          <Typography marginTop="md" color="three">
+            Observações após pré-avaliação
+          </Typography>
+          <Typography marginTop="xs">{job.observationsAfterEvaluation}</Typography>
+        </>
+      )}
+
       <Typography marginTop="md" marginBottom="xs" color="three">
         Tags relacionadas:
       </Typography>

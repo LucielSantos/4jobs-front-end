@@ -18,6 +18,7 @@ const renderInfoTooltip = (job: IJobInList) => {
       Descrição: {job.description} <br />
       Sugestão esperada: {job.description} <br />
       Observações: {job.observations}
+      Observações pós pré-avaliação: {job.observationsAfterEvaluation}
     </>
   );
 };

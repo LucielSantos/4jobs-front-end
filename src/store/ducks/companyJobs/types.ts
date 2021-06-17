@@ -17,6 +17,7 @@ export interface IJobInList {
   title: string;
   description: string;
   observations: string;
+  observationsAfterEvaluation: string;
   deadlineResolve: number;
   tags: IJob['tags'];
   candidates: number;

@@ -113,6 +113,16 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
             </Grid>
 
             <Grid item xs={12}>
+              <Input
+                name="observationsAfterEvaluation"
+                label="Observações pós pré-avaliação"
+                multiline
+                rows={4}
+                floatingError
+              />
+            </Grid>
+
+            <Grid item xs={12}>
               <TagInput name="tags" label="Relacionar tags" floatingError isRequired />
             </Grid>
 

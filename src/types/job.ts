@@ -49,6 +49,7 @@ export interface IJobCandidateDetails {
     description: string;
     expectedResolution: string;
     observations: string;
+    observationsAfterEvaluation: string;
     tags: string[];
     fields: IDynamicFormField[];
   };
