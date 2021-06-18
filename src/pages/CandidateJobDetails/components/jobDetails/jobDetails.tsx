@@ -1,5 +1,6 @@
 import { add } from 'date-fns';
 import React, { useMemo } from 'react';
+import { Icon } from '../../../../assets/icons';
 import { Button, Flex, Tags, Tooltip, Typography } from '../../../../components';
 import { jobResponseTypes, jobResponseTypesLabels } from '../../../../constants';
 import { IJobCandidateDetails } from '../../../../types';
@@ -10,6 +11,7 @@ import { Container } from './styles';
 interface IProps {
   jobDetails: IJobCandidateDetails;
   onClickReply(): void;
+  onClickMessage(): void;
 }
 
 const renderReplyTooltip = (jobStatus: IJobCandidateDetails['status']) => {
@@ -32,12 +34,26 @@ const renderReplyTooltip = (jobStatus: IJobCandidateDetails['status']) => {
   return false;
 };
 
-const JobDetailsComponent: React.FC<IProps> = ({ jobDetails, onClickReply }) => {
+const JobDetailsComponent: React.FC<IProps> = ({
+  jobDetails,
+  onClickReply,
+  onClickMessage,
+}) => {
   const { job } = useMemo(() => jobDetails, [jobDetails]);
 
   return (
     <Container>
-      <Typography size="lg">{job.title}</Typography>
+      <Flex>
+        <Typography size="lg">{job.title}</Typography>
+
+        <Icon
+          name="message"
+          marginLeft="auto"
+          clickable
+          onClick={onClickMessage}
+          size="sm"
+        />
+      </Flex>
 
       <Typography marginTop="lg" color="three">
         Prazo pra resolver o desafio:

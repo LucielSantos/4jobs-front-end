@@ -6,13 +6,19 @@ import { JobListCard } from '../jobListCard';
 interface IProps {
   jobs: IJobCandidateList[];
   onClickCard(job: IJobCandidateList): void;
+  onClickMessage(jobId: string): void;
 }
 
-const JobListComponent: React.FC<IProps> = ({ jobs, onClickCard }) => {
+const JobListComponent: React.FC<IProps> = ({ jobs, onClickCard, onClickMessage }) => {
   return (
     <Flex marginTop="xl" flexWrap="wrap">
       {jobs.map((job, index) => (
-        <JobListCard job={job} key={`job-index-${index}`} onClickCard={onClickCard} />
+        <JobListCard
+          job={job}
+          key={`job-index-${index}`}
+          onClickCard={onClickCard}
+          onClickMessage={onClickMessage}
+        />
       ))}
     </Flex>
   );

@@ -1,5 +1,7 @@
 import { add } from 'date-fns';
-import React from 'react';
+import React, { useCallback } from 'react';
+
+import { Icon } from '../../../../assets/icons';
 import { Divider, Flex, Typography } from '../../../../components';
 import { jobResponseTypes, jobResponseTypesLabels } from '../../../../constants';
 import { IJobCandidateList } from '../../../../types';
@@ -10,9 +12,20 @@ import { Container, Header, Footer, FooterLeftColumn, FooterRightColumn } from '
 interface IProps {
   job: IJobCandidateList;
   onClickCard(job: IJobCandidateList): void;
+  onClickMessage(jobId: string): void;
 }
 
-const JobListCardComponent: React.FC<IProps> = ({ job, onClickCard }) => {
+const JobListCardComponent: React.FC<IProps> = ({ job, onClickCard, onClickMessage }) => {
+  const handleClickMessage = useCallback(
+    (e: MouseEvent) => {
+      e.stopPropagation();
+      e.preventDefault();
+
+      onClickMessage(job.id);
+    },
+    [job, onClickMessage]
+  );
+
   return (
     <Container onClick={() => onClickCard(job)}>
       <Header>
@@ -20,6 +33,14 @@ const JobListCardComponent: React.FC<IProps> = ({ job, onClickCard }) => {
           <Typography size="lg" marginRight="auto">
             {job.job.title}
           </Typography>
+
+          <Icon
+            name="message"
+            marginLeft="auto"
+            clickable
+            onClick={handleClickMessage}
+            size="sm"
+          />
         </Flex>
 
         <Flex>

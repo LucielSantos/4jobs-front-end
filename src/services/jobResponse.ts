@@ -5,6 +5,7 @@ import {
   IJobCandidateDetails,
   IJobCandidateList,
   ILinkJob,
+  IMessageJobResponseRequest,
   IResponseFormJob,
 } from '../types';
 import { api } from './api';
@@ -67,6 +68,18 @@ export const patchChangeJobResponseStatus = async (
 ): Promise<AxiosResponse> => {
   try {
     const response = await api.patch(`/jobsResponse/${jobResponseId}/changeStatus`, data);
+
+    return response;
+  } catch (error) {
+    throw getErrorResponse(error);
+  }
+};
+
+export const getJobResponseMessages = async (
+  jobResponseId: string
+): Promise<AxiosResponse<IMessageJobResponseRequest>> => {
+  try {
+    const response = await api.get(`/jobsResponse/${jobResponseId}/messages`);
 
     return response;
   } catch (error) {

@@ -23,6 +23,7 @@ export interface ICandidateJobsLoadings {
 
 export interface ICandidateJobsDialogs {
   applyJob: boolean;
+  messages: boolean;
 }
 
 export interface ICandidateJobsSetDialogs {

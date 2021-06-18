@@ -1,5 +1,12 @@
-import React, { useCallback, useEffect } from 'react';
-import { Button, Flex, LoadingMessage, Typography } from '../../components';
+import React, { useCallback, useEffect, useState } from 'react';
+
+import {
+  Button,
+  Flex,
+  LoadingMessage,
+  MessagesModal,
+  Typography,
+} from '../../components';
 import { routePaths } from '../../routes';
 import { IJobCandidateList } from '../../types';
 import { queryStringify } from '../../utils';
@@ -20,6 +27,8 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
   handleApplyJob,
   onSetCandidateJobDialog,
 }) => {
+  const [selectedJobId, setSelectedJobId] = useState<null | string>(null);
+
   useEffect(() => {
     handleLoadJobs();
   }, [handleLoadJobs]);
@@ -42,6 +51,14 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
     [history]
   );
 
+  const handleClickMessage = useCallback(
+    (jobId: string) => {
+      setSelectedJobId(jobId);
+      onSetCandidateJobDialog('messages', true);
+    },
+    [onSetCandidateJobDialog]
+  );
+
   return (
     <Flex flexDirection="column">
       <Flex>
@@ -61,7 +78,11 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
           <LoadingMessage text="Carregando vagas" />
         </Flex>
       ) : (
-        <JobList jobs={jobs} onClickCard={onClickCard} />
+        <JobList
+          jobs={jobs}
+          onClickCard={onClickCard}
+          onClickMessage={handleClickMessage}
+        />
       )}
 
       <ApplyJobModal
@@ -75,6 +96,17 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
         handleCleanApplyModal={handleCleanApplyModal}
         handleApplyJob={handleApplyJob}
       />
+
+      {selectedJobId ? (
+        <MessagesModal
+          open={dialogs.messages}
+          handleClose={() => {
+            setSelectedJobId(null);
+            onSetCandidateJobDialog('messages', false);
+          }}
+          jobResponseId={selectedJobId}
+        />
+      ) : null}
     </Flex>
   );
 };

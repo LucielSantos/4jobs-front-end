@@ -16,6 +16,7 @@ export interface ICandidateJobDetailsLoadings {
 }
 export interface ICandidateJobDetailsDialogs {
   reply: boolean;
+  messages: boolean;
 }
 
 // State types

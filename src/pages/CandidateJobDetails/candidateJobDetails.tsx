@@ -1,6 +1,6 @@
 import React, { useCallback, useLayoutEffect, useMemo } from 'react';
 import { Icon } from '../../assets/icons';
-import { Flex, LoadingMessage, Typography } from '../../components';
+import { Flex, LoadingMessage, MessagesModal, Typography } from '../../components';
 import { routePaths } from '../../routes';
 import { goBack, querySearchParse } from '../../utils';
 
@@ -40,6 +40,10 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
     handleSetDialog,
   ]);
 
+  const handleClickMessage = useCallback(() => handleSetDialog('messages', true), [
+    handleSetDialog,
+  ]);
+
   return (
     <div>
       <Flex>
@@ -55,7 +59,11 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
           <LoadingMessage text="Carregando detalhes" />
         </Flex>
       ) : jobDetails ? (
-        <JobDetails jobDetails={jobDetails} onClickReply={handleClickReply} />
+        <JobDetails
+          jobDetails={jobDetails}
+          onClickReply={handleClickReply}
+          onClickMessage={handleClickMessage}
+        />
       ) : null}
 
       {jobDetails ? (
@@ -66,6 +74,16 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
           isLoading={loadings.saveForm}
           handleClose={handleCloseReply}
           handleReplyForm={handleReplyForm}
+        />
+      ) : null}
+
+      {jobDetails ? (
+        <MessagesModal
+          open={dialogs.messages}
+          handleClose={() => {
+            handleSetDialog('messages', false);
+          }}
+          jobResponseId={jobDetails.id}
         />
       ) : null}
     </div>

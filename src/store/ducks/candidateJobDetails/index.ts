@@ -8,6 +8,7 @@ const INITIAL_STATE: ICandidateJobDetailsState = {
   },
   dialogs: {
     reply: false,
+    messages: false,
   },
   jobDetails: false,
 };

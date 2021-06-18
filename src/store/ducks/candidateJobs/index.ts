@@ -9,6 +9,7 @@ const INITIAL_STATE: ICandidateJobsState = {
   },
   dialogs: {
     applyJob: false,
+    messages: false,
   },
   jobPreview: false,
   applyModalState: 1,
