@@ -9,7 +9,13 @@ import { getJobResponseMessages, putNewMessageJobResponse } from '../../services
 import { IMessageJobResponseRequest, INewMessage } from '../../types';
 import { newMessageValidationSchema } from '../../validationSchemas';
 
-import { Container, MessageBody, MessageContainer, MessageInfo } from './styles';
+import {
+  Container,
+  MessageBody,
+  MessageContainer,
+  MessageInfo,
+  MessagesContainer,
+} from './styles';
 
 interface IProps {
   jobResponseId: string;
@@ -51,20 +57,22 @@ const MessagesModalComponent: React.FC<IProps> = ({
   return (
     <Modal open={open} handleClose={handleClose} title="Mensagens">
       <Container>
-        {isLoading ? (
-          <LoadingMessage text="Carregando mensagens" />
-        ) : (
-          data?.messages.map((message, key) => (
-            <MessageContainer key={`message-${key}`}>
-              <MessageInfo>
-                {message.author} -{' '}
-                <span>{format(new Date(message.date), 'dd/MM/yyyy HH:mm')}</span>
-              </MessageInfo>
+        <MessagesContainer>
+          {isLoading ? (
+            <LoadingMessage text="Carregando mensagens" />
+          ) : (
+            data?.messages.map((message, key) => (
+              <MessageContainer key={`message-${key}`}>
+                <MessageInfo>
+                  {message.author} -{' '}
+                  <span>{format(new Date(message.date), 'dd/MM/yyyy HH:mm')}</span>
+                </MessageInfo>
 
-              <MessageBody>{message.message}</MessageBody>
-            </MessageContainer>
-          ))
-        )}
+                <MessageBody>{message.message}</MessageBody>
+              </MessageContainer>
+            ))
+          )}
+        </MessagesContainer>
 
         <Form
           onSubmit={handleSubmit}

@@ -8,6 +8,12 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
+export const MessagesContainer = styled.div`
+  width: 100%;
+  max-height: 50rem;
+  overflow: auto;
+`;
+
 export const MessageContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.four};
   padding: 1.5rem;
