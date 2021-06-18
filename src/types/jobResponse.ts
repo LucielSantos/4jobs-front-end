@@ -7,3 +7,7 @@ export interface IMessageJobResponse {
 export interface IMessageJobResponseRequest {
   messages: IMessageJobResponse[];
 }
+
+export interface INewMessage {
+  message: string;
+}

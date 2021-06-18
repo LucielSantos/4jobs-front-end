@@ -6,6 +6,7 @@ import {
   IJobCandidateList,
   ILinkJob,
   IMessageJobResponseRequest,
+  INewMessage,
   IResponseFormJob,
 } from '../types';
 import { api } from './api';
@@ -80,6 +81,19 @@ export const getJobResponseMessages = async (
 ): Promise<AxiosResponse<IMessageJobResponseRequest>> => {
   try {
     const response = await api.get(`/jobsResponse/${jobResponseId}/messages`);
+
+    return response;
+  } catch (error) {
+    throw getErrorResponse(error);
+  }
+};
+
+export const putNewMessageJobResponse = async (
+  jobResponseId: string,
+  data: INewMessage
+): Promise<AxiosResponse> => {
+  try {
+    const response = await api.put(`/jobsResponse/${jobResponseId}/messages`, data);
 
     return response;
   } catch (error) {

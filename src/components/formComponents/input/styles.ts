@@ -10,12 +10,14 @@ export const StyledInput = styled(TextField)`
 interface IInputContainer {
   marginLeft?: boolean;
   marginRight?: boolean;
+  fullWidth?: boolean;
 }
 
 export const Container = styled.div<IInputContainer>`
   display: flex;
   flex-direction: column;
   position: relative;
+  width: ${({ fullWidth }) => fullWidth && '100%'};
 
   margin-left: ${({ marginLeft = false }) => marginLeft && '2rem'};
   margin-right: ${({ marginRight = false }) => marginRight && '2rem'};

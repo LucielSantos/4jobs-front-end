@@ -5,3 +5,4 @@ export * from './createFormModal';
 export * from './createJob';
 export * from './applyModal';
 export * from './candidateReply';
+export * from './messagesModal';

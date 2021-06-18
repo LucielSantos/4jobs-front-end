@@ -57,13 +57,13 @@ export const useRequest = <DataType>({
           setData(response.data);
         }
 
-        setIsLoading(true);
+        setIsLoading(false);
 
         return response;
       } catch (error) {
         setData(null);
 
-        setIsLoading(true);
+        setIsLoading(false);
 
         return null;
       }

@@ -1,11 +1,13 @@
+import { FormHandles, SubmitHandler } from '@unform/core';
 import { format } from 'date-fns';
-import React from 'react';
-import { Modal } from '../';
+import React, { useCallback, useRef } from 'react';
+
+import { Modal, Flex, Form, LoadingMessage, IModalProps, Input } from '../';
+import { Icon } from '../../assets/icons';
 import { useRequest } from '../../hooks';
-import { getJobResponseMessages } from '../../services';
-import { IMessageJobResponseRequest } from '../../types';
-import { LoadingMessage } from '../loadingMessage';
-import { IModalProps } from '../modal';
+import { getJobResponseMessages, putNewMessageJobResponse } from '../../services';
+import { IMessageJobResponseRequest, INewMessage } from '../../types';
+import { newMessageValidationSchema } from '../../validationSchemas';
 
 import { Container, MessageBody, MessageContainer, MessageInfo } from './styles';
 
@@ -20,10 +22,31 @@ const MessagesModalComponent: React.FC<IProps> = ({
   open,
   handleClose,
 }) => {
-  const [data, isLoading] = useRequest<IMessageJobResponseRequest>({
+  const formRef = useRef<FormHandles>(null);
+
+  const [data, isLoading, getMessages] = useRequest<IMessageJobResponseRequest>({
     handleRequest: getJobResponseMessages,
     initialReqParams: [jobResponseId],
   });
+
+  const handleSubmit = useCallback<SubmitHandler<INewMessage>>(
+    async (data, { reset }) => {
+      try {
+        await putNewMessageJobResponse(jobResponseId, data);
+
+        getMessages(jobResponseId);
+
+        reset();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [jobResponseId, getMessages]
+  );
+
+  const onClickSend = useCallback(() => {
+    formRef.current?.submitForm();
+  }, [formRef]);
 
   return (
     <Modal open={open} handleClose={handleClose} title="Mensagens">
@@ -42,6 +65,25 @@ const MessagesModalComponent: React.FC<IProps> = ({
             </MessageContainer>
           ))
         )}
+
+        <Form
+          onSubmit={handleSubmit}
+          ref={formRef}
+          validationSchema={newMessageValidationSchema}
+        >
+          <Flex>
+            <Input name="message" multiline rows={3} floatingError fullWidth />
+
+            <Icon
+              name="send"
+              size="sm"
+              clickable
+              marginLeft="sm"
+              marginTop="auto"
+              onClick={onClickSend}
+            />
+          </Flex>
+        </Form>
       </Container>
     </Modal>
   );

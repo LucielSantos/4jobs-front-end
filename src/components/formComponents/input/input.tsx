@@ -23,6 +23,7 @@ export interface IInputProps {
   disabled?: boolean;
   maskComponent?: any;
   floatingError?: boolean;
+  fullWidth?: boolean;
   mask?: TMaskProp;
   type?: HTMLInputElement['type'];
   onChange?: TextFieldProps['onChange'];
@@ -50,6 +51,7 @@ const InputComponent: React.FC<IInputProps> = ({
   endAdornment,
   floatingError = false,
   onChange,
+  fullWidth = false,
   value = false,
   ...props
 }) => {
@@ -74,7 +76,7 @@ const InputComponent: React.FC<IInputProps> = ({
   }, [fieldName, registerField]);
 
   return (
-    <Container marginLeft={marginLeft} marginRight={marginRight}>
+    <Container marginLeft={marginLeft} marginRight={marginRight} fullWidth={fullWidth}>
       {separatedLabel && label && <Label color={labelColor}>{label}</Label>}
 
       <StyledInput

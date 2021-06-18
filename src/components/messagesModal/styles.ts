@@ -5,13 +5,16 @@ export const Container = styled.div`
   padding: 1.5rem;
   border-radius: 4px;
   display: flex;
+  flex-direction: column;
 `;
 
 export const MessageContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.four};
   padding: 1.5rem;
+  box-sizing: border-box;
   width: 100%;
   border-radius: 4px;
+  margin-bottom: 1.5rem;
 `;
 
 export const MessageInfo = styled.p`

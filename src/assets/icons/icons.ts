@@ -4,6 +4,7 @@ import {
   IoIosClose as Close,
   IoMdEye as Eye,
   IoMdEyeOff as EyeOff,
+  IoMdSend as Send,
 } from 'react-icons/io';
 import {
   MdArrowBack as ArrowBack,
@@ -91,4 +92,5 @@ export const icons = {
   moreVert: addIconStyle(MoreVert),
   message: addIconStyle(Message),
   profile: addIconStyle(Profile),
+  send: addIconStyle(Send),
 };
