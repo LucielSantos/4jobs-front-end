@@ -5,7 +5,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import { Container } from './styles';
 import { Column } from '../';
-import { IDropData, IListCandidateByJob } from '../../../../types';
+import { ICandidateByJob, IDropData, IListCandidateByJob } from '../../../../types';
 import { jobResponseTypes } from '../../../../constants';
 import { TJobResponseValues } from '../../../../constants/job';
 
@@ -13,12 +13,14 @@ interface IProps {
   candidates: IListCandidateByJob;
   handleDropCard(dropData: IDropData): void;
   onClickCandidate(candidateId: string, columnId: TJobResponseValues): void;
+  onClickMessage(candidate: ICandidateByJob): void;
 }
 
 const BodyComponent: React.FC<IProps> = ({
   candidates,
   handleDropCard,
   onClickCandidate,
+  onClickMessage,
 }) => {
   return (
     <DndProvider backend={HTML5Backend}>
@@ -30,6 +32,7 @@ const BodyComponent: React.FC<IProps> = ({
           candidates={candidates.registered}
           handleDropCard={handleDropCard}
           onClickCandidate={onClickCandidate}
+          onClickMessage={onClickMessage}
         />
 
         <Column
@@ -39,6 +42,7 @@ const BodyComponent: React.FC<IProps> = ({
           candidates={candidates.answering}
           handleDropCard={handleDropCard}
           onClickCandidate={onClickCandidate}
+          onClickMessage={onClickMessage}
         />
 
         <Column
@@ -48,6 +52,7 @@ const BodyComponent: React.FC<IProps> = ({
           candidates={candidates.inEvaluation}
           handleDropCard={handleDropCard}
           onClickCandidate={onClickCandidate}
+          onClickMessage={onClickMessage}
         />
 
         <Column
@@ -57,6 +62,7 @@ const BodyComponent: React.FC<IProps> = ({
           candidates={candidates.finished}
           handleDropCard={handleDropCard}
           onClickCandidate={onClickCandidate}
+          onClickMessage={onClickMessage}
         />
       </Container>
     </DndProvider>

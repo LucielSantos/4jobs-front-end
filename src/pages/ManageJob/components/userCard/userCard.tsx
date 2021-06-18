@@ -16,6 +16,7 @@ interface IProps {
   candidate: ICandidateByJob;
   columnId: TJobResponseValues;
   onClickCandidate(candidateId: string, columnId: TJobResponseValues): void;
+  onClickMessage(candidate: ICandidateByJob): void;
 }
 
 const UserCardComponent: React.FC<IProps> = ({
@@ -23,6 +24,7 @@ const UserCardComponent: React.FC<IProps> = ({
   candidate,
   columnName,
   onClickCandidate,
+  onClickMessage,
 }) => {
   const [, dragRef] = useDrag(
     () => ({
@@ -39,11 +41,20 @@ const UserCardComponent: React.FC<IProps> = ({
     onClickCandidate(candidate.id, columnId);
   }, [onClickCandidate, candidate, columnId]);
 
+  const onClickMessageIcon = useCallback(
+    (e: MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      onClickMessage(candidate);
+    },
+    [candidate, onClickMessage]
+  );
+
   return (
     <Container ref={dragRef} onClick={onClickCard}>
       <Typography>{candidate.name}</Typography>
 
-      <Icon name="message" size="sm" clickable />
+      <Icon name="message" size="sm" clickable onClick={onClickMessageIcon} />
 
       <StatusContainer>
         <Tooltip text={jobResponseTypesLabels[candidate.status]} placement="top">

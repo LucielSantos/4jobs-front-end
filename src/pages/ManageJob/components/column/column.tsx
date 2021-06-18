@@ -14,6 +14,7 @@ interface IProps {
   columnName: string;
   handleDropCard(dropData: IDropData): void;
   onClickCandidate(candidateId: string, columnId: TJobResponseValues): void;
+  onClickMessage(candidate: ICandidateByJob): void;
 }
 
 const ColumnComponent: React.FC<IProps> = ({
@@ -23,6 +24,7 @@ const ColumnComponent: React.FC<IProps> = ({
   columnName,
   handleDropCard,
   onClickCandidate,
+  onClickMessage,
 }) => {
   const accept = useMemo(
     () => [
@@ -77,6 +79,7 @@ const ColumnComponent: React.FC<IProps> = ({
             key={`${candidate.id}-${index}`}
             columnId={columnId}
             columnName={columnName}
+            onClickMessage={onClickMessage}
           />
         ))}
       </Body>

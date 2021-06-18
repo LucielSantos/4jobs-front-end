@@ -4,9 +4,9 @@ import { TManageJobProps } from './';
 import { Container } from './styles';
 import { Header, Body } from './components';
 import { goBack, querySearchParse } from '../../utils';
-import { IDropData } from '../../types';
+import { ICandidateByJob, IDropData } from '../../types';
 import { jobResponseTypes, TJobResponseValues } from '../../constants';
-import { UserDetailsModal } from '../../components';
+import { MessagesModal, UserDetailsModal } from '../../components';
 
 export const ManageJobView: React.FC<TManageJobProps> = ({
   candidates,
@@ -15,8 +15,11 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
 }) => {
   const { jobId } = useMemo<{ jobId: string }>(() => querySearchParse(), []);
 
-  const [dialogs, setDialogs] = useState({ userDetails: false });
+  const [dialogs, setDialogs] = useState({ userDetails: false, messages: false });
   const [selectedCandidateId, setSelectedCandidateId] = useState<false | string>(false);
+  const [selectedJobResponseId, setSelectedJobResponseId] = useState<false | string>(
+    false
+  );
 
   useEffect(() => {
     if (!jobId) {
@@ -48,9 +51,6 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
 
   const onClickCandidate = useCallback(
     (candidateId: string, columnId: TJobResponseValues) => {
-      console.log(candidateId);
-      console.log(columnId);
-
       if (
         columnId === jobResponseTypes.registered ||
         columnId === jobResponseTypes.answering
@@ -58,6 +58,14 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
         setSelectedCandidateId(candidateId);
         handleSetDialog('userDetails', true);
       }
+    },
+    [handleSetDialog]
+  );
+
+  const handleClickMessage = useCallback(
+    (candidate: ICandidateByJob) => {
+      setSelectedJobResponseId(candidate.jobResponseId);
+      handleSetDialog('messages', true);
     },
     [handleSetDialog]
   );
@@ -73,6 +81,7 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
         candidates={candidates}
         handleDropCard={handleDropCard}
         onClickCandidate={onClickCandidate}
+        onClickMessage={handleClickMessage}
       />
 
       {selectedCandidateId && (
@@ -83,6 +92,17 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
             handleSetDialog('userDetails', false);
             setSelectedCandidateId(false);
           }}
+        />
+      )}
+
+      {selectedJobResponseId && (
+        <MessagesModal
+          open={dialogs.messages}
+          handleClose={() => {
+            handleSetDialog('messages', false);
+            setSelectedJobResponseId(false);
+          }}
+          jobResponseId={selectedJobResponseId}
         />
       )}
     </Container>
