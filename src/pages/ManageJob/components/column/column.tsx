@@ -13,7 +13,7 @@ interface IProps {
   candidates: ICandidateByJob[];
   columnName: string;
   handleDropCard(dropData: IDropData): void;
-  onClickCandidate(candidateId: string, columnId: TJobResponseValues): void;
+  onClickCandidate(candidateId: ICandidateByJob, columnId: TJobResponseValues): void;
   onClickMessage(candidate: ICandidateByJob): void;
 }
 

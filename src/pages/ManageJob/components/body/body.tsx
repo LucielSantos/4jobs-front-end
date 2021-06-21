@@ -12,7 +12,7 @@ import { TJobResponseValues } from '../../../../constants/job';
 interface IProps {
   candidates: IListCandidateByJob;
   handleDropCard(dropData: IDropData): void;
-  onClickCandidate(candidateId: string, columnId: TJobResponseValues): void;
+  onClickCandidate(candidateId: ICandidateByJob, columnId: TJobResponseValues): void;
   onClickMessage(candidate: ICandidateByJob): void;
 }
 

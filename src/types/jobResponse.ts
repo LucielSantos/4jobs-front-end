@@ -11,3 +11,13 @@ export interface IMessageJobResponseRequest {
 export interface INewMessage {
   message: string;
 }
+
+export interface IResponse {
+  title: string;
+  value: string;
+}
+
+export interface IGetJobResponse {
+  id: string;
+  response: IResponse[];
+}

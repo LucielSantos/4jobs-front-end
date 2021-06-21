@@ -3,12 +3,12 @@ import { useCallback, useEffect, useState } from 'react';
 
 interface IProps<DataType> {
   handleRequest(...params: any[]): Promise<AxiosResponse<DataType>>;
-  initialReqParams: any[];
+  initialReqParams?: any[] | null;
 }
 
 export const useRequest = <DataType>({
   handleRequest,
-  initialReqParams,
+  initialReqParams = null,
 }: IProps<DataType>): [
   DataType | null,
   boolean,

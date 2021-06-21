@@ -16,6 +16,7 @@ export const jobResponseTypes = {
 export const jobResponseTypesLabels = {
   [jobResponseTypes.registered]: 'Triagem',
   [jobResponseTypes.answering]: 'Pendente resposta',
-  [jobResponseTypes.answered]: 'Em avaliação',
+  [jobResponseTypes.answered]: 'Respondido',
+  [jobResponseTypes.inEvaluation]: 'Em avaliação',
   [jobResponseTypes.returned]: 'Desafio devolvido',
 };

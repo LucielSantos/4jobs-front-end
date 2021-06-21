@@ -34,6 +34,11 @@ export interface IJobCandidateList {
     description: string;
   };
 }
+
+export interface IResponseFormJob {
+  value: string;
+  title: string;
+}
 export interface IJobCandidateDetails {
   id: string;
   candidateId: string;
@@ -42,6 +47,7 @@ export interface IJobCandidateDetails {
   challengeResolved: boolean;
   status: TJobResponseValues;
   created_at: Date;
+  response: IResponseFormJob;
   job: {
     id: string;
     title: string;
@@ -53,11 +59,6 @@ export interface IJobCandidateDetails {
     tags: string[];
     fields: IDynamicFormField[];
   };
-}
-
-export interface IResponseFormJob {
-  value: string;
-  title: string;
 }
 
 export interface ICandidateByJob {

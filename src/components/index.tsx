@@ -16,3 +16,4 @@ export * from './jobPreview';
 export * from './tags';
 export * from './userDetailsModal';
 export * from './messagesModal';
+export * from './viewDynamicFormResponse';

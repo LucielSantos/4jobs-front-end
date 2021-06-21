@@ -2,6 +2,7 @@ import { AxiosResponse } from 'axios';
 import { TJobResponseValues } from '../constants';
 import {} from '../store/ducks/login/types';
 import {
+  IGetJobResponse,
   IJobCandidateDetails,
   IJobCandidateList,
   ILinkJob,
@@ -94,6 +95,18 @@ export const putNewMessageJobResponse = async (
 ): Promise<AxiosResponse> => {
   try {
     const response = await api.put(`/jobsResponse/${jobResponseId}/messages`, data);
+
+    return response;
+  } catch (error) {
+    throw getErrorResponse(error);
+  }
+};
+
+export const getJobResponses = async (
+  jobResponseId: string
+): Promise<AxiosResponse<IGetJobResponse>> => {
+  try {
+    const response = await api.get(`/jobsResponse/${jobResponseId}/responses`);
 
     return response;
   } catch (error) {

@@ -4,7 +4,11 @@ import { useDrag } from 'react-dnd';
 
 import { Icon } from '../../../../assets/icons';
 import { Tooltip, Typography } from '../../../../components';
-import { jobResponseTypesLabels, TJobResponseValues } from '../../../../constants';
+import {
+  jobResponseTypes,
+  jobResponseTypesLabels,
+  TJobResponseValues,
+} from '../../../../constants';
 import { ICandidateByJob } from '../../../../types';
 
 import { Container, StatusDot, StatusContainer } from './styles';
@@ -15,7 +19,7 @@ interface IProps {
   index: number;
   candidate: ICandidateByJob;
   columnId: TJobResponseValues;
-  onClickCandidate(candidateId: string, columnId: TJobResponseValues): void;
+  onClickCandidate(candidateId: ICandidateByJob, columnId: TJobResponseValues): void;
   onClickMessage(candidate: ICandidateByJob): void;
 }
 
@@ -38,7 +42,7 @@ const UserCardComponent: React.FC<IProps> = ({
   );
 
   const onClickCard = useCallback(() => {
-    onClickCandidate(candidate.id, columnId);
+    onClickCandidate(candidate, columnId);
   }, [onClickCandidate, candidate, columnId]);
 
   const onClickMessageIcon = useCallback(
@@ -56,11 +60,15 @@ const UserCardComponent: React.FC<IProps> = ({
 
       <Icon name="message" size="sm" clickable onClick={onClickMessageIcon} />
 
-      <StatusContainer>
-        <Tooltip text={jobResponseTypesLabels[candidate.status]} placement="top">
-          <StatusDot status={candidate.status} />
-        </Tooltip>
-      </StatusContainer>
+      {(columnId === jobResponseTypes.answering ||
+        columnId === jobResponseTypes.answered ||
+        columnId === jobResponseTypes.returned) && (
+        <StatusContainer>
+          <Tooltip text={jobResponseTypesLabels[candidate.status]} placement="top">
+            <StatusDot status={candidate.status} />
+          </Tooltip>
+        </StatusContainer>
+      )}
     </Container>
   );
 };

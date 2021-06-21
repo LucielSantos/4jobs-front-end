@@ -6,7 +6,11 @@ import { Header, Body } from './components';
 import { goBack, querySearchParse } from '../../utils';
 import { ICandidateByJob, IDropData } from '../../types';
 import { jobResponseTypes, TJobResponseValues } from '../../constants';
-import { MessagesModal, UserDetailsModal } from '../../components';
+import {
+  MessagesModal,
+  UserDetailsModal,
+  ViewDynamicFormResponse,
+} from '../../components';
 
 export const ManageJobView: React.FC<TManageJobProps> = ({
   candidates,
@@ -15,7 +19,11 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
 }) => {
   const { jobId } = useMemo<{ jobId: string }>(() => querySearchParse(), []);
 
-  const [dialogs, setDialogs] = useState({ userDetails: false, messages: false });
+  const [dialogs, setDialogs] = useState({
+    userDetails: false,
+    messages: false,
+    viewResponse: false,
+  });
   const [selectedCandidateId, setSelectedCandidateId] = useState<false | string>(false);
   const [selectedJobResponseId, setSelectedJobResponseId] = useState<false | string>(
     false
@@ -50,13 +58,20 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
   }, []);
 
   const onClickCandidate = useCallback(
-    (candidateId: string, columnId: TJobResponseValues) => {
+    (candidate: ICandidateByJob, columnId: TJobResponseValues) => {
+      setSelectedCandidateId(candidate.id);
+
       if (
         columnId === jobResponseTypes.registered ||
         columnId === jobResponseTypes.answering
       ) {
-        setSelectedCandidateId(candidateId);
         handleSetDialog('userDetails', true);
+      }
+
+      if (columnId === jobResponseTypes.inEvaluation) {
+        setSelectedJobResponseId(candidate.jobResponseId);
+
+        handleSetDialog('viewResponse', true);
       }
     },
     [handleSetDialog]
@@ -100,6 +115,17 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
           open={dialogs.messages}
           handleClose={() => {
             handleSetDialog('messages', false);
+            setSelectedJobResponseId(false);
+          }}
+          jobResponseId={selectedJobResponseId}
+        />
+      )}
+
+      {selectedJobResponseId && (
+        <ViewDynamicFormResponse
+          open={dialogs.viewResponse}
+          handleClose={() => {
+            handleSetDialog('viewResponse', false);
             setSelectedJobResponseId(false);
           }}
           jobResponseId={selectedJobResponseId}
