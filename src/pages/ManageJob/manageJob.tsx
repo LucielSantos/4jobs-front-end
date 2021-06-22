@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { TManageJobProps } from './';
 import { Container } from './styles';
-import { Header, Body } from './components';
+import { Header, Body, SendMessageFinished } from './components';
 import { goBack, querySearchParse } from '../../utils';
 import { ICandidateByJob, IDropData, IJobDetails } from '../../types';
 import { jobResponseTypes, TJobResponseValues } from '../../constants';
@@ -31,7 +31,9 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
     userDetails: false,
     messages: false,
     viewResponse: false,
+    sendFinishedMessage: false,
   });
+  const [tempDropData, setTempDropData] = useState<null | IDropData>(null);
   const [selectedCandidateId, setSelectedCandidateId] = useState<false | string>(false);
   const [selectedJobResponseId, setSelectedJobResponseId] = useState<false | string>(
     false
@@ -45,20 +47,27 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
     handleLoadCandidates(jobId);
   }, [handleLoadCandidates, jobId]);
 
+  const handleSetDialog = useCallback((field: string, value: boolean) => {
+    setDialogs(oldState => ({ ...oldState, [field]: value }));
+  }, []);
+
   const handleCancelRegistrations = useCallback(() => {
     console.log('handleCancelRegistrations');
   }, []);
 
   const handleDropCard = useCallback(
     (dropData: IDropData) => {
+      if (dropData.newStatus === jobResponseTypes.finished) {
+        setTempDropData(dropData);
+        handleSetDialog('sendFinishedMessage', true);
+
+        return '';
+      }
+
       handleChangeCandidateStatus(dropData);
     },
-    [handleChangeCandidateStatus]
+    [handleChangeCandidateStatus, handleSetDialog]
   );
-
-  const handleSetDialog = useCallback((field: string, value: boolean) => {
-    setDialogs(oldState => ({ ...oldState, [field]: value }));
-  }, []);
 
   const onClickCandidate = useCallback(
     (candidate: ICandidateByJob, columnId: TJobResponseValues) => {
@@ -87,8 +96,6 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
     },
     [handleSetDialog]
   );
-
-  console.log(jobDetails);
 
   if (isLoadingDetails) {
     return <LoadingMessage text="Carregando detalhes da vaga" />;
@@ -140,6 +147,15 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
             setSelectedJobResponseId(false);
           }}
           jobResponseId={selectedJobResponseId}
+        />
+      )}
+
+      {tempDropData && (
+        <SendMessageFinished
+          open={dialogs.sendFinishedMessage}
+          handleClose={() => handleSetDialog('sendFinishedMessage', false)}
+          dropData={tempDropData}
+          handleChangeCandidateStatus={handleChangeCandidateStatus}
         />
       )}
     </Container>
