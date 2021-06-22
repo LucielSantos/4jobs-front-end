@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { Button, Tooltip, Typography } from '../../../../components';
+import { jobStatus } from '../../../../constants';
 import { IJobDetails } from '../../../../types';
 import { copyToClipboard, openNotification } from '../../../../utils';
 
@@ -29,7 +30,9 @@ const HeaderComponent: React.FC<IProps> = ({ onCancelRegistrations, jobDetails }
         </Tooltip>
       </TitleContainer>
 
-      <Button onClick={onCancelRegistrations}>Cancelar inscrições</Button>
+      <Button onClick={onCancelRegistrations}>
+        {jobDetails.status === jobStatus.opened ? 'Cancelar' : 'Abrir'} inscrições
+      </Button>
     </Container>
   );
 };

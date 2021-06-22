@@ -5,8 +5,9 @@ import { Container } from './styles';
 import { Header, Body, SendMessageFinished } from './components';
 import { goBack, querySearchParse } from '../../utils';
 import { ICandidateByJob, IDropData, IJobDetails } from '../../types';
-import { jobResponseTypes, TJobResponseValues } from '../../constants';
+import { jobResponseTypes, TJobResponseValues, TJobStatus } from '../../constants';
 import {
+  CancelRegistrationModal,
   LoadingMessage,
   MessagesModal,
   UserDetailsModal,
@@ -22,7 +23,7 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
 }) => {
   const { jobId } = useMemo<{ jobId: string }>(() => querySearchParse(), []);
 
-  const [jobDetails, isLoadingDetails] = useRequest<IJobDetails>({
+  const [jobDetails, isLoadingDetails, handleGetJobDetails] = useRequest<IJobDetails>({
     handleRequest: getJobDetails,
     initialReqParams: [jobId],
   });
@@ -32,7 +33,9 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
     messages: false,
     viewResponse: false,
     sendFinishedMessage: false,
+    cancelRegistration: false,
   });
+
   const [tempDropData, setTempDropData] = useState<null | IDropData>(null);
   const [selectedCandidateId, setSelectedCandidateId] = useState<false | string>(false);
   const [selectedJobResponseId, setSelectedJobResponseId] = useState<false | string>(
@@ -52,8 +55,8 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
   }, []);
 
   const handleCancelRegistrations = useCallback(() => {
-    console.log('handleCancelRegistrations');
-  }, []);
+    handleSetDialog('cancelRegistration', true);
+  }, [handleSetDialog]);
 
   const handleDropCard = useCallback(
     (dropData: IDropData) => {
@@ -97,7 +100,14 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
     [handleSetDialog]
   );
 
-  if (isLoadingDetails) {
+  const postConfirmChangeStatus = useCallback(
+    (newStatus: TJobStatus) => {
+      handleGetJobDetails(jobId);
+    },
+    [handleGetJobDetails, jobId]
+  );
+
+  if (isLoadingDetails && !jobDetails) {
     return <LoadingMessage text="Carregando detalhes da vaga" />;
   }
 
@@ -156,6 +166,16 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
           handleClose={() => handleSetDialog('sendFinishedMessage', false)}
           dropData={tempDropData}
           handleChangeCandidateStatus={handleChangeCandidateStatus}
+        />
+      )}
+
+      {jobDetails && (
+        <CancelRegistrationModal
+          open={dialogs.cancelRegistration}
+          handleClose={() => handleSetDialog('cancelRegistration', false)}
+          jobId={jobDetails.id}
+          currentJobStatus={jobDetails.status}
+          postConfirm={postConfirmChangeStatus}
         />
       )}
     </Container>

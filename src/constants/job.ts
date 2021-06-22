@@ -20,3 +20,10 @@ export const jobResponseTypesLabels = {
   [jobResponseTypes.inEvaluation]: 'Em avaliação',
   [jobResponseTypes.returned]: 'Desafio devolvido',
 };
+
+export type TJobStatus = 1 | 2;
+
+export const jobStatus = {
+  opened: 1,
+  closed: 2,
+};

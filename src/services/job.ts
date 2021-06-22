@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { TJobStatus } from '../constants/job';
 import { IJobInList } from '../store/ducks/companyJobs/types';
 import { ICreateJob } from '../store/ducks/createJob/types';
 import { IJobDetails, IJobPreview, IListCandidateByJob } from '../types';
@@ -56,6 +57,21 @@ export const getCandidatesByJob = async (
 ): Promise<AxiosResponse<IListCandidateByJob>> => {
   try {
     const response = await api.get(`/jobs/${jobId}/candidates`);
+
+    return response;
+  } catch (error) {
+    throw getErrorResponse(error);
+  }
+};
+
+export const patchChangeJobStatus = async (
+  jobId: string,
+  newStatus: TJobStatus
+): Promise<AxiosResponse> => {
+  try {
+    const response = await api.patch(`/jobs/${jobId}/changeStatus`, {
+      newStatus,
+    });
 
     return response;
   } catch (error) {

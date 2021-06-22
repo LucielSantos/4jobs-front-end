@@ -1,4 +1,4 @@
-import { TJobResponseValues } from '../constants';
+import { TJobResponseValues, TJobStatus } from '../constants';
 import { ICreateJob, IDynamicFormField } from '../store/ducks/createJob/types';
 
 export interface IJobPreview {
@@ -78,4 +78,5 @@ export interface IListCandidateByJob {
 
 export interface IJobDetails extends ICreateJob {
   id: string;
+  status: TJobStatus;
 }
