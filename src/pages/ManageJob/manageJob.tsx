@@ -4,13 +4,16 @@ import { TManageJobProps } from './';
 import { Container } from './styles';
 import { Header, Body } from './components';
 import { goBack, querySearchParse } from '../../utils';
-import { ICandidateByJob, IDropData } from '../../types';
+import { ICandidateByJob, IDropData, IJobDetails } from '../../types';
 import { jobResponseTypes, TJobResponseValues } from '../../constants';
 import {
+  LoadingMessage,
   MessagesModal,
   UserDetailsModal,
   ViewDynamicFormResponse,
 } from '../../components';
+import { useRequest } from '../../hooks';
+import { getJobDetails } from '../../services';
 
 export const ManageJobView: React.FC<TManageJobProps> = ({
   candidates,
@@ -18,6 +21,11 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
   handleChangeCandidateStatus,
 }) => {
   const { jobId } = useMemo<{ jobId: string }>(() => querySearchParse(), []);
+
+  const [jobDetails, isLoadingDetails] = useRequest<IJobDetails>({
+    handleRequest: getJobDetails,
+    initialReqParams: [jobId],
+  });
 
   const [dialogs, setDialogs] = useState({
     userDetails: false,
@@ -39,11 +47,6 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
 
   const handleCancelRegistrations = useCallback(() => {
     console.log('handleCancelRegistrations');
-  }, []);
-
-  const handleCloseJob = useCallback((...params) => {
-    console.log('handleCloseJob');
-    console.log(params);
   }, []);
 
   const handleDropCard = useCallback(
@@ -85,12 +88,20 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
     [handleSetDialog]
   );
 
+  console.log(jobDetails);
+
+  if (isLoadingDetails) {
+    return <LoadingMessage text="Carregando detalhes da vaga" />;
+  }
+
   return (
     <Container>
-      <Header
-        onCancelRegistrations={handleCancelRegistrations}
-        onCloseJob={handleCloseJob}
-      />
+      {jobDetails ? (
+        <Header
+          onCancelRegistrations={handleCancelRegistrations}
+          jobDetails={jobDetails}
+        />
+      ) : null}
 
       <Body
         candidates={candidates}
