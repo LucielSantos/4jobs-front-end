@@ -36,7 +36,9 @@ const PopoverComponent: React.FC<IProps> = ({ options }) => {
   }, []);
 
   const handleClickLine = useCallback(
-    fc => () => {
+    fc => (event?: any) => {
+      event && event.preventDefault();
+      event && event.stopPropagation();
       handleClose();
       fc();
     },
