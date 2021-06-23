@@ -3,7 +3,7 @@ import { LoginViewProps } from '.';
 import { Typography, Input, Form, Button, InputPassword } from '../../components';
 import { loginValidationSchema } from '../../validationSchemas';
 
-import { Container, FormContainer } from './styles';
+import { Container, FormContainer, Logo } from './styles';
 import { ChoseSignUpTypeModal } from './components';
 import { ILogin } from '../../store/ducks/login/types';
 import { querySearchParse } from '../../utils';
@@ -32,6 +32,8 @@ export const LoginView: React.FC<LoginViewProps> = ({
 
   return (
     <Container>
+      <Logo />
+
       <FormContainer>
         <Typography color="two" size="xl" weight="regular" marginBottom="xl">
           Faça login

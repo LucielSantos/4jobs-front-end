@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import LogoSrc from '../../../../assets/images/logo.png';
+import LogoSrc from '../../../../assets/images/logo-secondary-full.png';
 import { heightNavbar } from '../../../../constants';
 
 export const Container = styled.div`
@@ -19,7 +19,7 @@ export const Container = styled.div`
 export const Logo = styled.img.attrs({
   src: LogoSrc,
 })`
-  height: 100%;
+  height: 80%;
   cursor: pointer;
 `;
 
