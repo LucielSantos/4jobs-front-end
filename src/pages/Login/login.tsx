@@ -52,7 +52,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
             label="Senha"
             separatedLabel
             labelColor="two"
-            placeholder="Nome de usuário ou email"
+            placeholder="Senha"
             name="password"
           />
 
