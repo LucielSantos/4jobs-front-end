@@ -154,7 +154,7 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
                 fullWidthOnMobile
                 isLoading={loadings.create}
               >
-                Castrar-se
+                Cadastrar-se
               </Button>
             </Flex>
           </Grid>
