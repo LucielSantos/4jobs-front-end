@@ -51,7 +51,13 @@ const ColumnComponent: React.FC<IProps> = ({
         columnName: string;
       }) => {
         handleDropCard({
-          candidate,
+          candidate: {
+            ...candidate,
+            status:
+              columnId === jobResponseTypes.answering
+                ? jobResponseTypes.answering
+                : candidate.status,
+          },
           newStatus: columnId,
           oldStatus: column,
           newColumnName: columnName,
