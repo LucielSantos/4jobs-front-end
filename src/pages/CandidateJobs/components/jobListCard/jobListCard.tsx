@@ -40,6 +40,7 @@ const JobListCardComponent: React.FC<IProps> = ({ job, onClickCard, onClickMessa
             clickable
             onClick={handleClickMessage}
             size="sm"
+            badge={job.hasCompanyMessage}
           />
         </Flex>
 

@@ -18,6 +18,7 @@ interface IDispatchProps {
   handleCleanApplyModal(): void;
   handleApplyJob(data: ILinkJob): void;
   handleGetJobPreview(jobId: string): void;
+  handleCleanMessage(jobId: string): void;
   onSetCandidateJobDialog(
     field: ICandidateJobsSetDialogs['field'],
     value: ICandidateJobsSetDialogs['value']

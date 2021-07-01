@@ -20,7 +20,7 @@ interface IProps {
   candidate: ICandidateByJob;
   columnId: TJobResponseValues;
   onClickCandidate(candidateId: ICandidateByJob, columnId: TJobResponseValues): void;
-  onClickMessage(candidate: ICandidateByJob): void;
+  onClickMessage(candidate: ICandidateByJob, columnName: string): void;
 }
 
 const UserCardComponent: React.FC<IProps> = ({
@@ -49,16 +49,28 @@ const UserCardComponent: React.FC<IProps> = ({
     (e: MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      onClickMessage(candidate);
+      onClickMessage(candidate, columnName);
     },
-    [candidate, onClickMessage]
+    [candidate, onClickMessage, columnName]
   );
 
   return (
     <Container ref={dragRef} onClick={onClickCard}>
       <Typography>{candidate.name}</Typography>
 
-      <Icon name="message" size="sm" clickable onClick={onClickMessageIcon} />
+      <Icon
+        name="message"
+        size="sm"
+        clickable
+        onClick={onClickMessageIcon}
+        badge={candidate.hasCandidateMessage}
+        badgeProps={{
+          anchorOrigin: {
+            horizontal: 'left',
+            vertical: 'top',
+          },
+        }}
+      />
 
       {(columnId === jobResponseTypes.answering ||
         columnId === jobResponseTypes.answered ||

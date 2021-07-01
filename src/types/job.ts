@@ -25,6 +25,8 @@ export interface IJobCandidateList {
   id: string;
   challengeResolved: boolean;
   status: TJobResponseValues;
+  hasCompanyMessage: boolean;
+  hasCandidateMessage: boolean;
   created_at: Date;
   job: {
     id: string;
@@ -44,6 +46,8 @@ export interface IJobCandidateDetails {
   candidateId: string;
   jobId: string;
   companyId: string;
+  hasCandidateMessage: boolean;
+  hasCompanyMessage: boolean;
   challengeResolved: boolean;
   status: TJobResponseValues;
   created_at: Date;
@@ -67,6 +71,8 @@ export interface ICandidateByJob {
   name: string;
   jobResponseId: string;
   status: TJobResponseValues;
+  hasCandidateMessage: boolean;
+  hasCompanyMessage: boolean;
 }
 
 export interface IListCandidateByJob {

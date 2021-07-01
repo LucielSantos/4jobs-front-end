@@ -7,6 +7,7 @@ export const CandidateJobDetailsActionTypes = {
   HANDLE_SET_JOB_DETAILS: '@candidateJobDetails/HANDLE_SET_JOB_DETAILS',
   HANDLE_SET_DIALOG: '@candidateJobDetails/HANDLE_SET_DIALOG',
   HANDLE_REPLY_FORM: '@candidateJobDetails/HANDLE_REPLY_FORM',
+  HANDLE_CLEAN_MESSAGE: '@candidateJobDetails/HANDLE_CLEAN_MESSAGE',
 };
 
 // Data types

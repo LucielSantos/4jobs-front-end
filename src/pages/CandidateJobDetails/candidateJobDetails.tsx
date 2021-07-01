@@ -15,6 +15,7 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
   handleLoadJobDetails,
   handleSetDialog,
   handleReplyForm,
+  handleCleanMessage,
 }) => {
   const searchParams = useMemo<{ jobId?: string }>(() => querySearchParse(), []);
 
@@ -40,9 +41,10 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
     handleSetDialog,
   ]);
 
-  const handleClickMessage = useCallback(() => handleSetDialog('messages', true), [
-    handleSetDialog,
-  ]);
+  const handleClickMessage = useCallback(() => {
+    handleCleanMessage();
+    handleSetDialog('messages', true);
+  }, [handleSetDialog, handleCleanMessage]);
 
   return (
     <div>

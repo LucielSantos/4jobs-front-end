@@ -26,6 +26,7 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
   handleCleanApplyModal,
   handleApplyJob,
   onSetCandidateJobDialog,
+  handleCleanMessage,
 }) => {
   const [selectedJobId, setSelectedJobId] = useState<null | string>(null);
 
@@ -53,10 +54,11 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
 
   const handleClickMessage = useCallback(
     (jobId: string) => {
+      handleCleanMessage(jobId);
       setSelectedJobId(jobId);
       onSetCandidateJobDialog('messages', true);
     },
-    [onSetCandidateJobDialog]
+    [onSetCandidateJobDialog, handleCleanMessage]
   );
 
   return (

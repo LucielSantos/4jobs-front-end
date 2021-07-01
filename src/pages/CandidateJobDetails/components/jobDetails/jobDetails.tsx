@@ -43,7 +43,7 @@ const JobDetailsComponent: React.FC<IProps> = ({
 
   return (
     <Container>
-      <Flex>
+      <Flex justifyItems="space-between">
         <Typography size="lg">{job.title}</Typography>
 
         <Icon
@@ -52,6 +52,7 @@ const JobDetailsComponent: React.FC<IProps> = ({
           clickable
           onClick={onClickMessage}
           size="sm"
+          badge={jobDetails.hasCompanyMessage}
         />
       </Flex>
 

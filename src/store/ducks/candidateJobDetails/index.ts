@@ -42,6 +42,15 @@ const reducer: Reducer<ICandidateJobDetailsState> = (
         },
       };
 
+    case CandidateJobDetailsActionTypes.HANDLE_CLEAN_MESSAGE:
+      return {
+        ...state,
+        jobDetails: {
+          ...state.jobDetails,
+          hasCompanyMessage: false,
+        },
+      };
+
     default:
       return state;
   }

@@ -40,3 +40,6 @@ export const onSetJobs = (data: IJobCandidateList[]) =>
 
 export const handleSuccessApplyJob = (data: IJobCandidateList) =>
   action(CandidateJobsActionTypes.HANDLE_SUCCESS_APPLY_JOB, data);
+
+export const handleCleanMessage = (jobId: string) =>
+  action(CandidateJobsActionTypes.HANDLE_CLEAN_MESSAGE, jobId);

@@ -47,6 +47,21 @@ const reducer: Reducer<IManageJobState> = (state = INITIAL_STATE, { type, payloa
         },
       };
 
+    case ManageJobActionTypes.HANDLE_CLEAR_MESSAGE:
+      return {
+        ...state,
+        candidates: {
+          ...state.candidates,
+          [payload.columnName]: state.candidates[
+            payload.columnName
+          ].map((candidate: ICandidateByJob) =>
+            candidate.id === payload.candidateId
+              ? { ...candidate, hasCandidateMessage: false }
+              : candidate
+          ),
+        },
+      };
+
     default:
       return state;
   }

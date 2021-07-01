@@ -13,6 +13,7 @@ interface IStateProps extends IManageJobState {}
 interface IDispatchProps {
   handleLoadCandidates(jobId: string): void;
   handleChangeCandidateStatus(data: IDropData): void;
+  handelClearMessage(candidateId: string, columnName: string): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}

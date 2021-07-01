@@ -14,7 +14,7 @@ interface IProps {
   columnName: string;
   handleDropCard(dropData: IDropData): void;
   onClickCandidate(candidateId: ICandidateByJob, columnId: TJobResponseValues): void;
-  onClickMessage(candidate: ICandidateByJob): void;
+  onClickMessage(candidate: ICandidateByJob, columnName: string): void;
 }
 
 const ColumnComponent: React.FC<IProps> = ({

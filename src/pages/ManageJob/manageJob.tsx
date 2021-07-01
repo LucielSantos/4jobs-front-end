@@ -20,6 +20,7 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
   candidates,
   handleLoadCandidates,
   handleChangeCandidateStatus,
+  handelClearMessage,
 }) => {
   const { jobId } = useMemo<{ jobId: string }>(() => querySearchParse(), []);
 
@@ -93,11 +94,12 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
   );
 
   const handleClickMessage = useCallback(
-    (candidate: ICandidateByJob) => {
+    (candidate: ICandidateByJob, columnName: string) => {
+      handelClearMessage(candidate.id, columnName);
       setSelectedJobResponseId(candidate.jobResponseId);
       handleSetDialog('messages', true);
     },
-    [handleSetDialog]
+    [handleSetDialog, handelClearMessage]
   );
 
   const postConfirmChangeStatus = useCallback(

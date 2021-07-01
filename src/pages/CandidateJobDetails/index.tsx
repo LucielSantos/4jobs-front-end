@@ -17,6 +17,7 @@ interface IDispatchProps {
   handleLoadJobDetails(jobId: string): void;
   handleSetDialog(field: keyof ICandidateJobDetailsDialogs, value: boolean): void;
   handleReplyForm(data: { jobId: string; fields: IResponseFormJob[] }): void;
+  handleCleanMessage(): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}

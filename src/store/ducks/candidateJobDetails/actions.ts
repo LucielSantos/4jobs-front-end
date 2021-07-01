@@ -25,3 +25,6 @@ export const onSetLoading = (
 
 export const handleReplyForm = (data: { jobId: string; fields: IResponseFormJob[] }) =>
   action(CandidateJobDetailsActionTypes.HANDLE_REPLY_FORM, data);
+
+export const handleCleanMessage = () =>
+  action(CandidateJobDetailsActionTypes.HANDLE_CLEAN_MESSAGE);
