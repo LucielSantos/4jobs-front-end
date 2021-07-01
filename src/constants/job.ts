@@ -19,6 +19,7 @@ export const jobResponseTypesLabels = {
   [jobResponseTypes.answered]: 'Respondido',
   [jobResponseTypes.inEvaluation]: 'Em avaliação',
   [jobResponseTypes.returned]: 'Desafio devolvido',
+  [jobResponseTypes.finished]: 'Processo de encerrado',
 };
 
 export type TJobStatus = 1 | 2;
