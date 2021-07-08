@@ -16,7 +16,7 @@ const renderInfoTooltip = (job: IJobInList) => {
   return (
     <>
       Descrição: {job.description} <br />
-      Sugestão esperada: {job.description} <br />
+      Solução esperada: {job.description} <br />
       Observações: {job.observations} <br />
       Observações pós pré-avaliação: {job.observationsAfterEvaluation}
     </>
