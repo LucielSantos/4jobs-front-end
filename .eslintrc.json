@@ -36,10 +36,9 @@
                 "endOfLine": "auto",
                 "printWidth": 100,
                 "singleQuote": true,
-                "trailingComma": "all",
-                "bracketSpacing": false,
-                "jsxBracketSameLine": true,
-                "parser": "flow"
+                "trailingComma": "es5",
+                "bracketSpacing": true,
+                "jsxBracketSameLine": false
             }
         ],
         "space-before-function-paren": "off",
