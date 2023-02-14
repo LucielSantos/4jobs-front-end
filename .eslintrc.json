@@ -25,9 +25,7 @@
     "rules": {
         "prettier/prettier": [
             "error",
-            {
-                "singleQuote": true
-            }
+            "fb"
         ],
         "space-before-function-paren": "off",
         "react/prop-types": "off",
