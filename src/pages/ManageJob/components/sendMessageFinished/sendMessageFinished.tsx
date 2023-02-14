@@ -1,6 +1,13 @@
 import React, { useCallback } from 'react';
 
-import { Button, Flex, Form, IModalProps, Input, Modal } from '../../../../components';
+import {
+  Button,
+  Flex,
+  Form,
+  IModalProps,
+  Input,
+  Modal,
+} from '../../../../components';
 import { TManageJobProps } from '../../index';
 import { IDropData } from '../../../../types';
 import { putNewMessageJobResponse } from '../../../../services';
@@ -22,7 +29,10 @@ const SendMessageFinishedComponent: React.FC<IProps> = ({
     async (data: { message: string }) => {
       try {
         if (data.message) {
-          await putNewMessageJobResponse(dropData.candidate.jobResponseId, data);
+          await putNewMessageJobResponse(
+            dropData.candidate.jobResponseId,
+            data
+          );
         }
       } catch (error) {}
 
@@ -33,7 +43,11 @@ const SendMessageFinishedComponent: React.FC<IProps> = ({
   );
 
   return (
-    <Modal title="Envie uma mensagem ao candidato" open={open} handleClose={handleClose}>
+    <Modal
+      title="Envie uma mensagem ao candidato"
+      open={open}
+      handleClose={handleClose}
+    >
       <Flex marginTop="md">
         <Form onSubmit={handleSubmit}>
           <Input name="message" label="Mensagem" multiline rows={3} />

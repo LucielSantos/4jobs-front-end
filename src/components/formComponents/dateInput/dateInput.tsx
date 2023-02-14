@@ -1,7 +1,10 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 
 import { useField } from '@unform/core';
-import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import ptBrLocale from 'date-fns/locale/pt-BR';
 
@@ -19,7 +22,8 @@ const DateInputComponent: React.FC<IProps> = ({
   notErrorMargin = false,
   label,
 }) => {
-  const { fieldName, defaultValue, registerField, error, clearError } = useField(name);
+  const { fieldName, defaultValue, registerField, error, clearError } =
+    useField(name);
 
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(
     defaultValue ? new Date(defaultValue) : null
@@ -31,7 +35,7 @@ const DateInputComponent: React.FC<IProps> = ({
     registerField({
       name: fieldName,
       ref: inputRef,
-      getValue: ref => {
+      getValue: (ref) => {
         return selectedDate?.toLocaleDateString() || '';
       },
     });

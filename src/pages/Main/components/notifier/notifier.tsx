@@ -8,7 +8,9 @@ interface IProps {}
 let displayedKeys: number[] = [];
 
 const NotifierComponent: React.FC<IProps> = () => {
-  const notifications = useSelector(({ main }: IApplicationState) => main.notifications);
+  const notifications = useSelector(
+    ({ main }: IApplicationState) => main.notifications
+  );
 
   const { enqueueSnackbar } = useSnackbar();
 

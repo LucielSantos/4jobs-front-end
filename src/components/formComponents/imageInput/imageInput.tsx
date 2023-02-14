@@ -11,8 +11,12 @@ interface IProps {
   notErrorMargin?: boolean;
 }
 
-const ImageInputComponent: React.FC<IProps> = ({ name, notErrorMargin = false }) => {
-  const { fieldName, defaultValue, registerField, error, clearError } = useField(name);
+const ImageInputComponent: React.FC<IProps> = ({
+  name,
+  notErrorMargin = false,
+}) => {
+  const { fieldName, defaultValue, registerField, error, clearError } =
+    useField(name);
 
   const [value, setValue] = useState<string>(defaultValue || '');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -36,7 +40,7 @@ const ImageInputComponent: React.FC<IProps> = ({ name, notErrorMargin = false })
   }, []);
 
   const onChangeImage = useCallback(
-    async e => {
+    async (e) => {
       try {
         error && clearError();
 

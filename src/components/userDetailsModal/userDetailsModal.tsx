@@ -25,8 +25,15 @@ const UserDetailsModalComponent: React.FC<IProps> = ({
   });
 
   return (
-    <Modal open={open} handleClose={handleClose} title="Detalhes do candidato" width="sm">
-      {isLoadingDetails && <LoadingMessage text="Carregando detalhes do candidato" />}
+    <Modal
+      open={open}
+      handleClose={handleClose}
+      title="Detalhes do candidato"
+      width="sm"
+    >
+      {isLoadingDetails && (
+        <LoadingMessage text="Carregando detalhes do candidato" />
+      )}
 
       {candidateDetails && (
         <>

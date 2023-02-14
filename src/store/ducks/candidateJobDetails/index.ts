@@ -1,5 +1,8 @@
 import { Reducer } from 'redux';
-import { CandidateJobDetailsActionTypes, ICandidateJobDetailsState } from './types';
+import {
+  CandidateJobDetailsActionTypes,
+  ICandidateJobDetailsState,
+} from './types';
 
 const INITIAL_STATE: ICandidateJobDetailsState = {
   loadings: {

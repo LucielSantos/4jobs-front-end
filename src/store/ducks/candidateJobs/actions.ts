@@ -17,7 +17,8 @@ export const onSetCandidateJobLoading = (
   value: ICandidateJobsSetLoadings['value']
 ) => action(CandidateJobsActionTypes.HANDLE_SET_LOADING, { field, value });
 
-export const handleLoadJobs = () => action(CandidateJobsActionTypes.ON_LOAD_JOBS);
+export const handleLoadJobs = () =>
+  action(CandidateJobsActionTypes.ON_LOAD_JOBS);
 
 export const handleGetJobPreview = (jobId: string) =>
   action(CandidateJobsActionTypes.ON_GET_JOB_PREVIEW, { jobId });

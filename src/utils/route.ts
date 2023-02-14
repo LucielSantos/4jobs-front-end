@@ -5,7 +5,7 @@ type objType = {
 export const resolveRoutePath = (path: string, obj: objType) => {
   let resolvedPath = path;
 
-  Object.keys(obj).forEach(key => {
+  Object.keys(obj).forEach((key) => {
     resolvedPath = resolvedPath.replace(`:${key}`, obj[key]);
   });
 

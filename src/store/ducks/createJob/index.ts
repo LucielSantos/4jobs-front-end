@@ -15,7 +15,10 @@ const INITIAL_STATE: ICreateJobState = {
   error: 'await',
 };
 
-const reducer: Reducer<ICreateJobState> = (state = INITIAL_STATE, { type, payload }) => {
+const reducer: Reducer<ICreateJobState> = (
+  state = INITIAL_STATE,
+  { type, payload }
+) => {
   switch (type) {
     case CreateJobActionTypes.HANDLE_CREATE_JOB:
       return { ...state, error: 'await' };

@@ -18,7 +18,10 @@ function* handleCreateJob(data: ISagaParam<ICreateJob>) {
   try {
     yield put(onSetLoading('save', true));
 
-    const response: AxiosResponse<IJob> = yield call(createJobApi, data.payload);
+    const response: AxiosResponse<IJob> = yield call(
+      createJobApi,
+      data.payload
+    );
 
     yield put(handleSetSuccessResponse(response.data));
 

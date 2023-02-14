@@ -16,6 +16,8 @@ export const ErrorMessage = styled.div<IErrorMessage>`
     floatingError &&
     css`
       position: absolute;
-      bottom: calc(-${theme.spacings.xs} - ${theme.typography.sizes.xs} - 0.5rem);
+      bottom: calc(
+        -${theme.spacings.xs} - ${theme.typography.sizes.xs} - 0.5rem
+      );
     `}
 `;

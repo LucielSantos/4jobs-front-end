@@ -31,26 +31,33 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
 }) => {
   const formRef = useRef<FormHandles>(null);
 
-  useHandleRequestResponse(error, errorResponse, formRef, 'Vaga criada com sucesso');
+  useHandleRequestResponse(
+    error,
+    errorResponse,
+    formRef,
+    'Vaga criada com sucesso'
+  );
 
   useEffect(() => {
     onLoadPage();
   }, [onLoadPage]);
 
   const handleSubmit = useCallback<SubmitHandler<ICreateJob>>(
-    data => {
+    (data) => {
       handleCreateJob(data);
     },
     [handleCreateJob]
   );
 
-  const onClickFormButton = useCallback(() => onSetDialog('crateForm', true), [
-    onSetDialog,
-  ]);
+  const onClickFormButton = useCallback(
+    () => onSetDialog('crateForm', true),
+    [onSetDialog]
+  );
 
-  const handleCloseFormModal = useCallback(() => onSetDialog('crateForm', false), [
-    onSetDialog,
-  ]);
+  const handleCloseFormModal = useCallback(
+    () => onSetDialog('crateForm', false),
+    [onSetDialog]
+  );
 
   return (
     <div>
@@ -123,7 +130,12 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
             </Grid>
 
             <Grid item xs={12}>
-              <TagInput name="tags" label="Relacionar tags" floatingError isRequired />
+              <TagInput
+                name="tags"
+                label="Relacionar tags"
+                floatingError
+                isRequired
+              />
             </Grid>
 
             <Grid item xs={12}>

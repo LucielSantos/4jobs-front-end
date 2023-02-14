@@ -2,7 +2,11 @@ import { action } from 'typesafe-actions';
 import { TUserTypeNum } from '../../../constants';
 import { ISuccessCreateCandidateData } from '../createCandidate/types';
 import { ISuccessCreateCompanyData } from '../createCompany/types';
-import { MainActionTypes, TNotificationVariant, TSetNavbarState } from './types';
+import {
+  MainActionTypes,
+  TNotificationVariant,
+  TSetNavbarState,
+} from './types';
 
 export const onSetNavbarState = (state: TSetNavbarState) =>
   action(MainActionTypes.SET_STATE_NAVBAR, state);

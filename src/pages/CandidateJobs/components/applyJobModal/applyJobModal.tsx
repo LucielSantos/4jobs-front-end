@@ -1,5 +1,12 @@
 import React, { useCallback } from 'react';
-import { Button, Flex, Form, Input, JobPreview, Modal } from '../../../../components';
+import {
+  Button,
+  Flex,
+  Form,
+  Input,
+  JobPreview,
+  Modal,
+} from '../../../../components';
 import { ICandidateJobsState } from '../../../../store/ducks/candidateJobs/types';
 import { IJobPreview, ILinkJob } from '../../../../types';
 import { applyJobModalValidationSchema } from '../../../../validationSchemas';
@@ -36,13 +43,19 @@ const ApplyJobModalComponent: React.FC<IProps> = ({
 
   const onClickApplyJob = useCallback(() => {
     jobPreview &&
-      handleApplyJob({ jobId: jobPreview.id, companyId: jobPreview.company.id });
+      handleApplyJob({
+        jobId: jobPreview.id,
+        companyId: jobPreview.company.id,
+      });
   }, [jobPreview, handleApplyJob]);
 
   return (
     <Modal open={open} handleClose={handleClose} title="Adicionar vaga">
       {applyModalState === 1 ? (
-        <Form onSubmit={handleSubmit} validationSchema={applyJobModalValidationSchema}>
+        <Form
+          onSubmit={handleSubmit}
+          validationSchema={applyJobModalValidationSchema}
+        >
           <Input name="jobId" label="Código da vaga" />
 
           <Flex>
@@ -50,7 +63,11 @@ const ApplyJobModalComponent: React.FC<IProps> = ({
               Cancelar
             </Button>
 
-            <Button type="submit" marginLeft="sm" isLoading={loadingsGetJobPreview}>
+            <Button
+              type="submit"
+              marginLeft="sm"
+              isLoading={loadingsGetJobPreview}
+            >
               Adicionar
             </Button>
           </Flex>
@@ -60,11 +77,19 @@ const ApplyJobModalComponent: React.FC<IProps> = ({
           <JobPreview job={jobPreview} />
 
           <Flex marginTop="md">
-            <Button variant="tertiary" marginLeft="auto" onClick={handleCleanApplyModal}>
+            <Button
+              variant="tertiary"
+              marginLeft="auto"
+              onClick={handleCleanApplyModal}
+            >
               Cancelar
             </Button>
 
-            <Button marginLeft="sm" onClick={onClickApplyJob} isLoading={loadingApplyJob}>
+            <Button
+              marginLeft="sm"
+              onClick={onClickApplyJob}
+              isLoading={loadingApplyJob}
+            >
               Confirmar candidatura
             </Button>
           </Flex>

@@ -54,6 +54,9 @@ export function candidateJobDetailsRootSaga(): ForkEffect<never>[] {
       CandidateJobDetailsActionTypes.HANDLE_LOAD_JOB_DETAILS,
       handleLoadJobDetails
     ),
-    takeEvery(CandidateJobDetailsActionTypes.HANDLE_REPLY_FORM, handleReplyForm),
+    takeEvery(
+      CandidateJobDetailsActionTypes.HANDLE_REPLY_FORM,
+      handleReplyForm
+    ),
   ];
 }

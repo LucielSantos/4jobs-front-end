@@ -13,7 +13,10 @@ const INITIAL_STATE: IMainState = {
   loggedUserType: false,
 };
 
-const reducer: Reducer<IMainState> = (state = INITIAL_STATE, { type, payload }) => {
+const reducer: Reducer<IMainState> = (
+  state = INITIAL_STATE,
+  { type, payload }
+) => {
   switch (type) {
     case MainActionTypes.SET_STATE_NAVBAR:
       return {

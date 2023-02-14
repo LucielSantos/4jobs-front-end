@@ -8,7 +8,10 @@ const INITIAL_STATE: IPreJobState = {
   jobPreview: false,
 };
 
-const reducer: Reducer<IPreJobState> = (state = INITIAL_STATE, { type, payload }) => {
+const reducer: Reducer<IPreJobState> = (
+  state = INITIAL_STATE,
+  { type, payload }
+) => {
   switch (type) {
     case PreJobActionTypes.HANDLE_SET_LOADING:
       return {

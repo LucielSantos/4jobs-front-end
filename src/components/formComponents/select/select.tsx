@@ -43,19 +43,20 @@ const SelectComponent: React.FC<ISelectProps> = ({
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { fieldName, defaultValue, registerField, error, clearError } = useField(name);
+  const { fieldName, defaultValue, registerField, error, clearError } =
+    useField(name);
 
   useEffect(() => {
     registerField({
       name: fieldName,
       ref: inputRef,
-      getValue: ref => {
+      getValue: (ref) => {
         return ref.current.value;
       },
       setValue: (ref, value) => {
         ref.current.value = value;
       },
-      clearValue: ref => {
+      clearValue: (ref) => {
         ref.current.value = '';
       },
     });
@@ -88,12 +89,12 @@ const SelectComponent: React.FC<ISelectProps> = ({
         defaultValue={defaultValue}
         inputRef={inputRef}
         error={Boolean(error)}
-        onChange={e => {
+        onChange={(e) => {
           error && clearError();
           onChange && onChange(e);
         }}
       >
-        {options.map(option => (
+        {options.map((option) => (
           <MenuItem dense value={option[valueOption]} key={option[valueOption]}>
             {option[labelOption]}
           </MenuItem>
@@ -102,10 +103,14 @@ const SelectComponent: React.FC<ISelectProps> = ({
 
       {notErrorMargin ? (
         error && (
-          <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
+          <ErrorMessage floatingError={floatingError}>
+            {error && error}
+          </ErrorMessage>
         )
       ) : (
-        <ErrorMessage floatingError={floatingError}>{error || ' '}</ErrorMessage>
+        <ErrorMessage floatingError={floatingError}>
+          {error || ' '}
+        </ErrorMessage>
       )}
     </Container>
   );

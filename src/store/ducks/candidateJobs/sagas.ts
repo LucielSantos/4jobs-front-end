@@ -19,7 +19,9 @@ function* onLoadJobs() {
   try {
     yield put(onSetCandidateJobLoading('loadJobs', true));
 
-    const response: AxiosResponse<IJobCandidateList[]> = yield call(getCandidateJobs);
+    const response: AxiosResponse<IJobCandidateList[]> = yield call(
+      getCandidateJobs
+    );
 
     yield put(onSetJobs(response.data));
 
@@ -29,11 +31,16 @@ function* onLoadJobs() {
   }
 }
 
-function* onGetJobPreview({ payload: { jobId } }: ISagaParam<{ jobId: string }>) {
+function* onGetJobPreview({
+  payload: { jobId },
+}: ISagaParam<{ jobId: string }>) {
   try {
     yield put(onSetCandidateJobLoading('getPreview', true));
 
-    const response: AxiosResponse<IJobPreview> = yield call(getJobPreview, jobId);
+    const response: AxiosResponse<IJobPreview> = yield call(
+      getJobPreview,
+      jobId
+    );
 
     yield put(handleSetJobPreview(response.data));
 

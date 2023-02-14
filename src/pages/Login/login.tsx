@@ -1,6 +1,12 @@
 import React, { useCallback, useMemo } from 'react';
 import { LoginViewProps } from '.';
-import { Typography, Input, Form, Button, InputPassword } from '../../components';
+import {
+  Typography,
+  Input,
+  Form,
+  Button,
+  InputPassword,
+} from '../../components';
 import { loginValidationSchema } from '../../validationSchemas';
 
 import { Container, FormContainer, Logo } from './styles';
@@ -14,7 +20,10 @@ export const LoginView: React.FC<LoginViewProps> = ({
   history,
   login: { dialogs, loading },
 }) => {
-  const searchParams = useMemo<{ jobId?: string }>(() => querySearchParse(), []);
+  const searchParams = useMemo<{ jobId?: string }>(
+    () => querySearchParse(),
+    []
+  );
 
   const handleSubmit = useCallback(
     (values: ILogin) => {

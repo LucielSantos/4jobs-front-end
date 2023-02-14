@@ -29,7 +29,11 @@ const emptyField: IDynamicFormField = {
   required: false,
 };
 
-const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open }) => {
+const CreateFormModalComponent: React.FC<IProps> = ({
+  name,
+  handleClose,
+  open,
+}) => {
   const { fieldName, registerField } = useField(name);
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -50,7 +54,7 @@ const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open })
   }, [fieldName, registerField, formFields]);
 
   const handleSubmit = useCallback<SubmitHandler>(
-    data => {
+    (data) => {
       setFormFields(data.fields);
       handleClose();
     },
@@ -58,11 +62,11 @@ const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open })
   );
 
   const onClickAdd = useCallback(() => {
-    setFields(oldState => [...oldState, emptyField]);
+    setFields((oldState) => [...oldState, emptyField]);
   }, []);
 
   const handleClickRemove = useCallback(
-    removedIndex => {
+    (removedIndex) => {
       const newFields = fields.filter((field, index) => index !== removedIndex);
 
       setFields(newFields);
@@ -71,7 +75,7 @@ const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open })
   );
 
   const handleChangeField = useCallback((value, index, field) => {
-    setFields(oldValue => {
+    setFields((oldValue) => {
       return oldValue.map((oldField, mapIndex) =>
         mapIndex === index ? { ...oldField, [field]: value } : oldField
       );
@@ -116,7 +120,9 @@ const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open })
                     name="title"
                     label="Título"
                     floatingError
-                    onChange={e => handleChangeField(e.target.value, index, 'title')}
+                    onChange={(e) =>
+                      handleChangeField(e.target.value, index, 'title')
+                    }
                     value={field.title}
                   />
                 </Grid>
@@ -127,7 +133,9 @@ const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open })
                     label="Tipo"
                     options={dynamicFormFields}
                     floatingError
-                    onChange={e => handleChangeField(e.target.value, index, 'type')}
+                    onChange={(e) =>
+                      handleChangeField(e.target.value, index, 'type')
+                    }
                     value={field.type}
                   />
                 </Grid>
@@ -137,7 +145,9 @@ const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open })
                     name="required"
                     label="Resposta obrigatória"
                     floatingError
-                    onChange={e => handleChangeField(e.target.checked, index, 'required')}
+                    onChange={(e) =>
+                      handleChangeField(e.target.checked, index, 'required')
+                    }
                     checked={field.required}
                   />
                 </Grid>

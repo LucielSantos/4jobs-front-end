@@ -16,7 +16,9 @@ import { userTypes } from '../../../constants';
 import { IJobPreview } from '../../../types';
 import { getJobPreview } from '../../../services/job';
 
-export function* login(param: ISagaParam<{ data: ILogin; jobId: string | false }>) {
+export function* login(
+  param: ISagaParam<{ data: ILogin; jobId: string | false }>
+) {
   try {
     yield put(setLoading(true));
 

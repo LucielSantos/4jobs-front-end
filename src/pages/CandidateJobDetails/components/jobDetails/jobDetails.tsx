@@ -1,8 +1,17 @@
 import { add } from 'date-fns';
 import React, { useMemo } from 'react';
 import { Icon } from '../../../../assets/icons';
-import { Button, Flex, Tags, Tooltip, Typography } from '../../../../components';
-import { jobResponseTypes, jobResponseTypesLabels } from '../../../../constants';
+import {
+  Button,
+  Flex,
+  Tags,
+  Tooltip,
+  Typography,
+} from '../../../../components';
+import {
+  jobResponseTypes,
+  jobResponseTypesLabels,
+} from '../../../../constants';
 import { IJobCandidateDetails } from '../../../../types';
 import { formatDate } from '../../../../utils';
 
@@ -60,13 +69,17 @@ const JobDetailsComponent: React.FC<IProps> = ({
         Prazo pra resolver o desafio:
       </Typography>
       <Typography marginTop="xs">
-        {formatDate(add(new Date(jobDetails.created_at), { days: job.deadlineResolve }))}
+        {formatDate(
+          add(new Date(jobDetails.created_at), { days: job.deadlineResolve })
+        )}
       </Typography>
 
       <Typography marginTop="md" color="three">
         Status:
       </Typography>
-      <Typography marginTop="xs">{jobResponseTypesLabels[jobDetails.status]}</Typography>
+      <Typography marginTop="xs">
+        {jobResponseTypesLabels[jobDetails.status]}
+      </Typography>
 
       <Typography marginTop="md" color="three">
         Descrição:
@@ -88,7 +101,9 @@ const JobDetailsComponent: React.FC<IProps> = ({
           <Typography marginTop="md" color="three">
             Observações após pré-avaliação
           </Typography>
-          <Typography marginTop="xs">{job.observationsAfterEvaluation}</Typography>
+          <Typography marginTop="xs">
+            {job.observationsAfterEvaluation}
+          </Typography>
         </>
       )}
 

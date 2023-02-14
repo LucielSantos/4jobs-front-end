@@ -13,7 +13,9 @@ import {
 import { api } from './api';
 import { getErrorResponse } from './config/getError';
 
-export const getCandidateJobs = async (): Promise<AxiosResponse<IJobCandidateList[]>> => {
+export const getCandidateJobs = async (): Promise<
+  AxiosResponse<IJobCandidateList[]>
+> => {
   try {
     const response = await api.get('/jobsResponse');
 
@@ -54,7 +56,10 @@ export const putReplyForm = async (
   }
 ): Promise<AxiosResponse<IJobCandidateDetails>> => {
   try {
-    const response = await api.put(`/jobsResponse/replyForm/${jobResponseId}`, data);
+    const response = await api.put(
+      `/jobsResponse/replyForm/${jobResponseId}`,
+      data
+    );
 
     return response;
   } catch (error) {
@@ -69,7 +74,10 @@ export const patchChangeJobResponseStatus = async (
   }
 ): Promise<AxiosResponse> => {
   try {
-    const response = await api.patch(`/jobsResponse/${jobResponseId}/changeStatus`, data);
+    const response = await api.patch(
+      `/jobsResponse/${jobResponseId}/changeStatus`,
+      data
+    );
 
     return response;
   } catch (error) {
@@ -94,7 +102,10 @@ export const putNewMessageJobResponse = async (
   data: INewMessage
 ): Promise<AxiosResponse> => {
   try {
-    const response = await api.put(`/jobsResponse/${jobResponseId}/messages`, data);
+    const response = await api.put(
+      `/jobsResponse/${jobResponseId}/messages`,
+      data
+    );
 
     return response;
   } catch (error) {

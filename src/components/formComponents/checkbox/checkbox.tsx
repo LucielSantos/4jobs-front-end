@@ -22,7 +22,8 @@ const CheckboxComponent: React.FC<IProps> = ({
   onChange,
   checked,
 }) => {
-  const { fieldName, defaultValue, registerField, error, clearError } = useField(name);
+  const { fieldName, defaultValue, registerField, error, clearError } =
+    useField(name);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -54,10 +55,14 @@ const CheckboxComponent: React.FC<IProps> = ({
 
       {notErrorMargin ? (
         error && (
-          <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
+          <ErrorMessage floatingError={floatingError}>
+            {error && error}
+          </ErrorMessage>
         )
       ) : (
-        <ErrorMessage floatingError={floatingError}>{error || ' '}</ErrorMessage>
+        <ErrorMessage floatingError={floatingError}>
+          {error || ' '}
+        </ErrorMessage>
       )}
     </Flex>
   );

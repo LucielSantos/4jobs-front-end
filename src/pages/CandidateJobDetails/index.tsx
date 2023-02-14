@@ -15,14 +15,19 @@ interface IStateProps extends ICandidateJobDetailsState {}
 
 interface IDispatchProps {
   handleLoadJobDetails(jobId: string): void;
-  handleSetDialog(field: keyof ICandidateJobDetailsDialogs, value: boolean): void;
+  handleSetDialog(
+    field: keyof ICandidateJobDetailsDialogs,
+    value: boolean
+  ): void;
   handleReplyForm(data: { jobId: string; fields: IResponseFormJob[] }): void;
   handleCleanMessage(): void;
 }
 
 interface IOwnProps extends RouteComponentProps {}
 
-export type TCandidateJobDetailsProps = IStateProps & IDispatchProps & IOwnProps;
+export type TCandidateJobDetailsProps = IStateProps &
+  IDispatchProps &
+  IOwnProps;
 
 const mapStateToProps = ({ candidateJobDetails }: IApplicationState) => ({
   ...candidateJobDetails,
@@ -31,4 +36,7 @@ const mapStateToProps = ({ candidateJobDetails }: IApplicationState) => ({
 const mapActionToProps = (dispatch: Dispatch) =>
   bindActionCreators(CandidateJobDetailsActions, dispatch);
 
-export default connect(mapStateToProps, mapActionToProps)(CandidateJobDetailsView);
+export default connect(
+  mapStateToProps,
+  mapActionToProps
+)(CandidateJobDetailsView);

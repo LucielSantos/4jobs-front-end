@@ -4,7 +4,10 @@ import { Typography } from '../../../../components';
 import { UserCard } from '../';
 import { Container, Body } from './styles';
 import { ICandidateByJob, IDropData } from '../../../../types';
-import { jobResponseTypes, TJobResponseValues } from '../../../../constants/job';
+import {
+  jobResponseTypes,
+  TJobResponseValues,
+} from '../../../../constants/job';
 import { useDrop } from 'react-dnd';
 
 interface IProps {
@@ -13,7 +16,10 @@ interface IProps {
   candidates: ICandidateByJob[];
   columnName: string;
   handleDropCard(dropData: IDropData): void;
-  onClickCandidate(candidateId: ICandidateByJob, columnId: TJobResponseValues): void;
+  onClickCandidate(
+    candidateId: ICandidateByJob,
+    columnId: TJobResponseValues
+  ): void;
   onClickMessage(candidate: ICandidateByJob, columnName: string): void;
 }
 
@@ -40,7 +46,9 @@ const ColumnComponent: React.FC<IProps> = ({
 
   const [{ isOver }, dropRef] = useDrop(
     () => ({
-      accept: accept.filter(value => value !== columnId).map(value => `${value}`),
+      accept: accept
+        .filter((value) => value !== columnId)
+        .map((value) => `${value}`),
       drop: ({
         candidate,
         column,
@@ -64,7 +72,7 @@ const ColumnComponent: React.FC<IProps> = ({
           oldColumnName: candidateColumnName,
         });
       },
-      collect: monitor => ({
+      collect: (monitor) => ({
         isOver: !!monitor.isOver(),
       }),
     }),

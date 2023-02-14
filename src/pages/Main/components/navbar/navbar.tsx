@@ -9,7 +9,13 @@ import { Icon } from '../../../../assets/icons';
 import { clearStorage, getLoggedUser, getUserType } from '../../../../utils';
 
 import { Typography } from '../../../../components';
-import { Container, Logo, Divider, ProfileImage, ProfileImageContainer } from './styles';
+import {
+  Container,
+  Logo,
+  Divider,
+  ProfileImage,
+  ProfileImageContainer,
+} from './styles';
 import { ConditionalNavRender } from './components';
 
 interface IProps {
@@ -75,7 +81,13 @@ const NavbarComponent: React.FC<IProps> = ({ navbarState, history }) => {
           ) : null}
         </>
 
-        <Icon name="exit" color="four" size="xs" clickable onClick={handleLogout} />
+        <Icon
+          name="exit"
+          color="four"
+          size="xs"
+          clickable
+          onClick={handleLogout}
+        />
       </ConditionalNavRender>
     </Container>
   );

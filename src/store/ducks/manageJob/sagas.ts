@@ -1,6 +1,9 @@
 import { call, ForkEffect, put, takeEvery } from '@redux-saga/core/effects';
 import { AxiosResponse } from 'axios';
-import { getCandidatesByJob, patchChangeJobResponseStatus } from '../../../services';
+import {
+  getCandidatesByJob,
+  patchChangeJobResponseStatus,
+} from '../../../services';
 import { IDropData, IListCandidateByJob } from '../../../types';
 import { ISagaParam } from '../types';
 import { ManageJobActionTypes } from './types';
@@ -46,7 +49,13 @@ function* handleChangeStatus({ payload }: ISagaParam<IDropData>) {
 
 export function manageJobRootSaga(): ForkEffect<never>[] {
   return [
-    takeEvery(ManageJobActionTypes.HANDLE_LOAD_CANDIDATES, handleLoadCandidates),
-    takeEvery(ManageJobActionTypes.HANDLE_CHANGE_CANDIDATE_STATUS, handleChangeStatus),
+    takeEvery(
+      ManageJobActionTypes.HANDLE_LOAD_CANDIDATES,
+      handleLoadCandidates
+    ),
+    takeEvery(
+      ManageJobActionTypes.HANDLE_CHANGE_CANDIDATE_STATUS,
+      handleChangeStatus
+    ),
   ];
 }

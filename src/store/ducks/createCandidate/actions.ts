@@ -21,4 +21,5 @@ export const onSetErrorResponse = (data: IReturnGetErrorResponse) =>
 export const onSetSuccessResponse = (data: ISuccessCreateCandidateData) =>
   action(CreateCandidateActionTypes.HANDLE_SET_SUCCESS_RESPONSE, data);
 
-export const onResetState = () => action(CreateCandidateActionTypes.HANDLE_RESET_STATE);
+export const onResetState = () =>
+  action(CreateCandidateActionTypes.HANDLE_RESET_STATE);

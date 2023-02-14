@@ -1,6 +1,10 @@
 import { action } from 'typesafe-actions';
 import { ISetLoadingState } from '../types';
-import { CompanyJobsActionTypes, ICompanyJobsLoadings, ICompanyJobsState } from './types';
+import {
+  CompanyJobsActionTypes,
+  ICompanyJobsLoadings,
+  ICompanyJobsState,
+} from './types';
 
 export const onLoadJobs = () => action(CompanyJobsActionTypes.ON_LOAD_JOBS);
 export const onSetJobs = (jobs: ICompanyJobsState['jobs']) =>

@@ -12,7 +12,10 @@ const INITIAL_STATE: ILoginState = {
   },
 };
 
-const reducer: Reducer<ILoginState> = (state = INITIAL_STATE, { type, payload }) => {
+const reducer: Reducer<ILoginState> = (
+  state = INITIAL_STATE,
+  { type, payload }
+) => {
   switch (type) {
     case LoginActionTypes.SET_LOADING:
       return {

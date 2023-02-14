@@ -50,7 +50,13 @@ export const CandidateProfileView: React.FC<TCandidateProfileProps> = ({
   return (
     <div>
       <Flex alignItems="center">
-        <Icon name="arrowBack" clickable size="sm" isButton onClick={handleBack} />
+        <Icon
+          name="arrowBack"
+          clickable
+          size="sm"
+          isButton
+          onClick={handleBack}
+        />
 
         <Typography size="lg" marginLeft="sm">
           Meu perfil
@@ -76,7 +82,13 @@ export const CandidateProfileView: React.FC<TCandidateProfileProps> = ({
               </Grid>
 
               <Grid item xs={12}>
-                <Input name="about" label="Sobre" multiline rows={4} notErrorMargin />
+                <Input
+                  name="about"
+                  label="Sobre"
+                  multiline
+                  rows={4}
+                  notErrorMargin
+                />
               </Grid>
 
               <Grid item xs={12}>
@@ -94,7 +106,11 @@ export const CandidateProfileView: React.FC<TCandidateProfileProps> = ({
               </Grid>
 
               <Grid item xs={12}>
-                <TagInput name="experiences" label="Experiências" notErrorMargin />
+                <TagInput
+                  name="experiences"
+                  label="Experiências"
+                  notErrorMargin
+                />
               </Grid>
 
               <Grid item xs={12}>
@@ -103,11 +119,19 @@ export const CandidateProfileView: React.FC<TCandidateProfileProps> = ({
 
               <Grid item xs={12}>
                 <Flex>
-                  <Button variant="tertiary" onClick={handleBack} marginLeft="auto">
+                  <Button
+                    variant="tertiary"
+                    onClick={handleBack}
+                    marginLeft="auto"
+                  >
                     Cancelar
                   </Button>
 
-                  <Button type="submit" marginLeft="sm" isLoading={loadings.save}>
+                  <Button
+                    type="submit"
+                    marginLeft="sm"
+                    isLoading={loadings.save}
+                  >
                     Editar
                   </Button>
                 </Flex>

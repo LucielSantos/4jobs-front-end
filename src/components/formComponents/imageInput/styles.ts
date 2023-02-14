@@ -14,7 +14,8 @@ export const InputContainer = styled.div<IInputImageContainer>`
   height: 8rem;
   border-radius: 50%;
   border: 2px solid
-    ${({ theme, error = false }) => (error ? theme.colors.seven : theme.colors.three)};
+    ${({ theme, error = false }) =>
+      error ? theme.colors.seven : theme.colors.three};
   cursor: pointer;
   overflow: hidden;
 `;

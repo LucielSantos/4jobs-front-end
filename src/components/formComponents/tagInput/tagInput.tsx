@@ -6,7 +6,13 @@ import { requiredMessage } from '../../../validationSchemas/messages';
 import { Form, Flex, Input, ErrorMessage } from '../../';
 import { Icon } from '../../../assets/icons';
 
-import { Container, FormContainer, AddButton, TagsContainer, Tag } from './styles';
+import {
+  Container,
+  FormContainer,
+  AddButton,
+  TagsContainer,
+  Tag,
+} from './styles';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required(requiredMessage),
@@ -27,7 +33,8 @@ const TagInputComponent: React.FC<IProps> = ({
   floatingError = false,
   isRequired = false,
 }) => {
-  const { fieldName, defaultValue, registerField, error, clearError } = useField(name);
+  const { fieldName, defaultValue, registerField, error, clearError } =
+    useField(name);
 
   const [values, setValues] = useState<string[]>(defaultValue || []);
   const formRef = useRef<FormHandles>(null);
@@ -48,14 +55,17 @@ const TagInputComponent: React.FC<IProps> = ({
   }, [fieldName, registerField, values]);
 
   const addValue = useCallback(
-    (addedValue: string) => setValues(oldValues => [...oldValues, addedValue]),
+    (addedValue: string) =>
+      setValues((oldValues) => [...oldValues, addedValue]),
     []
   );
 
   const onClickRemove = useCallback(
     (removedIndex: number) => {
       error && clearError();
-      setValues(oldValues => oldValues.filter((name, index) => index !== removedIndex));
+      setValues((oldValues) =>
+        oldValues.filter((name, index) => index !== removedIndex)
+      );
     },
     [error, clearError]
   );
@@ -74,7 +84,11 @@ const TagInputComponent: React.FC<IProps> = ({
   return (
     <Container>
       <FormContainer>
-        <Form ref={formRef} onSubmit={handleSubmit} validationSchema={validationSchema}>
+        <Form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
           <Flex>
             <Input name="name" label={label} />
 
@@ -105,10 +119,14 @@ const TagInputComponent: React.FC<IProps> = ({
 
       {notErrorMargin ? (
         error && (
-          <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
+          <ErrorMessage floatingError={floatingError}>
+            {error && error}
+          </ErrorMessage>
         )
       ) : (
-        <ErrorMessage floatingError={floatingError}>{error || ' '}</ErrorMessage>
+        <ErrorMessage floatingError={floatingError}>
+          {error || ' '}
+        </ErrorMessage>
       )}
 
       <input type="hidden" ref={inputRef} />

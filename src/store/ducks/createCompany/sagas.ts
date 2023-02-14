@@ -35,5 +35,7 @@ function* handleCreateCompany(data: ISagaParam<ICreateCompanyData>) {
   }
 }
 export function createCompanyRootSaga(): ForkEffect<never>[] {
-  return [takeEvery(CreateCompanyActionTypes.HANDLE_CREATE, handleCreateCompany)];
+  return [
+    takeEvery(CreateCompanyActionTypes.HANDLE_CREATE, handleCreateCompany),
+  ];
 }

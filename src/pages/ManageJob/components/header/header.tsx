@@ -11,7 +11,10 @@ interface IProps {
   jobDetails: IJobDetails;
 }
 
-const HeaderComponent: React.FC<IProps> = ({ onCancelRegistrations, jobDetails }) => {
+const HeaderComponent: React.FC<IProps> = ({
+  onCancelRegistrations,
+  jobDetails,
+}) => {
   const handleClickIdentifier = useCallback(() => {
     copyToClipboard(jobDetails.id, () =>
       openNotification('Identificador copiado para a área de transferência')
@@ -23,7 +26,10 @@ const HeaderComponent: React.FC<IProps> = ({ onCancelRegistrations, jobDetails }
       <TitleContainer>
         <Typography size="xl">{jobDetails.title} - &nbsp;</Typography>
 
-        <Tooltip placement="top" text="Clique para copiar para área de transferência">
+        <Tooltip
+          placement="top"
+          text="Clique para copiar para área de transferência"
+        >
           <Typography onClick={handleClickIdentifier} clickable>
             {jobDetails.id}
           </Typography>
@@ -31,7 +37,8 @@ const HeaderComponent: React.FC<IProps> = ({ onCancelRegistrations, jobDetails }
       </TitleContainer>
 
       <Button onClick={onCancelRegistrations}>
-        {jobDetails.status === jobStatus.opened ? 'Cancelar' : 'Abrir'} inscrições
+        {jobDetails.status === jobStatus.opened ? 'Cancelar' : 'Abrir'}{' '}
+        inscrições
       </Button>
     </Container>
   );

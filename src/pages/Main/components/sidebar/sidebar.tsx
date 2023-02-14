@@ -14,7 +14,7 @@ interface IProps {
 
 const SidebarComponent: React.FC<IProps> = ({ userType, history }) => {
   const onClickIcon = useCallback(
-    route => {
+    (route) => {
       history.push(route);
     },
     [history]

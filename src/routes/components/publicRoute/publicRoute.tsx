@@ -7,6 +7,7 @@ export interface IPublicRoute {
   path: RouteProps['path'];
 }
 
-export const PublicRoute: React.FC<IPublicRoute> = ({ exact = true, ...props }) => (
-  <Route exact={exact} {...props} />
-);
+export const PublicRoute: React.FC<IPublicRoute> = ({
+  exact = true,
+  ...props
+}) => <Route exact={exact} {...props} />;

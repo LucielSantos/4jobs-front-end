@@ -5,14 +5,21 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import { Container } from './styles';
 import { Column } from '../';
-import { ICandidateByJob, IDropData, IListCandidateByJob } from '../../../../types';
+import {
+  ICandidateByJob,
+  IDropData,
+  IListCandidateByJob,
+} from '../../../../types';
 import { jobResponseTypes } from '../../../../constants';
 import { TJobResponseValues } from '../../../../constants/job';
 
 interface IProps {
   candidates: IListCandidateByJob;
   handleDropCard(dropData: IDropData): void;
-  onClickCandidate(candidateId: ICandidateByJob, columnId: TJobResponseValues): void;
+  onClickCandidate(
+    candidateId: ICandidateByJob,
+    columnId: TJobResponseValues
+  ): void;
   onClickMessage(candidate: ICandidateByJob, columnName: string): void;
 }
 

@@ -18,16 +18,22 @@ export const renderField = (field: IDynamicFormField, name: string) => {
       return <Input name={name} label={renderLabel(field)} />;
 
     case dynamicFormFieldValues.textArea:
-      return <Input name={name} label={renderLabel(field)} multiline rows={4} />;
+      return (
+        <Input name={name} label={renderLabel(field)} multiline rows={4} />
+      );
 
     case dynamicFormFieldValues.date:
       return <DateInput name={name} label={renderLabel(field)} />;
 
     case dynamicFormFieldValues.integer:
-      return <MaskedInput mask="number" name={name} label={renderLabel(field)} />;
+      return (
+        <MaskedInput mask="number" name={name} label={renderLabel(field)} />
+      );
 
     case dynamicFormFieldValues.decimal:
-      return <MaskedInput mask="decimal" name={name} label={renderLabel(field)} />;
+      return (
+        <MaskedInput mask="decimal" name={name} label={renderLabel(field)} />
+      );
 
     default:
       return null;

@@ -30,7 +30,10 @@ export const MainView: React.FC<MainViewProps> = ({
   );
 
   const redirectPage = useCallback(() => {
-    if (history.location.pathname === '/' || location.pathname === routePaths.LOGIN) {
+    if (
+      history.location.pathname === '/' ||
+      location.pathname === routePaths.LOGIN
+    ) {
       if (isAuthenticated(userTypes.company)) {
         history.push(routePaths.COMPANY_JOBS);
         return;
@@ -52,12 +55,12 @@ export const MainView: React.FC<MainViewProps> = ({
 
     switchNavbarState(history.location.pathname);
 
-    history.listen(location => {
+    history.listen((location) => {
       switchNavbarState(location.pathname);
       actualizeLoggedUser();
     });
 
-    history.listen(location => {
+    history.listen((location) => {
       if (location.pathname === '/' || location.pathname === routePaths.LOGIN)
         redirectPage();
     });

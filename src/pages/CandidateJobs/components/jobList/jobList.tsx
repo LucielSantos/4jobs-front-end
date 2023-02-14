@@ -9,7 +9,11 @@ interface IProps {
   onClickMessage(jobId: string): void;
 }
 
-const JobListComponent: React.FC<IProps> = ({ jobs, onClickCard, onClickMessage }) => {
+const JobListComponent: React.FC<IProps> = ({
+  jobs,
+  onClickCard,
+  onClickMessage,
+}) => {
   return (
     <Flex marginTop="xl" flexWrap="wrap">
       {jobs.map((job, index) => (

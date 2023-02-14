@@ -62,7 +62,10 @@ function* handleEdit(data: ISagaParam<ICandidateDetailsEdit>) {
 
 export function candidateProfileRootSaga(): ForkEffect<never>[] {
   return [
-    takeEvery(CandidateProfileActionTypes.HANDEL_LOAD_DETAILS, handleLoadDetails),
+    takeEvery(
+      CandidateProfileActionTypes.HANDEL_LOAD_DETAILS,
+      handleLoadDetails
+    ),
     takeEvery(CandidateProfileActionTypes.HANDEL_EDIT, handleEdit),
   ];
 }

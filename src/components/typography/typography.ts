@@ -19,8 +19,10 @@ export interface ITypography {
 export const Typography = styled.p<ITypography>`
   color: ${({ theme, color = 'one' }) => theme.typography.colors[color]};
   font-size: ${({ theme, size = 'md' }) => theme.typography.sizes[size]};
-  font-weight: ${({ theme, weight = 'regular' }) => theme.typography.weight[weight]};
-  margin-top: ${({ theme, marginTop }) => (marginTop ? theme.spacings[marginTop] : 0)};
+  font-weight: ${({ theme, weight = 'regular' }) =>
+    theme.typography.weight[weight]};
+  margin-top: ${({ theme, marginTop }) =>
+    marginTop ? theme.spacings[marginTop] : 0};
   margin-right: ${({ theme, marginRight }) =>
     marginRight ? theme.spacings[marginRight] : 0};
   margin-bottom: ${({ theme, marginBottom }) =>

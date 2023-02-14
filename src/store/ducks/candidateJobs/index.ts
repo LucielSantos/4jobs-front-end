@@ -77,7 +77,7 @@ const reducer: Reducer<ICandidateJobsState> = (
     case CandidateJobsActionTypes.HANDLE_CLEAN_MESSAGE:
       return {
         ...state,
-        jobs: state.jobs.map(job =>
+        jobs: state.jobs.map((job) =>
           job.id === payload ? { ...job, hasCompanyMessage: false } : job
         ),
       };

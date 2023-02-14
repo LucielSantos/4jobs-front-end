@@ -10,7 +10,11 @@ interface IProps {
   fieldsName: string;
 }
 
-const DynamicFormComponent: React.FC<IProps> = ({ fields, path, fieldsName }) => {
+const DynamicFormComponent: React.FC<IProps> = ({
+  fields,
+  path,
+  fieldsName,
+}) => {
   return (
     <>
       {fields.map((field, index) => (

@@ -1,6 +1,11 @@
 import React, { useCallback, useLayoutEffect, useMemo } from 'react';
 import { Icon } from '../../assets/icons';
-import { Flex, LoadingMessage, MessagesModal, Typography } from '../../components';
+import {
+  Flex,
+  LoadingMessage,
+  MessagesModal,
+  Typography,
+} from '../../components';
 import { routePaths } from '../../routes';
 import { goBack, querySearchParse } from '../../utils';
 
@@ -17,7 +22,10 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
   handleReplyForm,
   handleCleanMessage,
 }) => {
-  const searchParams = useMemo<{ jobId?: string }>(() => querySearchParse(), []);
+  const searchParams = useMemo<{ jobId?: string }>(
+    () => querySearchParse(),
+    []
+  );
 
   const onEnterScreen = useCallback(() => {
     if (!searchParams?.jobId) {
@@ -33,13 +41,15 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
     onEnterScreen();
   }, [onEnterScreen]);
 
-  const handleClickReply = useCallback(() => handleSetDialog('reply', true), [
-    handleSetDialog,
-  ]);
+  const handleClickReply = useCallback(
+    () => handleSetDialog('reply', true),
+    [handleSetDialog]
+  );
 
-  const handleCloseReply = useCallback(() => handleSetDialog('reply', false), [
-    handleSetDialog,
-  ]);
+  const handleCloseReply = useCallback(
+    () => handleSetDialog('reply', false),
+    [handleSetDialog]
+  );
 
   const handleClickMessage = useCallback(() => {
     handleCleanMessage();

@@ -7,7 +7,9 @@ interface IInputPasswordProps extends IInputProps {}
 
 type TInputType = 'password' | 'text';
 
-const InputPasswordComponent: React.FC<IInputPasswordProps> = ({ ...props }) => {
+const InputPasswordComponent: React.FC<IInputPasswordProps> = ({
+  ...props
+}) => {
   const [type, setType] = useState<TInputType>('password');
 
   const onClickIcon = useCallback(() => {

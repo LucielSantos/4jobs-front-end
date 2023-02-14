@@ -1,5 +1,9 @@
 import { FormHandles, SubmitHandler } from '@unform/core';
-import React, { RefForwardingComponent, useImperativeHandle, useRef } from 'react';
+import React, {
+  RefForwardingComponent,
+  useImperativeHandle,
+  useRef,
+} from 'react';
 import { Form as FormUnform } from '@unform/web';
 import * as Yup from 'yup';
 
@@ -40,7 +44,7 @@ const FormComponent: RefForwardingComponent<FormHandles | null, IProps> = (
       if (err instanceof Yup.ValidationError) {
         const errorMessages: IErrorMessages = {};
 
-        err.inner.forEach(error => {
+        err.inner.forEach((error) => {
           if (error.path) {
             errorMessages[error.path] = error.message;
           }

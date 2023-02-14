@@ -3,11 +3,20 @@ import React, { useCallback } from 'react';
 
 import { Icon } from '../../../../assets/icons';
 import { Divider, Flex, Typography } from '../../../../components';
-import { jobResponseTypes, jobResponseTypesLabels } from '../../../../constants';
+import {
+  jobResponseTypes,
+  jobResponseTypesLabels,
+} from '../../../../constants';
 import { IJobCandidateList } from '../../../../types';
 import { formatDate } from '../../../../utils';
 
-import { Container, Header, Footer, FooterLeftColumn, FooterRightColumn } from './styles';
+import {
+  Container,
+  Header,
+  Footer,
+  FooterLeftColumn,
+  FooterRightColumn,
+} from './styles';
 
 interface IProps {
   job: IJobCandidateList;
@@ -15,7 +24,11 @@ interface IProps {
   onClickMessage(jobId: string): void;
 }
 
-const JobListCardComponent: React.FC<IProps> = ({ job, onClickCard, onClickMessage }) => {
+const JobListCardComponent: React.FC<IProps> = ({
+  job,
+  onClickCard,
+  onClickMessage,
+}) => {
   const handleClickMessage = useCallback(
     (e: MouseEvent) => {
       e.stopPropagation();
@@ -57,9 +70,13 @@ const JobListCardComponent: React.FC<IProps> = ({ job, onClickCard, onClickMessa
         <FooterLeftColumn>
           <Typography size="sm" marginBottom="xs">
             Prazo da entrega:{' '}
-            {formatDate(add(new Date(job.created_at), { days: job.job.deadlineResolve }))}
+            {formatDate(
+              add(new Date(job.created_at), { days: job.job.deadlineResolve })
+            )}
           </Typography>
-          <Typography size="sm">Status: {jobResponseTypesLabels[job.status]}</Typography>
+          <Typography size="sm">
+            Status: {jobResponseTypesLabels[job.status]}
+          </Typography>
         </FooterLeftColumn>
 
         <FooterRightColumn>

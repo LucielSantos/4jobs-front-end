@@ -23,7 +23,11 @@ const ViewDynamicFormResponseComponent: React.FC<IProps> = ({
   });
 
   return (
-    <Modal open={open} handleClose={handleClose} title="Visualizar resposta do candidato">
+    <Modal
+      open={open}
+      handleClose={handleClose}
+      title="Visualizar resposta do candidato"
+    >
       {isLoadingFields ? (
         <LoadingMessage text="Carregando respostas" />
       ) : fields ? (
@@ -33,4 +37,6 @@ const ViewDynamicFormResponseComponent: React.FC<IProps> = ({
   );
 };
 
-export const ViewDynamicFormResponse = React.memo(ViewDynamicFormResponseComponent);
+export const ViewDynamicFormResponse = React.memo(
+  ViewDynamicFormResponseComponent
+);

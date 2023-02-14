@@ -5,7 +5,10 @@ import React, { useCallback, useRef } from 'react';
 import { Modal, Flex, Form, LoadingMessage, IModalProps, Input } from '../';
 import { Icon } from '../../assets/icons';
 import { useRequest } from '../../hooks';
-import { getJobResponseMessages, putNewMessageJobResponse } from '../../services';
+import {
+  getJobResponseMessages,
+  putNewMessageJobResponse,
+} from '../../services';
 import { IMessageJobResponseRequest, INewMessage } from '../../types';
 import { newMessageValidationSchema } from '../../validationSchemas';
 
@@ -30,10 +33,12 @@ const MessagesModalComponent: React.FC<IProps> = ({
 }) => {
   const formRef = useRef<FormHandles>(null);
 
-  const [data, isLoading, getMessages] = useRequest<IMessageJobResponseRequest>({
-    handleRequest: getJobResponseMessages,
-    initialReqParams: [jobResponseId],
-  });
+  const [data, isLoading, getMessages] = useRequest<IMessageJobResponseRequest>(
+    {
+      handleRequest: getJobResponseMessages,
+      initialReqParams: [jobResponseId],
+    }
+  );
 
   const handleSubmit = useCallback<SubmitHandler<INewMessage>>(
     async (data, { reset }) => {
@@ -65,7 +70,9 @@ const MessagesModalComponent: React.FC<IProps> = ({
               <MessageContainer key={`message-${key}`}>
                 <MessageInfo>
                   {message.author} -{' '}
-                  <span>{format(new Date(message.date), 'dd/MM/yyyy HH:mm')}</span>
+                  <span>
+                    {format(new Date(message.date), 'dd/MM/yyyy HH:mm')}
+                  </span>
                 </MessageInfo>
 
                 <MessageBody>{message.message}</MessageBody>

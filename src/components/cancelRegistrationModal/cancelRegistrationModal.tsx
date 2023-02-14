@@ -64,7 +64,8 @@ const CancelRegistrationModalComponent: React.FC<IProps> = ({
       width="xs"
     >
       <Typography marginTop="sm" marginBottom="lg">
-        Confirmar {currentJobStatus === jobStatus.opened ? 'cancelamento' : 'abertura'} de
+        Confirmar{' '}
+        {currentJobStatus === jobStatus.opened ? 'cancelamento' : 'abertura'} de
         inscrições?
       </Typography>
 
@@ -86,4 +87,6 @@ const CancelRegistrationModalComponent: React.FC<IProps> = ({
   );
 };
 
-export const CancelRegistrationModal = React.memo(CancelRegistrationModalComponent);
+export const CancelRegistrationModal = React.memo(
+  CancelRegistrationModalComponent
+);

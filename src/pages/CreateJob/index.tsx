@@ -15,7 +15,10 @@ interface IStateProps extends ICreateJobState {}
 
 interface IDispatchProps {
   onLoadPage(): void;
-  onSetDialog(field: ISetDialogParam['field'], value: ISetDialogParam['value']): void;
+  onSetDialog(
+    field: ISetDialogParam['field'],
+    value: ISetDialogParam['value']
+  ): void;
   handleCreateJob(data: ICreateJob): void;
 }
 

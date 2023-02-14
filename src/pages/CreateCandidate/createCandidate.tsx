@@ -1,7 +1,14 @@
 import { FormHandles } from '@unform/core';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { TCreateCandidateProps } from '.';
-import { Button, Flex, Form, Input, InputPassword, Typography } from '../../components';
+import {
+  Button,
+  Flex,
+  Form,
+  Input,
+  InputPassword,
+  Typography,
+} from '../../components';
 import { ICreateCandidateData } from '../../store/ducks/createCandidate/types';
 import { openNotification, setFormErrors } from '../../utils';
 import { createCandidateValidationSchema } from '../../validationSchemas';
@@ -52,17 +59,27 @@ export const CreateCandidateView: React.FC<TCreateCandidateProps> = ({
         <InputPassword name="confirmPassword" label="Confirmar senha" />
 
         <Typography size="sm">
-          A senha deve conter: <br /> &nbsp; • Mínimo 8 (oito) caractéres; <br /> &nbsp; •
-          Mínimo uma letra minuscula; <br /> &nbsp; • Mínimo uma letra maiúscula; <br />{' '}
-          &nbsp; • Mínimo um número.
+          A senha deve conter: <br /> &nbsp; • Mínimo 8 (oito) caractéres;{' '}
+          <br /> &nbsp; • Mínimo uma letra minuscula; <br /> &nbsp; • Mínimo uma
+          letra maiúscula; <br /> &nbsp; • Mínimo um número.
         </Typography>
 
         <Flex flexDirection="column">
-          <Button type="submit" marginTop="sm" fullWidth isLoading={loadings.create}>
+          <Button
+            type="submit"
+            marginTop="sm"
+            fullWidth
+            isLoading={loadings.create}
+          >
             Cadastrar-se
           </Button>
 
-          <Button marginTop="sm" fullWidth variant="tertiary" onClick={onClickCancel}>
+          <Button
+            marginTop="sm"
+            fullWidth
+            variant="tertiary"
+            onClick={onClickCancel}
+          >
             Cancelar
           </Button>
         </Flex>

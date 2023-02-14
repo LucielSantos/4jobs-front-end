@@ -21,7 +21,10 @@ export const PreJobView: React.FC<TPreJobProps> = ({
   loadings,
   handleLoadJobPreview,
 }) => {
-  const searchParams = useMemo<{ jobId?: string }>(() => querySearchParse(), []);
+  const searchParams = useMemo<{ jobId?: string }>(
+    () => querySearchParse(),
+    []
+  );
 
   const onEnterScreen = useCallback(() => {
     if (!searchParams?.jobId) {
@@ -35,13 +38,18 @@ export const PreJobView: React.FC<TPreJobProps> = ({
     onEnterScreen();
   }, [onEnterScreen]);
 
-  const handleBack = useCallback(() => history.push(routePaths.LOGIN), [history]);
+  const handleBack = useCallback(
+    () => history.push(routePaths.LOGIN),
+    [history]
+  );
 
   const handleClickConfirm = useCallback(() => {
     console.log('handleClickConfirm');
 
     if (searchParams?.jobId) {
-      history.push(`${routePaths.LOGIN}${queryStringify({ jobId: searchParams.jobId })}`);
+      history.push(
+        `${routePaths.LOGIN}${queryStringify({ jobId: searchParams.jobId })}`
+      );
     }
   }, [searchParams, history]);
 
@@ -49,7 +57,13 @@ export const PreJobView: React.FC<TPreJobProps> = ({
     <Flex justifyItems="center">
       <Container>
         <Flex alignItems="center">
-          <Icon name="arrowBack" size="sm" isButton clickable onClick={handleBack} />
+          <Icon
+            name="arrowBack"
+            size="sm"
+            isButton
+            clickable
+            onClick={handleBack}
+          />
 
           <Typography size="lg" marginLeft="sm">
             Pré visualizar vaga{' '}

@@ -15,7 +15,7 @@ const ConditionalNavRenderComponent: React.FC<IProps> = ({
 }) => {
   if (!showIn) return <> {children} </>;
 
-  if (showIn.find(showInState => navbarStates[showInState] === navbarState))
+  if (showIn.find((showInState) => navbarStates[showInState] === navbarState))
     return <> {children} </>;
 
   return null;

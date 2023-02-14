@@ -27,12 +27,19 @@ const IconComponent: React.FC<IIconProps> = ({
   if (badge) {
     return (
       <Badge color="error" variant="dot" invisible={!badge} {...badgeProps}>
-        <Component color={color} sizeParam={size} onClick={onClick} {...props} />
+        <Component
+          color={color}
+          sizeParam={size}
+          onClick={onClick}
+          {...props}
+        />
       </Badge>
     );
   }
 
-  return <Component color={color} sizeParam={size} onClick={onClick} {...props} />;
+  return (
+    <Component color={color} sizeParam={size} onClick={onClick} {...props} />
+  );
 };
 
 export const Icon = React.memo(IconComponent);

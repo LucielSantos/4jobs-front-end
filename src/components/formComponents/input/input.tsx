@@ -57,26 +57,31 @@ const InputComponent: React.FC<IInputProps> = ({
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { fieldName, defaultValue, registerField, error, clearError } = useField(name);
+  const { fieldName, defaultValue, registerField, error, clearError } =
+    useField(name);
 
   useEffect(() => {
     registerField({
       name: fieldName,
       ref: inputRef,
-      getValue: ref => {
+      getValue: (ref) => {
         return ref.current.value;
       },
       setValue: (ref, value) => {
         ref.current.value = value;
       },
-      clearValue: ref => {
+      clearValue: (ref) => {
         ref.current.value = '';
       },
     });
   }, [fieldName, registerField]);
 
   return (
-    <Container marginLeft={marginLeft} marginRight={marginRight} fullWidth={fullWidth}>
+    <Container
+      marginLeft={marginLeft}
+      marginRight={marginRight}
+      fullWidth={fullWidth}
+    >
       {separatedLabel && label && <Label color={labelColor}>{label}</Label>}
 
       <StyledInput
@@ -91,8 +96,13 @@ const InputComponent: React.FC<IInputProps> = ({
         inputRef={inputRef}
         error={Boolean(error)}
         type={type}
-        InputProps={renderInputProps(startAdornment, endAdornment, maskComponent, mask)}
-        onChange={e => {
+        InputProps={renderInputProps(
+          startAdornment,
+          endAdornment,
+          maskComponent,
+          mask
+        )}
+        onChange={(e) => {
           error && clearError();
           onChange && onChange(e);
         }}
@@ -100,10 +110,14 @@ const InputComponent: React.FC<IInputProps> = ({
 
       {notErrorMargin ? (
         error && (
-          <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
+          <ErrorMessage floatingError={floatingError}>
+            {error && error}
+          </ErrorMessage>
         )
       ) : (
-        <ErrorMessage floatingError={floatingError}>{error || ' '}</ErrorMessage>
+        <ErrorMessage floatingError={floatingError}>
+          {error || ' '}
+        </ErrorMessage>
       )}
     </Container>
   );

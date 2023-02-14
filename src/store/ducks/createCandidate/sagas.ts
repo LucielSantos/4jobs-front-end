@@ -39,6 +39,9 @@ function* handleCreateCandidate(data: ISagaParam<ICreateCandidateData>) {
 
 export function createCandidateRootSaga(): ForkEffect<never>[] {
   return [
-    takeEvery(CreateCandidateActionTypes.HANDLE_CREATE_CANDIDATE, handleCreateCandidate),
+    takeEvery(
+      CreateCandidateActionTypes.HANDLE_CREATE_CANDIDATE,
+      handleCreateCandidate
+    ),
   ];
 }

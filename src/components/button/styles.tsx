@@ -24,7 +24,11 @@ export interface IStyledButton {
 export const StyledButton = styled.button.attrs<IStyledButton>(
   ({ type, isLoading, children }) => ({
     type: type || 'button',
-    children: isLoading ? <CircularProgress color="inherit" size={25} /> : children,
+    children: isLoading ? (
+      <CircularProgress color="inherit" size={25} />
+    ) : (
+      children
+    ),
   })
 )<IStyledButton>`
   font-size: ${({ theme }) => theme.typography.sizes.md};
@@ -45,7 +49,8 @@ export const StyledButton = styled.button.attrs<IStyledButton>(
   height: 4rem;
   position: relative;
 
-  margin-top: ${({ theme, marginTop }) => (marginTop ? theme.spacings[marginTop] : 0)};
+  margin-top: ${({ theme, marginTop }) =>
+    marginTop ? theme.spacings[marginTop] : 0};
   margin-right: ${({ theme, marginRight }) =>
     marginRight ? theme.spacings[marginRight] : 0};
   margin-bottom: ${({ theme, marginBottom }) =>
@@ -63,15 +68,21 @@ export const StyledButton = styled.button.attrs<IStyledButton>(
       ? theme.buttons[variant].disabled.background
       : theme.buttons[variant].background};
   color: ${({ theme, variant = 'primary', disabled = false }) =>
-    disabled ? theme.buttons[variant].disabled.color : theme.buttons[variant].color};
+    disabled
+      ? theme.buttons[variant].disabled.color
+      : theme.buttons[variant].color};
 
   &:hover {
     filter: ${({ disabled = false, variant }) =>
-      !disabled && variant === 'tertiary' ? 'brightness(95%)' : 'brightness(90%)'};
+      !disabled && variant === 'tertiary'
+        ? 'brightness(95%)'
+        : 'brightness(90%)'};
   }
   &:active {
     filter: ${({ disabled = false, variant }) =>
-      !disabled && variant === 'tertiary' ? 'brightness(90%)' : 'brightness(80%)'};
+      !disabled && variant === 'tertiary'
+        ? 'brightness(90%)'
+        : 'brightness(80%)'};
   }
 
   ${({ disabled = false, isLoading }) =>

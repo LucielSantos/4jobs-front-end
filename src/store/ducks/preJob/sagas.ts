@@ -14,11 +14,16 @@ import {
   onSetCandidateJobDialog,
 } from '../candidateJobs/actions';
 
-function* handleLoadJobPreview({ payload: { jobId } }: ISagaParam<{ jobId: string }>) {
+function* handleLoadJobPreview({
+  payload: { jobId },
+}: ISagaParam<{ jobId: string }>) {
   try {
     yield put(handleSetLoading('page', true));
 
-    const response: AxiosResponse<IJobPreview> = yield call(getJobPreview, jobId);
+    const response: AxiosResponse<IJobPreview> = yield call(
+      getJobPreview,
+      jobId
+    );
 
     const userType = getUserType();
 
@@ -41,5 +46,7 @@ function* handleLoadJobPreview({ payload: { jobId } }: ISagaParam<{ jobId: strin
 }
 
 export function preJobRootSaga(): ForkEffect<never>[] {
-  return [takeEvery(PreJobActionTypes.HANDLE_LOAD_JOB_PREVIEW, handleLoadJobPreview)];
+  return [
+    takeEvery(PreJobActionTypes.HANDLE_LOAD_JOB_PREVIEW, handleLoadJobPreview),
+  ];
 }

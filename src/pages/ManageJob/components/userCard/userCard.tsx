@@ -19,7 +19,10 @@ interface IProps {
   index: number;
   candidate: ICandidateByJob;
   columnId: TJobResponseValues;
-  onClickCandidate(candidateId: ICandidateByJob, columnId: TJobResponseValues): void;
+  onClickCandidate(
+    candidateId: ICandidateByJob,
+    columnId: TJobResponseValues
+  ): void;
   onClickMessage(candidate: ICandidateByJob, columnName: string): void;
 }
 
@@ -34,7 +37,7 @@ const UserCardComponent: React.FC<IProps> = ({
     () => ({
       type: `${columnId}`,
       item: { candidate, column: columnId, columnName },
-      collect: monitor => ({
+      collect: (monitor) => ({
         opacity: monitor.isDragging() ? 0.5 : 1,
       }),
     }),
@@ -76,7 +79,10 @@ const UserCardComponent: React.FC<IProps> = ({
         columnId === jobResponseTypes.answered ||
         columnId === jobResponseTypes.returned) && (
         <StatusContainer>
-          <Tooltip text={jobResponseTypesLabels[candidate.status]} placement="top">
+          <Tooltip
+            text={jobResponseTypesLabels[candidate.status]}
+            placement="top"
+          >
             <StatusDot status={candidate.status} />
           </Tooltip>
         </StatusContainer>

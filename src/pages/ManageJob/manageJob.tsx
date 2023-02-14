@@ -5,7 +5,11 @@ import { Container } from './styles';
 import { Header, Body, SendMessageFinished } from './components';
 import { goBack, querySearchParse } from '../../utils';
 import { ICandidateByJob, IDropData, IJobDetails } from '../../types';
-import { jobResponseTypes, TJobResponseValues, TJobStatus } from '../../constants';
+import {
+  jobResponseTypes,
+  TJobResponseValues,
+  TJobStatus,
+} from '../../constants';
 import {
   CancelRegistrationModal,
   LoadingMessage,
@@ -24,10 +28,11 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
 }) => {
   const { jobId } = useMemo<{ jobId: string }>(() => querySearchParse(), []);
 
-  const [jobDetails, isLoadingDetails, handleGetJobDetails] = useRequest<IJobDetails>({
-    handleRequest: getJobDetails,
-    initialReqParams: [jobId],
-  });
+  const [jobDetails, isLoadingDetails, handleGetJobDetails] =
+    useRequest<IJobDetails>({
+      handleRequest: getJobDetails,
+      initialReqParams: [jobId],
+    });
 
   const [dialogs, setDialogs] = useState({
     userDetails: false,
@@ -38,10 +43,12 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
   });
 
   const [tempDropData, setTempDropData] = useState<null | IDropData>(null);
-  const [selectedCandidateId, setSelectedCandidateId] = useState<false | string>(false);
-  const [selectedJobResponseId, setSelectedJobResponseId] = useState<false | string>(
-    false
-  );
+  const [selectedCandidateId, setSelectedCandidateId] = useState<
+    false | string
+  >(false);
+  const [selectedJobResponseId, setSelectedJobResponseId] = useState<
+    false | string
+  >(false);
 
   useEffect(() => {
     if (!jobId) {
@@ -52,7 +59,7 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
   }, [handleLoadCandidates, jobId]);
 
   const handleSetDialog = useCallback((field: string, value: boolean) => {
-    setDialogs(oldState => ({ ...oldState, [field]: value }));
+    setDialogs((oldState) => ({ ...oldState, [field]: value }));
   }, []);
 
   const handleCancelRegistrations = useCallback(() => {

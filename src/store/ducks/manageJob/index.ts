@@ -15,7 +15,10 @@ const INITIAL_STATE: IManageJobState = {
   },
 };
 
-const reducer: Reducer<IManageJobState> = (state = INITIAL_STATE, { type, payload }) => {
+const reducer: Reducer<IManageJobState> = (
+  state = INITIAL_STATE,
+  { type, payload }
+) => {
   switch (type) {
     case ManageJobActionTypes.HANDLE_SET_LOADING:
       return {
@@ -41,8 +44,11 @@ const reducer: Reducer<IManageJobState> = (state = INITIAL_STATE, { type, payloa
             ...state.candidates[payload.newColumnName],
             payload.candidate,
           ],
-          [payload.oldColumnName]: state.candidates[payload.oldColumnName].filter(
-            (candidate: ICandidateByJob) => candidate.id !== payload.candidate.id
+          [payload.oldColumnName]: state.candidates[
+            payload.oldColumnName
+          ].filter(
+            (candidate: ICandidateByJob) =>
+              candidate.id !== payload.candidate.id
           ),
         },
       };
@@ -52,12 +58,11 @@ const reducer: Reducer<IManageJobState> = (state = INITIAL_STATE, { type, payloa
         ...state,
         candidates: {
           ...state.candidates,
-          [payload.columnName]: state.candidates[
-            payload.columnName
-          ].map((candidate: ICandidateByJob) =>
-            candidate.id === payload.candidateId
-              ? { ...candidate, hasCandidateMessage: false }
-              : candidate
+          [payload.columnName]: state.candidates[payload.columnName].map(
+            (candidate: ICandidateByJob) =>
+              candidate.id === payload.candidateId
+                ? { ...candidate, hasCandidateMessage: false }
+                : candidate
           ),
         },
       };

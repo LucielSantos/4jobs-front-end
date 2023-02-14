@@ -1,6 +1,12 @@
 import React, { useCallback } from 'react';
 import { Icon } from '../../../../assets/icons';
-import { Divider, Flex, Popover, Tooltip, Typography } from '../../../../components';
+import {
+  Divider,
+  Flex,
+  Popover,
+  Tooltip,
+  Typography,
+} from '../../../../components';
 import { routePaths } from '../../../../routes';
 
 import { IJobInList } from '../../../../store/ducks/companyJobs/types';
@@ -10,7 +16,13 @@ import {
   openNotification,
   queryStringify,
 } from '../../../../utils';
-import { Container, Header, Footer, FooterLeftColumn, FooterRightColumn } from './styles';
+import {
+  Container,
+  Header,
+  Footer,
+  FooterLeftColumn,
+  FooterRightColumn,
+} from './styles';
 
 const renderInfoTooltip = (job: IJobInList) => {
   return (
@@ -45,7 +57,9 @@ const JobListCardComponent: React.FC<IProps> = ({ job }) => {
   }, [job]);
 
   const handleClickCard = useCallback(() => {
-    history.push(`${routePaths.MANAGE_JOB}${queryStringify({ jobId: job.id })}`);
+    history.push(
+      `${routePaths.MANAGE_JOB}${queryStringify({ jobId: job.id })}`
+    );
   }, [job]);
 
   return (
@@ -63,7 +77,10 @@ const JobListCardComponent: React.FC<IProps> = ({ job }) => {
           <Popover
             options={[
               { children: 'Copiar identificador', onClick: handleClickCopyId },
-              { children: 'Copiar URL pública', onClick: handleClickCopyPublicUrl },
+              {
+                children: 'Copiar URL pública',
+                onClick: handleClickCopyPublicUrl,
+              },
             ]}
           />
         </Flex>

@@ -48,7 +48,13 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
   return (
     <PageContainer>
       <Flex alignItems="center">
-        <Icon name="arrowBack" clickable size="sm" isButton onClick={handleBack} />
+        <Icon
+          name="arrowBack"
+          clickable
+          size="sm"
+          isButton
+          onClick={handleBack}
+        />
 
         <Typography size="lg" marginLeft="sm">
           Empresa - Cadastrar-se
@@ -67,23 +73,41 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
                 <ImageInput name="profileImage" notErrorMargin />
 
                 <div style={{ width: '100%' }}>
-                  <Input name="name" label="Nome da empresa" marginLeft notErrorMargin />
+                  <Input
+                    name="name"
+                    label="Nome da empresa"
+                    marginLeft
+                    notErrorMargin
+                  />
                 </div>
               </Flex>
             </Grid>
 
             <Grid container alignItems="flex-end" item xs={12} sm={5}>
               <div style={{ width: '100%' }}>
-                <Input name="responsible" label="Nome do responsável" notErrorMargin />
+                <Input
+                  name="responsible"
+                  label="Nome do responsável"
+                  notErrorMargin
+                />
               </div>
             </Grid>
 
             <Grid item xs={12} sm={4}>
-              <MaskedInput name="cnpj" label="CNPJ" mask="cnpj" notErrorMargin />
+              <MaskedInput
+                name="cnpj"
+                label="CNPJ"
+                mask="cnpj"
+                notErrorMargin
+              />
             </Grid>
 
             <Grid item xs={12} sm={3}>
-              <Input name="phone" label="Telefone para contato" notErrorMargin />
+              <Input
+                name="phone"
+                label="Telefone para contato"
+                notErrorMargin
+              />
             </Grid>
 
             <Grid item xs={12} sm={2}>
@@ -112,16 +136,20 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
 
             <Grid item xs={12} sm={12}>
               <Typography marginBottom="sm" size="sm">
-                A senha deve conter: <br /> &nbsp; • Mínimo 8 (oito) caractéres; <br />{' '}
-                &nbsp; • Mínimo uma letra minuscula; <br /> &nbsp; • Mínimo uma letra
-                maiúscula; <br /> &nbsp; • Mínimo um número.
+                A senha deve conter: <br /> &nbsp; • Mínimo 8 (oito) caractéres;{' '}
+                <br /> &nbsp; • Mínimo uma letra minuscula; <br /> &nbsp; •
+                Mínimo uma letra maiúscula; <br /> &nbsp; • Mínimo um número.
               </Typography>
             </Grid>
 
             <Grid container />
 
             <Grid item xs={12} sm={6}>
-              <Input name="marketSegment" label="Segmento do mercado" notErrorMargin />
+              <Input
+                name="marketSegment"
+                label="Segmento do mercado"
+                notErrorMargin
+              />
             </Grid>
 
             <Grid item xs={12} sm={12}>

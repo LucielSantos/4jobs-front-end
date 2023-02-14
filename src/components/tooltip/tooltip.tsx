@@ -8,7 +8,11 @@ interface IProps {
   placement?: TooltipProps['placement'];
 }
 
-const TooltipComponent: React.FC<IProps> = ({ text, children, placement = 'bottom' }) => {
+const TooltipComponent: React.FC<IProps> = ({
+  text,
+  children,
+  placement = 'bottom',
+}) => {
   return (
     <TooltipMUI
       arrow

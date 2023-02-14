@@ -17,7 +17,9 @@ interface IProps {
 }
 
 const PopoverComponent: React.FC<IProps> = ({ options }) => {
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+    null
+  );
 
   const open = useMemo(() => Boolean(anchorEl), [anchorEl]);
 
@@ -36,7 +38,7 @@ const PopoverComponent: React.FC<IProps> = ({ options }) => {
   }, []);
 
   const handleClickLine = useCallback(
-    fc => (event?: any) => {
+    (fc) => (event?: any) => {
       event && event.preventDefault();
       event && event.stopPropagation();
       handleClose();
@@ -70,7 +72,10 @@ const PopoverComponent: React.FC<IProps> = ({ options }) => {
       >
         <Body>
           {options.map((item, index) => (
-            <Line key={`popover-line-${index}`} onClick={handleClickLine(item.onClick)}>
+            <Line
+              key={`popover-line-${index}`}
+              onClick={handleClickLine(item.onClick)}
+            >
               {item.children}
             </Line>
           ))}

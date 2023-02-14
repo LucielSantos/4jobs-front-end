@@ -18,4 +18,7 @@ export const handleChangeCandidateStatus = (data: IDropData) =>
   action(ManageJobActionTypes.HANDLE_CHANGE_CANDIDATE_STATUS, data);
 
 export const handelClearMessage = (candidateId: string, columnName: string) =>
-  action(ManageJobActionTypes.HANDLE_CLEAR_MESSAGE, { candidateId, columnName });
+  action(ManageJobActionTypes.HANDLE_CLEAR_MESSAGE, {
+    candidateId,
+    columnName,
+  });

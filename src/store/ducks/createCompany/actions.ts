@@ -21,4 +21,5 @@ export const onSetErrorResponse = (data: IReturnGetErrorResponse) =>
 export const onSetSuccessResponse = (data: ISuccessCreateCompanyData) =>
   action(CreateCompanyActionTypes.HANDLE_SET_SUCCESS_RESPONSE, data);
 
-export const onResetState = () => action(CreateCompanyActionTypes.HANDLE_RESET_STATE);
+export const onResetState = () =>
+  action(CreateCompanyActionTypes.HANDLE_RESET_STATE);

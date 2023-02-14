@@ -12,7 +12,7 @@ export const globalStye = createGlobalStyle`
   }
 
   body {
-    background-color: ${props => props.theme.colors.background};
+    background-color: ${(props) => props.theme.colors.background};
     font-family: ${({ theme }) => theme.typography.family};
     font-size: ${({ theme }) => theme.typography.sizes.md};
   }
