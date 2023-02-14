@@ -11,10 +11,7 @@ const INITIAL_STATE: ICreateCompanyState = {
   },
 };
 
-const reducer: Reducer<ICreateCompanyState> = (
-  state = INITIAL_STATE,
-  { type, payload }
-) => {
+const reducer: Reducer<ICreateCompanyState> = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case CreateCompanyActionTypes.HANDLE_CREATE:
       return { ...state, error: 'await' };

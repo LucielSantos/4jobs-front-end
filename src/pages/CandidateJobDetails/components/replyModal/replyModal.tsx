@@ -29,12 +29,7 @@ const ReplyModalComponent: React.FC<IProps> = ({
   );
 
   return (
-    <Modal
-      open={open}
-      handleClose={handleClose}
-      title="Responder ao formulário"
-      width="md"
-    >
+    <Modal open={open} handleClose={handleClose} title="Responder ao formulário" width="md">
       <Form
         onSubmit={handleSubmit}
         validationSchema={candidateReplyDynamicFormValidationSchema}

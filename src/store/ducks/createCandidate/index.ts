@@ -11,10 +11,7 @@ const INITIAL_STATE: ICreateCandidateState = {
   },
 };
 
-const reducer: Reducer<ICreateCandidateState> = (
-  state = INITIAL_STATE,
-  { type, payload }
-) => {
+const reducer: Reducer<ICreateCandidateState> = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case CreateCandidateActionTypes.HANDLE_CREATE_CANDIDATE:
       return { ...state, error: 'await' };

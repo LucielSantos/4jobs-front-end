@@ -5,11 +5,7 @@ import { RouteComponentProps } from 'react-router';
 import { IApplicationState } from '../../store';
 import { CreateJobView } from './createJob';
 import * as CreateJobActions from '../../store/ducks/createJob/actions';
-import {
-  ICreateJobState,
-  ICreateJob,
-  ISetDialogParam,
-} from '../../store/ducks/createJob/types';
+import { ICreateJobState, ICreateJob, ISetDialogParam } from '../../store/ducks/createJob/types';
 
 interface IStateProps extends ICreateJobState {}
 
@@ -27,7 +23,6 @@ const mapStateToProps = ({ createJob }: IApplicationState) => ({
   ...createJob,
 });
 
-const mapActionToProps = (dispatch: Dispatch) =>
-  bindActionCreators(CreateJobActions, dispatch);
+const mapActionToProps = (dispatch: Dispatch) => bindActionCreators(CreateJobActions, dispatch);
 
 export default connect(mapStateToProps, mapActionToProps)(CreateJobView);

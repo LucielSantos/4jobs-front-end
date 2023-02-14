@@ -99,9 +99,7 @@ const InputComponent: React.FC<IInputProps> = ({
       />
 
       {notErrorMargin ? (
-        error && (
-          <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
-        )
+        error && <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
       ) : (
         <ErrorMessage floatingError={floatingError}>{error || ' '}</ErrorMessage>
       )}

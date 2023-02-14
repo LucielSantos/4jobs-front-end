@@ -33,13 +33,9 @@ export const CandidateJobDetailsView: React.FC<TCandidateJobDetailsProps> = ({
     onEnterScreen();
   }, [onEnterScreen]);
 
-  const handleClickReply = useCallback(() => handleSetDialog('reply', true), [
-    handleSetDialog,
-  ]);
+  const handleClickReply = useCallback(() => handleSetDialog('reply', true), [handleSetDialog]);
 
-  const handleCloseReply = useCallback(() => handleSetDialog('reply', false), [
-    handleSetDialog,
-  ]);
+  const handleCloseReply = useCallback(() => handleSetDialog('reply', false), [handleSetDialog]);
 
   const handleClickMessage = useCallback(() => {
     handleCleanMessage();

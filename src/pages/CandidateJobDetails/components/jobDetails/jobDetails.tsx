@@ -34,11 +34,7 @@ const renderReplyTooltip = (jobStatus: IJobCandidateDetails['status']) => {
   return false;
 };
 
-const JobDetailsComponent: React.FC<IProps> = ({
-  jobDetails,
-  onClickReply,
-  onClickMessage,
-}) => {
+const JobDetailsComponent: React.FC<IProps> = ({ jobDetails, onClickReply, onClickMessage }) => {
   const { job } = useMemo(() => jobDetails, [jobDetails]);
 
   return (

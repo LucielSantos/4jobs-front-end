@@ -9,10 +9,7 @@ const INITIAL_STATE: ICandidateProfileState = {
   details: false,
 };
 
-const reducer: Reducer<ICandidateProfileState> = (
-  state = INITIAL_STATE,
-  { type, payload }
-) => {
+const reducer: Reducer<ICandidateProfileState> = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case CandidateProfileActionTypes.HANDLE_SET_LOADING:
       return {

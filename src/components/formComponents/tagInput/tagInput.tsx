@@ -104,9 +104,7 @@ const TagInputComponent: React.FC<IProps> = ({
       </TagsContainer>
 
       {notErrorMargin ? (
-        error && (
-          <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
-        )
+        error && <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
       ) : (
         <ErrorMessage floatingError={floatingError}>{error || ' '}</ErrorMessage>
       )}

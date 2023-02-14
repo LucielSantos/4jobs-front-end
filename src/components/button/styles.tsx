@@ -21,12 +21,10 @@ export interface IStyledButton {
   isLoading?: boolean;
 }
 
-export const StyledButton = styled.button.attrs<IStyledButton>(
-  ({ type, isLoading, children }) => ({
-    type: type || 'button',
-    children: isLoading ? <CircularProgress color="inherit" size={25} /> : children,
-  })
-)<IStyledButton>`
+export const StyledButton = styled.button.attrs<IStyledButton>(({ type, isLoading, children }) => ({
+  type: type || 'button',
+  children: isLoading ? <CircularProgress color="inherit" size={25} /> : children,
+}))<IStyledButton>`
   font-size: ${({ theme }) => theme.typography.sizes.md};
   min-width: 20rem;
   padding: 1rem;
@@ -46,12 +44,9 @@ export const StyledButton = styled.button.attrs<IStyledButton>(
   position: relative;
 
   margin-top: ${({ theme, marginTop }) => (marginTop ? theme.spacings[marginTop] : 0)};
-  margin-right: ${({ theme, marginRight }) =>
-    marginRight ? theme.spacings[marginRight] : 0};
-  margin-bottom: ${({ theme, marginBottom }) =>
-    marginBottom ? theme.spacings[marginBottom] : 0};
-  margin-left: ${({ theme, marginLeft }) =>
-    marginLeft ? theme.spacings[marginLeft] : 0};
+  margin-right: ${({ theme, marginRight }) => (marginRight ? theme.spacings[marginRight] : 0)};
+  margin-bottom: ${({ theme, marginBottom }) => (marginBottom ? theme.spacings[marginBottom] : 0)};
+  margin-left: ${({ theme, marginLeft }) => (marginLeft ? theme.spacings[marginLeft] : 0)};
 
   ${({ fullWidth = false }) =>
     fullWidth &&
@@ -59,9 +54,7 @@ export const StyledButton = styled.button.attrs<IStyledButton>(
       width: 100%;
     `}
   background-color: ${({ theme, variant = 'primary', disabled = false }) =>
-    disabled
-      ? theme.buttons[variant].disabled.background
-      : theme.buttons[variant].background};
+    disabled ? theme.buttons[variant].disabled.background : theme.buttons[variant].background};
   color: ${({ theme, variant = 'primary', disabled = false }) =>
     disabled ? theme.buttons[variant].disabled.color : theme.buttons[variant].color};
 

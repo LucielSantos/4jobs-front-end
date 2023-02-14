@@ -65,9 +65,7 @@ const JobListCardComponent: React.FC<IProps> = ({ job, onClickCard, onClickMessa
         <FooterRightColumn>
           <Typography size="sm" marginTop="auto">
             Desafio resolvido:{' '}
-            {job.challengeResolved && job.status !== jobResponseTypes.answering
-              ? 'SIM'
-              : 'NÃO'}
+            {job.challengeResolved && job.status !== jobResponseTypes.answering ? 'SIM' : 'NÃO'}
           </Typography>
         </FooterRightColumn>
       </Footer>

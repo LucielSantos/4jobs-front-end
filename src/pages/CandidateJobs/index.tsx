@@ -33,7 +33,6 @@ const mapStateToProps = ({ candidateJobs }: IApplicationState) => ({
   ...candidateJobs,
 });
 
-const mapActionToProps = (dispatch: Dispatch) =>
-  bindActionCreators(CandidateJobsActions, dispatch);
+const mapActionToProps = (dispatch: Dispatch) => bindActionCreators(CandidateJobsActions, dispatch);
 
 export default connect(mapStateToProps, mapActionToProps)(CandidateJobsView);

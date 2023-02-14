@@ -5,8 +5,5 @@ export const copyToClipboard = (text: string, successCallback: () => void) =>
     .writeText(text)
     .then(successCallback)
     .catch(() =>
-      openNotification(
-        'Não foi possível copiar o texto para a área de transferência',
-        'error'
-      )
+      openNotification('Não foi possível copiar o texto para a área de transferência', 'error')
     );

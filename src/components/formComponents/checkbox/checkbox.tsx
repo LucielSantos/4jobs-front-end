@@ -53,9 +53,7 @@ const CheckboxComponent: React.FC<IProps> = ({
       </Flex>
 
       {notErrorMargin ? (
-        error && (
-          <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
-        )
+        error && <ErrorMessage floatingError={floatingError}>{error && error}</ErrorMessage>
       ) : (
         <ErrorMessage floatingError={floatingError}>{error || ' '}</ErrorMessage>
       )}

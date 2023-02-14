@@ -56,21 +56,11 @@ export const LoginView: React.FC<LoginViewProps> = ({
             name="password"
           />
 
-          <Button
-            type="submit"
-            fullWidth
-            marginBottom="xs"
-            marginTop="xs"
-            isLoading={loading}
-          >
+          <Button type="submit" fullWidth marginBottom="xs" marginTop="xs" isLoading={loading}>
             Login
           </Button>
 
-          <Button
-            fullWidth
-            variant="secondary"
-            onClick={() => handleChoseSignUpTypeModal(true)}
-          >
+          <Button fullWidth variant="secondary" onClick={() => handleChoseSignUpTypeModal(true)}>
             Cadastrar-se
           </Button>
         </Form>

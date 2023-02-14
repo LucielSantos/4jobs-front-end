@@ -1,13 +1,6 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { Icon } from '../../assets/icons';
-import {
-  Button,
-  Divider,
-  Flex,
-  JobPreview,
-  LoadingMessage,
-  Typography,
-} from '../../components';
+import { Button, Divider, Flex, JobPreview, LoadingMessage, Typography } from '../../components';
 import { routePaths } from '../../routes';
 import { querySearchParse, queryStringify } from '../../utils';
 

@@ -6,9 +6,7 @@ import { IJobDetails, IJobPreview, IListCandidateByJob } from '../types';
 import { api } from './api';
 import { getErrorResponse } from './config/getError';
 
-export const createJobApi = async (
-  data: ICreateJob
-): Promise<AxiosResponse<ICreateJob>> => {
+export const createJobApi = async (data: ICreateJob): Promise<AxiosResponse<ICreateJob>> => {
   try {
     const response = await api.post('/jobs', data);
 
@@ -18,9 +16,7 @@ export const createJobApi = async (
   }
 };
 
-export const getJobDetails = async (
-  jobId: string
-): Promise<AxiosResponse<IJobDetails>> => {
+export const getJobDetails = async (jobId: string): Promise<AxiosResponse<IJobDetails>> => {
   try {
     const response = await api.get(`/jobs/${jobId}`);
 
@@ -40,9 +36,7 @@ export const getJobsApi = async (): Promise<AxiosResponse<IJobInList[]>> => {
   }
 };
 
-export const getJobPreview = async (
-  jobId: string
-): Promise<AxiosResponse<IJobPreview>> => {
+export const getJobPreview = async (jobId: string): Promise<AxiosResponse<IJobPreview>> => {
   try {
     const response = await api.get(`/jobs/${jobId}/preview`);
 

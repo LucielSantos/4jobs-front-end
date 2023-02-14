@@ -4,12 +4,7 @@ import { Divider, Flex, Popover, Tooltip, Typography } from '../../../../compone
 import { routePaths } from '../../../../routes';
 
 import { IJobInList } from '../../../../store/ducks/companyJobs/types';
-import {
-  copyToClipboard,
-  history,
-  openNotification,
-  queryStringify,
-} from '../../../../utils';
+import { copyToClipboard, history, openNotification, queryStringify } from '../../../../utils';
 import { Container, Header, Footer, FooterLeftColumn, FooterRightColumn } from './styles';
 
 const renderInfoTooltip = (job: IJobInList) => {

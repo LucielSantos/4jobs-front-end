@@ -38,11 +38,7 @@ export const CreateCandidateView: React.FC<TCreateCandidateProps> = ({
 
   return (
     <Container>
-      <Form
-        onSubmit={onSubmit}
-        validationSchema={createCandidateValidationSchema}
-        ref={formRef}
-      >
+      <Form onSubmit={onSubmit} validationSchema={createCandidateValidationSchema} ref={formRef}>
         <Input name="email" label="Email" />
 
         <Input name="name" label="Nome de usuário" />
@@ -52,9 +48,9 @@ export const CreateCandidateView: React.FC<TCreateCandidateProps> = ({
         <InputPassword name="confirmPassword" label="Confirmar senha" />
 
         <Typography size="sm">
-          A senha deve conter: <br /> &nbsp; • Mínimo 8 (oito) caractéres; <br /> &nbsp; •
-          Mínimo uma letra minuscula; <br /> &nbsp; • Mínimo uma letra maiúscula; <br />{' '}
-          &nbsp; • Mínimo um número.
+          A senha deve conter: <br /> &nbsp; • Mínimo 8 (oito) caractéres; <br /> &nbsp; • Mínimo
+          uma letra minuscula; <br /> &nbsp; • Mínimo uma letra maiúscula; <br /> &nbsp; • Mínimo um
+          número.
         </Typography>
 
         <Flex flexDirection="column">

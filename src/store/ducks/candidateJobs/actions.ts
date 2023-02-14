@@ -25,9 +25,8 @@ export const handleGetJobPreview = (jobId: string) =>
 export const handleSetJobPreview = (jobPreview: IJobPreview) =>
   action(CandidateJobsActionTypes.HANDLE_SET_JOB_PREVIEW, jobPreview);
 
-export const handleSetApplyModalState = (
-  newState: ICandidateJobsState['applyModalState']
-) => action(CandidateJobsActionTypes.HANDLE_SET_APPLY_MODAL_STATE, newState);
+export const handleSetApplyModalState = (newState: ICandidateJobsState['applyModalState']) =>
+  action(CandidateJobsActionTypes.HANDLE_SET_APPLY_MODAL_STATE, newState);
 
 export const handleCleanApplyModal = (closeModal: boolean = false) =>
   action(CandidateJobsActionTypes.HANDLE_CLEAN_APPLY_MODAL, { closeModal });

@@ -10,11 +10,7 @@ export interface IPrivateRoute {
   userType: TUserTypeNum;
 }
 
-export const PrivateRoute: React.FC<IPrivateRoute> = ({
-  exact = true,
-  userType,
-  ...props
-}) =>
+export const PrivateRoute: React.FC<IPrivateRoute> = ({ exact = true, userType, ...props }) =>
   isAuthenticated(userType) ? (
     <Route exact={exact} {...props} />
   ) : (

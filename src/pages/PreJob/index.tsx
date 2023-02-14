@@ -21,7 +21,6 @@ const mapStateToProps = ({ preJob }: IApplicationState) => ({
   ...preJob,
 });
 
-const mapActionToProps = (dispatch: Dispatch) =>
-  bindActionCreators(PreJobActions, dispatch);
+const mapActionToProps = (dispatch: Dispatch) => bindActionCreators(PreJobActions, dispatch);
 
 export default connect(mapStateToProps, mapActionToProps)(PreJobView);

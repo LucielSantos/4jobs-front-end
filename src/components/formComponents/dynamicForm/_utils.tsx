@@ -6,8 +6,7 @@ import { Input } from '../';
 import { MaskedInput } from '../maskedInput';
 import { DateInput } from '../dateInput';
 
-const renderLabel = (field: IDynamicFormField) =>
-  `${field.title}${field.required ? ' *' : ''}`;
+const renderLabel = (field: IDynamicFormField) => `${field.title}${field.required ? ' *' : ''}`;
 
 export const renderField = (field: IDynamicFormField, name: string) => {
   switch (field.type) {

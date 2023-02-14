@@ -20,7 +20,6 @@ const mapStateToProps = ({ main }: IApplicationState) => ({
   ...main,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators(MainActions, dispatch);
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(MainActions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainView);

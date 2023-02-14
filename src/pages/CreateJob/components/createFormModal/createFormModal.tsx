@@ -2,15 +2,7 @@ import { Grid } from '@material-ui/core';
 import { FormHandles, Scope, SubmitHandler, useField } from '@unform/core';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Icon } from '../../../../assets/icons';
-import {
-  Button,
-  Checkbox,
-  Flex,
-  Form,
-  Input,
-  Modal,
-  Select,
-} from '../../../../components';
+import { Button, Checkbox, Flex, Form, Input, Modal, Select } from '../../../../components';
 import { dynamicFormFields } from '../../../../constants';
 import { IDynamicFormField } from '../../../../store/ducks/createJob/types';
 import { createFormModalValidationSchema } from '../../../../validationSchemas';
@@ -81,12 +73,7 @@ const CreateFormModalComponent: React.FC<IProps> = ({ name, handleClose, open })
   const onClickSubmit = useCallback(() => formRef.current?.submitForm(), []);
 
   return (
-    <Modal
-      title="Criar formulário de desafio"
-      width="md"
-      open={open}
-      handleClose={handleClose}
-    >
+    <Modal title="Criar formulário de desafio" width="md" open={open} handleClose={handleClose}>
       <Form
         ref={formRef}
         onSubmit={handleSubmit}

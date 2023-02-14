@@ -1,11 +1,6 @@
 import * as Yup from 'yup';
 import { passwordMatches } from './constants';
-import {
-  requiredMessage,
-  invalidPassword,
-  matchPasswordError,
-  invalidEmail,
-} from './messages';
+import { requiredMessage, invalidPassword, matchPasswordError, invalidEmail } from './messages';
 
 export const createCompanyValidationSchema = Yup.object().shape({
   profileImage: Yup.string().required(requiredMessage),

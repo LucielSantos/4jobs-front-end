@@ -44,10 +44,7 @@ const NavbarComponent: React.FC<IProps> = ({ navbarState, history }) => {
     <Container>
       <Logo onClick={onClickLogo} />
 
-      <ConditionalNavRender
-        navbarState={navbarState.state}
-        showIn={['candidate', 'company']}
-      >
+      <ConditionalNavRender navbarState={navbarState.state} showIn={['candidate', 'company']}>
         <Typography marginLeft="auto" color="two">
           {loggedUser?.name || null}
         </Typography>

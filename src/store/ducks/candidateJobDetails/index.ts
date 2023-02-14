@@ -13,10 +13,7 @@ const INITIAL_STATE: ICandidateJobDetailsState = {
   jobDetails: false,
 };
 
-const reducer: Reducer<ICandidateJobDetailsState> = (
-  state = INITIAL_STATE,
-  { type, payload }
-) => {
+const reducer: Reducer<ICandidateJobDetailsState> = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case CandidateJobDetailsActionTypes.HANDLE_SET_LOADING:
       return {

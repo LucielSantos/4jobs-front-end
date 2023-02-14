@@ -9,11 +9,7 @@ import { Navbar, Notifier, Sidebar } from './components';
 
 import { Container, Content, Body } from './styles';
 
-export const MainView: React.FC<MainViewProps> = ({
-  history,
-  onSetNavbarState,
-  navbar,
-}) => {
+export const MainView: React.FC<MainViewProps> = ({ history, onSetNavbarState, navbar }) => {
   // eslint-disable-next-line
   const [loggedUser, setLoggedUser] = useState(getLoggedUser());
   const [loggedUserType, setLoggedUserType] = useState(getUserType());
@@ -58,8 +54,7 @@ export const MainView: React.FC<MainViewProps> = ({
     });
 
     history.listen(location => {
-      if (location.pathname === '/' || location.pathname === routePaths.LOGIN)
-        redirectPage();
+      if (location.pathname === '/' || location.pathname === routePaths.LOGIN) redirectPage();
     });
 
     // eslint-disable-next-line

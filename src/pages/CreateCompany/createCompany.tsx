@@ -103,18 +103,14 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
             </Grid>
 
             <Grid item xs={12} sm={4}>
-              <InputPassword
-                name="confirmPassword"
-                label="Confirmar senha"
-                notErrorMargin
-              />
+              <InputPassword name="confirmPassword" label="Confirmar senha" notErrorMargin />
             </Grid>
 
             <Grid item xs={12} sm={12}>
               <Typography marginBottom="sm" size="sm">
-                A senha deve conter: <br /> &nbsp; • Mínimo 8 (oito) caractéres; <br />{' '}
-                &nbsp; • Mínimo uma letra minuscula; <br /> &nbsp; • Mínimo uma letra
-                maiúscula; <br /> &nbsp; • Mínimo um número.
+                A senha deve conter: <br /> &nbsp; • Mínimo 8 (oito) caractéres; <br /> &nbsp; •
+                Mínimo uma letra minuscula; <br /> &nbsp; • Mínimo uma letra maiúscula; <br />{' '}
+                &nbsp; • Mínimo um número.
               </Typography>
             </Grid>
 
@@ -125,13 +121,7 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
             </Grid>
 
             <Grid item xs={12} sm={12}>
-              <Input
-                name="description"
-                label="Descrição"
-                multiline
-                rows={4}
-                notErrorMargin
-              />
+              <Input name="description" label="Descrição" multiline rows={4} notErrorMargin />
             </Grid>
           </Grid>
 
@@ -148,12 +138,7 @@ export const CreateCompanyView: React.FC<TCreateCompanyViewProps> = ({
                 Cancelar
               </Button>
 
-              <Button
-                type="submit"
-                marginTop="lg"
-                fullWidthOnMobile
-                isLoading={loadings.create}
-              >
+              <Button type="submit" marginTop="lg" fullWidthOnMobile isLoading={loadings.create}>
                 Cadastrar-se
               </Button>
             </Flex>

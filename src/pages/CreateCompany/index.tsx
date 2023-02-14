@@ -3,10 +3,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { IApplicationState } from '../../store';
 import { CreateCompanyView } from './createCompany';
 import * as CreateCompanyActions from '../../store/ducks/createCompany/actions';
-import {
-  ICreateCompanyData,
-  ICreateCompanyState,
-} from '../../store/ducks/createCompany/types';
+import { ICreateCompanyData, ICreateCompanyState } from '../../store/ducks/createCompany/types';
 import { RouteComponentProps } from 'react-router';
 
 interface IStateProps extends ICreateCompanyState {}

@@ -36,7 +36,7 @@
                 "arrowParens": "avoid",
                 "trailingComma": "es5",
                 "endOfLine": "auto",
-                "printWidth": 90
+                "printWidth": 100
             }
         ],
         "space-before-function-paren": "off",

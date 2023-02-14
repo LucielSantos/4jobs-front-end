@@ -3,8 +3,7 @@ import { ICandidateDetails, ICandidateDetailsEdit } from '../../../types';
 import { ISetLoadingState } from '../types';
 import { CandidateProfileActionTypes, ICandidateProfileLoadings } from './types';
 
-export const handleLoadDetails = () =>
-  action(CandidateProfileActionTypes.HANDEL_LOAD_DETAILS);
+export const handleLoadDetails = () => action(CandidateProfileActionTypes.HANDEL_LOAD_DETAILS);
 
 export const handleSetLoading = (
   field: ISetLoadingState<ICandidateProfileLoadings>['field'],

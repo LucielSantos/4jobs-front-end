@@ -47,12 +47,7 @@ const PopoverComponent: React.FC<IProps> = ({ options }) => {
 
   return (
     <Flex notFullWidth>
-      <Icon
-        onClick={handleClick}
-        color={open ? 'three' : 'six'}
-        name="moreVert"
-        size="xs"
-      />
+      <Icon onClick={handleClick} color={open ? 'three' : 'six'} name="moreVert" size="xs" />
 
       <PopoverMUI
         id={id}

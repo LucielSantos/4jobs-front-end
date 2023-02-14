@@ -1,15 +1,7 @@
 import { Grid } from '@material-ui/core';
 import React, { useCallback, useEffect } from 'react';
 import { Icon } from '../../assets/icons';
-import {
-  Button,
-  Flex,
-  Form,
-  Input,
-  LoadingMessage,
-  TagInput,
-  Typography,
-} from '../../components';
+import { Button, Flex, Form, Input, LoadingMessage, TagInput, Typography } from '../../components';
 
 import { TCandidateProfileProps } from './';
 import { Container } from './styles';
@@ -80,13 +72,7 @@ export const CandidateProfileView: React.FC<TCandidateProfileProps> = ({
               </Grid>
 
               <Grid item xs={12}>
-                <Input
-                  name="description"
-                  label="Descrição"
-                  multiline
-                  rows={4}
-                  notErrorMargin
-                />
+                <Input name="description" label="Descrição" multiline rows={4} notErrorMargin />
               </Grid>
 
               <Grid item xs={12}>

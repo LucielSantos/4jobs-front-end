@@ -44,13 +44,9 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
     [handleCreateJob]
   );
 
-  const onClickFormButton = useCallback(() => onSetDialog('crateForm', true), [
-    onSetDialog,
-  ]);
+  const onClickFormButton = useCallback(() => onSetDialog('crateForm', true), [onSetDialog]);
 
-  const handleCloseFormModal = useCallback(() => onSetDialog('crateForm', false), [
-    onSetDialog,
-  ]);
+  const handleCloseFormModal = useCallback(() => onSetDialog('crateForm', false), [onSetDialog]);
 
   return (
     <div>
@@ -63,11 +59,7 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
       </Flex>
 
       <ContentContainer margin="3rem 0">
-        <Form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          validationSchema={createJobValidationSchema}
-        >
+        <Form ref={formRef} onSubmit={handleSubmit} validationSchema={createJobValidationSchema}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={4}>
               <Input name="title" label="Título da vaga" floatingError />
@@ -83,13 +75,7 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
             </Grid>
 
             <Grid item xs={12}>
-              <Input
-                name="description"
-                label="Descrição"
-                multiline
-                rows={4}
-                floatingError
-              />
+              <Input name="description" label="Descrição" multiline rows={4} floatingError />
             </Grid>
 
             <Grid item xs={12}>
@@ -103,13 +89,7 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
             </Grid>
 
             <Grid item xs={12}>
-              <Input
-                name="observations"
-                label="Observações"
-                multiline
-                rows={4}
-                floatingError
-              />
+              <Input name="observations" label="Observações" multiline rows={4} floatingError />
             </Grid>
 
             <Grid item xs={12}>
@@ -128,11 +108,7 @@ export const CreateJobView: React.FC<TCreateJobProps> = ({
 
             <Grid item xs={12}>
               <Flex>
-                <Button
-                  marginRight="auto"
-                  variant="secondary"
-                  onClick={onClickFormButton}
-                >
+                <Button marginRight="auto" variant="secondary" onClick={onClickFormButton}>
                   Criar formulário de desafio
                 </Button>
 

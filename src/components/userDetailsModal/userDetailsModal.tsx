@@ -14,11 +14,7 @@ interface IProps {
   candidateId: string;
 }
 
-const UserDetailsModalComponent: React.FC<IProps> = ({
-  open,
-  handleClose,
-  candidateId,
-}) => {
+const UserDetailsModalComponent: React.FC<IProps> = ({ open, handleClose, candidateId }) => {
   const [candidateDetails, isLoadingDetails] = useRequest<ICandidateDetails>({
     handleRequest: getCandidateById,
     initialReqParams: [candidateId],

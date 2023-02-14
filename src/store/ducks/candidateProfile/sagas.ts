@@ -36,11 +36,7 @@ function* handleEdit(data: ISagaParam<ICandidateDetailsEdit>) {
     const loggedUser = getLoggedUser();
 
     if (loggedUser) {
-      const response: AxiosResponse = yield call(
-        editCandidateById,
-        loggedUser?.id,
-        data.payload
-      );
+      const response: AxiosResponse = yield call(editCandidateById, loggedUser?.id, data.payload);
       if (response.status === 200) {
         openNotification('Dados editados com sucesso');
       }

@@ -1,12 +1,6 @@
 import styled, { DefaultTheme } from 'styled-components';
 
-type TFlexAlignItems =
-  | 'normal'
-  | 'center'
-  | 'flex-start'
-  | 'flex-end'
-  | 'stretch'
-  | 'baseline';
+type TFlexAlignItems = 'normal' | 'center' | 'flex-start' | 'flex-end' | 'stretch' | 'baseline';
 
 type TFlexJustifyContent =
   | 'normal'
@@ -62,10 +56,7 @@ export const Flex = styled.div<IFlex>`
   box-sizing: border-box;
 
   margin-top: ${({ theme, marginTop }) => (marginTop ? theme.spacings[marginTop] : 0)};
-  margin-right: ${({ theme, marginRight }) =>
-    marginRight ? theme.spacings[marginRight] : 0};
-  margin-bottom: ${({ theme, marginBottom }) =>
-    marginBottom ? theme.spacings[marginBottom] : 0};
-  margin-left: ${({ theme, marginLeft }) =>
-    marginLeft ? theme.spacings[marginLeft] : 0};
+  margin-right: ${({ theme, marginRight }) => (marginRight ? theme.spacings[marginRight] : 0)};
+  margin-bottom: ${({ theme, marginBottom }) => (marginBottom ? theme.spacings[marginBottom] : 0)};
+  margin-left: ${({ theme, marginLeft }) => (marginLeft ? theme.spacings[marginLeft] : 0)};
 `;

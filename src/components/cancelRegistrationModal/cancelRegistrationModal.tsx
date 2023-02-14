@@ -58,9 +58,7 @@ const CancelRegistrationModalComponent: React.FC<IProps> = ({
     <Modal
       open={open}
       handleClose={handleClose}
-      title={`${
-        currentJobStatus === jobStatus.opened ? 'Cancelar' : 'Abrir'
-      } inscrições à vaga`}
+      title={`${currentJobStatus === jobStatus.opened ? 'Cancelar' : 'Abrir'} inscrições à vaga`}
       width="xs"
     >
       <Typography marginTop="sm" marginBottom="lg">

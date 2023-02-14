@@ -39,9 +39,7 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
 
   const [tempDropData, setTempDropData] = useState<null | IDropData>(null);
   const [selectedCandidateId, setSelectedCandidateId] = useState<false | string>(false);
-  const [selectedJobResponseId, setSelectedJobResponseId] = useState<false | string>(
-    false
-  );
+  const [selectedJobResponseId, setSelectedJobResponseId] = useState<false | string>(false);
 
   useEffect(() => {
     if (!jobId) {
@@ -77,10 +75,7 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
     (candidate: ICandidateByJob, columnId: TJobResponseValues) => {
       setSelectedCandidateId(candidate.id);
 
-      if (
-        columnId === jobResponseTypes.registered ||
-        columnId === jobResponseTypes.answering
-      ) {
+      if (columnId === jobResponseTypes.registered || columnId === jobResponseTypes.answering) {
         handleSetDialog('userDetails', true);
       }
 
@@ -116,10 +111,7 @@ export const ManageJobView: React.FC<TManageJobProps> = ({
   return (
     <Container>
       {jobDetails ? (
-        <Header
-          onCancelRegistrations={handleCancelRegistrations}
-          jobDetails={jobDetails}
-        />
+        <Header onCancelRegistrations={handleCancelRegistrations} jobDetails={jobDetails} />
       ) : null}
 
       <Body

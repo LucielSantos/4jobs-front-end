@@ -26,7 +26,6 @@ const mapStateToProps = ({ login }: IApplicationState) => ({
   login,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators(LoginActions, dispatch);
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(LoginActions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginView);

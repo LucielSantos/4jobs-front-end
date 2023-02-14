@@ -19,9 +19,7 @@ export const createCandidateApi = async (
   }
 };
 
-export const getCandidateById = async (
-  id: string
-): Promise<AxiosResponse<ICandidateDetails>> => {
+export const getCandidateById = async (id: string): Promise<AxiosResponse<ICandidateDetails>> => {
   try {
     const response = await api.get(`/candidate/${id}`);
 

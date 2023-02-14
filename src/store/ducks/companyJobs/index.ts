@@ -8,10 +8,7 @@ const INITIAL_STATE: ICompanyJobsState = {
   jobs: [],
 };
 
-const reducer: Reducer<ICompanyJobsState> = (
-  state = INITIAL_STATE,
-  { type, payload }
-) => {
+const reducer: Reducer<ICompanyJobsState> = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case CompanyJobsActionTypes.HANDLE_SET_LOADING:
       return {

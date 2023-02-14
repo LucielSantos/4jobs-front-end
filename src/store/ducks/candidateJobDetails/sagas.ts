@@ -24,17 +24,13 @@ function* handleLoadJobDetails(data: ISagaParam<{ jobId: string }>) {
   }
 }
 
-function* handleReplyForm({
-  payload,
-}: ISagaParam<{ jobId: string; fields: IResponseFormJob[] }>) {
+function* handleReplyForm({ payload }: ISagaParam<{ jobId: string; fields: IResponseFormJob[] }>) {
   try {
     yield put(onSetLoading('saveForm', true));
 
-    const response: AxiosResponse<IJobCandidateDetails> = yield call(
-      putReplyForm,
-      payload.jobId,
-      { fields: payload.fields }
-    );
+    const response: AxiosResponse<IJobCandidateDetails> = yield call(putReplyForm, payload.jobId, {
+      fields: payload.fields,
+    });
 
     yield put(handleSetJobDetails(response.data));
 
@@ -50,10 +46,7 @@ function* handleReplyForm({
 
 export function candidateJobDetailsRootSaga(): ForkEffect<never>[] {
   return [
-    takeEvery(
-      CandidateJobDetailsActionTypes.HANDLE_LOAD_JOB_DETAILS,
-      handleLoadJobDetails
-    ),
+    takeEvery(CandidateJobDetailsActionTypes.HANDLE_LOAD_JOB_DETAILS, handleLoadJobDetails),
     takeEvery(CandidateJobDetailsActionTypes.HANDLE_REPLY_FORM, handleReplyForm),
   ];
 }

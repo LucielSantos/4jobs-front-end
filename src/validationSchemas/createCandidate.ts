@@ -1,11 +1,6 @@
 import * as Yup from 'yup';
 import { passwordMatches } from './constants';
-import {
-  invalidEmail,
-  invalidPassword,
-  matchPasswordError,
-  requiredMessage,
-} from './messages';
+import { invalidEmail, invalidPassword, matchPasswordError, requiredMessage } from './messages';
 
 export const createCandidateValidationSchema = Yup.object().shape({
   name: Yup.string().required(requiredMessage),

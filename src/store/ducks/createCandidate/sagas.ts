@@ -5,12 +5,7 @@ import {
   ICreateCandidateData,
   ISuccessCreateCandidateData,
 } from './types';
-import {
-  onResetState,
-  onSetErrorResponse,
-  onSetLoading,
-  onSetSuccessResponse,
-} from './actions';
+import { onResetState, onSetErrorResponse, onSetLoading, onSetSuccessResponse } from './actions';
 import { createCandidateApi } from '../../../services';
 import { AxiosResponse } from 'axios';
 
@@ -38,7 +33,5 @@ function* handleCreateCandidate(data: ISagaParam<ICreateCandidateData>) {
 }
 
 export function createCandidateRootSaga(): ForkEffect<never>[] {
-  return [
-    takeEvery(CreateCandidateActionTypes.HANDLE_CREATE_CANDIDATE, handleCreateCandidate),
-  ];
+  return [takeEvery(CreateCandidateActionTypes.HANDLE_CREATE_CANDIDATE, handleCreateCandidate)];
 }

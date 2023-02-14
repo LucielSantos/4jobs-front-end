@@ -24,7 +24,6 @@ const mapStateToProps = ({ manageJob }: IApplicationState) => ({
   ...manageJob,
 });
 
-const mapActionToProps = (dispatch: Dispatch) =>
-  bindActionCreators(ManageJobActions, dispatch);
+const mapActionToProps = (dispatch: Dispatch) => bindActionCreators(ManageJobActions, dispatch);
 
 export default connect(mapStateToProps, mapActionToProps)(ManageJobView);

@@ -13,10 +13,8 @@ export const handleLoadJobDetails = (jobId: string) =>
 export const handleSetJobDetails = (data: IJobCandidateDetails) =>
   action(CandidateJobDetailsActionTypes.HANDLE_SET_JOB_DETAILS, data);
 
-export const handleSetDialog = (
-  field: keyof ICandidateJobDetailsDialogs,
-  value: boolean
-) => action(CandidateJobDetailsActionTypes.HANDLE_SET_DIALOG, { field, value });
+export const handleSetDialog = (field: keyof ICandidateJobDetailsDialogs, value: boolean) =>
+  action(CandidateJobDetailsActionTypes.HANDLE_SET_DIALOG, { field, value });
 
 export const onSetLoading = (
   field: ISetLoadingState<ICandidateJobDetailsLoadings>['field'],
@@ -26,5 +24,4 @@ export const onSetLoading = (
 export const handleReplyForm = (data: { jobId: string; fields: IResponseFormJob[] }) =>
   action(CandidateJobDetailsActionTypes.HANDLE_REPLY_FORM, data);
 
-export const handleCleanMessage = () =>
-  action(CandidateJobDetailsActionTypes.HANDLE_CLEAN_MESSAGE);
+export const handleCleanMessage = () => action(CandidateJobDetailsActionTypes.HANDLE_CLEAN_MESSAGE);

@@ -1,12 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import {
-  Button,
-  Flex,
-  LoadingMessage,
-  MessagesModal,
-  Typography,
-} from '../../components';
+import { Button, Flex, LoadingMessage, MessagesModal, Typography } from '../../components';
 import { routePaths } from '../../routes';
 import { IJobCandidateList } from '../../types';
 import { queryStringify } from '../../utils';
@@ -38,16 +32,13 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
     onSetCandidateJobDialog,
   ]);
 
-  const handleCloseApplyModal = useCallback(
-    () => onSetCandidateJobDialog('applyJob', false),
-    [onSetCandidateJobDialog]
-  );
+  const handleCloseApplyModal = useCallback(() => onSetCandidateJobDialog('applyJob', false), [
+    onSetCandidateJobDialog,
+  ]);
 
   const onClickCard = useCallback(
     (job: IJobCandidateList) => {
-      history.push(
-        `${routePaths.CANDIDATE_JOBS_DETAILS}${queryStringify({ jobId: job.id })}`
-      );
+      history.push(`${routePaths.CANDIDATE_JOBS_DETAILS}${queryStringify({ jobId: job.id })}`);
     },
     [history]
   );
@@ -80,11 +71,7 @@ export const CandidateJobsView: React.FC<TCandidateJobsProps> = ({
           <LoadingMessage text="Carregando vagas" />
         </Flex>
       ) : (
-        <JobList
-          jobs={jobs}
-          onClickCard={onClickCard}
-          onClickMessage={handleClickMessage}
-        />
+        <JobList jobs={jobs} onClickCard={onClickCard} onClickMessage={handleClickMessage} />
       )}
 
       <ApplyJobModal

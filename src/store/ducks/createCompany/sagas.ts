@@ -8,11 +8,7 @@ import {
   onSetErrorResponse,
   onSetSuccessResponse,
 } from './actions';
-import {
-  CreateCompanyActionTypes,
-  ICreateCompanyData,
-  ISuccessCreateCompanyData,
-} from './types';
+import { CreateCompanyActionTypes, ICreateCompanyData, ISuccessCreateCompanyData } from './types';
 
 function* handleCreateCompany(data: ISagaParam<ICreateCompanyData>) {
   try {

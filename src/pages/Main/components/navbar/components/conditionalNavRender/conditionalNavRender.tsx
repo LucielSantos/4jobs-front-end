@@ -8,11 +8,7 @@ interface IProps {
   children?: React.ReactElement | React.ReactElement[] | null | JsxElement;
 }
 
-const ConditionalNavRenderComponent: React.FC<IProps> = ({
-  navbarState,
-  showIn,
-  children,
-}) => {
+const ConditionalNavRenderComponent: React.FC<IProps> = ({ navbarState, showIn, children }) => {
   if (!showIn) return <> {children} </>;
 
   if (showIn.find(showInState => navbarStates[showInState] === navbarState))

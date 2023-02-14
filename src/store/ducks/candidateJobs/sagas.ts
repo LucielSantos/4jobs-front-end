@@ -49,10 +49,7 @@ function* handleApplyJob({ payload }: ISagaParam<ILinkJob>) {
   try {
     yield put(onSetCandidateJobLoading('applyJob', true));
 
-    const response: AxiosResponse<IJobCandidateList> = yield call(
-      postApplyCandidateJob,
-      payload
-    );
+    const response: AxiosResponse<IJobCandidateList> = yield call(postApplyCandidateJob, payload);
 
     openNotification('Candidatura executada com sucesso');
 

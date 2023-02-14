@@ -9,13 +9,7 @@ import { getJobResponseMessages, putNewMessageJobResponse } from '../../services
 import { IMessageJobResponseRequest, INewMessage } from '../../types';
 import { newMessageValidationSchema } from '../../validationSchemas';
 
-import {
-  Container,
-  MessageBody,
-  MessageContainer,
-  MessageInfo,
-  MessagesContainer,
-} from './styles';
+import { Container, MessageBody, MessageContainer, MessageInfo, MessagesContainer } from './styles';
 
 interface IProps {
   jobResponseId: string;
@@ -23,11 +17,7 @@ interface IProps {
   handleClose: IModalProps['handleClose'];
 }
 
-const MessagesModalComponent: React.FC<IProps> = ({
-  jobResponseId,
-  open,
-  handleClose,
-}) => {
+const MessagesModalComponent: React.FC<IProps> = ({ jobResponseId, open, handleClose }) => {
   const formRef = useRef<FormHandles>(null);
 
   const [data, isLoading, getMessages] = useRequest<IMessageJobResponseRequest>({
@@ -74,11 +64,7 @@ const MessagesModalComponent: React.FC<IProps> = ({
           )}
         </MessagesContainer>
 
-        <Form
-          onSubmit={handleSubmit}
-          ref={formRef}
-          validationSchema={newMessageValidationSchema}
-        >
+        <Form onSubmit={handleSubmit} ref={formRef} validationSchema={newMessageValidationSchema}>
           <Flex>
             <Input name="message" multiline rows={3} floatingError fullWidth />
 

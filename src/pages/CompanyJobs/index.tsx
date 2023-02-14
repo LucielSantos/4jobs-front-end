@@ -20,7 +20,6 @@ const mapStateToProps = ({ companyJobs }: IApplicationState) => ({
   ...companyJobs,
 });
 
-const mapActionToProps = (dispatch: Dispatch) =>
-  bindActionCreators(CompanyJobsActions, dispatch);
+const mapActionToProps = (dispatch: Dispatch) => bindActionCreators(CompanyJobsActions, dispatch);
 
 export default connect(mapStateToProps, mapActionToProps)(CompanyJobsView);

@@ -35,8 +35,7 @@ const ApplyJobModalComponent: React.FC<IProps> = ({
   );
 
   const onClickApplyJob = useCallback(() => {
-    jobPreview &&
-      handleApplyJob({ jobId: jobPreview.id, companyId: jobPreview.company.id });
+    jobPreview && handleApplyJob({ jobId: jobPreview.id, companyId: jobPreview.company.id });
   }, [jobPreview, handleApplyJob]);
 
   return (

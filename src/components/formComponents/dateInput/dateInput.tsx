@@ -14,11 +14,7 @@ interface IProps {
   label?: string;
 }
 
-const DateInputComponent: React.FC<IProps> = ({
-  name,
-  notErrorMargin = false,
-  label,
-}) => {
+const DateInputComponent: React.FC<IProps> = ({ name, notErrorMargin = false, label }) => {
   const { fieldName, defaultValue, registerField, error, clearError } = useField(name);
 
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(

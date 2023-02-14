@@ -13,11 +13,7 @@ interface IProps extends IModalProps {
 /** This is a modal state, 0: choose sign-up; 1: candidate sign-up */
 export type TStateModal = 0 | 1;
 
-const ChoseSignUpTypeModalComponent: React.FC<IProps> = ({
-  open,
-  handleClose,
-  history,
-}) => {
+const ChoseSignUpTypeModalComponent: React.FC<IProps> = ({ open, handleClose, history }) => {
   const [state, setState] = useState<TStateModal>(0);
 
   useEffect(() => {

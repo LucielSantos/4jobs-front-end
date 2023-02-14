@@ -37,10 +37,7 @@ const reducer: Reducer<IManageJobState> = (state = INITIAL_STATE, { type, payloa
         ...state,
         candidates: {
           ...state.candidates,
-          [payload.newColumnName]: [
-            ...state.candidates[payload.newColumnName],
-            payload.candidate,
-          ],
+          [payload.newColumnName]: [...state.candidates[payload.newColumnName], payload.candidate],
           [payload.oldColumnName]: state.candidates[payload.oldColumnName].filter(
             (candidate: ICandidateByJob) => candidate.id !== payload.candidate.id
           ),

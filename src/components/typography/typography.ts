@@ -21,12 +21,9 @@ export const Typography = styled.p<ITypography>`
   font-size: ${({ theme, size = 'md' }) => theme.typography.sizes[size]};
   font-weight: ${({ theme, weight = 'regular' }) => theme.typography.weight[weight]};
   margin-top: ${({ theme, marginTop }) => (marginTop ? theme.spacings[marginTop] : 0)};
-  margin-right: ${({ theme, marginRight }) =>
-    marginRight ? theme.spacings[marginRight] : 0};
-  margin-bottom: ${({ theme, marginBottom }) =>
-    marginBottom ? theme.spacings[marginBottom] : 0};
-  margin-left: ${({ theme, marginLeft }) =>
-    marginLeft ? theme.spacings[marginLeft] : 0};
+  margin-right: ${({ theme, marginRight }) => (marginRight ? theme.spacings[marginRight] : 0)};
+  margin-bottom: ${({ theme, marginBottom }) => (marginBottom ? theme.spacings[marginBottom] : 0)};
+  margin-left: ${({ theme, marginLeft }) => (marginLeft ? theme.spacings[marginLeft] : 0)};
 
   ${({ clickable = false }) =>
     clickable &&

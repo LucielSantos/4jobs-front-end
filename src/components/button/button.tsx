@@ -10,12 +10,7 @@ interface IProps extends IStyledButton {
   rightIcon?: IIconProps;
 }
 
-const ButtonComponent: React.FC<IProps> = ({
-  children,
-  leftIcon,
-  rightIcon,
-  ...props
-}) => {
+const ButtonComponent: React.FC<IProps> = ({ children, leftIcon, rightIcon, ...props }) => {
   return (
     <StyledButton {...props}>
       {leftIcon ? (
