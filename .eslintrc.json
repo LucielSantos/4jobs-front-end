@@ -25,7 +25,14 @@
     "rules": {
         "prettier/prettier": [
             "error",
-            "fb"
+            {
+                "singleQuote": true,
+                "jsxSingleQuote": false,
+                "arrowParens": "avoid",
+                "trailingComma": "es5",
+                "endOfLine": "auto",
+                "printWidth": 90
+            }
         ],
         "space-before-function-paren": "off",
         "react/prop-types": "off",
@@ -39,7 +46,15 @@
         "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
         "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
         "camelcase": "warn",
-        "prefer-template": "warn"
+        "prefer-template": "warn",
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "jsx-quotes": [
+            "error",
+            "double"
+        ]
     },
     "globals": {
         "JSX": true
