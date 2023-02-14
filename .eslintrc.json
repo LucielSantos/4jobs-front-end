@@ -23,12 +23,19 @@
         "react-hooks"
     ],
     "rules": {
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true
+            }
+        ],
         "space-before-function-paren": "off",
         "react/prop-types": "off",
         // note you must disable the base rule as it can report incorrect errors
         "no-use-before-define": "off",
-        "@typescript-eslint/no-use-before-define": ["error"],
+        "@typescript-eslint/no-use-before-define": [
+            "error"
+        ],
         "no-unused-vars": "warn",
         "prefer-regex-literals": "off",
         "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
