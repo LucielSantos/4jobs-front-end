@@ -39,7 +39,7 @@ export const postApplyCandidateJob = async (
   data: ILinkJob
 ): Promise<AxiosResponse<IJobCandidateList>> => {
   try {
-    const response = await api.post(`/jobsResponse/linkCandidateJob`, data);
+    const response = await api.post('/jobsResponse/linkCandidateJob', data);
 
     return response;
   } catch (error) {

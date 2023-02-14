@@ -25,7 +25,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
 
   const handleChoseSignUpTypeModal = useCallback(
     (value: boolean = false) => {
-      handleSetDialog("chooseSignUpType", value);
+      handleSetDialog('chooseSignUpType', value);
     },
     [handleSetDialog]
   );
@@ -35,7 +35,9 @@ export const LoginView: React.FC<LoginViewProps> = ({
       <Logo />
 
       <FormContainer>
-        <Typography color='two' size="xl" weight="regular" marginBottom="xl">Faça login</Typography>
+        <Typography color="two" size="xl" weight="regular" marginBottom="xl">
+          Faça login
+        </Typography>
 
         <Form onSubmit={handleSubmit} validationSchema={loginValidationSchema}>
           <Input

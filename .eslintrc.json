@@ -22,6 +22,11 @@
         "prettier",
         "react-hooks"
     ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "rules": {
         "prettier/prettier": [
             "error",

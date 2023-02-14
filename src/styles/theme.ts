@@ -23,7 +23,8 @@ export default {
     },
   },
   typography: {
-    family: "'Ubuntu', sans-serif",
+    // eslint-disable-next-line prettier/prettier
+    family: '\'Ubuntu\', sans-serif',
     sizes: {
       xs: '1.2rem',
       sm: '1.4rem',

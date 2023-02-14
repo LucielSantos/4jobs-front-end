@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { ICandidateByJob } from '../../../types';
-import { ManageJobActionTypes, IManageJobState } from './types';
+import { IManageJobState, ManageJobActionTypes } from './types';
 
 const INITIAL_STATE: IManageJobState = {
   loadings: {
