@@ -1,12 +1,12 @@
 import React, { useCallback, useMemo } from 'react';
 import { LoginViewProps } from '.';
-import { Typography, Input, Form, Button, InputPassword } from '../../components';
+import { Button, Form, Input, InputPassword, Typography } from '../../components';
 import { loginValidationSchema } from '../../validationSchemas';
 
-import { Container, FormContainer, Logo } from './styles';
-import { ChoseSignUpTypeModal } from './components';
 import { ILogin } from '../../store/ducks/login/types';
 import { querySearchParse } from '../../utils';
+import { ChoseSignUpTypeModal } from './components';
+import { Container, FormContainer, Logo } from './styles';
 
 export const LoginView: React.FC<LoginViewProps> = ({
   handleLogin,
@@ -25,7 +25,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
 
   const handleChoseSignUpTypeModal = useCallback(
     (value: boolean = false) => {
-      handleSetDialog('chooseSignUpType', value);
+      handleSetDialog("chooseSignUpType", value);
     },
     [handleSetDialog]
   );
@@ -35,7 +35,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
       <Logo />
 
       <FormContainer>
-        <Typography color="two" size="xl" weight="regular" marginBottom="xl">
+        <Typography color='two' size="xl" weight="regular" marginBottom="xl">
           Faça login
         </Typography>
 
