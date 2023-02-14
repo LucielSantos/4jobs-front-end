@@ -1,12 +1,12 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { LoginViewProps } from '.';
-import { Typography, Input, Form, Button, InputPassword } from '../../components';
+import { Button, Form, Input, InputPassword, Typography } from '../../components';
 import { loginValidationSchema } from '../../validationSchemas';
 
-import { Container, FormContainer, Logo } from './styles';
-import { ChoseSignUpTypeModal } from './components';
 import { ILogin } from '../../store/ducks/login/types';
 import { querySearchParse } from '../../utils';
+import { ChoseSignUpTypeModal } from './components';
+import { Container, FormContainer, Logo } from './styles';
 
 export const LoginView: React.FC<LoginViewProps> = ({
   handleLogin,
@@ -15,6 +15,8 @@ export const LoginView: React.FC<LoginViewProps> = ({
   login: { dialogs, loading },
 }) => {
   const searchParams = useMemo<{ jobId?: string }>(() => querySearchParse(), []);
+
+  const [test, setTest] = useState()
 
   const handleSubmit = useCallback(
     (values: ILogin) => {
