@@ -53,7 +53,7 @@
         ],
         "jsx-quotes": [
             "error",
-            "double"
+            "prefer-double"
         ]
     },
     "globals": {
