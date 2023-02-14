@@ -30,7 +30,17 @@
     "rules": {
         "prettier/prettier": [
             "error",
-            "fb"
+            {
+                "jsxSingleQuote": false,
+                "arrowParens": "avoid",
+                "endOfLine": "auto",
+                "printWidth": 100,
+                "singleQuote": true,
+                "trailingComma": "all",
+                "bracketSpacing": false,
+                "jsxBracketSameLine": true,
+                "parser": "flow"
+            }
         ],
         "space-before-function-paren": "off",
         "react/prop-types": "off",
