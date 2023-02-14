@@ -17,6 +17,7 @@ export const LoginView: React.FC<LoginViewProps> = ({
   const searchParams = useMemo<{ jobId?: string }>(() => querySearchParse(), []);
 
   const [test, setTest] = useState()
+  const [test, setTest] = useState()
 
   const handleSubmit = useCallback(
     (values: ILogin) => {
